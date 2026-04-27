@@ -195,11 +195,18 @@ export const timetableSubjects = [
     icon: '🗓️',
     units: [
       {
-        id: 'timetable',
-        name: 'Timetable',
-        topic: 'Mid Timetable PDF',
+        id: 'theory',
+        name: 'Theory',
+        topic: 'Mid Theory Timetable',
         topics: '',
         pdfFile: '1',
+      },
+      {
+        id: 'lab',
+        name: 'Lab',
+        topic: 'Mid Lab Timetable',
+        topics: '',
+        pdfFile: '2',
       },
     ],
   },
@@ -301,7 +308,11 @@ export const recordSubjects = [
         name: 'Record',
         topic: 'Record PDF',
         topics: '',
-        pdfFile: '22',
+        pdfUrl: 'https://drive.google.com/file/d/1hIsEG_u8fdkuQpMd8gSxG-dIlwYf2sdR/preview',
+        openUrl:
+          'https://drive.google.com/file/d/1hIsEG_u8fdkuQpMd8gSxG-dIlwYf2sdR/view?usp=sharing',
+        downloadUrl:
+          'https://drive.google.com/uc?export=download&id=1hIsEG_u8fdkuQpMd8gSxG-dIlwYf2sdR',
       },
     ],
   },

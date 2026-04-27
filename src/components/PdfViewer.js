@@ -8,6 +8,8 @@ export default function PdfViewer({ pdfUrl, subject, unit }) {
   const [loading, setLoading] = useState(true);
   const pdfFile = unit.pdfFile ?? unit.id;
   const pdfDir = subject.pdfDir ?? subject.id;
+  const openUrl = unit.openUrl ?? pdfUrl;
+  const downloadUrl = unit.downloadUrl ?? openUrl;
 
   return (
     <div
@@ -26,15 +28,15 @@ export default function PdfViewer({ pdfUrl, subject, unit }) {
         </span>
         <div className={styles.toolbarRight}>
           <a
-            href={pdfUrl}
-            download={`${subject.code}_${pdfFile}.pdf`}
+            href={downloadUrl}
+            download={unit.downloadUrl ? undefined : `${subject.code}_${pdfFile}.pdf`}
             className={styles.toolbarBtn}
             title="Download"
           >
             ⬇
           </a>
           <a
-            href={pdfUrl}
+            href={openUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.toolbarBtn}
@@ -68,10 +70,16 @@ export default function PdfViewer({ pdfUrl, subject, unit }) {
             <div className={styles.placeholderIcon}>📂</div>
             <h3 className={styles.placeholderTitle}>PDF not uploaded yet</h3>
             <p className={styles.placeholderText}>
-              Add the PDF file at the path below:
+              {unit.pdfUrl
+                ? 'Check the external link configured for this item.'
+                : 'Add the PDF file at the path below:'}
             </p>
             <div className={styles.placeholderPath}>
-              <code>public/pdfs/{pdfDir}/{pdfFile}.pdf</code>
+              <code>
+                {unit.pdfUrl
+                  ? unit.pdfUrl
+                  : `public/pdfs/${pdfDir}/${pdfFile}.pdf`}
+              </code>
             </div>
             <p className={styles.placeholderHint}>
               Once added, refresh the page to view it here.

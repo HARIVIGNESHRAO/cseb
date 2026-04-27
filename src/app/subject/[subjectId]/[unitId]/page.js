@@ -25,7 +25,9 @@ export default function UnitPage({ params }) {
 
   const pdfFile = unit.pdfFile ?? unit.id;
   const pdfDir = subject.pdfDir ?? subject.id;
-  const pdfUrl = `/pdfs/${pdfDir}/${pdfFile}.pdf`;
+  const pdfUrl = unit.pdfUrl ?? `/pdfs/${pdfDir}/${pdfFile}.pdf`;
+  const openUrl = unit.openUrl ?? pdfUrl;
+  const downloadUrl = unit.downloadUrl ?? openUrl;
   const unitIndex = subject.units.findIndex((u) => u.id === unit.id);
   const prevUnit = unitIndex > 0 ? subject.units[unitIndex - 1] : null;
   const nextUnit = unitIndex < subject.units.length - 1 ? subject.units[unitIndex + 1] : null;
@@ -59,15 +61,15 @@ export default function UnitPage({ params }) {
           </div>
           <div className={styles.unitHeaderActions}>
             <a
-              href={pdfUrl}
-              download={`${subject.code}_${pdfFile}.pdf`}
+              href={downloadUrl}
+              download={unit.downloadUrl ? undefined : `${subject.code}_${pdfFile}.pdf`}
               className={styles.btnDownload}
               style={{ '--color': subject.color, '--bg': subject.bg }}
             >
               ⬇ Download PDF
             </a>
             <a
-              href={pdfUrl}
+              href={openUrl}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.btnOpen}
