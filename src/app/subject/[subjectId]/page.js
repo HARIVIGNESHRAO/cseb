@@ -16,7 +16,7 @@ export async function generateMetadata({ params }) {
 export default function SubjectPage({ params }) {
   const subject = allSubjects.find((s) => s.id === params.subjectId);
   if (!subject) notFound();
-  const isLabSubject = subject.category === 'lab';
+  const isPdfSubject = subject.category !== 'theory';
 
   return (
     <main className={styles.main}>
@@ -46,10 +46,10 @@ export default function SubjectPage({ params }) {
         {/* Units Label */}
         <div className={styles.unitsLabel}>
           <span className={styles.labelText}>
-            {isLabSubject ? 'SELECT A PDF' : 'SELECT A UNIT'}
+            {isPdfSubject ? 'SELECT A PDF' : 'SELECT A UNIT'}
           </span>
           <span className={styles.labelCount}>
-            {subject.units.length} {isLabSubject ? 'PDFs' : 'units'} available
+            {subject.units.length} {isPdfSubject ? 'PDFs' : 'units'} available
           </span>
         </div>
 

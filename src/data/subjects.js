@@ -1,4 +1,4 @@
-const createLabUnits = (count = 13) =>
+const createLabUnits = (count = 12) =>
   Array.from({ length: count }, (_, index) => {
     const fileNumber = index + 1;
 
@@ -23,6 +23,8 @@ export const subjects = [
     bg: 'rgba(79,142,247,0.15)',
     icon: '⚙️',
     units: [
+      { id: 'unit1', name: 'Unit 1', topic: '', topics: '' },
+      { id: 'unit2', name: 'Unit 2', topic: '', topics: '' },
       { id: 'unit3', name: 'Unit 3', topic: '', topics: '' },
       { id: 'unit4', name: 'Unit 4', topic: '', topics: '' },
       { id: 'unit5', name: 'Unit 5', topic: '', topics: '' },
@@ -39,6 +41,8 @@ export const subjects = [
     bg: 'rgba(124,58,237,0.15)',
     icon: '☁️',
     units: [
+      { id: 'unit1', name: 'Unit 1', topic: '', topics: '' },
+      { id: 'unit2', name: 'Unit 2', topic: '', topics: '' },
       { id: 'unit3', name: 'Unit 3', topic: '', topics: '' },
       { id: 'unit4', name: 'Unit 4', topic: '', topics: '' },
       { id: 'unit5', name: 'Unit 5', topic: '', topics: '' },
@@ -55,6 +59,8 @@ export const subjects = [
     bg: 'rgba(16,185,129,0.15)',
     icon: '📡',
     units: [
+      { id: 'unit1', name: 'Unit 1', topic: '', topics: '' },
+      { id: 'unit2', name: 'Unit 2', topic: '', topics: '' },
       { id: 'unit3', name: 'Unit 3', topic: '', topics: '' },
       { id: 'unit4', name: 'Unit 4', topic: '', topics: '' },
       { id: 'unit5', name: 'Unit 5', topic: '', topics: '' },
@@ -71,6 +77,8 @@ export const subjects = [
     bg: 'rgba(245,158,11,0.15)',
     icon: '🔌',
     units: [
+      { id: 'unit1', name: 'Unit 1', topic: '', topics: '' },
+      { id: 'unit2', name: 'Unit 2', topic: '', topics: '' },
       { id: 'unit3', name: 'Unit 3', topic: '', topics: '' },
       { id: 'unit4', name: 'Unit 4', topic: '', topics: '' },
       { id: 'unit5', name: 'Unit 5', topic: '', topics: '' },
@@ -87,6 +95,8 @@ export const subjects = [
     bg: 'rgba(239,68,68,0.15)',
     icon: '🔒',
     units: [
+      { id: 'unit1', name: 'Unit 1', topic: '', topics: '' },
+      { id: 'unit2', name: 'Unit 2', topic: '', topics: '' },
       { id: 'unit3', name: 'Unit 3', topic: '', topics: '' },
       { id: 'unit4', name: 'Unit 4', topic: '', topics: '' },
       { id: 'unit5', name: 'Unit 5', topic: '', topics: '' },
@@ -103,8 +113,77 @@ export const subjects = [
     bg: 'rgba(236,72,153,0.15)',
     icon: '⚖️',
     units: [
+      { id: 'unit1', name: 'Unit 1', topic: '', topics: '' },
+      { id: 'unit2', name: 'Unit 2', topic: '', topics: '' },
+       { id: 'unit3', name: 'Unit 3', topic: '', topics: '' },
       { id: 'unit4', name: 'Unit 4', topic: '', topics: '' },
       { id: 'unit5', name: 'Unit 5', topic: '', topics: '' },
+    ],
+  },
+];
+
+export const academicCalendarSubjects = [
+  {
+    id: 'academic-calendar',
+    code: 'CAL',
+    name: 'Academic Calendar',
+    desc: '',
+    category: 'calendar',
+    pdfDir: 'calendar',
+    color: '#14B8A6',
+    bg: 'rgba(20,184,166,0.15)',
+    icon: '📘',
+    units: [
+      {
+        id: 'calendar',
+        name: 'Calendar',
+        topic: 'Academic Calendar PDF',
+        topics: '',
+        pdfFile: '1',
+      },
+    ],
+  },
+];
+
+export const timetableSubjects = [
+  {
+    id: 'mid-timetable',
+    code: 'MID',
+    name: 'Mid Timetable',
+    desc: '',
+    category: 'timetable',
+    pdfDir: 'mid',
+    color: '#06B6D4',
+    bg: 'rgba(6,182,212,0.15)',
+    icon: '🗓️',
+    units: [
+      {
+        id: 'timetable',
+        name: 'Timetable',
+        topic: 'Mid Timetable PDF',
+        topics: '',
+        pdfFile: '1',
+      },
+    ],
+  },
+  {
+    id: 'sem-timetable',
+    code: 'SEM',
+    name: 'Semester Timetable',
+    desc: '',
+    category: 'timetable',
+    pdfDir: 'sem',
+    color: '#F97316',
+    bg: 'rgba(249,115,22,0.15)',
+    icon: '📅',
+    units: [
+      {
+        id: 'timetable',
+        name: 'Timetable',
+        topic: 'Semester Timetable PDF',
+        topics: '',
+        pdfFile: '1',
+      },
     ],
   },
 ];
@@ -148,4 +227,73 @@ export const labSubjects = [
   },
 ];
 
-export const allSubjects = [...subjects, ...labSubjects];
+export const recordSubjects = [
+  {
+    id: 'cp-record',
+    code: 'CP RECORD',
+    name: 'Competitive Programming Record',
+    desc: '',
+    category: 'record',
+    pdfDir: 'cp',
+    color: '#4F8EF7',
+    bg: 'rgba(79,142,247,0.15)',
+    icon: '⚙️',
+    units: [
+      {
+        id: 'record',
+        name: 'Record',
+        topic: 'Record PDF',
+        topics: '',
+        pdfFile: '22',
+      },
+    ],
+  },
+  {
+    id: 'cc-record',
+    code: 'CC RECORD',
+    name: 'Cloud Computing Record',
+    desc: '',
+    category: 'record',
+    pdfDir: 'cc',
+    color: '#7C3AED',
+    bg: 'rgba(124,58,237,0.15)',
+    icon: '☁️',
+    units: [
+      {
+        id: 'record',
+        name: 'Record',
+        topic: 'Record PDF',
+        topics: '',
+        pdfFile: '22',
+      },
+    ],
+  },
+  {
+    id: 'cs-record',
+    code: 'CS RECORD',
+    name: 'Cyber Security Record',
+    desc: '',
+    category: 'record',
+    pdfDir: 'cs',
+    color: '#EF4444',
+    bg: 'rgba(239,68,68,0.15)',
+    icon: '🔒',
+    units: [
+      {
+        id: 'record',
+        name: 'Record',
+        topic: 'Record PDF',
+        topics: '',
+        pdfFile: '22',
+      },
+    ],
+  },
+];
+
+export const allSubjects = [
+  ...academicCalendarSubjects,
+  ...timetableSubjects,
+  ...subjects,
+  ...labSubjects,
+  ...recordSubjects,
+];

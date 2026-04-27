@@ -1,5 +1,11 @@
 import Link from 'next/link';
-import { labSubjects, subjects } from '@/data/subjects';
+import {
+  academicCalendarSubjects,
+  labSubjects,
+  recordSubjects,
+  subjects,
+  timetableSubjects,
+} from '@/data/subjects';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -52,6 +58,26 @@ export default function Home() {
         </p>
       </header>
 
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionLabel}>ACADEMIC CALENDAR</span>
+          <span className={styles.sectionCount}>
+            {academicCalendarSubjects.length} files
+          </span>
+        </div>
+        {renderSubjectGrid(academicCalendarSubjects)}
+      </section>
+      <br/>
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionLabel}>TIMETABLE</span>
+          <span className={styles.sectionCount}>
+            {timetableSubjects.length} files
+          </span>
+        </div>
+        {renderSubjectGrid(timetableSubjects)}
+      </section>
+      <br/>
       {/* Subjects Grid */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
@@ -60,13 +86,23 @@ export default function Home() {
         </div>
         {renderSubjectGrid(subjects)}
       </section>
-<br/>
+      <br/>
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <span className={styles.sectionLabel}>LAB</span>
           <span className={styles.sectionCount}>{labSubjects.length} courses</span>
         </div>
         {renderSubjectGrid(labSubjects)}
+      </section>
+      <br/>
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionLabel}>RECORD</span>
+          <span className={styles.sectionCount}>
+            {recordSubjects.length} courses
+          </span>
+        </div>
+        {renderSubjectGrid(recordSubjects)}
       </section>
 
       {/* Footer */}
