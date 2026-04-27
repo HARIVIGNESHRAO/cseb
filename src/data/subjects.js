@@ -1,15 +1,52 @@
-const createLabUnits = (count = 12) =>
-  Array.from({ length: count }, (_, index) => {
+const createLabUnits = (titles) =>
+  titles.map((title, index) => {
     const fileNumber = index + 1;
 
     return {
       id: `pdf${fileNumber}`,
-      name: `PDF ${fileNumber}`,
-      topic: `Lab File ${fileNumber}`,
+      name: title,
+      topic: title,
       topics: '',
       pdfFile: `${fileNumber}`,
     };
   });
+
+const cpLabTitles = ['Lab'];
+
+const ccLabTitles = [
+  'EC2',
+  'Elastic Block Storage',
+  'EFS',
+  'S3',
+  'VPC',
+  'VPC Bastion',
+  'Lambda',
+  'SNS SQS',
+  'Load Balancer',
+  'Elastic Beanstalk',
+  'LEX',
+  'IAM Users',
+  'IAM Roles',
+];
+
+const csLabTitles = [
+  'Basic Firewall Configuration',
+  'Password Strength Testing using Python',
+  'Analyzing Phishing Emails',
+  'Packet Sniffing and Network Traffic Analysis',
+  'SQL Injection Attack – Cyber Security Lab Experiment',
+  'Finding & Exploiting XSS Vulnerabilities using DVWA on Kali Linux',
+  'Testing Authentication Weaknesses and Session Management Using Kali Linux & DVWA',
+  'Testing IoT Device Security (Default Passwords & Open Ports)',
+  'Analysing Android App Permissions and Mobile Traffic',
+  'Web Application Vulnerability Scanning with OWASP ZAP',
+  'Creating and Analyzing Disk Images Using dc3dd and Autopsy (Alternative to FTK Imager)',
+  'Network Forensics Using Wireshark',
+  'Log File Analysis for Incident Detection Lab',
+  'Privacy Audit of Popular Apps (Desktop WhatsApp) and Websites (Facebook) & Data Breach Case Study Analysis',
+  'Conducting a Security Audit and Risk Assessment',
+  'Cloud Security Configuration Lab – AWS Free Tier',
+];
 
 export const subjects = [
   {
@@ -199,7 +236,7 @@ export const labSubjects = [
     color: '#4F8EF7',
     bg: 'rgba(79,142,247,0.15)',
     icon: '⚙️',
-    units: createLabUnits(1),
+    units: createLabUnits(cpLabTitles),
   },
   {
     id: 'cc-lab',
@@ -211,7 +248,7 @@ export const labSubjects = [
     color: '#7C3AED',
     bg: 'rgba(124,58,237,0.15)',
     icon: '☁️',
-    units: createLabUnits(),
+    units: createLabUnits(ccLabTitles),
   },
   {
     id: 'cs-lab',
@@ -223,7 +260,7 @@ export const labSubjects = [
     color: '#EF4444',
     bg: 'rgba(239,68,68,0.15)',
     icon: '🔒',
-    units: createLabUnits(),
+    units: createLabUnits(csLabTitles),
   },
 ];
 
@@ -258,26 +295,6 @@ export const recordSubjects = [
     color: '#7C3AED',
     bg: 'rgba(124,58,237,0.15)',
     icon: '☁️',
-    units: [
-      {
-        id: 'record',
-        name: 'Record',
-        topic: 'Record PDF',
-        topics: '',
-        pdfFile: '22',
-      },
-    ],
-  },
-  {
-    id: 'cs-record',
-    code: 'CS RECORD',
-    name: 'Cyber Security Record',
-    desc: '',
-    category: 'record',
-    pdfDir: 'cs',
-    color: '#EF4444',
-    bg: 'rgba(239,68,68,0.15)',
-    icon: '🔒',
     units: [
       {
         id: 'record',
