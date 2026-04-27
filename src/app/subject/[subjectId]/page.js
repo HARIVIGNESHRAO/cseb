@@ -1,21 +1,22 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { subjects } from '@/data/subjects';
+import { allSubjects } from '@/data/subjects';
 import styles from './subject.module.css';
 
 export async function generateStaticParams() {
-  return subjects.map((s) => ({ subjectId: s.id }));
+  return allSubjects.map((s) => ({ subjectId: s.id }));
 }
 
 export async function generateMetadata({ params }) {
-  const subject = subjects.find((s) => s.id === params.subjectId);
+  const subject = allSubjects.find((s) => s.id === params.subjectId);
   if (!subject) return {};
   return { title: `${subject.name} — CSE-B Portal` };
 }
 
 export default function SubjectPage({ params }) {
-  const subject = subjects.find((s) => s.id === params.subjectId);
+  const subject = allSubjects.find((s) => s.id === params.subjectId);
   if (!subject) notFound();
+  const isLabSubject = subject.category === 'lab';
 
   return (
     <main className={styles.main}>
@@ -44,8 +45,12 @@ export default function SubjectPage({ params }) {
 
         {/* Units Label */}
         <div className={styles.unitsLabel}>
-          <span className={styles.labelText}>SELECT A UNIT</span>
-          <span className={styles.labelCount}>{subject.units.length} units available</span>
+          <span className={styles.labelText}>
+            {isLabSubject ? 'SELECT A PDF' : 'SELECT A UNIT'}
+          </span>
+          <span className={styles.labelCount}>
+            {subject.units.length} {isLabSubject ? 'PDFs' : 'units'} available
+          </span>
         </div>
 
         {/* Units List */}

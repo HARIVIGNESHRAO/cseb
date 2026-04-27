@@ -1,13 +1,8 @@
 import Link from 'next/link';
-import { subjects } from '@/data/subjects';
+import { labSubjects, subjects } from '@/data/subjects';
 import styles from './page.module.css';
 
 export default function Home() {
-  const labSubjects = subjects.filter((subject) => subject.category === 'lab');
-  const theorySubjects = subjects.filter(
-    (subject) => subject.category !== 'lab'
-  );
-
   const renderSubjectGrid = (items) => (
     <div className={styles.grid}>
       {items.map((subject, i) => (
@@ -61,13 +56,11 @@ export default function Home() {
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <span className={styles.sectionLabel}>SUBJECTS</span>
-          <span className={styles.sectionCount}>
-            {theorySubjects.length} courses
-          </span>
+          <span className={styles.sectionCount}>{subjects.length} courses</span>
         </div>
-        {renderSubjectGrid(theorySubjects)}
+        {renderSubjectGrid(subjects)}
       </section>
-
+<br/>
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <span className={styles.sectionLabel}>LAB</span>

@@ -1,29 +1,31 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { subjects } from '@/data/subjects';
+import { allSubjects } from '@/data/subjects';
 import PdfViewer from '@/components/PdfViewer';
 import styles from './unit.module.css';
 
 export async function generateStaticParams() {
-  return subjects.flatMap((s) =>
+  return allSubjects.flatMap((s) =>
     s.units.map((u) => ({ subjectId: s.id, unitId: u.id }))
   );
 }
 
 export async function generateMetadata({ params }) {
-  const subject = subjects.find((s) => s.id === params.subjectId);
+  const subject = allSubjects.find((s) => s.id === params.subjectId);
   const unit = subject?.units.find((u) => u.id === params.unitId);
   if (!subject || !unit) return {};
   return { title: `${unit.name} — ${subject.name} — CSE-B` };
 }
 
 export default function UnitPage({ params }) {
-  const subject = subjects.find((s) => s.id === params.subjectId);
+  const subject = allSubjects.find((s) => s.id === params.subjectId);
   if (!subject) notFound();
   const unit = subject.units.find((u) => u.id === params.unitId);
   if (!unit) notFound();
 
-  const pdfUrl = `/pdfs/${subject.id}/${unit.id}.pdf`;
+  const pdfFile = unit.pdfFile ?? unit.id;
+  const pdfDir = subject.pdfDir ?? subject.id;
+  const pdfUrl = `/pdfs/${pdfDir}/${pdfFile}.pdf`;
   const unitIndex = subject.units.findIndex((u) => u.id === unit.id);
   const prevUnit = unitIndex > 0 ? subject.units[unitIndex - 1] : null;
   const nextUnit = unitIndex < subject.units.length - 1 ? subject.units[unitIndex + 1] : null;
@@ -58,7 +60,7 @@ export default function UnitPage({ params }) {
           <div className={styles.unitHeaderActions}>
             <a
               href={pdfUrl}
-              download={`${subject.code}_${unit.id}.pdf`}
+              download={`${subject.code}_${pdfFile}.pdf`}
               className={styles.btnDownload}
               style={{ '--color': subject.color, '--bg': subject.bg }}
             >

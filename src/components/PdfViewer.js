@@ -6,6 +6,8 @@ import styles from './PdfViewer.module.css';
 export default function PdfViewer({ pdfUrl, subject, unit }) {
   const [pdfError, setPdfError] = useState(false);
   const [loading, setLoading] = useState(true);
+  const pdfFile = unit.pdfFile ?? unit.id;
+  const pdfDir = subject.pdfDir ?? subject.id;
 
   return (
     <div
@@ -25,7 +27,7 @@ export default function PdfViewer({ pdfUrl, subject, unit }) {
         <div className={styles.toolbarRight}>
           <a
             href={pdfUrl}
-            download={`${subject.code}_${unit.id}.pdf`}
+            download={`${subject.code}_${pdfFile}.pdf`}
             className={styles.toolbarBtn}
             title="Download"
           >
@@ -69,7 +71,7 @@ export default function PdfViewer({ pdfUrl, subject, unit }) {
               Add the PDF file at the path below:
             </p>
             <div className={styles.placeholderPath}>
-              <code>public/pdfs/{subject.id}/{unit.id}.pdf</code>
+              <code>public/pdfs/{pdfDir}/{pdfFile}.pdf</code>
             </div>
             <p className={styles.placeholderHint}>
               Once added, refresh the page to view it here.
