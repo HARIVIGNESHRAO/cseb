@@ -1,0 +1,242 @@
+.main {
+  min-height: 100vh;
+  padding: 0 0 80px;
+  position: relative;
+}
+
+.bgGrid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(79,142,247,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,142,247,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 36px 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.breadcrumbLink {
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+.breadcrumbLink:hover { color: var(--text); }
+
+.breadcrumbSep { color: var(--border-hover); }
+
+.breadcrumbActive { color: var(--text-dim); }
+
+.subjectHeader {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.subjectHeader::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--color);
+  opacity: 0.8;
+}
+
+.subjectLeft { flex: 1; }
+
+.subjectBadge {
+  display: inline-block;
+  background: var(--bg);
+  color: var(--color);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
+}
+
+.subjectTitle {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+
+.subjectDesc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.subjectIcon {
+  font-size: 56px;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.unitsLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.labelText {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.labelCount {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.unitsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.unitCard {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  animation: fadeUp 0.4s ease both;
+  text-decoration: none;
+}
+
+.unitCard:hover {
+  border-color: var(--color);
+  background: #182036;
+  transform: translateX(4px);
+}
+
+.unitCard:hover .unitArrow {
+  transform: translateX(4px);
+  color: var(--color);
+}
+
+.unitCard:hover .pdfTag {
+  background: var(--bg);
+  color: var(--color);
+}
+
+.unitNumber {
+  width: 36px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.unitInfo { flex: 1; }
+
+.unitName {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.unitTopic {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.unitTopics {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  line-height: 1.5;
+}
+
+.unitMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.pdfTag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  color: var(--text-muted);
+  transition: background 0.2s, color 0.2s;
+}
+
+.unitArrow {
+  font-size: 18px;
+  color: var(--text-muted);
+  transition: transform 0.2s, color 0.2s;
+}
+
+.infoBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(79,142,247,0.05);
+  border: 1px dashed rgba(79,142,247,0.2);
+  border-radius: 14px;
+  padding: 20px 24px;
+}
+
+.infoIcon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+
+.infoTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.infoText {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.infoCode {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #4F8EF7;
+  background: rgba(79,142,247,0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
