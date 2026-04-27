@@ -1,9 +1,12 @@
 import Link from 'next/link';
+import HomeFeedbackForm from '@/components/HomeFeedbackForm';
 import {
   academicCalendarSubjects,
   labSubjects,
+  questionPaperSubjects,
   recordSubjects,
   subjects,
+  syllabusSubjects,
   timetableSubjects,
 } from '@/data/subjects';
 import styles from './page.module.css';
@@ -70,6 +73,16 @@ export default function Home() {
       <br/>
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
+          <span className={styles.sectionLabel}>SYLLABUS</span>
+          <span className={styles.sectionCount}>
+            {syllabusSubjects.length} files
+          </span>
+        </div>
+        {renderSubjectGrid(syllabusSubjects)}
+      </section>
+      <br/>
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
           <span className={styles.sectionLabel}>TIMETABLE</span>
           <span className={styles.sectionCount}>
             {timetableSubjects.length} files
@@ -104,6 +117,18 @@ export default function Home() {
         </div>
         {renderSubjectGrid(recordSubjects)}
       </section>
+      <br/>
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionLabel}>QUESTION PAPERS</span>
+          <span className={styles.sectionCount}>
+            {questionPaperSubjects.length} files
+          </span>
+        </div>
+        {renderSubjectGrid(questionPaperSubjects)}
+      </section>
+
+      <HomeFeedbackForm />
 
       {/* Footer */}
       <footer className={styles.footer}>

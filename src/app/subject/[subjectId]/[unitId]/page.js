@@ -23,13 +23,19 @@ export default function UnitPage({ params }) {
   const unit = subject.units.find((u) => u.id === params.unitId);
   if (!unit) notFound();
 
+  const hasResources = Array.isArray(unit.resources) && unit.resources.length > 0;
   const pdfFile = unit.pdfFile ?? unit.id;
   const pdfDir = subject.pdfDir ?? subject.id;
   const pdfUrl = unit.pdfUrl ?? `/pdfs/${pdfDir}/${pdfFile}.pdf`;
   const openUrl = unit.openUrl ?? pdfUrl;
   const downloadUrl = unit.downloadUrl ?? openUrl;
   const unitIndex = subject.units.findIndex((u) => u.id === unit.id);
-  const prevUnit = unitIndex > 0 ? subject.units[unitIndex - 1] : null;
+  const prevUnit =
+    unit.id === 'codes'
+      ? null
+      : unitIndex > 0
+        ? subject.units[unitIndex - 1]
+        : null;
   const nextUnit = unitIndex < subject.units.length - 1 ? subject.units[unitIndex + 1] : null;
 
   return (
@@ -59,32 +65,89 @@ export default function UnitPage({ params }) {
             <h1 className={styles.unitTitle}>{unit.topic}</h1>
             <p className={styles.unitTopics}>{unit.topics}</p>
           </div>
-          <div className={styles.unitHeaderActions}>
-            <a
-              href={downloadUrl}
-              download={unit.downloadUrl ? undefined : `${subject.code}_${pdfFile}.pdf`}
-              className={styles.btnDownload}
-              style={{ '--color': subject.color, '--bg': subject.bg }}
-            >
-              ⬇ Download PDF
-            </a>
-            <a
-              href={openUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.btnOpen}
-            >
-              ↗ Open in Tab
-            </a>
-          </div>
+          {!hasResources ? (
+            <div className={styles.unitHeaderActions}>
+              <a
+                href={downloadUrl}
+                download={unit.downloadUrl ? undefined : `${subject.code}_${pdfFile}.pdf`}
+                className={styles.btnDownload}
+                style={{ '--color': subject.color, '--bg': subject.bg }}
+              >
+                ⬇ Download PDF
+              </a>
+              <a
+                href={openUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.btnOpen}
+              >
+                ↗ Open in Tab
+              </a>
+            </div>
+          ) : null}
         </div>
 
-        {/* PDF Viewer (Client Component) */}
-        <PdfViewer pdfUrl={pdfUrl} subject={subject} unit={unit} />
+        {hasResources ? (
+          <section className={styles.resourceSection}>
+            <div className={styles.resourceHeader}>
+              <span className={styles.resourceLabel}>CODES</span>
+              <span className={styles.resourceCount}>
+                {unit.resources.length} files
+              </span>
+            </div>
+
+            <div className={styles.resourceList}>
+              {unit.resources.map((resource) => (
+                <div key={resource.id} className={styles.resourceCard}>
+                  <div className={styles.resourceInfo}>
+                    <h3 className={styles.resourceTitle}>{resource.name}</h3>
+                    <p className={styles.resourceTopic}>{resource.topic}</p>
+                    <p className={styles.resourceFile}>{resource.fileName}</p>
+                  </div>
+
+                  <div className={styles.resourceActions}>
+                    <a
+                      href={resource.fileUrl}
+                      download={resource.fileName}
+                      className={styles.btnDownload}
+                      style={{ '--color': subject.color, '--bg': subject.bg }}
+                    >
+                      ⬇ Download
+                    </a>
+                    {resource.canPreview ? (
+                      <a
+                        href={resource.fileUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.btnOpen}
+                      >
+                        ↗ View PDF
+                      </a>
+                    ) : (
+                      <span className={styles.resourceHint}>
+                        ZIP file available for download only
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : (
+          <PdfViewer pdfUrl={pdfUrl} subject={subject} unit={unit} />
+        )}
 
         {/* Unit Navigation */}
         <div className={styles.unitNav}>
-          {prevUnit ? (
+          {unit.id === 'codes' ? (
+            <Link
+              href={`/subject/${subject.id}`}
+              className={styles.navBtn}
+            >
+              <span className={styles.navLabel}>← Previous</span>
+              <span className={styles.navName}>{subject.name}</span>
+            </Link>
+          ) : prevUnit ? (
             <Link
               href={`/subject/${subject.id}/${prevUnit.id}`}
               className={styles.navBtn}

@@ -101,6 +101,30 @@ export const subjects = [
       { id: 'unit3', name: 'Unit 3', topic: '', topics: '' },
       { id: 'unit4', name: 'Unit 4', topic: '', topics: '' },
       { id: 'unit5', name: 'Unit 5', topic: '', topics: '' },
+      {
+        id: 'codes',
+        name: 'Codes',
+        topic: 'Code Files',
+        topics: 'Download Rabbitmq.zip and view Elasticsearch PDF',
+        resources: [
+          {
+            id: 'rabbitmq',
+            name: 'Rabbitmq',
+            topic: 'Rabbitmq ZIP File',
+            fileName: 'Rabbitmq.zip',
+            fileUrl: '/pdfs/mwt/Rabbitmq.zip',
+            canPreview: false,
+          },
+          {
+            id: 'elasticsearch',
+            name: 'Elasticsearch',
+            topic: 'Elasticsearch PDF',
+            fileName: 'elasticsearch.pdf',
+            fileUrl: '/pdfs/mwt/elasticsearch.pdf',
+            canPreview: true,
+          },
+        ],
+      },
     ],
   },
   {
@@ -182,6 +206,49 @@ export const academicCalendarSubjects = [
   },
 ];
 
+export const syllabusSubjects = [
+  {
+    id: 'all-subjects-syllabus',
+    code: 'ALL SY',
+    name: 'All Subjects Syllabus PDF Excluding IOT and CS',
+    desc: '',
+    category: 'syllabus',
+    pdfDir: 'sy',
+    color: '#4F8EF7',
+    bg: 'rgba(79,142,247,0.15)',
+    icon: '📄',
+    units: [
+      {
+        id: 'syllabus',
+        name: 'Syllabus',
+        topic: 'All Subjects Syllabus PDF Excluding IOT and CS',
+        topics: '',
+        pdfFile: '1',
+      },
+    ],
+  },
+  {
+    id: 'iot-syllabus',
+    code: 'IOT SY',
+    name: 'Internet of Things Syllabus',
+    desc: '',
+    category: 'syllabus',
+    pdfDir: 'sy',
+    color: '#F59E0B',
+    bg: 'rgba(245,158,11,0.15)',
+    icon: '📄',
+    units: [
+      {
+        id: 'syllabus',
+        name: 'Syllabus',
+        topic: 'Internet of Things Syllabus PDF',
+        topics: '',
+        pdfFile: '2',
+      },
+    ],
+  },
+];
+
 export const timetableSubjects = [
   {
     id: 'mid-timetable',
@@ -255,7 +322,16 @@ export const labSubjects = [
     color: '#7C3AED',
     bg: 'rgba(124,58,237,0.15)',
     icon: '☁️',
-    units: createLabUnits(ccLabTitles),
+    units: [
+      ...createLabUnits(ccLabTitles),
+      {
+        id: 'sample-doc',
+        name: 'Sample Doc',
+        topic: 'Sample Doc',
+        topics: '',
+        pdfFile: 'sample',
+      },
+    ],
   },
   {
     id: 'cs-lab',
@@ -318,10 +394,55 @@ export const recordSubjects = [
   },
 ];
 
+export const questionPaperSubjects = [
+  {
+    id: 'mid-question-paper',
+    code: 'MID QP',
+    name: 'Mid Question Papers',
+    desc: '',
+    category: 'question-paper',
+    pdfDir: 'mid',
+    color: '#06B6D4',
+    bg: 'rgba(6,182,212,0.15)',
+    icon: '📝',
+    units: [
+      {
+        id: 'question-paper',
+        name: 'Question Papers',
+        topic: 'Mid Question Papers PDF',
+        topics: '',
+        pdfFile: '3',
+      },
+    ],
+  },
+  {
+    id: 'sem-question-paper',
+    code: 'SEM QP',
+    name: 'Semester Question Papers',
+    desc: '',
+    category: 'question-paper',
+    pdfDir: 'iot',
+    color: '#F59E0B',
+    bg: 'rgba(245,158,11,0.15)',
+    icon: '📝',
+    units: [
+      {
+        id: 'question-paper',
+        name: 'Question Papers',
+        topic: 'IoT Question Papers PDF',
+        topics: '',
+        pdfFile: 'q',
+      },
+    ],
+  },
+];
+
 export const allSubjects = [
   ...academicCalendarSubjects,
+  ...syllabusSubjects,
   ...timetableSubjects,
   ...subjects,
   ...labSubjects,
   ...recordSubjects,
+  ...questionPaperSubjects,
 ];
