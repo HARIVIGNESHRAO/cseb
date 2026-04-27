@@ -1,14 +1,45 @@
-# Dependencies
-node_modules/
+**/myenv/
 
-# Next.js build output
-.next/
+# ZenML local config
+**/.zen/
+
+# Python cache and build artifacts
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.egg-info/
+**/build/
+**/dist/
+
+# Virtual environments
+**/.venv
+**/venv/
+**/.env
+
+**/node_modules
+**/package-lock.json
+
+# Jupyter notebooks
+**/.ipynb_checkpoints/
 
 # IDE settings
-.idea/
-.vscode/
+**/.vscode/
+**/.idea/
 
-# Debug logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+**/.DS_Store
+
+# Logs
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+**/Thumbs.db
+**/mlflow.db
+**/mlruns.db
+**/mlruns/
+**/.pytest_cache/
+
+**/logs/
+**/.logs
+
+**/.DS_Store
