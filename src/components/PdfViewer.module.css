@@ -1,0 +1,199 @@
+.wrapper {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+  gap: 12px;
+}
+
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.toolbarDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.toolbarTitle {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 42px;
+  flex-shrink: 0;
+}
+
+.viewerArea {
+  position: relative;
+  min-height: 1000px;
+  background: var(--viewer-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.viewerActions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.openPdfButton,
+.askAiButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 22px;
+  border-radius: 8px;
+  background: var(--color);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+
+.askAiButton {
+  border: 1px solid color-mix(in srgb, var(--color) 42%, var(--border));
+  background: var(--elevated-strong);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.openPdfButton:hover,
+.askAiButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.16);
+  opacity: 0.92;
+}
+
+.aiMenuWrap {
+  position: relative;
+}
+
+.aiPanel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 4;
+  width: min(360px, calc(100vw - 48px));
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--elevated-strong);
+  box-shadow: 0 22px 50px var(--shadow);
+}
+
+.aiPanelHeader {
+  display: grid;
+  gap: 4px;
+  padding: 2px 2px 12px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 10px;
+}
+
+.aiPanelTitle {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.aiPanelHint {
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.aiToolList {
+  display: grid;
+  gap: 8px;
+}
+
+.aiTool {
+  display: grid;
+  gap: 3px;
+  padding: 10px 11px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: var(--soft-bg);
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.aiTool:hover {
+  background: var(--soft-bg-strong);
+  border-color: color-mix(in srgb, var(--color) 45%, var(--border));
+  transform: translateY(-1px);
+}
+
+.aiToolName {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.aiToolDesc {
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+@media (max-width: 640px) {
+  .viewerArea {
+    min-height: 520px;
+    padding: 36px 16px;
+  }
+
+  .viewerActions {
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .openPdfButton,
+  .askAiButton {
+    width: 100%;
+  }
+
+  .aiMenuWrap {
+    width: 100%;
+  }
+
+  .aiPanel {
+    position: static;
+    width: 100%;
+    margin-top: 12px;
+  }
+}
