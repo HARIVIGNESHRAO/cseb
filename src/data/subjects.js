@@ -426,7 +426,7 @@ export const labSubjects=[
     code: 'SDC',
     name: 'Skill Development Course-3',
     desc: '',
-    category: 'theory',
+    category: 'lab',
     pdfDir: 'sdc',
     color: '#61DAFB',
     bg: 'rgba(97,218,251,0.15)',
@@ -434,7 +434,21 @@ export const labSubjects=[
     units: [
       { id: 'unit1', name: 'Experiment 1: JSX and Virtual DOM',pdfFile: '1',},
     ]
-  }
+  },
+  {
+    id: 'stm-lab',
+    code: 'STM LAB',
+    name: 'Software Testing Methodologies',
+    desc: '',
+    category: 'lab',
+    pdfDir: 'stm',
+    color: '#DC2626',
+    bg: 'rgba(220,38,38,0.15)',
+    icon: '🧪',
+    units: [
+      { id: '6', name: 'SELENIUM LAB MANUAL (EXPERIMENTS 1-9)', pdfFile: '6' },
+    ]
+  },
 
 ]
 export const allSubjects = [
