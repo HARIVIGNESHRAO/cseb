@@ -64,11 +64,12 @@ const semesterFourOneSections = [
   //   label: 'TIMETABLE',
   //   count: '0 files',
   // },
-  // {
-  //   id: 'subjects',
-  //   label: 'SUBJECTS',
-  //   count: '0 files',
-  // },
+  {
+    id: 'subjects',
+    label: 'SUBJECTS',
+    count: `${subjects1.length} files`,
+    items: subjects1,
+  },
   {
     id: 'labs',
     label: 'LAB SUBJECTS',

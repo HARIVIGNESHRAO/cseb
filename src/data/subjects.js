@@ -127,37 +127,37 @@ export const subjects = [
   }
 ];
 export const subjects1 = [
-  {
-    id: 'befa',
-    code: 'BEFA',
-    name: 'Business Economics and Financial Analysis',
-    desc: '',
-    category: 'theory',
-    pdfDir: 'befa',
-    color: '#2563EB',
-    bg: 'rgba(37,99,235,0.15)',
-    icon: '📈',
-    units: [
-      { id: 'unit1', name: 'Unit 1' },
+  // {
+  //   id: 'befa',
+  //   code: 'BEFA',
+  //   name: 'Business Economics and Financial Analysis',
+  //   desc: '',
+  //   category: 'theory',
+  //   pdfDir: 'befa',
+  //   color: '#2563EB',
+  //   bg: 'rgba(37,99,235,0.15)',
+  //   icon: '📈',
+  //   units: [
+  //     { id: 'unit1', name: 'Unit 1' },
+  //
+  //   ]
+  // },
 
-    ]
-  },
-
-  {
-    id: 'stm',
-    code: 'STM',
-    name: 'Software Testing Methodology',
-    desc: '',
-    category: 'theory',
-    pdfDir: 'stm',
-    color: '#DC2626',
-    bg: 'rgba(220,38,38,0.15)',
-    icon: '🧪',
-    units: [
-      { id: 'unit1', name: 'Unit 1' },
-
-    ]
-  },
+  // {
+  //   id: 'stm',
+  //   code: 'STM',
+  //   name: 'Software Testing Methodology',
+  //   desc: '',
+  //   category: 'theory',
+  //   pdfDir: 'stm',
+  //   color: '#DC2626',
+  //   bg: 'rgba(220,38,38,0.15)',
+  //   icon: '🧪',
+  //   units: [
+  //     { id: 'unit1', name: 'Unit 1' },
+  //
+  //   ]
+  // },
 
   {
     id: 'dm',
@@ -170,39 +170,39 @@ export const subjects1 = [
     bg: 'rgba(5,150,105,0.15)',
     icon: '⛏️',
     units: [
-      { id: 'unit1', name: 'Unit 1' },
+      { id: 'unit1', name: 'Unit 1',pdfFile:1 },
     ]
   },
 
-  {
-    id: 'irs',
-    code: 'IRS',
-    name: 'Information Retrieval System',
-    desc: '',
-    category: 'theory',
-    pdfDir: 'irs',
-    color: '#7C3AED',
-    bg: 'rgba(124,58,237,0.15)',
-    icon: '🔍',
-    units: [
-      { id: 'unit1', name: 'Unit 1' },
-    ]
-  },
+  // {
+  //   id: 'irs',
+  //   code: 'IRS',
+  //   name: 'Information Retrieval System',
+  //   desc: '',
+  //   category: 'theory',
+  //   pdfDir: 'irs',
+  //   color: '#7C3AED',
+  //   bg: 'rgba(124,58,237,0.15)',
+  //   icon: '🔍',
+  //   units: [
+  //     { id: 'unit1', name: 'Unit 1' },
+  //   ]
+  // },
 
-  {
-    id: 'dvt',
-    code: 'DVT',
-    name: 'Data Visualization Techniques',
-    desc: '',
-    category: 'theory',
-    pdfDir: 'dvt',
-    color: '#F59E0B',
-    bg: 'rgba(245,158,11,0.15)',
-    icon: '📊',
-    units: [
-      { id: 'unit1', name: 'Unit 1' },
-    ]
-  }
+  // {
+  //   id: 'dvt',
+  //   code: 'DVT',
+  //   name: 'Data Visualization Techniques',
+  //   desc: '',
+  //   category: 'theory',
+  //   pdfDir: 'dvt',
+  //   color: '#F59E0B',
+  //   bg: 'rgba(245,158,11,0.15)',
+  //   icon: '📊',
+  //   units: [
+  //     { id: 'unit1', name: 'Unit 1' },
+  //   ]
+  // }
 ];
 export const academicCalendarSubjects = [
   {
@@ -423,7 +423,7 @@ export const labSubjects=[
 
   {
     id: 'sdc',
-    code: 'SDC',
+    code: 'SDC LAB',
     name: 'Skill Development Course-3',
     desc: '',
     category: 'lab',
