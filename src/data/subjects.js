@@ -189,20 +189,21 @@ export const subjects1 = [
   //   ]
   // },
 
-  // {
-  //   id: 'dvt',
-  //   code: 'DVT',
-  //   name: 'Data Visualization Techniques',
-  //   desc: '',
-  //   category: 'theory',
-  //   pdfDir: 'dvt',
-  //   color: '#F59E0B',
-  //   bg: 'rgba(245,158,11,0.15)',
-  //   icon: '📊',
-  //   units: [
-  //     { id: 'unit1', name: 'Unit 1' },
-  //   ]
-  // }
+  {
+    id: 'dvt',
+    code: 'DVT',
+    name: 'Data Visualization Techniques',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'dvt',
+    color: '#F59E0B',
+    bg: 'rgba(245,158,11,0.15)',
+    icon: '📊',
+    units: [
+      { id: 'unit1', name: 'Unit 1' ,pdfFile: 1},
+      {id:'unit2', name: 'Unit 2' ,pdfFile: 2},
+    ]
+  }
 ];
 export const academicCalendarSubjects = [
   {
