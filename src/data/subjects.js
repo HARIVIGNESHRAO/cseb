@@ -143,21 +143,21 @@ export const subjects1 = [
   //   ]
   // },
 
-  // {
-  //   id: 'stm',
-  //   code: 'STM',
-  //   name: 'Software Testing Methodology',
-  //   desc: '',
-  //   category: 'theory',
-  //   pdfDir: 'stm',
-  //   color: '#DC2626',
-  //   bg: 'rgba(220,38,38,0.15)',
-  //   icon: '🧪',
-  //   units: [
-  //     { id: 'unit1', name: 'Unit 1' },
-  //
-  //   ]
-  // },
+  {
+    id: 'stm',
+    code: 'STM',
+    name: 'Software Testing Methodology',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'stm',
+    color: '#DC2626',
+    bg: 'rgba(220,38,38,0.15)',
+    icon: '🧪',
+    units: [
+      { id: 'unit1', name: 'Unit 1',pdfFile: 1 },
+
+    ]
+  },
 
   {
     id: 'dm',
@@ -424,7 +424,7 @@ export const labSubjects=[
   {
     id: 'sdc',
     code: 'SDC LAB',
-    name: 'Skill Development Course-3',
+    name: 'Skill Development Course-3 Lab',
     desc: '',
     category: 'lab',
     pdfDir: 'sdc',
@@ -438,7 +438,7 @@ export const labSubjects=[
   {
     id: 'stm-lab',
     code: 'STM LAB',
-    name: 'Software Testing Methodologies',
+    name: 'Software Testing Methodologies Lab',
     desc: '',
     category: 'lab',
     pdfDir: 'stm',
