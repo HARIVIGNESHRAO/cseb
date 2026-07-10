@@ -203,6 +203,24 @@ export const subjects1 = [
       { id: 'unit1', name: 'Unit 1' ,pdfFile: 1},
       {id:'unit2', name: 'Unit 2' ,pdfFile: 2},
     ]
+  },
+  {
+    id: 'es',
+    code: 'ES',
+    name: 'Environmental Science',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'es',
+    color: '#16A34A',
+    bg: 'rgba(22,163,74,0.15)',
+    icon: '🌿',
+    units: [
+      { id: 'unit1', name: 'Unit 1', pdfFile: 1 },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 2 },
+      { id: 'unit3', name: 'Unit 3', pdfFile: 3 },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 4 },
+      { id: 'unit5', name: 'Unit 5', pdfFile: 5 },
+    ]
   }
 ];
 export const academicCalendarSubjects = [
