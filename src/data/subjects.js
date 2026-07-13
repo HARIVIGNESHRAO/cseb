@@ -127,21 +127,22 @@ export const subjects = [
   }
 ];
 export const subjects1 = [
-  // {
-  //   id: 'befa',
-  //   code: 'BEFA',
-  //   name: 'Business Economics and Financial Analysis',
-  //   desc: '',
-  //   category: 'theory',
-  //   pdfDir: 'befa',
-  //   color: '#2563EB',
-  //   bg: 'rgba(37,99,235,0.15)',
-  //   icon: '📈',
-  //   units: [
-  //     { id: 'unit1', name: 'Unit 1' },
-  //
-  //   ]
-  // },
+  {
+    id: 'befa',
+    code: 'BEFA',
+    name: 'Business Economics and Financial Analysis',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'befa',
+    color: '#2563EB',
+    bg: 'rgba(37,99,235,0.15)',
+    icon: '📈',
+    units: [
+      { id: 'unit1', name: 'Unit 1',pdfFile: 1 },
+      {id:'unit2', name: 'Unit 2',pdfFile: 2 },
+
+    ]
+  },
 
   {
     id: 'stm',
