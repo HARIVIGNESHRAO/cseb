@@ -4,7 +4,7 @@ import ThemeScript from '@/components/ThemeScript';
 import ThemeToggle from '@/components/ThemeToggle';
 
 export const metadata = {
-  title: 'CSE-B Study Portal',
+  title: 'CSE Study Portal',
   description: 'B.Tech CSE-B  Study materials for CP, CC, MWT, IoT, CS, IPR',
 };
 
