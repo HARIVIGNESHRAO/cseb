@@ -295,7 +295,7 @@ function SidebarInner({
         <div className={styles.brand}>
           <span className={styles.brandDot} aria-hidden="true" />
           <span className={styles.brandText}>
-            CSE-B<span className={styles.brandAccent}>·</span>PORTAL
+            CSE<span className={styles.brandAccent}>·</span>PORTAL
           </span>
         </div>
 

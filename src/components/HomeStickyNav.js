@@ -86,7 +86,7 @@ export default function HomeStickyNav() {
       aria-label="Home sections"
     >
       <a href="#" className={styles.stickyBrand}>
-        CSE-B
+        CSE
       </a>
 
       <div className={styles.stickySearchWrap}>
