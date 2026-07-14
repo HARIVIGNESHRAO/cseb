@@ -1351,7 +1351,7 @@
 @media (max-width: 767px) {
   .main {
     padding-left: 0;
-    padding-top: 70px; 
+    padding-top: 70px;
   }
 }
 
@@ -1400,7 +1400,7 @@
     max-width: 86px;
   }
 }
-  
+
 /* ── Add this to page.module.css ── */
 
 .pageThemeToggle {
