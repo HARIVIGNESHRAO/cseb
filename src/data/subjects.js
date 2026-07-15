@@ -178,20 +178,20 @@ export const subjects1 = [
     ]
   },
 
-  // {
-  //   id: 'irs',
-  //   code: 'IRS',
-  //   name: 'Information Retrieval System',
-  //   desc: '',
-  //   category: 'theory',
-  //   pdfDir: 'irs',
-  //   color: '#7C3AED',
-  //   bg: 'rgba(124,58,237,0.15)',
-  //   icon: '🔍',
-  //   units: [
-  //     { id: 'unit1', name: 'Unit 1' },
-  //   ]
-  // },
+  {
+    id: 'irs',
+    code: 'IRS',
+    name: 'Information Retrieval System',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'irs',
+    color: '#7C3AED',
+    bg: 'rgba(124,58,237,0.15)',
+    icon: '🔍',
+    units: [
+      { id: 'unit1', name: 'Unit 1',pdfFile: 1 },
+    ]
+  },
 
   {
     id: 'dvt',
@@ -456,6 +456,7 @@ export const labSubjects=[
     icon: '⚛',
     units: [
       { id: 'unit1', name: 'Experiment 1: JSX and Virtual DOM',pdfFile: '1',},
+      { id: 'unit2', name: 'Experiment 2: Product Listing Page',pdfFile: '2',}
     ]
   },
   {
