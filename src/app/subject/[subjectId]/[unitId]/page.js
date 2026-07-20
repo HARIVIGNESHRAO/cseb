@@ -4,7 +4,6 @@ import { allSubjects } from '@/data/subjects';
 import PdfViewer from '@/components/PdfViewer';
 import { getUnitPdfUrl, withPdfAssetVersion } from '@/lib/pdfAssets';
 import styles from './unit.module.css';
-
 export async function generateStaticParams() {
   return allSubjects.flatMap((s) =>
     s.units.map((u) => ({ subjectId: s.id, unitId: u.id }))
@@ -65,6 +64,7 @@ export default function UnitPage({ params }) {
             <h1 className={styles.unitTitle}>{unit.topic}</h1>
             <p className={styles.unitTopics}>{unit.topics}</p>
           </div>
+
           {!hasResources ? (
             <div className={styles.unitHeaderActions}>
               <a
