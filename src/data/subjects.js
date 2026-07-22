@@ -269,7 +269,7 @@ export const academicCalendarSubjects1 = [
         name: 'Calendar',
         topic: 'Academic Calendar PDF',
         topics: '',
-        pdfFile: '2',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1784713762/Academic_calender_IV_year_KR23_AY2026-27_16.6.26_wicj5f.pdf',
       },
     ],
   },

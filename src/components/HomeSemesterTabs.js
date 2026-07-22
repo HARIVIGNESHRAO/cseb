@@ -48,11 +48,12 @@ const semesterThreeTwoSections = [
 ];
 
 const semesterFourOneSections = [
-  // {
-  //   id: 'academic-calendar',
-  //   label: 'ACADEMIC CALENDAR',
-  //   count: '0 files',
-  // },
+  {
+    id: 'academic-calendar',
+    label: 'ACADEMIC CALENDAR',
+    count: `${academicCalendarSubjects1.length} files`,
+    items: academicCalendarSubjects1,
+  },
   {
     id: 'syllabus',
     label: 'SYLLABUS',
