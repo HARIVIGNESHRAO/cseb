@@ -208,6 +208,7 @@ export const subjects1 = [
     units: [
       { id: 'unit1', name: 'Unit 1' ,pdfFile: 1},
       {id:'unit2', name: 'Unit 2' ,pdfFile: 2},
+      {id:'unit3', name: 'Unit 3' ,pdfFile: 3},
     ]
   },
   {
