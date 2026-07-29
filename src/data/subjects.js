@@ -459,7 +459,8 @@ export const labSubjects=[
     icon: '⚛',
     units: [
       { id: 'unit1', name: 'Experiment 1: JSX and Virtual DOM',pdfFile: '1',},
-      { id: 'unit2', name: 'Experiment 2: Product Listing Page',pdfFile: '2',}
+      { id: 'unit2', name: 'Experiment 2: Product Listing Page',pdfFile: '2',},
+      { id: 'unit3', name: 'Experiment 3: Inventory Management Using Hooks',pdfFile: '3',}
     ]
   },
   {
