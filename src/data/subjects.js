@@ -360,6 +360,26 @@ export const syllabusSubjects1 = [
       },
     ],
   },
+  {
+    id: 'mid-syllabus',
+    code: 'mids',
+    name: 'Mid Exams Syllabus',
+    desc: '',
+    category: 'syllabus1',
+    pdfDir: 'sy',
+    color: '#4F8EF7',
+    bg: 'rgba(79,142,247,0.15)',
+    icon: '📄',
+    units: [
+      {
+        id: 'mids-syllabus',
+        name: 'Mid Exams Syllabus',
+        topic: 'Mid Exams Syllabus',
+        topics: '',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1785586915/Mid_Exam_Syllabus_Final_w5i0eu.pdf',
+      },
+    ],
+  },
 ];
 export const timetableSubjects = [
   {
@@ -481,12 +501,41 @@ export const labSubjects=[
   },
 
 ]
+export const timetableSubjects1 = [
+  {
+    id: 'mid-timetable',
+    code: 'MID',
+    name: 'Mids Timetable',
+    desc: '',
+    category: 'timetable',
+    pdfDir: 'mid',
+    color: '#F97316',
+    bg: 'rgba(249,115,22,0.15)',
+    icon: '📅',
+    units: [
+      {
+        id: 'theory',
+        name: 'Theory',
+        topic: 'Mids Theory Timetable',
+        topics: '',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1785584776/KR23_-_B.Tech_IV_Yr_I_Sem_MID-1_EXAMINATION_TIMETABLE_AUG_2026_tidv4o.pdf',
+      },
+      {
+        id: 'lab',
+        name: 'Lab',
+        topic: 'Mids Lab Timetable',
+        topics: '',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1785584776/STM_TIME_TABLES_f12am8.pdf',
+      },
+    ],
+  },
+];
 export const allSubjects = [
   ...academicCalendarSubjects,
   ...academicCalendarSubjects1,
   ...syllabusSubjects,
   ...syllabusSubjects1,
-  ...timetableSubjects,
+  ...timetableSubjects1,
   ...subjects,
   ...subjects1,
   ...questionPaperSubjects,

@@ -10,7 +10,7 @@ import {
   subjects,
   syllabusSubjects,
   subjects1,
-    labSubjects
+  labSubjects, timetableSubjects1
 } from '@/data/subjects';
 import styles from '@/app/page.module.css';
 
@@ -60,11 +60,12 @@ const semesterFourOneSections = [
     count: `${syllabusSubjects1.length} files`,
     items: syllabusSubjects1,
   },
-  // {
-  //   id: 'timetable',
-  //   label: 'TIMETABLE',
-  //   count: '0 files',
-  // },
+  {
+    id: 'timetable',
+    label: 'TIMETABLE',
+    count: `${timetableSubjects1.length} files`,
+    items: timetableSubjects1,
+  },
   {
     id: 'subjects',
     label: 'SUBJECTS',
