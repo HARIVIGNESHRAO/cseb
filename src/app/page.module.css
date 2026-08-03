@@ -1343,7 +1343,84 @@
   animation: pulse 2s infinite;
 }
 
+.examCountdownLive {
+  border-color: rgba(52, 211, 153, 0.42);
+  box-shadow: 0 22px 50px rgba(52, 211, 153, 0.12);
+}
+
+.examCountdownStatus {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  margin: 0 0 10px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.examCountdownTimerGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.examCountdownTimerItem {
+  display: grid;
+  min-width: 0;
+  gap: 6px;
+  padding: 14px 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  text-align: center;
+}
+
+.examCountdownTimerValue {
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.examCountdownTimerUnit {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.liveDot {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  width: 8px;
+  height: 8px;
+  background: #34d399;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #34d399;
+  transform: translateY(-50%);
+  animation: livePulse 2s infinite;
+}
+
+.iconWrapper {
+  display: grid;
+  place-items: center;
+}
+
+.icon {
+  line-height: 1;
+}
+
 @keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@keyframes livePulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.35; }
 }
@@ -1382,6 +1459,18 @@
 
   .examCountdownItem span:first-child {
     font-size: 30px;
+  }
+
+  .examCountdownTimerGrid {
+    gap: 8px;
+  }
+
+  .examCountdownTimerItem {
+    padding: 12px 6px;
+  }
+
+  .examCountdownTimerValue {
+    font-size: 22px;
   }
 }
 
