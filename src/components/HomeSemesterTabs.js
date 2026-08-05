@@ -10,7 +10,7 @@ import {
   subjects,
   syllabusSubjects,
   subjects1,
-  labSubjects, timetableSubjects1
+  labSubjects, timetableSubjects1,record
 } from '@/data/subjects';
 import styles from '@/app/page.module.css';
 
@@ -78,6 +78,12 @@ const semesterFourOneSections = [
     count: `${labSubjects.length} files`,
     items: labSubjects,
   },
+  {
+    id: 'lab-manuals',
+    label: 'LAB RECORDS',
+    count: `${record.length} files`,
+    items: record,
+  }
   // {
   //   id: 'papers',
   //   label: 'QUESTION PAPERS',

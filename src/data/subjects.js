@@ -502,6 +502,37 @@ export const labSubjects=[
   },
 
 ]
+export const record = [
+  {
+    id: 'sdc1',
+    code: 'SDC RECORD',
+    name: 'Skill Development Course-3 ',
+    desc: '',
+    category: 'record',
+    pdfDir: 'sdc',
+    color: '#8B5CF6',                // purple
+    bg: 'rgba(139,92,246,0.15)',     // light purple background
+    icon: '⚛',
+    units: [
+      { id: 'unit1', name: 'SDC LAB MANUAL', pdfFile: 'r' },
+    ]
+  },
+  {
+    id: 'stm1',
+    code: 'STM RECORD',
+    name: 'Software Testing Methodologies',
+    desc: '',
+    category: 'record',
+    pdfDir: 'stm',
+    color: '#F97316',                // orange
+    bg: 'rgba(249,115,22,0.15)',     // light orange background
+    icon: '🧪',
+    units: [
+      { id: '6', name: 'SELENIUM LAB MANUAL', pdfFile: 'r' },
+    ]
+  },
+]
+
 export const timetableSubjects1 = [
   {
     id: 'mid-timetable',
@@ -541,4 +572,5 @@ export const allSubjects = [
   ...subjects1,
   ...questionPaperSubjects,
     ...labSubjects,
+    ...record,
 ];
