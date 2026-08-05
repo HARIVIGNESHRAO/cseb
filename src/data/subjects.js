@@ -528,7 +528,7 @@ export const record = [
     bg: 'rgba(249,115,22,0.15)',     // light orange background
     icon: '🧪',
     units: [
-      { id: '6', name: 'SELENIUM LAB MANUAL', pdfFile: 'r' },
+      { id: '6', name: 'STM LAB MANUAL', pdfFile: 'r' },
     ]
   },
 ]
