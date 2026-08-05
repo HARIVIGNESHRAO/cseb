@@ -138,10 +138,10 @@ export const subjects1 = [
     bg: 'rgba(37,99,235,0.15)',
     icon: '📈',
     units: [
-      { id: 'unit1', name: 'Unit 1',pdfFile: 1 },
-      {id:'unit2', name: 'Unit 2',pdfFile: 2 },
-      {id:'unit3(a)', name: 'Unit 3 (a)',pdfFile: '3-1' },
-      {id:'unit3(b)', name: 'Unit 3 (b)',pdfFile: '3-2' }
+      { id: 'unit1', name: 'Unit 1',pdfFile: 'BEFA_UNIT_1' },
+      {id:'unit2', name: 'Unit 2',pdfFile: 'BEFA_UNIT_2'},
+      {id:'unit3(a)', name: 'Unit 3 (a)',pdfFile: 'BEFA_UNIT_3(a)' },
+      {id:'unit3(b)', name: 'Unit 3 (b)',pdfFile: 'BEFA_UNIT_3(b)' }
     ]
   },
 
@@ -156,9 +156,9 @@ export const subjects1 = [
     bg: 'rgba(220,38,38,0.15)',
     icon: '🧪',
     units: [
-      { id: 'unit1', name: 'Unit 1',pdfFile: 1 },
-      { id: 'unit2', name: 'Unit 2',pdfFile: 2 },
-      { id: 'unit3', name: 'Unit 3',pdfFile: 3 },
+      { id: 'unit1', name: 'Unit 1',pdfFile: 'STM_UNIT_1' },
+      { id: 'unit2', name: 'Unit 2',pdfFile: 'STM_UNIT_2' },
+      { id: 'unit3', name: 'Unit 3',pdfFile: 'STM_UNIT_3' },
       { id: 'unitn', name: 'Important Topics',pdfFile:'i' }
     ]
   },
@@ -174,9 +174,9 @@ export const subjects1 = [
     bg: 'rgba(5,150,105,0.15)',
     icon: '⛏️',
     units: [
-      { id: 'unit1', name: 'Unit 1',pdfFile:1 },
-      { id: 'unit2', name: 'Unit 2',pdfFile:2 },
-      { id: 'unit3', name: 'Unit 3',pdfFile:3 },
+      { id: 'unit1', name: 'Unit 1',pdfFile:'DM_UNIT_1' },
+      { id: 'unit2', name: 'Unit 2',pdfFile:'DM_UNIT_2' },
+      { id: 'unit3', name: 'Unit 3',pdfFile:'DM_UNIT_3' },
       { id: 'unitn', name: 'Important Topics',pdfFile:'i' }
     ]
   },
@@ -192,9 +192,9 @@ export const subjects1 = [
     bg: 'rgba(124,58,237,0.15)',
     icon: '🔍',
     units: [
-      { id: 'unit1', name: 'Unit 1',pdfFile: 1 },
-      { id: 'unit2', name: 'Unit 2',pdfFile: 2 },
-      { id: 'unit3', name: 'Unit 3',pdfFile: 3 },
+      { id: 'unit1', name: 'Unit 1',pdfFile: 'IRS_UNIT_1' },
+      { id: 'unit2', name: 'Unit 2',pdfFile: 'IRS_UNIT_2' },
+      { id: 'unit3', name: 'Unit 3',pdfFile: 'IRS_UNIT_3' },
     ]
   },
 
@@ -209,9 +209,9 @@ export const subjects1 = [
     bg: 'rgba(245,158,11,0.15)',
     icon: '📊',
     units: [
-      { id: 'unit1', name: 'Unit 1' ,pdfFile: 1},
-      {id:'unit2', name: 'Unit 2' ,pdfFile: 2},
-      {id:'unit3', name: 'Unit 3' ,pdfFile: 3},
+      { id: 'unit1', name: 'Unit 1' ,pdfFile: 'DVT_UNIT_1 '},
+      {id:'unit2', name: 'Unit 2' ,pdfFile: 'DVT_UNIT_2 ' },
+      {id:'unit3', name: 'Unit 3' ,pdfFile: 'DVT_UNIT_3'},
     ]
   },
   {
@@ -225,11 +225,11 @@ export const subjects1 = [
     bg: 'rgba(22,163,74,0.15)',
     icon: '🌿',
     units: [
-      { id: 'unit1', name: 'Unit 1', pdfFile: 1 },
-      { id: 'unit2', name: 'Unit 2', pdfFile: 2 },
-      { id: 'unit3', name: 'Unit 3', pdfFile: 3 },
-      { id: 'unit4', name: 'Unit 4', pdfFile: 4 },
-      { id: 'unit5', name: 'Unit 5', pdfFile: 5 },
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'ES_UNIT_1' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'ES_UNIT_2' },
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'ES_UNIT_3' },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 'ES_UNIT_4' },
+      { id: 'unit5', name: 'Unit 5', pdfFile: 'ES_UNIT_5' },
     ]
   }
 ];
