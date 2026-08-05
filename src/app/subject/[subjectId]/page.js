@@ -64,6 +64,7 @@ export default function SubjectPage({ params }) {
         {/* Units List */}
         <div className={styles.unitsList}>
           {subject.units.map((unit, i) => {
+            const isVideo = unit.type === 'video' || !!unit.videoUrl;
             const unitHref = `/subject/${subject.id}/${unit.id}`;
             const pdfFile = unit.pdfFile ?? unit.id;
             const pdfUrl = getUnitPdfUrl(subject, unit);
@@ -71,51 +72,59 @@ export default function SubjectPage({ params }) {
             const hasResources = Array.isArray(unit.resources) && unit.resources.length > 0;
 
             return (
-              <div
-                key={unit.id}
-                className={styles.unitCard}
-                style={{
-                  '--color': subject.color,
-                  '--bg': subject.bg,
-                  animationDelay: `${i * 70}ms`,
-                }}
-              >
-                <PdfPrefetchLink href={unitHref} className={styles.unitMain}>
-                  <div className={styles.unitNumber}>
-                    <span className={styles.unitNumberText}>{String(i + 1).padStart(2, '0')}</span>
+                <div
+                    key={unit.id}
+                    className={styles.unitCard}
+                    style={{
+                      '--color': subject.color,
+                      '--bg': subject.bg,
+                      animationDelay: `${i * 70}ms`,
+                    }}
+                >
+                  <PdfPrefetchLink href={unitHref} className={styles.unitMain}>
+                    <div className={styles.unitNumber}>
+                      <span className={styles.unitNumberText}>{String(i + 1).padStart(2, '0')}</span>
+                    </div>
+                    <div className={styles.unitInfo}>
+                      <h3 className={styles.unitName}>{unit.name}</h3>
+                      <p className={styles.unitTopic}>{unit.topic}</p>
+                      <p className={styles.unitTopics}>{unit.topics}</p>
+                    </div>
+                  </PdfPrefetchLink>
+
+                  <div className={styles.unitActions}>
+                    {isVideo ? (
+                        // ===== VIDEO BUTTON =====
+                        <PdfPrefetchLink href={unitHref} className={styles.viewButton}>
+                          Watch Video ▶
+                        </PdfPrefetchLink>
+                    ) : hasResources ? (
+                        <PdfPrefetchLink href={unitHref} className={styles.viewButton}>
+                          View Files
+                        </PdfPrefetchLink>
+                    ) : (
+                        <a
+                            href={unit.openUrl ?? pdfUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={styles.viewButton}
+                        >
+                          Open PDF ↗
+                        </a>
+                    )}
+
+                    {/* Hide Download button for video */}
+                    {!isVideo && !hasResources && (
+                        <a
+                            href={downloadUrl}
+                            download={unit.downloadUrl ? undefined : `${subject.code}_${pdfFile}.pdf`}
+                            className={styles.downloadButton}
+                        >
+                          Download
+                        </a>
+                    )}
                   </div>
-                  <div className={styles.unitInfo}>
-                    <h3 className={styles.unitName}>{unit.name}</h3>
-                    <p className={styles.unitTopic}>{unit.topic}</p>
-                    <p className={styles.unitTopics}>{unit.topics}</p>
-                  </div>
-                </PdfPrefetchLink>
-                <div className={styles.unitActions}>
-                  {hasResources ? (
-                    <PdfPrefetchLink href={unitHref} className={styles.viewButton}>
-                      View Files
-                    </PdfPrefetchLink>
-                  ) : (
-                    <a
-                      href={unit.openUrl ?? pdfUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={styles.viewButton}
-                    >
-                      Open PDF ↗
-                    </a>
-                  )}
-                  {!hasResources && (
-                    <a
-                      href={downloadUrl}
-                      download={unit.downloadUrl ? undefined : `${subject.code}_${pdfFile}.pdf`}
-                      className={styles.downloadButton}
-                    >
-                      Download
-                    </a>
-                  )}
                 </div>
-              </div>
             );
           })}
         </div>

@@ -22,7 +22,7 @@ export default function UnitPage({ params }) {
   if (!subject) notFound();
   const unit = subject.units.find((u) => u.id === params.unitId);
   if (!unit) notFound();
-
+  const isVideo = unit.type === 'video' || !!unit.videoUrl;
   const hasResources = Array.isArray(unit.resources) && unit.resources.length > 0;
   const pdfFile = unit.pdfFile ?? unit.id;
   const pdfUrl = getUnitPdfUrl(subject, unit);
@@ -65,25 +65,17 @@ export default function UnitPage({ params }) {
             <p className={styles.unitTopics}>{unit.topics}</p>
           </div>
 
-          {!hasResources ? (
-            <div className={styles.unitHeaderActions}>
-              <a
-                href={downloadUrl}
-                download={unit.downloadUrl ? undefined : `${subject.code}_${pdfFile}.pdf`}
-                className={styles.btnDownload}
-                style={{ '--color': subject.color, '--bg': subject.bg }}
-              >
-                ⬇ Download PDF
-              </a>
-              <a
-                href={openUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.btnOpen}
-              >
-                ↗ Open in Tab
-              </a>
-            </div>
+          {!hasResources && !isVideo ? (
+              <div className={styles.unitHeaderActions}>
+                <a
+                    href={downloadUrl}
+                    download={unit.downloadUrl ? undefined : `${subject.code}_${pdfFile}.pdf`}
+                    className={styles.btnDownload}
+                    style={{ '--color': subject.color, '--bg': subject.bg }}
+                >
+                  ⬇ Download PDF
+                </a>
+              </div>
           ) : null}
         </div>
 

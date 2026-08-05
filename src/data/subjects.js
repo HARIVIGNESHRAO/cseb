@@ -481,9 +481,28 @@ export const labSubjects=[
     bg: 'rgba(97,218,251,0.15)',
     icon: '⚛',
     units: [
-      { id: 'unit1', name: 'Experiment 1: JSX and Virtual DOM',pdfFile: '1',},
-      { id: 'unit2', name: 'Experiment 2: Product Listing Page',pdfFile: '2',},
-      { id: 'unit3', name: 'Experiment 3: Inventory Management Using Hooks',pdfFile: '3',}
+      {
+        id: 'unit1',
+        name: 'Experiment 1: JSX and Virtual DOM',
+        pdfFile: '1'
+      },
+      {
+        id: 'unit2',
+        name: 'Experiment 2: Product Listing Page',
+        pdfFile: '2'
+      },
+      {
+        id: 'unit3',
+        name: 'Experiment 3: Inventory Management Using Hooks',
+        pdfFile: '3'
+      },
+      {
+        id: 'video',
+        name: 'Lab Demonstration Video',
+        topic: 'Full Lab Recording (All Experiments)',
+        videoUrl: '/videos/sdc.mp4',
+        type: 'video'
+      }
     ]
   },
   {
@@ -515,6 +534,13 @@ export const record = [
     icon: '⚛',
     units: [
       { id: 'unit1', name: 'SDC LAB MANUAL', pdfFile: 'r' },
+      {
+        id: 'video',
+        name: 'Lab Demonstration Video',
+        topic: 'Full Lab Recording (All Experiments)',
+        videoUrl: '/videos/sdc.mp4',
+        type: 'video'
+      }
     ]
   },
   {
