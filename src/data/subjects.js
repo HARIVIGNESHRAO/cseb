@@ -11,12 +11,12 @@ export const subjects = [
     bg: 'rgba(79,142,247,0.15)',
     icon: '⚙️',
     units: [
-      { id: 'unit1', name: 'Unit 1', topic: '', topics: '',pdfFile:'https://res.cloudinary.com/vunycbnq/image/upload/v1783155889/unit1_tamj68' },
-      { id: 'unit2', name: 'Unit 2', topic: '', topics: '',pdfFile:'https://res.cloudinary.com/vunycbnq/image/upload/v1783155895/unit2_d6x59y' },
-      { id: 'unit3', name: 'Unit 3', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155899/unit3_doj3zj' },
-      { id: 'unit4', name: 'Unit 4', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155898/unit4_hxwwu0' },
-      { id: 'unit5', name: 'Unit 5', topic: '', topics: '' ,pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155894/unit5_mw0laj'},
-            {id: 'q', name: 'Previous Year Papers', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155899/q_zrtcfr'}
+      { id: 'unit1', name: 'Unit 1', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155889/unit1_tamj68' },
+      { id: 'unit2', name: 'Unit 2', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155895/unit2_d6x59y' },
+      { id: 'unit3', name: 'Unit 3', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155899/unit3_doj3zj' },
+      { id: 'unit4', name: 'Unit 4', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155898/unit4_hxwwu0' },
+      { id: 'unit5', name: 'Unit 5', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155894/unit5_mw0laj' },
+      { id: 'q', name: 'Previous Year Papers', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155899/q_zrtcfr' }
     ],
   },
   {
@@ -30,12 +30,12 @@ export const subjects = [
     bg: 'rgba(124,58,237,0.15)',
     icon: '☁️',
     units: [
-      { id: 'unit1', name: 'Unit 1', topic: '', topics: '',pdfFile:'https://res.cloudinary.com/vunycbnq/image/upload/v1783155870/unit1_ngcmy3'},
-      { id: 'unit2', name: 'Unit 2', topic: '', topics: '' ,pdfFile:'https://res.cloudinary.com/vunycbnq/image/upload/v1783155875/unit2_flm9nq'},
-      { id: 'unit3', name: 'Unit 3', topic: '', topics: '',pdfFile:'https://res.cloudinary.com/vunycbnq/image/upload/v1783155863/unit3_johcc3' },
-      { id: 'unit4', name: 'Unit 4', topic: '', topics: '',pdfFile:'https://res.cloudinary.com/vunycbnq/image/upload/v1783155863/unit4_x3xcnu' },
-      { id: 'unit5', name: 'Unit 5', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155866/unit5_cfgle9' },
-      {id: 'q', name: 'Previous Year Papers', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155883/q'}
+      { id: 'unit1', name: 'Unit 1', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155870/unit1_ngcmy3' },
+      { id: 'unit2', name: 'Unit 2', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155875/unit2_flm9nq' },
+      { id: 'unit3', name: 'Unit 3', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155863/unit3_johcc3' },
+      { id: 'unit4', name: 'Unit 4', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155863/unit4_x3xcnu' },
+      { id: 'unit5', name: 'Unit 5', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155866/unit5_cfgle9' },
+      { id: 'q', name: 'Previous Year Papers', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155883/q' }
     ],
   },
   {
@@ -49,11 +49,11 @@ export const subjects = [
     bg: 'rgba(16,185,129,0.15)',
     icon: '📡',
     units: [
-      { id: 'unit1', name: 'Unit 1', topic: '', topics: '',pdfFile:'https://res.cloudinary.com/vunycbnq/image/upload/v1783155967/unit1_lsb5vq' },
-      { id: 'unit2', name: 'Unit 2', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155969/unit2_icptrl' },
-      { id: 'unit3', name: 'Unit 3', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155987/unit3_bkjo94' },
-      { id: 'unit4', name: 'Unit 4', topic: '', topics: '' ,pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155979/unit4_d6urae'},
-      { id: 'unit5', name: 'Unit 5', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155990/unit5_xgbds1' },
+      { id: 'unit1', name: 'Unit 1', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155967/unit1_lsb5vq' },
+      { id: 'unit2', name: 'Unit 2', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155969/unit2_icptrl' },
+      { id: 'unit3', name: 'Unit 3', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155987/unit3_bkjo94' },
+      { id: 'unit4', name: 'Unit 4', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155979/unit4_d6urae' },
+      { id: 'unit5', name: 'Unit 5', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155990/unit5_xgbds1' },
       {
         id: 'codes',
         name: 'Codes',
@@ -99,12 +99,12 @@ export const subjects = [
     bg: 'rgba(245,158,11,0.15)',
     icon: '🔌',
     units: [
-      { id: 'unit1', name: 'Unit 1', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155938/unit1_zqkqmr' },
-      { id: 'unit2', name: 'Unit 2', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155929/unit2_vxwloz' },
-      { id: 'unit3', name: 'Unit 3', topic: '', topics: '' ,pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155928/unit3_dsm4z2'},
-      { id: 'unit4', name: 'Unit 4', topic: '', topics: '' ,pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155940/unit4_umbq4q'},
-      { id: 'unit5', name: 'Unit 5', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155935/unit5_p6ccvk' },
-            {id: 'q', name: 'Previous Year Papers', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155948/q_mytz4j'}
+      { id: 'unit1', name: 'Unit 1', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155938/unit1_zqkqmr' },
+      { id: 'unit2', name: 'Unit 2', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155929/unit2_vxwloz' },
+      { id: 'unit3', name: 'Unit 3', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155928/unit3_dsm4z2' },
+      { id: 'unit4', name: 'Unit 4', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155940/unit4_umbq4q' },
+      { id: 'unit5', name: 'Unit 5', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155935/unit5_p6ccvk' },
+      { id: 'q', name: 'Previous Year Papers', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155948/q_mytz4j' }
     ],
   },
   {
@@ -118,11 +118,11 @@ export const subjects = [
     bg: 'rgba(239,68,68,0.15)',
     icon: '🔒',
     units: [
-      { id: 'unit1', name: 'Unit 1', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155920/unit1_csfvyf' },
-      { id: 'unit2', name: 'Unit 2', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155905/unit2_dahdqm' },
-      { id: 'unit3', name: 'Unit 3', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155906/unit3_itlq2j' },
-      { id: 'unit4', name: 'Unit 4', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155907/unit4_kydktd' },
-      { id: 'unit5', name: 'Unit 5', topic: '', topics: '',pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155907/unit5_od6ny3' },
+      { id: 'unit1', name: 'Unit 1', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155920/unit1_csfvyf' },
+      { id: 'unit2', name: 'Unit 2', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155905/unit2_dahdqm' },
+      { id: 'unit3', name: 'Unit 3', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155906/unit3_itlq2j' },
+      { id: 'unit4', name: 'Unit 4', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155907/unit4_kydktd' },
+      { id: 'unit5', name: 'Unit 5', topic: '', topics: '', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783155907/unit5_od6ny3' },
     ],
   }
 ];
@@ -138,10 +138,10 @@ export const subjects1 = [
     bg: 'rgba(37,99,235,0.15)',
     icon: '📈',
     units: [
-      { id: 'unit1', name: 'Unit 1',pdfFile: 'BEFA_UNIT_1' },
-      {id:'unit2', name: 'Unit 2',pdfFile: 'BEFA_UNIT_2'},
-      {id:'unit3(a)', name: 'Unit 3 (a)',pdfFile: 'BEFA_UNIT_3(a)' },
-      {id:'unit3(b)', name: 'Unit 3 (b)',pdfFile: 'BEFA_UNIT_3(b)' }
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'BEFA_UNIT_1' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'BEFA_UNIT_2' },
+      { id: 'unit3(a)', name: 'Unit 3 (a)', pdfFile: 'BEFA_UNIT_3(a)' },
+      { id: 'unit3(b)', name: 'Unit 3 (b)', pdfFile: 'BEFA_UNIT_3(b)' }
     ]
   },
 
@@ -156,10 +156,10 @@ export const subjects1 = [
     bg: 'rgba(220,38,38,0.15)',
     icon: '🧪',
     units: [
-      { id: 'unit1', name: 'Unit 1',pdfFile: 'STM_UNIT_1' },
-      { id: 'unit2', name: 'Unit 2',pdfFile: 'STM_UNIT_2' },
-      { id: 'unit3', name: 'Unit 3',pdfFile: 'STM_UNIT_3' },
-      { id: 'unitn', name: 'Important Topics',pdfFile:'i' }
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'STM_UNIT_1' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'STM_UNIT_2' },
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'STM_UNIT_3' },
+      { id: 'unitn', name: 'Important Topics', pdfFile: 'i' }
     ]
   },
 
@@ -174,10 +174,10 @@ export const subjects1 = [
     bg: 'rgba(5,150,105,0.15)',
     icon: '⛏️',
     units: [
-      { id: 'unit1', name: 'Unit 1',pdfFile:'DM_UNIT_1' },
-      { id: 'unit2', name: 'Unit 2',pdfFile:'DM_UNIT_2' },
-      { id: 'unit3', name: 'Unit 3',pdfFile:'DM_UNIT_3' },
-      { id: 'unitn', name: 'Important Topics',pdfFile:'i' }
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'DM_UNIT_1' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'DM_UNIT_2' },
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'DM_UNIT_3' },
+      { id: 'unitn', name: 'Important Topics', pdfFile: 'i' }
     ]
   },
 
@@ -192,9 +192,9 @@ export const subjects1 = [
     bg: 'rgba(124,58,237,0.15)',
     icon: '🔍',
     units: [
-      { id: 'unit1', name: 'Unit 1',pdfFile: 'IRS_UNIT_1' },
-      { id: 'unit2', name: 'Unit 2',pdfFile: 'IRS_UNIT_2' },
-      { id: 'unit3', name: 'Unit 3',pdfFile: 'IRS_UNIT_3' },
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'IRS_UNIT_1' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'IRS_UNIT_2' },
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'IRS_UNIT_3' },
     ]
   },
 
@@ -209,9 +209,9 @@ export const subjects1 = [
     bg: 'rgba(245,158,11,0.15)',
     icon: '📊',
     units: [
-      { id: 'unit1', name: 'Unit 1' ,pdfFile: 'DVT_UNIT_1 '},
-      {id:'unit2', name: 'Unit 2' ,pdfFile: 'DVT_UNIT_2 ' },
-      {id:'unit3', name: 'Unit 3' ,pdfFile: 'DVT_UNIT_3'},
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'DVT_UNIT_1 ' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'DVT_UNIT_2 ' },
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'DVT_UNIT_3' },
     ]
   },
   {
@@ -468,7 +468,7 @@ export const questionPaperSubjects = [
     ],
   },
 ];
-export const labSubjects=[
+export const labSubjects = [
 
   {
     id: 'sdc',
@@ -500,7 +500,7 @@ export const labSubjects=[
         id: 'video',
         name: 'Lab Demonstration Video',
         topic: 'Full Lab Recording (All Experiments)',
-        videoUrl: 'https://files.catbox.moe/u8kqjb.mp4',
+        videoUrl: '/videos/sdc.mp4',
         type: 'video'
       }
     ]
@@ -521,14 +521,14 @@ export const labSubjects=[
         id: 'video1',
         name: 'Lab Demonstration Video',
         topic: 'Experiment-1',
-        videoUrl: 'https://files.catbox.moe/122khz.mp4',
+        videoUrl: '/videos/stm.mp4',
         type: 'video'
       },
       // {
       //   id: 'video2',
       //   name: 'Lab Demonstration Video',
       //   topic: 'Experiment-2 to 5',
-      //   videoUrl: 'https://files.catbox.moe/122khz.mp4',
+      //   videoUrl: 'https://gofile.io/d/sLkuso',
       //   type: 'video'
       // }
     ]
@@ -552,7 +552,7 @@ export const record = [
         id: 'video',
         name: 'Lab Demonstration Video',
         topic: 'Full Lab Recording (All Experiments)',
-        videoUrl: 'https://files.catbox.moe/u8kqjb.mp4',
+        videoUrl: '/videos/sdc.mp4',
         type: 'video'
       }
     ]
@@ -573,14 +573,14 @@ export const record = [
         id: 'video1',
         name: 'Lab Demonstration Video',
         topic: 'Experiment-1',
-        videoUrl: 'https://files.catbox.moe/122khz.mp4',
+        videoUrl: '/videos/stm.mp4',
         type: 'video'
       },
       // {
       //   id: 'video2',
       //   name: 'Lab Demonstration Video',
       //   topic: 'Experiment-2 to 5',
-      //   videoUrl: 'https://files.catbox.moe/122khz.mp4',
+      //   videoUrl: 'https://gofile.io/d/sLkuso',
       //   type: 'video'
       // }
     ]
@@ -625,6 +625,6 @@ export const allSubjects = [
   ...subjects,
   ...subjects1,
   ...questionPaperSubjects,
-    ...labSubjects,
-    ...record,
+  ...labSubjects,
+  ...record,
 ];
