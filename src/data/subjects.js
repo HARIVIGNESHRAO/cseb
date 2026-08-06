@@ -500,7 +500,7 @@ export const labSubjects=[
         id: 'video',
         name: 'Lab Demonstration Video',
         topic: 'Full Lab Recording (All Experiments)',
-        videoUrl: '/videos/sdc.mp4',
+        videoUrl: 'https://files.catbox.moe/u8kqjb.mp4',
         type: 'video'
       }
     ]
@@ -517,6 +517,20 @@ export const labSubjects=[
     icon: '🧪',
     units: [
       { id: '6', name: 'SELENIUM LAB MANUAL (EXPERIMENTS 1-9)', pdfFile: '6' },
+      {
+        id: 'video1',
+        name: 'Lab Demonstration Video',
+        topic: 'Experiment-1',
+        videoUrl: 'https://files.catbox.moe/122khz.mp4',
+        type: 'video'
+      },
+      // {
+      //   id: 'video2',
+      //   name: 'Lab Demonstration Video',
+      //   topic: 'Experiment-2 to 5',
+      //   videoUrl: 'https://files.catbox.moe/122khz.mp4',
+      //   type: 'video'
+      // }
     ]
   },
 
@@ -538,7 +552,7 @@ export const record = [
         id: 'video',
         name: 'Lab Demonstration Video',
         topic: 'Full Lab Recording (All Experiments)',
-        videoUrl: '/videos/sdc.mp4',
+        videoUrl: 'https://files.catbox.moe/u8kqjb.mp4',
         type: 'video'
       }
     ]
@@ -555,6 +569,20 @@ export const record = [
     icon: '🧪',
     units: [
       { id: '6', name: 'STM LAB MANUAL', pdfFile: 'r' },
+      {
+        id: 'video1',
+        name: 'Lab Demonstration Video',
+        topic: 'Experiment-1',
+        videoUrl: 'https://files.catbox.moe/122khz.mp4',
+        type: 'video'
+      },
+      // {
+      //   id: 'video2',
+      //   name: 'Lab Demonstration Video',
+      //   topic: 'Experiment-2 to 5',
+      //   videoUrl: 'https://files.catbox.moe/122khz.mp4',
+      //   type: 'video'
+      // }
     ]
   },
 ]

@@ -51,6 +51,22 @@ export default function UnitPage({ params }) {
           <span className={styles.bcActive}>{unit.name}</span>
         </nav>
 
+        {/* Selenium IDE Important Alert – only for STM Lab / STM Record, Experiment-1 */}
+        {(subject.id === 'stm-lab' || subject.id === 'stm1') && unit.id === 'video1' && (
+          <div className={styles.seleniumAlert} role="alert">
+            <span className={styles.seleniumAlertIcon}>⚠️</span>
+            <div className={styles.seleniumAlertBody}>
+              <div className={styles.seleniumAlertTitle}>Important Alert – Selenium IDE</div>
+              <p className={styles.seleniumAlertText}>
+                Please read this carefully before running your tests.<br /><br />
+                Selenium IDE works mainly on <strong>Microsoft Edge</strong> and <strong>Mozilla Firefox</strong>. Other browsers may support it, but <strong>Google Chrome no longer supports Selenium IDE properly</strong>.<br /><br />
+                If your Selenium IDE test cases fail, there is <strong>no need to worry</strong> as long as you have followed the correct steps. Even if the test passes but it does not actually perform the steps you recorded, that is also not a problem for you.<br /><br />
+                During the exam, if you face any such issues, <strong>do not panic</strong>. Inform sir/faculty immediately and they will help you. If the lab systems are not functioning properly, you will be allowed to use your own laptop to demonstrate the steps you performed.
+              </p>
+            </div>
+          </div>
+        )}
+
         {/* Unit Header */}
         <div
           className={styles.unitHeader}
