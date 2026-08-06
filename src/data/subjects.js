@@ -500,8 +500,8 @@ export const labSubjects = [
         id: 'video',
         name: 'Lab Demonstration Video',
         topic: 'Full Lab Recording (All Experiments)',
-        videoUrl: '/videos/sdc.mp4',
-        type: 'video'
+        videoUrl: 'https://www.youtube.com/embed/TDxGFXmQy3Y',
+        type: 'youtube'
       }
     ]
   },
@@ -521,8 +521,8 @@ export const labSubjects = [
         id: 'video1',
         name: 'Lab Demonstration Video',
         topic: 'Experiment-1',
-        videoUrl: '/videos/stm.mp4',
-        type: 'video'
+        videoUrl: 'https://www.youtube.com/embed/DxfGtH-Gdyc',
+        type: 'youtube'
       },
       {
         id: 'video2',
@@ -552,8 +552,8 @@ export const record = [
         id: 'video',
         name: 'Lab Demonstration Video',
         topic: 'Full Lab Recording (All Experiments)',
-        videoUrl: '/videos/sdc.mp4',
-        type: 'video'
+        videoUrl: 'https://www.youtube.com/embed/TDxGFXmQy3Y',
+        type: 'youtube'
       }
     ]
   },
@@ -573,8 +573,8 @@ export const record = [
         id: 'video1',
         name: 'Lab Demonstration Video',
         topic: 'Experiment-1',
-        videoUrl: '/videos/stm.mp4',
-        type: 'video'
+        videoUrl: 'https://www.youtube.com/embed/DxfGtH-Gdyc',
+        type: 'youtube'
       },
       {
         id: 'video2',
