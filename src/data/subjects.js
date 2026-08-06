@@ -524,13 +524,13 @@ export const labSubjects = [
         videoUrl: '/videos/stm.mp4',
         type: 'video'
       },
-      // {
-      //   id: 'video2',
-      //   name: 'Lab Demonstration Video',
-      //   topic: 'Experiment-2 to 5',
-      //   videoUrl: 'https://gofile.io/d/sLkuso',
-      //   type: 'video'
-      // }
+      {
+        id: 'video2',
+        name: 'Lab Demonstration Video',
+        topic: 'Experiment-2 to 5',
+        videoUrl: 'https://www.youtube.com/embed/PoNCoicBNTw',
+        type: 'youtube'
+      }
     ]
   },
 
@@ -576,13 +576,13 @@ export const record = [
         videoUrl: '/videos/stm.mp4',
         type: 'video'
       },
-      // {
-      //   id: 'video2',
-      //   name: 'Lab Demonstration Video',
-      //   topic: 'Experiment-2 to 5',
-      //   videoUrl: 'https://gofile.io/d/sLkuso',
-      //   type: 'video'
-      // }
+      {
+        id: 'video2',
+        name: 'Lab Demonstration Video',
+        topic: 'Experiment-2 to 5',
+        videoUrl: 'https://www.youtube.com/embed/PoNCoicBNTw',
+        type: 'youtube'
+      }
     ]
   },
 ]

@@ -22,7 +22,7 @@ export default function UnitPage({ params }) {
   if (!subject) notFound();
   const unit = subject.units.find((u) => u.id === params.unitId);
   if (!unit) notFound();
-  const isVideo = unit.type === 'video' || !!unit.videoUrl;
+  const isVideo = unit.type === 'video' || unit.type === 'youtube' || !!unit.videoUrl;
   const hasResources = Array.isArray(unit.resources) && unit.resources.length > 0;
   const pdfFile = unit.pdfFile ?? unit.id;
   const pdfUrl = getUnitPdfUrl(subject, unit);

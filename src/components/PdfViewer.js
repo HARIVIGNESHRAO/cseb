@@ -35,7 +35,8 @@ export default function PdfViewer({ pdfUrl, subject, unit }) {
   const [aiOpen, setAiOpen] = useState(false);
   const openUrl = unit.openUrl ?? pdfUrl;
 
-  const isVideo = unit.type === 'video' || !!unit.videoUrl;
+  const isVideo = unit.type === 'video' || unit.type === 'youtube' || !!unit.videoUrl;
+  const isYouTube = unit.type === 'youtube';
 
   // ===================== FULL SCREEN VIDEO =====================
   if (isVideo) {
@@ -75,36 +76,54 @@ export default function PdfViewer({ pdfUrl, subject, unit }) {
                   fontFamily: 'monospace',
                 }}
             >
-            {subject.code} · {unit.name}
+            {subject.code} · {unit.name}{unit.topic ? ` · ${unit.topic}` : ''}
           </span>
 
             <div style={{ width: 42 }} />
           </div>
 
-          {/* Video */}
+          {/* Video or YouTube iframe */}
           <div
               style={{
                 background: '#000',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                minHeight: '70vh',
-                padding: '20px',
+                minHeight: isYouTube ? 'auto' : '70vh',
+                padding: isYouTube ? '0' : '20px',
               }}
           >
-            <video
-                src={unit.videoUrl}
-                controls
-                controlsList="nodownload"
-                style={{
-                  width: '100%',
-                  maxHeight: '75vh',
-                  borderRadius: '8px',
-                  outline: 'none',
-                }}
-            >
-              Your browser does not support the video tag.
-            </video>
+            {isYouTube ? (
+              <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%' /* 16:9 */ }}>
+                <iframe
+                  src={`${unit.videoUrl}?rel=0&modestbranding=1&autoplay=0`}
+                  title={`${subject.code} · ${unit.topic}`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  style={{
+                    position: 'absolute',
+                    top: 0, left: 0,
+                    width: '100%',
+                    height: '100%',
+                    border: 'none',
+                  }}
+                />
+              </div>
+            ) : (
+              <video
+                  src={unit.videoUrl}
+                  controls
+                  controlsList="nodownload"
+                  style={{
+                    width: '100%',
+                    maxHeight: '75vh',
+                    borderRadius: '8px',
+                    outline: 'none',
+                  }}
+              >
+                Your browser does not support the video tag.
+              </video>
+            )}
           </div>
         </div>
     );

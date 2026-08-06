@@ -64,7 +64,7 @@ export default function SubjectPage({ params }) {
         {/* Units List */}
         <div className={styles.unitsList}>
           {subject.units.map((unit, i) => {
-            const isVideo = unit.type === 'video' || !!unit.videoUrl;
+            const isVideo = unit.type === 'video' || unit.type === 'youtube' || !!unit.videoUrl;
             const unitHref = `/subject/${subject.id}/${unit.id}`;
             const pdfFile = unit.pdfFile ?? unit.id;
             const pdfUrl = getUnitPdfUrl(subject, unit);
