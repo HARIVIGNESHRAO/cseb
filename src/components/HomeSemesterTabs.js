@@ -10,7 +10,7 @@ import {
   subjects,
   syllabusSubjects,
   subjects1,
-  labSubjects, timetableSubjects1,record
+  labSubjects, timetableSubjects1, record, questionPaperSubjects1
 } from '@/data/subjects';
 import styles from '@/app/page.module.css';
 
@@ -83,12 +83,13 @@ const semesterFourOneSections = [
     label: 'LAB RECORDS',
     count: `${record.length} files`,
     items: record,
-  }
-  // {
-  //   id: 'papers',
-  //   label: 'QUESTION PAPERS',
-  //   count: '0 files',
-  // },
+  },
+  {
+    id: 'papers',
+    label: 'QUESTION PAPERS',
+    count: `${questionPaperSubjects1.length} files`,
+    items: questionPaperSubjects1
+  },
 ];
 
 export default function HomeSemesterTabs() {
@@ -152,9 +153,8 @@ export default function HomeSemesterTabs() {
           <button
             key={tab.id}
             type="button"
-            className={`${styles.semesterTab} ${
-              activeSemester === tab.id ? styles.semesterTabActive : ''
-            }`}
+            className={`${styles.semesterTab} ${activeSemester === tab.id ? styles.semesterTabActive : ''
+              }`}
             onClick={() => selectSemester(tab.id)}
             aria-pressed={activeSemester === tab.id}
           >

@@ -616,6 +616,28 @@ export const timetableSubjects1 = [
     ],
   },
 ];
+export const questionPaperSubjects1 = [
+  {
+    id: 'sem-question-paper1',
+    code: 'SEM QP',
+    name: 'Semester Question Papers',
+    desc: '',
+    category: 'question-paper',
+    pdfDir: 'dvt',
+    color: '#F59E0B',
+    bg: 'rgba(245,158,11,0.15)',
+    icon: '📝',
+    units: [
+      {
+        id: 'dvt-question-paper',
+        name: 'DVT Question Paper',
+        topic: 'DVT Question Papers PDF',
+        topics: '',
+        pdfFile: 'q',
+      }
+      ]
+  }
+    ]
 export const allSubjects = [
   ...academicCalendarSubjects,
   ...academicCalendarSubjects1,
@@ -627,4 +649,5 @@ export const allSubjects = [
   ...questionPaperSubjects,
   ...labSubjects,
   ...record,
+    ...questionPaperSubjects1
 ];
