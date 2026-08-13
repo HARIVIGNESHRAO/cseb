@@ -604,7 +604,7 @@ export const timetableSubjects1 = [
         name: 'Theory',
         topic: 'Mids Theory Timetable',
         topics: '',
-        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1785584776/KR23_-_B.Tech_IV_Yr_I_Sem_MID-1_EXAMINATION_TIMETABLE_AUG_2026_tidv4o.pdf',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1786616931/WhatsApp_Image_2026-08-13_at_15.57.16_yx7kro.pdf',
       },
       {
         id: 'lab',
