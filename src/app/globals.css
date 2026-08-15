@@ -266,17 +266,30 @@
     background:
       radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 16%, transparent), transparent 28%),
       radial-gradient(circle at top right, color-mix(in srgb, #5eead4 12%, transparent), transparent 22%),
-      linear-gradient(180deg, var(--bg2), var(--bg));
-    background-attachment: fixed;
+      linear-gradient(180deg, var(--bg2), var(--bg));  
   }
+body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(
+      circle at 14% 12%,
+      color-mix(in srgb, var(--accent) 10%, transparent),
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 86% 18%,
+      color-mix(in srgb, #5eead4 8%, transparent),
+      transparent 18%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bg2) 92%, transparent),
+      var(--bg)
+    );
 
-  body {
-    background:
-      radial-gradient(circle at 14% 12%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 20%),
-      radial-gradient(circle at 86% 18%, color-mix(in srgb, #5eead4 8%, transparent), transparent 18%),
-      linear-gradient(180deg, color-mix(in srgb, var(--bg2) 92%, transparent), var(--bg));
-    background-attachment: fixed;
-  }
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 
   body::before {
     content: '';
@@ -306,3 +319,17 @@
   .themeToggle::before {
     background: linear-gradient(120deg, rgba(255,255,255,0.28), transparent 44%, rgba(255,255,255,0.12));
   }
+html {
+  min-height: 100%;
+  background-color: var(--bg);
+  overscroll-behavior-y: none;
+}
+
+body {
+  min-height: 115vh;
+  min-height: 115dvh;
+  margin: 0;
+  padding-bottom: 120px;
+  background-color: var(--bg);
+  overscroll-behavior-y: none;
+}
