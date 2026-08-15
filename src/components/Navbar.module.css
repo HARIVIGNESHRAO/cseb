@@ -339,18 +339,18 @@
 
 .fab {
   position: fixed;
-  top: 16px;
-  left: 16px;
-  z-index: 30;
-  width: 44px;
-  height: 44px;
+  top: max(14px, env(safe-area-inset-top));
+  left: max(12px, env(safe-area-inset-left));
+  z-index: 34;
+  width: 46px;
+  height: 46px;
   display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 12px;
   background: var(--elevated-strong);
   box-shadow: 0 8px 24px var(--shadow);
   cursor: pointer;
@@ -399,13 +399,15 @@
   position: fixed;
   inset: 0 auto 0 0;
   z-index: 25;
-  width: min(300px, 86vw);
+  width: min(320px, 88vw);
   height: 100dvh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   background: var(--elevated-strong);
   border-right: 1px solid var(--border);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
   box-shadow: 8px 0 40px var(--shadow);
   transform: translateX(-100%);
   transition: transform 0.32s ease;
@@ -439,7 +441,7 @@
 
   .drawer .inner {
     overflow: hidden;
-    padding-bottom: max(14px, env(safe-area-inset-bottom));
+    padding: max(12px, env(safe-area-inset-top)) 12px max(14px, env(safe-area-inset-bottom));
   }
 
   .drawer .mobileCloseRow {
@@ -450,11 +452,19 @@
 
   .drawer .brandRow {
     flex: 0 0 auto;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
   }
 
   .drawer .nav {
     flex: 1 1 auto;
     overflow-y: auto;
+  }
+
+  .drawer .navLink,
+  .drawer .iconBtn,
+  .drawer .submenuLink {
+    border-radius: 10px;
   }
 
   .drawer .spacer {
@@ -472,9 +482,77 @@
 
 @media (max-width: 380px) {
   .fab {
-    top: 12px;
-    left: 10px;
+    top: max(10px, env(safe-area-inset-top));
+    left: max(8px, env(safe-area-inset-left));
     width: 40px;
     height: 40px;
   }
+
+  .drawer {
+    width: min(300px, 90vw);
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+}
+
+/* Glass upgrade */
+.sidebar,
+.drawer {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--glass-bg-strong) 96%, white), color-mix(in srgb, var(--accent) 6%, transparent));
+  border-right-color: var(--glass-stroke-strong);
+  box-shadow: var(--glass-shadow), inset -1px 0 0 rgba(255,255,255,0.04);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.brandRow,
+.bottom {
+  border-color: color-mix(in srgb, var(--glass-stroke) 84%, var(--border));
+}
+
+.collapseButton,
+.mobileCloseButton,
+.navLink,
+.iconBtn,
+.submenuLink,
+.fab {
+  background: color-mix(in srgb, var(--glass-bg) 62%, transparent);
+  border-color: color-mix(in srgb, var(--glass-stroke) 80%, var(--border));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px) saturate(135%);
+  -webkit-backdrop-filter: blur(14px) saturate(135%);
+}
+
+.collapseButton:hover,
+.mobileCloseButton:hover,
+.navLink:hover,
+.iconBtn:hover,
+.submenuLink:hover,
+.fab:hover {
+  background: color-mix(in srgb, var(--glass-bg-strong) 76%, var(--accent));
+  border-color: var(--glass-stroke-strong);
+  box-shadow:
+    0 12px 26px color-mix(in srgb, var(--accent) 12%, transparent),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.navLinkActive,
+.submenuLinkActive {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 18%, var(--glass-bg)), color-mix(in srgb, var(--glass-bg-strong) 88%, transparent));
+  border-color: color-mix(in srgb, var(--accent) 52%, var(--glass-stroke));
+  box-shadow:
+    inset 3px 0 0 var(--accent),
+    0 14px 28px color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.brandDot {
+  background: linear-gradient(135deg, #7dd3fc, #4f8ef7);
+  box-shadow: 0 0 14px rgba(79, 142, 247, 0.8);
+}
+
+.overlay {
+  background: rgba(3, 8, 20, 0.42);
+  backdrop-filter: blur(10px) saturate(130%);
+  -webkit-backdrop-filter: blur(10px) saturate(130%);
 }

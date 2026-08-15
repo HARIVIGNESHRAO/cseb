@@ -6,7 +6,6 @@ import HomeStickyNav from '@/components/HomeStickyNav';
 import Navbar from '@/components/Navbar';
 import VisitCounter from '@/components/VisitCounter';
 import styles from './page.module.css';
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function Home() {
   return (
@@ -49,7 +48,6 @@ export default function Home() {
     <footer className={styles.footer} id="feedback">
       <span className={styles.footerText}>© {new Date().getFullYear()} KMIT CSE Department. All Rights Reserved.</span>
     </footer>
-      <SpeedInsights />
     </main>
   );
 }
