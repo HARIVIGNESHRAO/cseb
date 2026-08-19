@@ -71,8 +71,7 @@ export default function Sidebar() {
   /* ── Theme init ── */
   useEffect(() => {
     const saved = localStorage.getItem(THEME_STORAGE_KEY);
-    const sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    const initial = saved === 'light' || saved === 'dark' ? saved : sys;
+    const initial = saved === 'light' || saved === 'dark' ? saved : 'dark';
     setTheme(initial);
 
     const handleThemeChange = (event) => {
