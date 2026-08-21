@@ -77,6 +77,17 @@
   padding: 38px 24px;
 }
 
+:global(html[data-theme='light']) .main::before,
+:global(html[data-theme='light']) .main::after {
+  display: none;
+}
+
+:global(html[data-theme='light']) .bgGrid {
+  background-image: none;
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
 .breadcrumb {
   display: inline-flex;
   align-items: center;

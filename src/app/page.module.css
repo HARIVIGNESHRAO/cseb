@@ -1210,6 +1210,17 @@
     justify-self: stretch;
   }
 }
+
+:global(html[data-theme='light']) .main::before,
+:global(html[data-theme='light']) .main::after {
+  display: none;
+}
+
+:global(html[data-theme='light']) .bgGrid {
+  background-image: none;
+  mask-image: none;
+  -webkit-mask-image: none;
+}
 /* ==================== ENHANCED EXAM COUNTDOWN / QUICK LINKS ==================== */
 .examCountdown {
   width: min(760px, 100%);           /* Increased width */

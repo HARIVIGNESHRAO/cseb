@@ -333,3 +333,13 @@ body {
   background-color: var(--bg);
   overscroll-behavior-y: none;
 }
+
+html[data-theme='light'],
+html[data-theme='light'] body {
+  background: var(--bg);
+  background-image: none;
+}
+
+html[data-theme='light'] body::before {
+  display: none;
+}
