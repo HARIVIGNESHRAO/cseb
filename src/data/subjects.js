@@ -177,6 +177,7 @@ export const subjects1 = [
       { id: 'unit1', name: 'Unit 1', pdfFile: 'DM_UNIT_1' },
       { id: 'unit2', name: 'Unit 2', pdfFile: 'DM_UNIT_2' },
       { id: 'unit3', name: 'Unit 3', pdfFile: 'DM_UNIT_3' },
+      { id: 'unitp', name: 'Unit 3 problems (for your reference)', pdfFile: 'p' },
       { id: 'unitn', name: 'Important Topics', pdfFile: 'i' }
     ]
   },
