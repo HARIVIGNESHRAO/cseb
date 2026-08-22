@@ -649,6 +649,26 @@ export const timetableSubjects1 = [
 ];
 export const questionPaperSubjects1 = [
   {
+    id: 'mid-question-papers',
+    code: 'MID QP',
+    name: 'Mid Question Papers',
+    desc: '',
+    category: 'question-paper',
+    pdfDir: 'mid',
+    color: '#06B6D4',
+    bg: 'rgba(6,182,212,0.15)',
+    icon: '📝',
+    units: [
+      {
+        id: 'mid-11',
+        name: 'Mid-1',
+        topic: 'Mid-1 Question Paper',
+        topics: '',
+        pdfFile: '1',
+      },
+    ],
+  },
+  {
     id: 'sem-question-paper1',
     code: 'SEM QP',
     name: 'Semester Question Papers',

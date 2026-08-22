@@ -1,10 +1,13 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from '@/app/page.module.css';
 
 const EXAMS = [
   {
+    id: 'befa',
     subject: 'Business Economics and Financial Analysis',
     dateLabel: '22 Aug 2026',
     timeLabel: '9:30 AM - 11:30 AM',
@@ -12,6 +15,7 @@ const EXAMS = [
     end: '2026-08-22T11:30:00+05:30',
   },
   {
+    id: 'stm',
     subject: 'Software Testing Methodologies',
     dateLabel: '22 Aug 2026',
     timeLabel: '12:00 PM - 2:00 PM',
@@ -19,6 +23,7 @@ const EXAMS = [
     end: '2026-08-22T14:00:00+05:30',
   },
   {
+    id: 'dm',
     subject: 'Data Mining',
     dateLabel: '22 Aug 2026',
     timeLabel: '2:30 PM - 4:30 PM',
@@ -26,6 +31,7 @@ const EXAMS = [
     end: '2026-08-22T16:30:00+05:30',
   },
   {
+    id: 'irs',
     subject: 'Information Retrieval System',
     dateLabel: '23 Aug 2026',
     timeLabel: '9:30 AM - 11:30 AM',
@@ -33,6 +39,7 @@ const EXAMS = [
     end: '2026-08-23T11:30:00+05:30',
   },
   {
+    id: 'dvt',
     subject: 'Data Visualization Techniques',
     dateLabel: '23 Aug 2026',
     timeLabel: '12:00 PM - 2:00 PM',
@@ -40,6 +47,7 @@ const EXAMS = [
     end: '2026-08-23T14:00:00+05:30',
   },
   {
+    id: 'es',
     subject: 'Environmental Science',
     dateLabel: '23 Aug 2026',
     timeLabel: '2:30 PM - 4:30 PM',
@@ -89,6 +97,24 @@ function getExamState(now) {
     exam: null,
     remainingMs: 0,
   };
+}
+
+function getSelectedExamState(exam, now) {
+  if (!now) {
+    return { phase: 'countdown', exam, remainingMs: 0 };
+  }
+
+  const currentTime = now.getTime();
+
+  if (currentTime < exam.startTime) {
+    return { phase: 'countdown', exam, remainingMs: exam.startTime - currentTime };
+  }
+
+  if (currentTime < exam.endTime) {
+    return { phase: 'live', exam, remainingMs: exam.endTime - currentTime };
+  }
+
+  return { phase: 'ended', exam, remainingMs: 0 };
 }
 
 function formatRemaining(ms) {
@@ -163,6 +189,8 @@ function QuickDashboardLinks() {
 
 export default function ExamCountdown() {
   const [now, setNow] = useState(null);
+  const [selectedExamIndex, setSelectedExamIndex] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     setNow(new Date());
@@ -183,28 +211,76 @@ export default function ExamCountdown() {
     );
   }
 
-  const countdownParts = formatRemaining(examState.remainingMs);
-  const isLive = examState.phase === 'live';
+  const selectedExam = selectedExamIndex === null ? examState.exam : EXAMS[selectedExamIndex];
+  const displayedState = selectedExamIndex === null
+    ? examState
+    : getSelectedExamState(selectedExam, now);
+  const countdownParts = formatRemaining(displayedState.remainingMs);
+  const isLive = displayedState.phase === 'live';
+  const isEnded = displayedState.phase === 'ended';
+
+  function selectPreviousExam(event) {
+    event.stopPropagation();
+    setSelectedExamIndex((currentIndex) => {
+      const index = currentIndex === null ? EXAMS.findIndex((exam) => exam.id === selectedExam.id) : currentIndex;
+      return Math.max(0, index - 1);
+    });
+  }
+
+  function selectNextExam(event) {
+    event.stopPropagation();
+    setSelectedExamIndex((currentIndex) => {
+      const index = currentIndex === null ? EXAMS.findIndex((exam) => exam.id === selectedExam.id) : currentIndex;
+      return Math.min(EXAMS.length - 1, index + 1);
+    });
+  }
 
   return (
     <section
-      className={`${styles.examCountdown} ${isLive ? styles.examCountdownLive : ''}`}
+      className={`${styles.examCountdown} ${isLive ? styles.examCountdownLive : ''} ${styles.examCountdownClickable}`}
       aria-live="polite"
+      role="link"
+      tabIndex={0}
+      onClick={() => router.push(`/subject/${selectedExam.id}`)}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          router.push(`/subject/${selectedExam.id}`);
+        }
+      }}
     >
       <div className={styles.examCountdownMeta}>
+        <button
+          type="button"
+          className={styles.examCountdownArrow}
+          onClick={selectPreviousExam}
+          disabled={selectedExamIndex === 0}
+          aria-label="Show previous exam"
+        >
+          <ChevronLeft size={18} aria-hidden="true" />
+        </button>
         <div className={styles.examCountdownText}>
           <span className={styles.examCountdownLabel}>
-            {isLive ? 'Exam Live Now' : 'Exam Countdown'}
+            {isLive ? 'Exam Live Now' : isEnded ? 'Exam Completed' : 'Exam Countdown'}
           </span>
-          <span className={styles.examCountdownName}>{examState.exam.subject}</span>
+          <span className={styles.examCountdownName}>{selectedExam.subject}</span>
         </div>
         <span className={styles.examCountdownDate}>
-          {examState.exam.dateLabel} · {examState.exam.timeLabel}
+          {selectedExam.dateLabel} · {selectedExam.timeLabel}
         </span>
+        <button
+          type="button"
+          className={styles.examCountdownArrow}
+          onClick={selectNextExam}
+          disabled={selectedExamIndex === EXAMS.length - 1}
+          aria-label="Show next exam"
+        >
+          <ChevronRight size={18} aria-hidden="true" />
+        </button>
       </div>
 
       <div className={styles.examCountdownStatus}>
-        {isLive ? 'Ends in' : 'Starts in'}
+        {isLive ? 'Ends in' : isEnded ? 'Ended' : 'Starts in'}
       </div>
 
       <div className={styles.examCountdownTimerGrid}>
