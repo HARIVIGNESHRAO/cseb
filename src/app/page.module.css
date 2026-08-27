@@ -1699,6 +1699,19 @@
   }
 }
 
+/* Keep the second hero line optically left of CSE at every breakpoint. */
+.titleAccent,
+:global(html[data-theme='light']) .titleAccent {
+  transform: translateX(-0.22em);
+}
+
+@media (max-width: 767px) {
+  .titleAccent,
+  :global(html[data-theme='light']) .titleAccent {
+    transform: translateX(-0.14em);
+  }
+}
+
 @media (max-width: 420px) {
   .stickyNav {
     right: 76px;
@@ -3311,5 +3324,17 @@
   .titleAccent,
   :global(html[data-theme='light']) .titleAccent {
     font-size: clamp(23px, 7.4vw, 29px);
+  }
+}
+
+.titleAccent,
+:global(html[data-theme='light']) .titleAccent {
+  transform: translateX(-0.12em);
+}
+
+@media (max-width: 767px) {
+  .titleAccent,
+  :global(html[data-theme='light']) .titleAccent {
+    transform: translateX(-0.08em);
   }
 }
