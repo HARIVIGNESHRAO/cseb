@@ -2602,3 +2602,339 @@
     font-size: clamp(40px, 11vw, 56px);
   }
 }
+
+/* ========================================================================
+   Home visual wonder layer
+   ======================================================================== */
+@keyframes wonderEnter {
+  from { opacity: 0; transform: translateY(18px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.main {
+  isolation: isolate;
+}
+
+.main::before,
+.main::after {
+  content: '';
+  position: fixed;
+  z-index: 0;
+  width: 360px;
+  height: 360px;
+  border: 1px solid color-mix(in srgb, var(--accent) 13%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.main::before {
+  top: 110px;
+  left: -220px;
+  box-shadow: 0 0 0 70px color-mix(in srgb, var(--accent) 2%, transparent),
+    0 0 0 140px color-mix(in srgb, var(--accent) 1%, transparent);
+}
+
+.main::after {
+  right: -260px;
+  top: 460px;
+  width: 440px;
+  height: 440px;
+}
+
+.bgGrid {
+  opacity: .42;
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+.header {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-bottom: 76px;
+}
+
+.headerBadge,
+.title,
+.subtitle,
+.examCountdown,
+.visitCounter {
+  animation: wonderEnter 650ms var(--ease-out) both;
+}
+
+.title { animation-delay: 70ms; }
+.subtitle { animation-delay: 130ms; }
+.examCountdown { animation-delay: 190ms; }
+.visitCounter { animation-delay: 250ms; }
+
+.headerBadge {
+  border: 0;
+  padding: 10px 16px;
+  background: color-mix(in srgb, var(--accent) 11%, transparent);
+  box-shadow: none;
+  letter-spacing: .7px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.title {
+  font-size: clamp(52px, 8vw, 94px);
+  line-height: .9;
+  letter-spacing: -.055em;
+  text-shadow: none;
+}
+
+.titleAccent,
+:global(html[data-theme='light']) .titleAccent {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  color: var(--title-accent);
+  background: none;
+  filter: none;
+}
+
+.subtitle {
+  max-width: 680px;
+  margin-inline: auto;
+  font-size: clamp(15px, 1.7vw, 18px);
+  line-height: 1.7;
+}
+
+.subtitle::before,
+.subtitle::after {
+  display: none;
+}
+
+.examCountdown,
+:global(html[data-theme='dark']) .examCountdown,
+:global(html[data-theme='light']) .examCountdown {
+  border: 0;
+  background: var(--elevated-strong);
+  box-shadow: 0 30px 70px var(--shadow);
+  backdrop-filter: none;
+  overflow: visible;
+  transition: transform 300ms var(--ease-out), box-shadow 300ms ease;
+}
+
+.examCountdown:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 38px 84px var(--shadow);
+}
+
+.examCountdownMeta {
+  border-bottom-color: color-mix(in srgb, var(--text-muted) 14%, transparent);
+}
+
+.examCountdownArrow,
+.semesterTabActive,
+.feedbackButton {
+  border: 0;
+  background: var(--accent);
+}
+
+.examCountdownItem,
+.examCountdownItem:hover,
+.examCountdownItem:focus-visible,
+.iconWrapper {
+  border: 0;
+}
+
+.examCountdownItem {
+  background: var(--soft-bg);
+  box-shadow: none;
+  transform-origin: center bottom;
+  transition: transform 300ms var(--ease-out), background-color 220ms ease,
+    box-shadow 300ms ease;
+}
+
+.examCountdownItem::before {
+  inset: auto 18px 0;
+  height: 3px;
+  border-radius: 99px 99px 0 0;
+  background: var(--accent);
+  opacity: 0;
+  transform: scaleX(.25);
+  transition: opacity 180ms ease, transform 300ms var(--ease-out);
+}
+
+.examCountdownItem:hover {
+  background: color-mix(in srgb, var(--accent) 10%, var(--soft-bg));
+  transform: translateY(-8px) scale(1.025);
+  box-shadow: 0 18px 34px color-mix(in srgb, var(--accent) 13%, transparent);
+}
+
+.examCountdownItem:hover::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.examCountdownItem:hover .iconWrapper {
+  color: var(--accent);
+  transform: translateY(-3px) scale(1.1) rotate(-3deg);
+}
+
+.iconWrapper {
+  transition: color 180ms ease, transform 320ms var(--ease-out);
+}
+
+.visitCounter,
+:global(html[data-theme='light']) .visitCounter {
+  border: 0;
+  background: var(--soft-bg-strong);
+  box-shadow: none;
+}
+
+.searchSection {
+  max-width: 900px;
+  animation: wonderEnter 600ms 280ms var(--ease-out) both;
+}
+
+.searchSection::before,
+:global(html[data-theme='dark']) .searchSection::before,
+:global(html[data-theme='light']) .searchSection::before {
+  border: 0;
+  background: var(--elevated-strong);
+  box-shadow: 0 26px 64px var(--shadow);
+  backdrop-filter: none;
+}
+
+.searchBox {
+  transition: background-color 200ms ease, transform 260ms var(--ease-out);
+}
+
+.searchBox:focus-within {
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+.searchResults {
+  border: 0;
+  background: var(--elevated-strong);
+  box-shadow: 0 24px 60px var(--shadow);
+  transform-origin: top center;
+  animation: wonderEnter 240ms var(--ease-out) both;
+}
+
+.searchResult {
+  transition: transform 220ms var(--ease-out), background-color 180ms ease;
+}
+
+.searchResult:hover {
+  background: color-mix(in srgb, var(--result-color) 8%, transparent);
+  transform: translateX(6px);
+}
+
+.semesterTabs,
+:global(html[data-theme='dark']) .semesterTabs,
+:global(html[data-theme='light']) .semesterTabs {
+  border: 0;
+  background: var(--elevated-strong);
+  box-shadow: 0 16px 38px var(--shadow);
+  backdrop-filter: none;
+}
+
+.semesterTab {
+  transition: color 180ms ease, background-color 220ms ease,
+    transform 220ms var(--ease-out);
+}
+
+.semesterTab:hover:not(.semesterTabActive) {
+  color: var(--text);
+  background: var(--soft-bg-strong);
+  transform: translateY(-2px);
+}
+
+.grid {
+  gap: 22px;
+}
+
+.card,
+:global(html[data-theme='dark']) .card,
+:global(html[data-theme='light']) .card {
+  border: 0;
+  background: var(--card);
+  box-shadow: 0 16px 38px color-mix(in srgb, var(--shadow) 78%, transparent);
+  backdrop-filter: none;
+  transform-origin: center bottom;
+  transition: transform 300ms var(--ease-out), box-shadow 300ms ease,
+    background-color 220ms ease;
+}
+
+.card::before {
+  background: color-mix(in srgb, var(--card-color) 7%, transparent);
+}
+
+.card:hover {
+  border: 0;
+  background: var(--card-hover);
+  transform: translateY(-9px) scale(1.018);
+  box-shadow: 0 28px 60px var(--shadow);
+}
+
+.cardIcon,
+.cardArrow {
+  display: inline-block;
+  transition: transform 300ms var(--ease-out), color 180ms ease;
+}
+
+.card:hover .cardIcon {
+  transform: translateY(-3px) rotate(-4deg) scale(1.13);
+}
+
+.card:hover .cardArrow {
+  transform: translateX(8px);
+}
+
+.feedbackSection,
+:global(html[data-theme='dark']) .feedbackSection,
+:global(html[data-theme='light']) .feedbackSection {
+  border: 0;
+  background: var(--card);
+  box-shadow: 0 24px 58px var(--shadow);
+  backdrop-filter: none;
+}
+
+.feedbackInput {
+  border: 0;
+  background: var(--soft-bg-strong);
+  transition: background-color 180ms ease, box-shadow 180ms ease,
+    transform 220ms var(--ease-out);
+}
+
+.feedbackInput:focus {
+  background: color-mix(in srgb, var(--accent) 8%, var(--soft-bg));
+  transform: translateY(-1px);
+}
+
+.feedbackButton {
+  transition: transform 260ms var(--ease-out), box-shadow 260ms ease;
+}
+
+.feedbackButton:hover:not(:disabled) {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 30px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.feedbackButton:active:not(:disabled),
+.examCountdownItem:active,
+.card:active {
+  transform: translateY(-1px) scale(.98);
+  transition-duration: 80ms;
+}
+
+@media (max-width: 640px) {
+  .main::before,
+  .main::after { display: none; }
+
+  .header { padding-inline: 16px; }
+  .title {
+    font-size: clamp(28px, 10.5vw, 56px);
+    letter-spacing: -.045em;
+  }
+  .examCountdown { border-radius: 22px; }
+  .examCountdownItem:hover { transform: translateY(-4px) scale(1.01); }
+  .card:hover { transform: translateY(-5px) scale(1.008); }
+}

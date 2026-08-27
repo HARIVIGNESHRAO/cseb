@@ -27,7 +27,7 @@ export default function Home() {
         </div>
         <h1 className={styles.title}>
           CSE
-          <br /><span className={styles.titleAccent}>STUDY PORTAL</span>
+          <span className={styles.titleAccent}>STUDY PORTAL</span>
         </h1>
         <p className={styles.subtitle}>
           All subjects · All units · All PDFs — in one place

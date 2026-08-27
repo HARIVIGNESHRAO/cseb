@@ -638,3 +638,58 @@
     transform: none !important;
   }
 }
+
+/* Cohesive flat subject-page surfaces */
+.subjectHeader,
+.unitCard {
+  border: 0;
+  background: var(--card);
+  box-shadow: 0 18px 42px var(--shadow);
+}
+
+.subjectHeader {
+  transition: transform 300ms cubic-bezier(.22, 1, .36, 1), box-shadow 300ms ease;
+}
+
+.subjectHeader:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 60px var(--shadow);
+}
+
+.subjectHeader::before {
+  width: 100%;
+  background: var(--color);
+}
+
+.subjectHeader::after,
+.main::before,
+.main::after {
+  display: none;
+}
+
+.unitCard {
+  transition: transform 280ms cubic-bezier(.22, 1, .36, 1),
+    background-color 200ms ease, box-shadow 280ms ease;
+}
+
+.unitCard:hover {
+  border: 0;
+  background: var(--card-hover);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 24px 48px var(--shadow);
+}
+
+.unitCard::before {
+  background: color-mix(in srgb, var(--color) 7%, transparent);
+}
+
+.viewButton,
+.downloadButton {
+  border: 0;
+  transition: transform 240ms cubic-bezier(.22, 1, .36, 1), box-shadow 240ms ease;
+}
+
+.viewButton:hover,
+.downloadButton:hover {
+  transform: translateY(-3px) scale(1.02);
+}

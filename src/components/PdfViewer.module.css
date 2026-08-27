@@ -258,3 +258,36 @@
 .aiTool:hover {
   background: color-mix(in srgb, var(--glass-bg-strong) 76%, var(--accent));
 }
+
+/* Flat PDF workspace */
+.wrapper,
+.toolbar,
+.askAiButton,
+.aiPanel,
+.aiTool {
+  background: var(--elevated-strong);
+}
+
+.wrapper,
+.askAiButton,
+.aiPanel,
+.aiTool {
+  border-color: transparent;
+}
+
+.viewerArea {
+  background: var(--viewer-bg);
+}
+
+.openPdfButton,
+.askAiButton,
+.aiTool {
+  transition: transform 240ms cubic-bezier(.22, 1, .36, 1),
+    background-color 180ms ease, box-shadow 240ms ease;
+}
+
+.openPdfButton:hover,
+.askAiButton:hover,
+.aiTool:hover {
+  transform: translateY(-3px);
+}

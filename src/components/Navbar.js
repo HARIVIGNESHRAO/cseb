@@ -84,6 +84,7 @@ export default function Sidebar() {
     const handleStorage = (event) => {
       if (event.key === THEME_STORAGE_KEY && (event.newValue === 'light' || event.newValue === 'dark')) {
         setTheme(event.newValue);
+        document.documentElement.dataset.theme = event.newValue;
       }
     };
 
@@ -95,11 +96,6 @@ export default function Sidebar() {
       window.removeEventListener('storage', handleStorage);
     };
   }, []);
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
-  }, [theme]);
 
   /* ── Push main content smoothly ── */
   useEffect(() => {
@@ -175,6 +171,8 @@ export default function Sidebar() {
   const toggleTheme = () => {
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(nextTheme);
+    document.documentElement.dataset.theme = nextTheme;
+    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
     window.dispatchEvent(new CustomEvent(THEME_EVENT, { detail: { theme: nextTheme } }));
   };
 

@@ -343,3 +343,124 @@ html[data-theme='light'] body {
 html[data-theme='light'] body::before {
   display: none;
 }
+
+/* ========================================================================
+   2026 visual system — flat, vivid, and gradient-free
+   ======================================================================== */
+:root {
+  --bg: #080d18;
+  --bg2: #0d1422;
+  --surface: #111a2b;
+  --card: #121d30;
+  --card-hover: #17243a;
+  --border: rgba(140, 173, 224, 0.14);
+  --border-hover: rgba(122, 166, 255, 0.34);
+  --text: #f4f8ff;
+  --text-muted: #8396b5;
+  --text-dim: #b6c5dc;
+  --accent: #72a7ff;
+  --title-accent: #72a7ff;
+  --elevated: rgba(18, 29, 48, 0.92);
+  --elevated-strong: #121d30;
+  --soft-bg: rgba(133, 170, 229, 0.06);
+  --soft-bg-strong: rgba(133, 170, 229, 0.11);
+  --shadow: rgba(0, 0, 0, 0.38);
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+}
+
+html[data-theme='light'] {
+  --bg: #f5f8fc;
+  --bg2: #edf2f8;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --card-hover: #f7faff;
+  --border: rgba(43, 74, 119, 0.12);
+  --border-hover: rgba(45, 103, 210, 0.26);
+  --text: #101a2b;
+  --text-muted: #65758f;
+  --text-dim: #354763;
+  --accent: #3978e8;
+  --title-accent: #2563d4;
+  --elevated: rgba(255, 255, 255, 0.94);
+  --elevated-strong: #ffffff;
+  --soft-bg: rgba(35, 72, 126, 0.05);
+  --soft-bg-strong: rgba(35, 72, 126, 0.09);
+  --shadow: rgba(37, 58, 91, 0.14);
+}
+
+html,
+body {
+  background: var(--bg);
+  background-image: none;
+}
+
+body::before {
+  display: none;
+}
+
+button,
+input,
+textarea,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 38%, transparent);
+  outline-offset: 3px;
+}
+
+.themeToggle {
+  border: 0;
+  background: var(--elevated-strong);
+  box-shadow: 0 14px 34px var(--shadow);
+  animation: none;
+  transition: transform 260ms var(--ease-out), box-shadow 260ms ease;
+}
+
+.themeToggle::before {
+  display: none;
+}
+
+.themeToggle:hover {
+  border: 0;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 20px 42px var(--shadow);
+}
+
+.themeToggle__thumb,
+.themeToggle[data-theme-state='dark'] .themeToggle__thumb {
+  background: var(--accent);
+}
+
+.themeToggle[data-theme-state='light'] {
+  background: #fff7e8;
+  color: #7c4a03;
+  box-shadow: 0 14px 34px rgba(146, 91, 12, 0.16);
+}
+
+.themeToggle[data-theme-state='light'] .themeToggle__thumb {
+  background: #f59e0b;
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.34);
+}
+
+.themeToggle[data-theme-state='light']:hover {
+  box-shadow: 0 20px 42px rgba(146, 91, 12, 0.22);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 34%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
