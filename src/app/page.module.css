@@ -3338,3 +3338,16 @@
     transform: translateX(-0.08em);
   }
 }
+
+/* Stack dashboard shortcuts on tablet and mobile; wider screens keep all three in one row. */
+@media (max-width: 1024px) {
+  .examCountdown .quickLinksGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .examCountdownItem:last-child:nth-child(odd) {
+    grid-column: auto;
+    width: 100%;
+    justify-self: stretch;
+  }
+}
