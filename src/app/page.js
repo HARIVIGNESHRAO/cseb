@@ -26,7 +26,7 @@ export default function Home() {
           B.Tech · Computer Science &amp; Engineering
         </div>
         <h1 className={styles.title}>
-          CSE
+          <span className={styles.titleLine}>CSE</span>
           <span className={styles.titleAccent}>STUDY PORTAL</span>
         </h1>
         <p className={styles.subtitle}>
