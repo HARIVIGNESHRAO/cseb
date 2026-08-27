@@ -62,7 +62,9 @@ export default function SubjectPage({ params }) {
               {subject.units.length} {isPdfSubject ? 'PDFs' : 'units'} available
             </span>
           </div>
-          <DownloadAllButton subject={subject} />
+          {subject.category === 'theory' && (
+            <DownloadAllButton subject={subject} />
+          )}
         </div>
 
         {/* Units List */}
