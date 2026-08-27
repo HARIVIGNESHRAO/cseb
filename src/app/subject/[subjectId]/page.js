@@ -2,7 +2,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { allSubjects } from '@/data/subjects';
 import PdfPrefetchLink from '@/components/PdfPrefetchLink';
-import { getUnitPdfUrl } from '@/lib/pdfAssets';
+import DownloadAllButton from '@/components/DownloadAllButton';
+import { getAssetDownloadUrl, getUnitDownloadFileName, getUnitPdfUrl } from '@/lib/pdfAssets';
 import styles from './subject.module.css';
 
 export async function generateStaticParams() {
@@ -53,22 +54,27 @@ export default function SubjectPage({ params }) {
 
         {/* Units Label */}
         <div className={styles.unitsLabel}>
-          <span className={styles.labelText}>
-            {isPdfSubject ? 'SELECT A PDF' : 'SELECT A UNIT'}
-          </span>
-          <span className={styles.labelCount}>
-            {subject.units.length} {isPdfSubject ? 'PDFs' : 'units'} available
-          </span>
+          <div className={styles.unitsLabelText}>
+            <span className={styles.labelText}>
+              {isPdfSubject ? 'SELECT A PDF' : 'SELECT A UNIT'}
+            </span>
+            <span className={styles.labelCount}>
+              {subject.units.length} {isPdfSubject ? 'PDFs' : 'units'} available
+            </span>
+          </div>
+          <DownloadAllButton subject={subject} />
         </div>
 
         {/* Units List */}
         <div className={styles.unitsList}>
           {subject.units.map((unit, i) => {
             const isVideo = unit.type === 'video' || unit.type === 'youtube' || !!unit.videoUrl;
-            const unitHref = `/subject/${subject.id}/${unit.id}`;
-            const pdfFile = unit.pdfFile ?? unit.id;
+            const isExternalLinks = unit.type === 'external-links';
+            const unitHref = isExternalLinks
+              ? unit.openUrl
+              : `/subject/${subject.id}/${unit.id}`;
             const pdfUrl = getUnitPdfUrl(subject, unit);
-            const downloadUrl = unit.downloadUrl ?? unit.openUrl ?? pdfUrl;
+            const downloadUrl = getAssetDownloadUrl(unit.downloadUrl ?? unit.openUrl ?? pdfUrl);
             const hasResources = Array.isArray(unit.resources) && unit.resources.length > 0;
 
             return (
@@ -98,6 +104,15 @@ export default function SubjectPage({ params }) {
                         <PdfPrefetchLink href={unitHref} className={styles.viewButton}>
                           Watch Video ▶
                         </PdfPrefetchLink>
+                    ) : isExternalLinks ? (
+                        <a
+                          href={unit.openUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.viewButton}
+                        >
+                          Open Links ↗
+                        </a>
                     ) : hasResources ? (
                         <PdfPrefetchLink href={unitHref} className={styles.viewButton}>
                           View Files
@@ -114,10 +129,10 @@ export default function SubjectPage({ params }) {
                     )}
 
                     {/* Hide Download button for video */}
-                    {!isVideo && !hasResources && (
+                    {!isVideo && !isExternalLinks && !hasResources && (
                         <a
                             href={downloadUrl}
-                            download={unit.downloadUrl ? undefined : `${subject.code}_${pdfFile}.pdf`}
+                            download={downloadUrl?.startsWith('/') ? getUnitDownloadFileName(subject, unit) : undefined}
                             className={styles.downloadButton}
                         >
                           Download

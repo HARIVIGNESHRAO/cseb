@@ -105,17 +105,17 @@ export default function Sidebar() {
     main.style.transition = 'margin-left 0.3s ease';
 
     const handleResize = () => {
-      const isMobile = window.innerWidth < 768;
+      const isMobileOrTablet = window.innerWidth <= 1024;
       const desktopOffset = desktopExpanded ? DESKTOP_SIDEBAR_WIDTH : DESKTOP_SIDEBAR_COLLAPSED_WIDTH;
       document.documentElement.style.setProperty(
         '--sidebar-offset',
-        isMobile ? '0px' : `${desktopOffset}px`
+        isMobileOrTablet ? '0px' : `${desktopOffset}px`
       );
       document.documentElement.style.setProperty(
         '--sidebar-offset-half',
-        isMobile ? '0px' : `${desktopOffset / 2}px`
+        isMobileOrTablet ? '0px' : `${desktopOffset / 2}px`
       );
-      main.style.marginLeft = isMobile ? '0' : `${desktopOffset}px`;
+      main.style.marginLeft = isMobileOrTablet ? '0' : `${desktopOffset}px`;
     };
 
     handleResize();

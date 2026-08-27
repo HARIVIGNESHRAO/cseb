@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { allSubjects } from '@/data/subjects';
 import PdfViewer from '@/components/PdfViewer';
-import { getUnitPdfUrl, withPdfAssetVersion } from '@/lib/pdfAssets';
+import { getAssetDownloadUrl, getUnitDownloadFileName, getUnitPdfUrl, withPdfAssetVersion } from '@/lib/pdfAssets';
 import styles from './unit.module.css';
 export async function generateStaticParams() {
   return allSubjects.flatMap((s) =>
@@ -24,10 +24,9 @@ export default function UnitPage({ params }) {
   if (!unit) notFound();
   const isVideo = unit.type === 'video' || unit.type === 'youtube' || !!unit.videoUrl;
   const hasResources = Array.isArray(unit.resources) && unit.resources.length > 0;
-  const pdfFile = unit.pdfFile ?? unit.id;
   const pdfUrl = getUnitPdfUrl(subject, unit);
   const openUrl = unit.openUrl ?? pdfUrl;
-  const downloadUrl = unit.downloadUrl ?? openUrl;
+  const downloadUrl = getAssetDownloadUrl(unit.downloadUrl ?? openUrl);
   const unitIndex = subject.units.findIndex((u) => u.id === unit.id);
   const prevUnit =
     unit.id === 'codes'
@@ -85,7 +84,7 @@ export default function UnitPage({ params }) {
               <div className={styles.unitHeaderActions}>
                 <a
                     href={downloadUrl}
-                    download={unit.downloadUrl ? undefined : `${subject.code}_${pdfFile}.pdf`}
+                    download={downloadUrl?.startsWith('/') ? getUnitDownloadFileName(subject, unit) : undefined}
                     className={styles.btnDownload}
                     style={{ '--color': subject.color, '--bg': subject.bg }}
                 >
@@ -107,6 +106,7 @@ export default function UnitPage({ params }) {
             <div className={styles.resourceList}>
               {unit.resources.map((resource) => {
                 const resourceUrl = withPdfAssetVersion(resource.fileUrl);
+                const resourceDownloadUrl = getAssetDownloadUrl(resourceUrl);
 
                 return (
                   <div key={resource.id} className={styles.resourceCard}>
@@ -118,7 +118,7 @@ export default function UnitPage({ params }) {
 
                     <div className={styles.resourceActions}>
                       <a
-                        href={resourceUrl}
+                        href={resourceDownloadUrl}
                         download={resource.fileName}
                         className={styles.btnDownload}
                         style={{ '--color': subject.color, '--bg': subject.bg }}

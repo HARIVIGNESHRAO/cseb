@@ -281,6 +281,59 @@
   animation: fadeUp 0.38s ease 0.18s both;
 }
 
+.unitsLabelText {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex: 1;
+}
+
+.downloadAllButton {
+  appearance: none;
+  flex-shrink: 0;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--color);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  box-shadow: 0 12px 24px color-mix(in srgb, var(--color) 22%, transparent);
+  transition: transform 240ms cubic-bezier(.22, 1, .36, 1), box-shadow 240ms ease;
+}
+
+.downloadAllButton:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 18px 30px color-mix(in srgb, var(--color) 30%, transparent);
+}
+
+.downloadAllButton:active:not(:disabled) {
+  transform: scale(.97);
+}
+
+.downloadAllButton:disabled {
+  cursor: wait;
+  opacity: .72;
+}
+
+@media (max-width: 640px) {
+  .unitsLabel {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .downloadAllButton {
+    width: 100%;
+  }
+}
+
 .labelText {
   color: var(--text-muted);
   font-family: var(--font-mono);
@@ -443,6 +496,96 @@
 .viewButton:hover,
 .downloadButton:hover {
   transform: translateY(-2px);
+}
+
+/* Final subject-page responsive contract */
+@media (max-width: 767px) {
+  .main {
+    padding: 76px 0 44px;
+  }
+
+  .container {
+    width: 100%;
+    padding-inline: 16px;
+  }
+
+  .breadcrumb {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .subjectHeader {
+    align-items: flex-start;
+    padding: 24px 20px;
+    gap: 16px;
+  }
+
+  .subjectTitle {
+    font-size: clamp(25px, 7.5vw, 34px);
+  }
+
+  .subjectIcon {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+  }
+
+  .unitsLabel,
+  .unitsLabelText {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .downloadAllButton {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .unitCard {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .unitMain {
+    width: 100%;
+  }
+
+  .unitActions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .viewButton,
+  .downloadButton {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+  }
+
+  .viewButton:only-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 380px) {
+  .container { padding-inline: 12px; }
+
+  .subjectHeader {
+    padding: 20px 16px;
+  }
+
+  .subjectIcon {
+    display: none;
+  }
+
+  .unitNumber {
+    width: 42px;
+    height: 42px;
+  }
 }
 
 .viewButton:hover {
@@ -686,10 +829,114 @@
 .viewButton,
 .downloadButton {
   border: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
   transition: transform 240ms cubic-bezier(.22, 1, .36, 1), box-shadow 240ms ease;
+}
+
+.unitActions {
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .viewButton:hover,
 .downloadButton:hover {
   transform: translateY(-3px) scale(1.02);
+}
+
+@media (max-width: 767px) {
+  .main { padding: 76px 0 44px; }
+  .container { width: 100%; padding-inline: 16px; }
+  .breadcrumb { overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+  .subjectHeader { align-items: flex-start; padding: 24px 20px; gap: 16px; }
+  .subjectTitle { font-size: clamp(25px, 7.5vw, 34px); }
+  .subjectIcon { width: 58px; height: 58px; border-radius: 16px; }
+  .unitsLabel,
+  .unitsLabelText { align-items: stretch; flex-direction: column; }
+  .downloadAllButton { width: 100%; min-height: 46px; }
+  .unitCard { align-items: stretch; flex-direction: column; gap: 14px; padding: 18px; }
+  .unitMain { width: 100%; }
+  .unitActions { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .viewButton,
+  .downloadButton { width: 100%; min-width: 0; min-height: 44px; }
+  .viewButton:only-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 1024px) {
+  .unitsLabel,
+  .unitsLabelText {
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .downloadAllButton {
+    width: 100%;
+    max-width: 100%;
+    min-height: 46px;
+    padding: 11px 14px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: center;
+    line-height: 1.35;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .main {
+    margin-left: 0 !important;
+    padding-top: 82px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 920px;
+    padding-inline: 28px;
+  }
+
+  .subjectHeader {
+    padding: 30px;
+  }
+
+  .unitCard {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .container {
+    width: 100%;
+    max-width: calc(100vw - var(--sidebar-offset, 72px) - 24px);
+    padding-inline: 24px;
+  }
+
+  .subjectHeader {
+    padding: 32px;
+  }
+
+  .unitsLabel {
+    gap: 16px;
+  }
+
+  .downloadAllButton {
+    max-width: 260px;
+  }
+
+  .unitCard {
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .unitActions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 380px) {
+  .container { padding-inline: 12px; }
+  .subjectHeader { padding: 20px 16px; }
+  .subjectIcon { display: none; }
+  .unitNumber { width: 42px; height: 42px; }
 }

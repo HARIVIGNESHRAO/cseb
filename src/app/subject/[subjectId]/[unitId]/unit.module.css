@@ -462,6 +462,117 @@
   background: var(--card-hover);
 }
 
+/* Final unit-page responsive contract */
+@media (max-width: 767px) {
+  .main {
+    padding: 76px 0 44px;
+  }
+
+  .container {
+    width: 100%;
+    padding-inline: 16px;
+  }
+
+  .breadcrumb {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .unitHeader {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .unitTitle {
+    font-size: clamp(24px, 7vw, 34px);
+  }
+
+  .unitHeaderActions {
+    width: 100%;
+  }
+
+  .btnDownload,
+  .btnOpen {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .resourceSection {
+    padding: 16px;
+  }
+
+  .resourceCard {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 17px;
+  }
+
+  .resourceActions {
+    width: 100%;
+  }
+
+  .unitNav {
+    grid-template-columns: 1fr;
+  }
+
+  .navBtn,
+  .navBtnRight {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+@media (max-width: 380px) {
+  .container { padding-inline: 12px; }
+  .unitHeader { padding: 18px 15px; }
+  .unitHeaderBadges { flex-wrap: wrap; }
+  .seleniumAlert { padding: 14px; }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .main {
+    margin-left: 0 !important;
+    padding-top: 82px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 920px;
+    padding-inline: 28px;
+  }
+
+  .unitHeader {
+    padding: 28px;
+  }
+
+  .resourceCard {
+    gap: 18px;
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .container {
+    width: 100%;
+    max-width: calc(100vw - var(--sidebar-offset, 72px) - 24px);
+    padding-inline: 24px;
+  }
+
+  .unitHeader {
+    padding: 28px;
+  }
+
+  .resourceCard {
+    gap: 18px;
+    padding: 20px;
+  }
+
+  .resourceActions {
+    flex-wrap: wrap;
+  }
+}
+
 .navBtnRight {
   text-align: right;
 }
@@ -615,4 +726,30 @@
 .btnOpen:hover,
 .navBtn:hover {
   transform: translateY(-3px) scale(1.02);
+}
+
+@media (max-width: 767px) {
+  .main { padding: 76px 0 44px; }
+  .container { width: 100%; padding-inline: 16px; }
+  .breadcrumb { overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+  .unitHeader { padding: 22px 18px; border-radius: 18px; }
+  .unitTitle { font-size: clamp(24px, 7vw, 34px); }
+  .unitHeaderActions,
+  .btnDownload,
+  .btnOpen { width: 100%; }
+  .btnDownload,
+  .btnOpen { min-height: 44px; }
+  .resourceSection { padding: 16px; }
+  .resourceCard { align-items: stretch; flex-direction: column; padding: 17px; }
+  .resourceActions { width: 100%; }
+  .unitNav { grid-template-columns: 1fr; }
+  .navBtn,
+  .navBtnRight { width: 100%; text-align: left; }
+}
+
+@media (max-width: 380px) {
+  .container { padding-inline: 12px; }
+  .unitHeader { padding: 18px 15px; }
+  .unitHeaderBadges { flex-wrap: wrap; }
+  .seleniumAlert { padding: 14px; }
 }

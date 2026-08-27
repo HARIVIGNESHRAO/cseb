@@ -142,7 +142,7 @@ export const subjects1 = [
       { id: 'unit2', name: 'Unit 2', pdfFile: 'BEFA_UNIT_2' },
       { id: 'unit3(a)', name: 'Unit 3 (a)', pdfFile: 'BEFA_UNIT_3(a)' },
       { id: 'unit3(b)', name: 'Unit 3 (b)', pdfFile: 'BEFA_UNIT_3(b)' },
-      { id: 'unity', name: 'Youtube Links', pdfFile: 'https://docs.google.com/spreadsheets/d/1j-CPk1Cewu4zVhnw8Ce8eFcPZq4vQ-xVL7wcq4wy6Ag/edit?gid=1921851953#gid=1921851953' }
+      { id: 'unity', name: 'Youtube Links', type: 'external-links', openUrl: 'https://docs.google.com/spreadsheets/d/1j-CPk1Cewu4zVhnw8Ce8eFcPZq4vQ-xVL7wcq4wy6Ag/edit?gid=1921851953#gid=1921851953' }
     ]
   },
 
@@ -178,7 +178,7 @@ export const subjects1 = [
       { id: 'unit1', name: 'Unit 1', pdfFile: 'DM_UNIT_1' },
       { id: 'unit2', name: 'Unit 2', pdfFile: 'DM_UNIT_2' },
       { id: 'unit3', name: 'Unit 3', pdfFile: 'DM_UNIT_3' },
-      { id: 'unity', name: 'Youtube Links', pdfFile: 'https://docs.google.com/spreadsheets/d/1j-CPk1Cewu4zVhnw8Ce8eFcPZq4vQ-xVL7wcq4wy6Ag/edit?gid=0#gid=0' },
+      { id: 'unity', name: 'Youtube Links', type: 'external-links', openUrl: 'https://docs.google.com/spreadsheets/d/1j-CPk1Cewu4zVhnw8Ce8eFcPZq4vQ-xVL7wcq4wy6Ag/edit?gid=0#gid=0' },
       { id: 'unitn', name: 'Important Topics', pdfFile: 'i' }
     ]
   },

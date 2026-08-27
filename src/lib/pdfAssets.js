@@ -27,6 +27,37 @@ export function withPdfAssetVersion(assetUrl) {
   return `${assetUrl}${separator}v=${version}`;
 }
 
+export function getAssetDownloadUrl(assetUrl) {
+  if (typeof assetUrl !== 'string') return assetUrl;
+
+  // The HTML download attribute does not force downloads for cross-origin
+  // URLs. Cloudinary's fl_attachment delivery flag adds the required
+  // Content-Disposition response header while preserving the original asset.
+  if (
+    assetUrl.startsWith('https://res.cloudinary.com/') &&
+    assetUrl.includes('/upload/') &&
+    !assetUrl.includes('/upload/fl_attachment')
+  ) {
+    return assetUrl.replace('/upload/', '/upload/fl_attachment/');
+  }
+
+  return assetUrl;
+}
+
+export function getUnitDownloadFileName(subject, unit) {
+  const rawName = String(unit.pdfFile ?? unit.id ?? 'study-material')
+    .replace(/\.pdf$/i, '')
+    .trim();
+  const subjectCode = String(subject.code ?? subject.id ?? 'CSE').trim();
+  const comparableName = rawName.replace(/[^a-z0-9]+/gi, '').toLowerCase();
+  const comparableCode = subjectCode.replace(/[^a-z0-9]+/gi, '').toLowerCase();
+  const fileBase = comparableName.startsWith(comparableCode)
+    ? rawName
+    : `${subjectCode}_${rawName}`;
+
+  return `${fileBase.replace(/[\\/:*?"<>|]+/g, '_')}.pdf`;
+}
+
 export function getUnitPdfUrl(subject, unit) {
   if (unit.pdfUrl) return unit.pdfUrl;
 

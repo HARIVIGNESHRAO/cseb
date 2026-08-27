@@ -417,7 +417,7 @@
   transform: translateX(0);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .sidebar {
     display: flex;
   }
@@ -429,7 +429,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
   .sidebar {
     display: none !important;
   }
@@ -704,6 +704,6 @@
   transition: transform 360ms cubic-bezier(.22, 1, .36, 1);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
   .drawer { border-radius: 0 24px 24px 0; }
 }

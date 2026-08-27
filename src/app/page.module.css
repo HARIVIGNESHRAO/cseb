@@ -1592,6 +1592,113 @@
   }
 }
 
+/* Tablet layout: full-width content with drawer navigation */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .main {
+    margin-left: 0 !important;
+    padding: 76px 0 56px;
+  }
+
+  .header {
+    width: 100%;
+    max-width: 900px;
+    padding: 30px 32px 64px !important;
+  }
+
+  .title {
+    max-width: calc(100vw - 64px);
+    font-size: clamp(46px, 7vw, 68px);
+  }
+
+  .titleAccent,
+  :global(html[data-theme='light']) .titleAccent {
+    max-width: calc(100vw - 64px);
+    font-size: clamp(42px, 6.5vw, 64px);
+    transform: none;
+  }
+
+  .examCountdown {
+    width: min(760px, 100%);
+  }
+
+  .examCountdown .quickLinksGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .searchSection,
+  .section {
+    width: 100%;
+    max-width: 900px;
+    padding-inline: 32px;
+  }
+
+  .searchSection::before {
+    inset-inline: 32px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .feedbackSection {
+    margin-inline: 32px;
+  }
+}
+
+/* Compact desktop / 1280px screens */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .main {
+    padding-inline: 12px;
+  }
+
+  .header {
+    width: 100%;
+    max-width: calc(100vw - var(--sidebar-offset, 72px) - 32px);
+    padding: 38px 24px 68px !important;
+  }
+
+  .title {
+    max-width: calc(100vw - var(--sidebar-offset, 72px) - 72px);
+    font-size: clamp(52px, 6.2vw, 76px);
+  }
+
+  .titleAccent,
+  :global(html[data-theme='light']) .titleAccent {
+    max-width: calc(100vw - var(--sidebar-offset, 72px) - 72px);
+    font-size: clamp(48px, 5.8vw, 72px);
+    transform: none;
+  }
+
+  .examCountdown {
+    width: min(780px, 100%);
+  }
+
+  .searchSection,
+  .section {
+    width: 100%;
+    max-width: 1040px;
+    padding-inline: 24px;
+  }
+
+  .searchSection::before {
+    inset-inline: 24px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .card {
+    min-width: 0;
+    padding: 26px;
+  }
+
+  .feedbackSection {
+    margin-inline: 24px;
+  }
+}
+
 @media (max-width: 420px) {
   .stickyNav {
     right: 76px;
@@ -2951,4 +3058,258 @@
   .examCountdown { border-radius: 22px; }
   .examCountdownItem:hover { transform: translateY(-4px) scale(1.01); }
   .card:hover { transform: translateY(-5px) scale(1.008); }
+}
+
+/* Final responsive contract ------------------------------------------------ */
+@media (max-width: 1024px) {
+  .header {
+    max-width: 860px;
+    padding-inline: 28px;
+  }
+
+  .title {
+    max-width: none;
+    font-size: clamp(48px, 8.5vw, 78px);
+  }
+
+  .section {
+    padding-inline: 28px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .main {
+    padding-top: 68px;
+    padding-inline: 0;
+  }
+
+  .header {
+    padding: 24px 18px 52px !important;
+  }
+
+  .headerBadge {
+    max-width: calc(100vw - 36px);
+    justify-content: center;
+    font-size: 10px;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .title {
+    max-width: none;
+    width: 100%;
+    font-size: clamp(28px, 8.5vw, 42px);
+    line-height: .94;
+    letter-spacing: -.045em;
+  }
+
+  .titleAccent {
+    max-width: 100%;
+    transform: none;
+  }
+
+  .subtitle {
+    max-width: 34ch;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .examCountdown {
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+  }
+
+  .examCountdownMeta {
+    gap: 8px;
+  }
+
+  .examCountdownName {
+    font-size: 15px;
+  }
+
+  .examCountdownDate {
+    font-size: 10px;
+    padding-inline: 8px;
+  }
+
+  .examCountdownTimerGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .examCountdown .quickLinksGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .examCountdownItem {
+    min-height: 104px;
+    padding: 12px 8px;
+    border-radius: 15px;
+  }
+
+  .examCountdownItem:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: calc(50% - 4.5px);
+    justify-self: center;
+  }
+
+  .iconWrapper {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+
+  .icon {
+    font-size: 22px;
+  }
+
+  .examCountdownValue {
+    font-size: 13px;
+  }
+
+  .examCountdownUnit {
+    font-size: 9px;
+  }
+
+  .searchSection {
+    width: 100%;
+    margin: -16px auto 38px;
+    padding-inline: 16px;
+  }
+
+  .searchSection::before {
+    inset-inline: 16px;
+  }
+
+  .searchBox {
+    min-height: 60px;
+    padding: 10px 12px;
+  }
+
+  .searchResult {
+    gap: 10px;
+    padding: 13px;
+  }
+
+  .section {
+    padding-inline: 16px;
+  }
+
+  .sectionHeader {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .semesterTabs {
+    width: 100%;
+    margin-bottom: 28px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+  .feedbackForm {
+    grid-template-columns: 1fr;
+  }
+
+  .feedbackSection {
+    margin-inline: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .header {
+    padding-inline: 12px !important;
+  }
+
+  .title {
+    font-size: clamp(26px, 8.5vw, 32px);
+  }
+
+  .headerBadge {
+    max-width: calc(100vw - 24px);
+    padding: 8px 10px;
+    letter-spacing: .35px;
+  }
+
+  .examCountdown {
+    padding: 12px;
+  }
+
+  .examCountdown .quickLinksGrid {
+    gap: 7px;
+  }
+
+  .examCountdownItem {
+    min-height: 98px;
+    padding-inline: 5px;
+  }
+
+  .searchSection,
+  .section {
+    padding-inline: 12px;
+  }
+
+  .searchSection::before {
+    inset-inline: 12px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+}
+
+/* Viewport-locked hero title: kept last so legacy title rules cannot win. */
+.title {
+  max-width: calc(100vw - 40px);
+  margin-inline: auto;
+}
+
+.titleAccent,
+:global(html[data-theme='light']) .titleAccent {
+  max-width: calc(100vw - 40px);
+  margin-inline: auto;
+  font-size: clamp(26px, 7.8vw, 94px);
+  line-height: .96;
+  letter-spacing: -.055em;
+  white-space: nowrap;
+  transform: none;
+}
+
+@media (max-width: 767px) {
+  .title {
+    max-width: calc(100vw - 32px);
+    font-size: clamp(30px, 9vw, 48px);
+  }
+
+  .titleAccent,
+  :global(html[data-theme='light']) .titleAccent {
+    max-width: calc(100vw - 32px);
+    font-size: clamp(25px, 7.6vw, 36px);
+    letter-spacing: -.06em;
+  }
+}
+
+@media (max-width: 380px) {
+  .title,
+  .titleAccent,
+  :global(html[data-theme='light']) .titleAccent {
+    max-width: calc(100vw - 24px);
+  }
+
+  .titleAccent,
+  :global(html[data-theme='light']) .titleAccent {
+    font-size: clamp(23px, 7.4vw, 29px);
+  }
 }
