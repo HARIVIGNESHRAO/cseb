@@ -9,14 +9,31 @@ import {
   questionPaperSubjects,
   subjects,
   syllabusSubjects,
+  subjectsThreeOne,
   subjects1,
   labSubjects, timetableSubjects1, record, questionPaperSubjects1
 } from '@/data/subjects';
 import styles from '@/app/page.module.css';
 
 const semesterTabs = [
+  { id: '3-1', label: '3-1' },
   { id: '3-2', label: '3-2' },
   { id: '4-1', label: '4-1' },
+];
+
+const semesterThreeOneSections = [
+  {
+    id: 'academic-calendar',
+    label: 'ACADEMIC CALENDAR',
+    count: `${academicCalendarSubjects.length} files`,
+    items: academicCalendarSubjects,
+  },
+  {
+    id: 'subjects',
+    label: 'SUBJECTS',
+    count: `${subjectsThreeOne.length} courses`,
+    items: subjectsThreeOne,
+  },
 ];
 
 const semesterThreeTwoSections = [
@@ -99,7 +116,7 @@ export default function HomeSemesterTabs() {
     const syncSemesterFromHash = () => {
       const hash = window.location.hash.replace('#semester-', '');
 
-      if (hash === '3-2' || hash === '4-1') {
+      if (hash === '3-1' || hash === '3-2' || hash === '4-1') {
         setActiveSemester(hash);
       }
     };
@@ -146,6 +163,7 @@ export default function HomeSemesterTabs() {
 
   return (
     <section className={styles.section}>
+      <span id="semester-3-1" className={styles.semesterAnchor} />
       <span id="semester-3-2" className={styles.semesterAnchor} />
       <span id="semester-4-1" className={styles.semesterAnchor} />
       <div className={styles.semesterTabs} aria-label="Semester options">
@@ -164,7 +182,11 @@ export default function HomeSemesterTabs() {
       </div>
 
       <div className={styles.semesterResources}>
-        {(activeSemester === '3-2' ? semesterThreeTwoSections : semesterFourOneSections).map(
+        {(activeSemester === '3-1'
+          ? semesterThreeOneSections
+          : activeSemester === '3-2'
+            ? semesterThreeTwoSections
+            : semesterFourOneSections).map(
           (section) => (
             <section className={styles.resourceGroup} id={section.id} key={section.id}>
               <div className={styles.sectionHeader}>

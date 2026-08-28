@@ -17,6 +17,7 @@ const NAV_LINKS = [
     label: 'Semesters',  
     icon: '◫',
     children: [
+      { label: '3-1',    href: '#semester-3-1' },
       { label: '3-2',    href: '#semester-3-2' },
       { label: '4-1',    href: '#semester-4-1' },
     ]
@@ -27,7 +28,7 @@ const NAV_LINKS = [
 function getActiveHref() {
   const hash = window.location.hash;
 
-  if (hash === '#search' || hash === '#feedback' || hash === '#semester-3-2' || hash === '#semester-4-1') {
+  if (hash === '#search' || hash === '#feedback' || hash === '#semester-3-1' || hash === '#semester-3-2' || hash === '#semester-4-1') {
     return hash;
   }
 
@@ -264,7 +265,7 @@ function SidebarInner({
   onMobileClose,
 }) {
   const [semestersOpen, setSemestersOpen] = useState(false);
-  const semesterActive = activeHref === '#semester-3-2' || activeHref === '#semester-4-1';
+  const semesterActive = activeHref === '#semester-3-1' || activeHref === '#semester-3-2' || activeHref === '#semester-4-1';
 
   useEffect(() => {
     if (semesterActive && !collapsed) {
