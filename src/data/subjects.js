@@ -524,6 +524,48 @@ export const subjects1 = [
     ]
   }
 ];
+export const subjectsFourTwo = [
+  {
+    id: 'ms',
+    code: 'MS',
+    name: 'Management Science',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'ms',
+    color: '#2563EB',
+    bg: 'rgba(37,99,235,0.15)',
+    icon: '📈',
+    locked: true,
+    units: [],
+  },
+  {
+    id: 'sppm',
+    code: 'SPPM',
+    name: 'Software Process and Project Management',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'sppm',
+    color: '#8B5CF6',
+    bg: 'rgba(139,92,246,0.15)',
+    icon: '📋',
+    locked: true,
+    units: [],
+  },
+  {
+    id: 'lp',
+    code: 'LP',
+    name: 'Linux Programming',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'lp',
+    color: '#F59E0B',
+    bg: 'rgba(245,158,11,0.15)',
+    icon: '🐧',
+    locked: true,
+    units: [],
+  },
+];
+
 export const academicCalendarSubjects = [
   {
     id: 'academic-calendar',
@@ -1039,6 +1081,7 @@ export const allSubjects = [
   ...subjectsTwoTwo,
   ...subjectsThreeOne,
   ...subjects1,
+  ...subjectsFourTwo,
   ...questionPaperSubjects,
   ...labSubjects,
   ...record,

@@ -15,6 +15,7 @@ const SEMESTER_HREFS = [
   '#semester-3-1',
   '#semester-3-2',
   '#semester-4-1',
+  '#semester-4-2',
 ];
 
 const NAV_LINKS = [
@@ -29,6 +30,7 @@ const NAV_LINKS = [
       { label: '3-1',    href: '#semester-3-1' },
       { label: '3-2',    href: '#semester-3-2' },
       { label: '4-1',    href: '#semester-4-1' },
+      { label: '4-2',    href: '#semester-4-2' },
     ]
   },
   { label: 'Feedback',   href: '#feedback',   icon: '✉' },

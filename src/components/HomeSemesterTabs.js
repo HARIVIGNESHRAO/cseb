@@ -17,6 +17,7 @@ import {
   syllabusSubjects,
   subjectsThreeOne,
   subjects1,
+  subjectsFourTwo,
   labSubjects, timetableSubjects1, record, questionPaperSubjects1
 } from '@/data/subjects';
 import styles from '@/app/page.module.css';
@@ -29,6 +30,7 @@ const semesterTabs = [
   { id: '3-1', label: '3-1' },
   { id: '3-2', label: '3-2' },
   { id: '4-1', label: '4-1' },
+  { id: '4-2', label: '4-2' },
 ];
 
 const semesterThreeOneSections = [
@@ -119,6 +121,29 @@ const semesterFourOneSections = [
   },
 ];
 
+const semesterFourTwoSyllabus = [syllabusSubjects1[0]];
+
+const semesterFourTwoSections = [
+  {
+    id: 'academic-calendar',
+    label: 'ACADEMIC CALENDAR',
+    count: `${academicCalendarSubjects1.length} file`,
+    items: academicCalendarSubjects1,
+  },
+  {
+    id: 'syllabus',
+    label: 'SYLLABUS',
+    count: `${semesterFourTwoSyllabus.length} file`,
+    items: semesterFourTwoSyllabus,
+  },
+  {
+    id: 'subjects',
+    label: 'SUBJECTS',
+    count: `${subjectsFourTwo.length} courses`,
+    items: subjectsFourTwo,
+  },
+];
+
 const semesterSections = {
   '2-1': [
     {
@@ -163,6 +188,7 @@ const semesterSections = {
   '3-1': semesterThreeOneSections,
   '3-2': semesterThreeTwoSections,
   '4-1': semesterFourOneSections,
+  '4-2': semesterFourTwoSections,
 };
 
 export default function HomeSemesterTabs() {
@@ -198,30 +224,43 @@ export default function HomeSemesterTabs() {
 
   const renderSubjectGrid = (items) => (
     <div className={styles.grid}>
-      {items.map((subject, i) => (
-        <Link
-          key={subject.id}
-          href={`/subject/${subject.id}`}
-          className={styles.card}
-          style={{
-            '--card-color': subject.color,
-            '--card-bg': subject.bg,
-            animationDelay: `${i * 80}ms`,
-          }}
-        >
-          <div className={styles.cardTop}>
-            <span className={styles.cardBadge}>{subject.code}</span>
-            <span className={styles.cardIcon}>{subject.icon}</span>
-          </div>
-          <h2 className={styles.cardTitle}>{subject.name}</h2>
-          <p className={styles.cardDesc}>{subject.desc}</p>
-          <div className={styles.cardFooter}>
-            <span className={styles.cardUnits}>{subject.units.length} Units</span>
-            <span className={styles.cardArrow}>→</span>
-          </div>
-          <div className={styles.cardGlow} />
-        </Link>
-      ))}
+      {items.map((subject, i) => {
+        const CardComponent = subject.locked ? 'div' : Link;
+        const navigationProps = subject.locked
+          ? { 'aria-disabled': true, 'aria-label': `${subject.name} is locked` }
+          : { href: `/subject/${subject.id}` };
+
+        return (
+          <CardComponent
+            key={subject.id}
+            {...navigationProps}
+            className={`${styles.card} ${subject.locked ? styles.cardLocked : ''}`}
+            style={{
+              '--card-color': subject.color,
+              '--card-bg': subject.bg,
+              animationDelay: `${i * 80}ms`,
+            }}
+          >
+            <div className={styles.cardTop}>
+              <span className={styles.cardBadge}>{subject.code}</span>
+              <span className={styles.cardIcon}>{subject.locked ? '🔒' : subject.icon}</span>
+            </div>
+            <h2 className={styles.cardTitle}>{subject.name}</h2>
+            <p className={styles.cardDesc}>{subject.desc}</p>
+            <div className={styles.cardFooter}>
+              {subject.locked ? (
+                <span className={styles.cardLockStatus}>Locked</span>
+              ) : (
+                <span className={styles.cardUnits}>
+                  {subject.units.length} {subject.units.length <= 1 ? 'Unit' : 'Units'}
+                </span>
+              )}
+              <span className={styles.cardArrow}>{subject.locked ? '•••' : '→'}</span>
+            </div>
+            <div className={styles.cardGlow} />
+          </CardComponent>
+        );
+      })}
     </div>
   );
 
@@ -232,6 +271,7 @@ export default function HomeSemesterTabs() {
       <span id="semester-3-1" className={styles.semesterAnchor} />
       <span id="semester-3-2" className={styles.semesterAnchor} />
       <span id="semester-4-1" className={styles.semesterAnchor} />
+      <span id="semester-4-2" className={styles.semesterAnchor} />
       <div className={styles.semesterPicker}>
         <div className={styles.semesterPickerIdentity}>
           <span className={styles.semesterPickerIcon} aria-hidden="true">⌘</span>

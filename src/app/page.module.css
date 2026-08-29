@@ -956,6 +956,38 @@
   }
 }
 
+.card.cardLocked {
+  cursor: not-allowed;
+  filter: saturate(0.65);
+  opacity: 0.72;
+}
+
+.card.cardLocked:hover {
+  border-color: var(--border);
+  transform: none;
+  box-shadow: none;
+}
+
+.cardLocked .cardIcon {
+  color: var(--text-muted);
+  filter: grayscale(1);
+}
+
+.cardLockStatus {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid color-mix(in srgb, var(--text-muted) 24%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text-muted) 8%, transparent);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
