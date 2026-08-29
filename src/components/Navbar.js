@@ -9,6 +9,13 @@ const SIDEBAR_STORAGE_KEY = 'cseb-sidebar-expanded';
 
 const DESKTOP_SIDEBAR_WIDTH = 220;
 const DESKTOP_SIDEBAR_COLLAPSED_WIDTH = 72;
+const SEMESTER_HREFS = [
+  '#semester-2-1',
+  '#semester-2-2',
+  '#semester-3-1',
+  '#semester-3-2',
+  '#semester-4-1',
+];
 
 const NAV_LINKS = [
   { label: 'Home',       href: '#',           icon: '⌂' },
@@ -17,6 +24,8 @@ const NAV_LINKS = [
     label: 'Semesters',  
     icon: '◫',
     children: [
+      { label: '2-1',    href: '#semester-2-1' },
+      { label: '2-2',    href: '#semester-2-2' },
       { label: '3-1',    href: '#semester-3-1' },
       { label: '3-2',    href: '#semester-3-2' },
       { label: '4-1',    href: '#semester-4-1' },
@@ -28,7 +37,7 @@ const NAV_LINKS = [
 function getActiveHref() {
   const hash = window.location.hash;
 
-  if (hash === '#search' || hash === '#feedback' || hash === '#semester-3-1' || hash === '#semester-3-2' || hash === '#semester-4-1') {
+  if (hash === '#search' || hash === '#feedback' || SEMESTER_HREFS.includes(hash)) {
     return hash;
   }
 
@@ -265,7 +274,7 @@ function SidebarInner({
   onMobileClose,
 }) {
   const [semestersOpen, setSemestersOpen] = useState(false);
-  const semesterActive = activeHref === '#semester-3-1' || activeHref === '#semester-3-2' || activeHref === '#semester-4-1';
+  const semesterActive = SEMESTER_HREFS.includes(activeHref);
 
   useEffect(() => {
     if (semesterActive && !collapsed) {

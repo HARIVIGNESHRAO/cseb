@@ -6,8 +6,12 @@ import {
   academicCalendarSubjects,
   academicCalendarSubjects1,
   syllabusSubjects1,
+  syllabusSubjectsTwoOne,
+  syllabusSubjectsTwoTwo,
   questionPaperSubjects,
   subjects,
+  subjectsTwoOne,
+  subjectsTwoTwo,
   syllabusSubjects,
   subjectsThreeOne,
   subjects1,
@@ -15,7 +19,11 @@ import {
 } from '@/data/subjects';
 import styles from '@/app/page.module.css';
 
+const SEMESTER_STORAGE_KEY = 'cseb-selected-semester';
+
 const semesterTabs = [
+  { id: '2-1', label: '2-1' },
+  { id: '2-2', label: '2-2' },
   { id: '3-1', label: '3-1' },
   { id: '3-2', label: '3-2' },
   { id: '4-1', label: '4-1' },
@@ -109,6 +117,40 @@ const semesterFourOneSections = [
   },
 ];
 
+const semesterSections = {
+  '2-1': [
+    {
+      id: 'syllabus',
+      label: 'SYLLABUS',
+      count: `${syllabusSubjectsTwoOne.length} file`,
+      items: syllabusSubjectsTwoOne,
+    },
+    {
+      id: 'subjects',
+      label: 'SUBJECTS',
+      count: `${subjectsTwoOne.length} courses`,
+      items: subjectsTwoOne,
+    },
+  ],
+  '2-2': [
+    {
+      id: 'syllabus',
+      label: 'SYLLABUS',
+      count: `${syllabusSubjectsTwoTwo.length} file`,
+      items: syllabusSubjectsTwoTwo,
+    },
+    {
+      id: 'subjects',
+      label: 'SUBJECTS',
+      count: `${subjectsTwoTwo.length} courses`,
+      items: subjectsTwoTwo,
+    },
+  ],
+  '3-1': semesterThreeOneSections,
+  '3-2': semesterThreeTwoSections,
+  '4-1': semesterFourOneSections,
+};
+
 export default function HomeSemesterTabs() {
   const [activeSemester, setActiveSemester] = useState('4-1');
 
@@ -116,8 +158,15 @@ export default function HomeSemesterTabs() {
     const syncSemesterFromHash = () => {
       const hash = window.location.hash.replace('#semester-', '');
 
-      if (hash === '3-1' || hash === '3-2' || hash === '4-1') {
+      if (semesterTabs.some((tab) => tab.id === hash)) {
         setActiveSemester(hash);
+        localStorage.setItem(SEMESTER_STORAGE_KEY, hash);
+        return;
+      }
+
+      const savedSemester = localStorage.getItem(SEMESTER_STORAGE_KEY);
+      if (semesterTabs.some((tab) => tab.id === savedSemester)) {
+        setActiveSemester(savedSemester);
       }
     };
 
@@ -129,6 +178,7 @@ export default function HomeSemesterTabs() {
 
   const selectSemester = (semesterId) => {
     setActiveSemester(semesterId);
+    localStorage.setItem(SEMESTER_STORAGE_KEY, semesterId);
     window.history.replaceState(null, '', `#semester-${semesterId}`);
   };
 
@@ -163,41 +213,51 @@ export default function HomeSemesterTabs() {
 
   return (
     <section className={styles.section}>
+      <span id="semester-2-1" className={styles.semesterAnchor} />
+      <span id="semester-2-2" className={styles.semesterAnchor} />
       <span id="semester-3-1" className={styles.semesterAnchor} />
       <span id="semester-3-2" className={styles.semesterAnchor} />
       <span id="semester-4-1" className={styles.semesterAnchor} />
-      <div className={styles.semesterTabs} aria-label="Semester options">
-        {semesterTabs.map((tab) => (
-          <button
-            key={tab.id}
-            type="button"
-            className={`${styles.semesterTab} ${activeSemester === tab.id ? styles.semesterTabActive : ''
-              }`}
-            onClick={() => selectSemester(tab.id)}
-            aria-pressed={activeSemester === tab.id}
+      <div className={styles.semesterPicker}>
+        <div className={styles.semesterPickerIdentity}>
+          <span className={styles.semesterPickerIcon} aria-hidden="true">⌘</span>
+          <span className={styles.semesterPickerCopy}>
+            <span className={styles.semesterPickerEyebrow}>Explore resources</span>
+            <label className={styles.semesterSelectLabel} htmlFor="semester-select">
+              Choose semester
+            </label>
+          </span>
+        </div>
+        <div className={styles.semesterSelectWrap}>
+          <select
+            id="semester-select"
+            className={styles.semesterSelect}
+            value={activeSemester}
+            onChange={(event) => selectSemester(event.target.value)}
           >
-            {tab.label}
-          </button>
-        ))}
+            {semesterTabs.map((tab) => (
+              <option key={tab.id} value={tab.id}>
+                Semester {tab.label}
+              </option>
+            ))}
+          </select>
+          <span className={styles.semesterSelectChevron} aria-hidden="true">⌄</span>
+        </div>
       </div>
 
       <div className={styles.semesterResources}>
-        {(activeSemester === '3-1'
-          ? semesterThreeOneSections
-          : activeSemester === '3-2'
-            ? semesterThreeTwoSections
-            : semesterFourOneSections).map(
+        {semesterSections[activeSemester].length === 0 ? (
+          <div className={styles.emptySemester} role="status">
+            Resources for semester {activeSemester} will be added soon.
+          </div>
+        ) : semesterSections[activeSemester].map(
           (section) => (
             <section className={styles.resourceGroup} id={section.id} key={section.id}>
               <div className={styles.sectionHeader}>
                 <span className={styles.sectionLabel}>{section.label}</span>
                 <span className={styles.sectionCount}>{section.count}</span>
               </div>
-              {section.items ? (
-                renderSubjectGrid(section.items)
-              ) : (
-                <div className={styles.emptySemester} aria-label={`${section.label} empty`} />
-              )}
+              {renderSubjectGrid(section.items)}
             </section>
           )
         )}

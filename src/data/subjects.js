@@ -217,6 +217,203 @@ export const subjectsThreeOne = [
       { id: 'unit5', name: 'Unit 5', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787901996/AI_U5_Handouts_jsqbd9.pdf' },],
   },
 ];
+
+export const syllabusSubjectsTwoTwo = [
+  {
+    id: 'all-subjects-syllabus-2-2',
+    code: 'ALL SY',
+    name: 'All Subjects Syllabus',
+    desc: '',
+    category: 'syllabus',
+    pdfDir: 'sy-2-2',
+    color: '#4F8EF7',
+    bg: 'rgba(79,142,247,0.15)',
+    icon: '📄',
+    units: [
+       {
+        id: 'syllabus',
+        name: 'Syllabus',
+        topic: 'All Subjects Syllabus PDF',
+        topics: '',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787973346/KR23_CSE_II_YEAR_SYLLABUS_ubqsio.pdf',
+      },
+    ],
+  },
+];
+
+export const syllabusSubjectsTwoOne = [
+  {
+    id: 'all-subjects-syllabus-2-1',
+    code: 'ALL SY',
+    name: 'All Subjects Syllabus',
+    desc: '',
+    category: 'syllabus',
+    pdfDir: 'sy-2-1',
+    color: '#4F8EF7',
+    bg: 'rgba(79,142,247,0.15)',
+    icon: '📄',
+    units: [
+      {
+        id: 'syllabus',
+        name: 'Syllabus',
+        topic: 'All Subjects Syllabus PDF',
+        topics: '',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787973346/KR23_CSE_II_YEAR_SYLLABUS_ubqsio.pdf',
+      },
+    ],
+  },
+];
+
+export const subjectsTwoOne = [
+  {
+    id: 'de',
+    code: 'DE',
+    name: 'Digital Electronics',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'de',
+    color: '#06B6D4',
+    bg: 'rgba(6,182,212,0.15)',
+    icon: '🔌',
+    units: [
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787976526/DE-UNIT-1_nifp1n.pdf' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787976524/DE-UNIT-2_eblidj.pdf' },
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787976541/DE-UNIT-3_ns4jzy.pdf' },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787976526/DE-UNIT-4_gna5tk.pdf' },
+      { id: 'unit5', name: 'Unit 5', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787976522/DE-UNIT-5_yinwlv.pdf' },
+    ],
+  },
+  {
+    id: 'dbms',
+    code: 'DBMS',
+    name: 'Database Management System',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'dbms',
+    color: '#8B5CF6',
+    bg: 'rgba(139,92,246,0.15)',
+    icon: '🗄️',
+    units: [
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787975623/DBMS_UNIT-1_NOTES_pbrece.pdf' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787975626/DBMS_UNIT-2_Notes_vyqnjx.pdf' },
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787975633/DBMS_UNIT-3_NOTES_blmsn4.pdf' },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787975622/DBMS_UNIT-4_Notes_gcpbgj.pdf' },
+      { id: 'unit5', name: 'Unit 5', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787975624/DBMS_Unit-5_Notes_pycxum.pdf' },
+    ],
+  },
+  {
+    id: 'oopj',
+    code: 'OOPJ',
+    name: 'Object-Oriented Programming with Java',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'oopj',
+    color: '#10B981',
+    bg: 'rgba(16,185,129,0.15)',
+    icon: '🧩',
+    units: [
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787977260/unit1_rc3gbv.pdf' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787977257/UNIT-2_utqhzj.pdf' },
+      { id: 'unit3-part1', name: 'Unit 3 – Part 1', topic: 'Exception Handling', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787977257/Unit-3Exception_Handling_notes_nfahhs.pdf' },
+      { id: 'unit3-part2', name: 'Unit 3 – Part 2', topic: 'Multithreading', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787977255/Unit-3Multi_Threading_Notes_dlgeva.pdf' },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787977258/Unit-4_qdq4fl.pdf' },
+    ],
+  },
+  {
+    id: 'cosm',
+    code: 'COSM',
+    name: 'Computer-Oriented Statistical Methods',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'cosm',
+    color: '#F59E0B',
+    bg: 'rgba(245,158,11,0.15)',
+    icon: '📊',
+    units: [
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787976662/COSM_UNIT-1_Concise_form_1_bb7pqg.pdf' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787976660/COSM_UNIT-2_Concise_form_qfpo7d.pdf' },
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787976659/COSM-UNIT-3_Concise_form_xcw0ou.pdf' },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787976661/COSM_-UNIT-4_C0ncise_form_xcyfcc.pdf' },
+      { id: 'unit5', name: 'Unit 5', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787976658/UNIT-5_xam3ys.pdf' },
+    ],
+  },
+];
+
+export const subjectsTwoTwo = [
+  {
+    id: 'acd',
+    code: 'ACD',
+    name: 'Automated Compiler Design',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'acd',
+    color: '#8B5CF6',
+    bg: 'rgba(139,92,246,0.15)',
+    icon: '⚙️',
+    units: [
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787974734/ACD_25-26_Unit-1_Notes_compressed_xthna6.pdf' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787974978/Unit-II_ACD_compressed_hplo9k.pdf'},
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787974497/ATCD_UNIT-3_whtdng.pdf' },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787974802/ATCD-UNIT-4_compressed_cc7h8y.pdf' },
+      { id: 'unit5', name: 'Unit 5', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787974495/Unit-5-_ACD_2_kmpclw.pdf' }
+    ],
+  },
+  {
+    id: 'ds',
+    code: 'DS',
+    name: 'Data Structures',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'ds',
+    color: '#10B981',
+    bg: 'rgba(16,185,129,0.15)',
+    icon: '🌳',
+    units: [
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787974260/UNIT-1-NOTES_tpaoil.pdf' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787974260/UNIT-2_DS_qwzzoo.pdf'},
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787974259/UNIT-3_i8pm5b.pdf' },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787974259/UNIT_4_wqw695.pdf' },
+      { id: 'unit5', name: 'Unit 5', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787974261/Unit-5_oetfke.pdf' },
+  ],
+  },
+  {
+    id: 'os',
+    code: 'OS',
+    name: 'Operating System',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'os',
+    color: '#F59E0B',
+    bg: 'rgba(245,158,11,0.15)',
+    icon: '🖥️',
+    units: [
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787972366/KR24_OS-Unit-1-Notes_dazwbi.pdf' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787972367/Unit-2-Final-Notes_1_y9hb6t.pdf'},
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787972365/OS-Unit-3-Notes_zvth9u.pdf' },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787972366/OS_Unit-4_Notes_ustqku.pdf' },
+      { id: 'unit5', name: 'Unit 5', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787972364/UNIT_5_NOTES_nasmvl.pdf' },
+    ],
+  },
+  {
+    id: 'coa',
+    code: 'COA',
+    name: 'Computer Organization & Architecture',
+    desc: '',
+    category: 'theory',
+    pdfDir: 'coa',
+    color: '#EF4444',
+    bg: 'rgba(239,68,68,0.15)',
+    icon: '🧠',
+    units: [
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787975150/COA_UNIT-I-CSE_1_rruhzz.pdf' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787975148/CSE_-COA_-Unit_2_ls6yaw.pdf'},
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787975152/CSE-COA-UNIT3_ctacmu.pdf' },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787975149/CSE-COA-UNIT_IV_naouvb.pdf' },
+      { id: 'unit5', name: 'Unit 5', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787975147/CSE_-_COA_UNIT_5_Notes_ol7w7i.pdf' },
+    ],
+  },
+];
+
 export const subjects1 = [
   {
     id: 'befa',
@@ -321,7 +518,7 @@ export const subjects1 = [
       { id: 'unit1', name: 'Unit 1', pdfFile: 'ES_UNIT_1' },
       { id: 'unit2', name: 'Unit 2', pdfFile: 'ES_UNIT_2' },
       { id: 'unit3', name: 'Unit 3', pdfFile: 'ES_UNIT_3' },
-      { id: 'unit4', name: 'Unit 4', pdfFile: 'ES_UNIT_4' },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 'https://ik.imagekit.io/0hytmpcavl/ES/ES_UNIT_4.pdf' },
       { id: 'unit5', name: 'Unit 5', pdfFile: 'ES_UNIT_5' },
       { id: 'unitn', name: 'Important Questions', pdfFile: 'i' }
     ]
@@ -783,10 +980,14 @@ export const questionPaperSubjects1 = [
 export const allSubjects = [
   ...academicCalendarSubjects,
   ...academicCalendarSubjects1,
+  ...syllabusSubjectsTwoOne,
+  ...syllabusSubjectsTwoTwo,
   ...syllabusSubjects,
   ...syllabusSubjects1,
   ...timetableSubjects1,
   ...subjects,
+  ...subjectsTwoOne,
+  ...subjectsTwoTwo,
   ...subjectsThreeOne,
   ...subjects1,
   ...questionPaperSubjects,

@@ -30,6 +30,19 @@ export function withPdfAssetVersion(assetUrl) {
 export function getAssetDownloadUrl(assetUrl) {
   if (typeof assetUrl !== 'string') return assetUrl;
 
+  // ImageKit can set Content-Disposition: attachment for cross-origin files.
+  // Without this query parameter, browsers commonly open PDFs in a new tab
+  // because the HTML download attribute is ignored across origins.
+  try {
+    const url = new URL(assetUrl);
+    if (url.hostname === 'ik.imagekit.io') {
+      url.searchParams.set('ik-attachment', 'true');
+      return url.toString();
+    }
+  } catch {
+    // Relative/local asset URLs are handled below.
+  }
+
   // The HTML download attribute does not force downloads for cross-origin
   // URLs. Cloudinary's fl_attachment delivery flag adds the required
   // Content-Disposition response header while preserving the original asset.
