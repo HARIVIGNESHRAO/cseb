@@ -569,6 +569,53 @@ export const academicCalendarSubjects1 = [
     ],
   },
 ];
+
+export const academicCalendarSubjectsTwoOne = [
+  {
+    id: 'academic-calendar-2-1',
+    code: 'CAL',
+    name: 'Academic Calendar',
+    desc: '',
+    category: 'calendar',
+    pdfDir: 'calendar',
+    color: '#14B8A6',
+    bg: 'rgba(20,184,166,0.15)',
+    icon: '🗓️',
+    units: [
+      {
+        id: 'calendar',
+        name: 'Calendar',
+        topic: 'Second Year Academic Calendar 2024–25',
+        topics: '',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787985852/KR23-_II_Yr_ACADEMIC_CALENDER_2024-25_uvyvyl.pdf',
+      },
+    ],
+  },
+];
+
+export const academicCalendarSubjectsTwoTwo = [
+  {
+    id: 'academic-calendar-2-2',
+    code: 'CAL',
+    name: 'Academic Calendar',
+    desc: '',
+    category: 'calendar',
+    pdfDir: 'calendar',
+    color: '#14B8A6',
+    bg: 'rgba(20,184,166,0.15)',
+    icon: '🗓️',
+    units: [
+      {
+        id: 'calendar',
+        name: 'Calendar',
+        topic: 'Second Year Academic Calendar 2024–25',
+        topics: '',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1787985852/KR23-_II_Yr_ACADEMIC_CALENDER_2024-25_uvyvyl.pdf',
+      },
+    ],
+  },
+];
+
 export const syllabusSubjects = [
   {
     id: 'all-subjects-syllabus',
@@ -980,6 +1027,8 @@ export const questionPaperSubjects1 = [
 export const allSubjects = [
   ...academicCalendarSubjects,
   ...academicCalendarSubjects1,
+  ...academicCalendarSubjectsTwoOne,
+  ...academicCalendarSubjectsTwoTwo,
   ...syllabusSubjectsTwoOne,
   ...syllabusSubjectsTwoTwo,
   ...syllabusSubjects,

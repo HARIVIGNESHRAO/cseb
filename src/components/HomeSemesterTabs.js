@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import {
   academicCalendarSubjects,
   academicCalendarSubjects1,
+  academicCalendarSubjectsTwoOne,
+  academicCalendarSubjectsTwoTwo,
   syllabusSubjects1,
   syllabusSubjectsTwoOne,
   syllabusSubjectsTwoTwo,
@@ -120,6 +122,12 @@ const semesterFourOneSections = [
 const semesterSections = {
   '2-1': [
     {
+      id: 'academic-calendar',
+      label: 'ACADEMIC CALENDAR',
+      count: `${academicCalendarSubjectsTwoOne.length} file`,
+      items: academicCalendarSubjectsTwoOne,
+    },
+    {
       id: 'syllabus',
       label: 'SYLLABUS',
       count: `${syllabusSubjectsTwoOne.length} file`,
@@ -133,6 +141,12 @@ const semesterSections = {
     },
   ],
   '2-2': [
+    {
+      id: 'academic-calendar',
+      label: 'ACADEMIC CALENDAR',
+      count: `${academicCalendarSubjectsTwoTwo.length} file`,
+      items: academicCalendarSubjectsTwoTwo,
+    },
     {
       id: 'syllabus',
       label: 'SYLLABUS',
