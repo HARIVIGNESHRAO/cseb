@@ -1414,6 +1414,12 @@
   mask-image: none;
   -webkit-mask-image: none;
 }
+
+:global(html[data-theme='dark']) .bgGrid {
+  background-image: none;
+  mask-image: none;
+  -webkit-mask-image: none;
+}
 /* ==================== ENHANCED EXAM COUNTDOWN / QUICK LINKS ==================== */
 .examCountdown {
   width: min(760px, 100%);           /* Increased width */
@@ -2045,13 +2051,7 @@
 }
 
 .main::after {
-  top: 140px;
-  right: max(-160px, calc(50% - 940px));
-  width: 520px;
-  height: 520px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(45,212,191,0.16) 0, rgba(45,212,191,0.06) 52%, transparent 76%);
-  filter: blur(28px);
+  display: none;
 }
 
 .bgGrid {
@@ -2059,9 +2059,8 @@
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
     radial-gradient(circle at 12% 14%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 24%),
-    radial-gradient(circle at 84% 18%, rgba(45,212,191,0.12), transparent 20%),
     linear-gradient(180deg, color-mix(in srgb, var(--bg) 55%, transparent), var(--bg));
-  background-size: 48px 48px, 48px 48px, auto, auto, auto;
+  background-size: 48px 48px, 48px 48px, auto, auto;
 }
 
 .header {
@@ -2626,7 +2625,7 @@
 }
 
 :global(html[data-theme='light']) .main::after {
-  background: radial-gradient(circle, rgba(16,185,129,0.12) 0, rgba(16,185,129,0.04) 50%, transparent 76%);
+  display: none;
 }
 
 :global(html[data-theme='dark']) .searchSection::before {
