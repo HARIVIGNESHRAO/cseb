@@ -2211,18 +2211,6 @@
   overflow: hidden;
 }
 
-.examCountdown::before {
-  content: '';
-  position: absolute;
-  top: -70px;
-  left: -60px;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(79,142,247,0.18), transparent 70%);
-  pointer-events: none;
-}
-
 .examCountdownMeta {
   position: relative;
   margin-bottom: 18px;
@@ -3530,5 +3518,103 @@
     grid-column: auto;
     width: 100%;
     justify-self: stretch;
+  }
+}
+
+/* ========================================================================
+   Final portal polish — crisp depth with a restrained light-sweep effect
+   ======================================================================== */
+.header,
+.searchSection,
+.semesterSection,
+.feedbackSection,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+.examCountdown,
+.searchSection,
+.semesterPicker,
+.feedbackSection {
+  box-shadow: var(--shadow-lg);
+}
+
+.examCountdown {
+  border-radius: 28px;
+}
+
+.examCountdownItem,
+.card {
+  isolation: isolate;
+}
+
+.examCountdownItem::after,
+.card::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  bottom: -40%;
+  left: -45%;
+  width: 28%;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transform: skewX(-18deg) translateX(0);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 12%, transparent), transparent);
+  transition: transform 650ms var(--ease-out), opacity 180ms ease;
+}
+
+.examCountdownItem:hover::after,
+.card:hover::after {
+  opacity: 1;
+  transform: skewX(-18deg) translateX(520%);
+}
+
+.examCountdownItem,
+.card,
+.searchBox,
+.feedbackInput,
+.feedbackTextarea {
+  border: 1px solid color-mix(in srgb, var(--border) 84%, transparent);
+}
+
+.examCountdownItem:hover,
+.card:hover {
+  border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
+}
+
+.searchBox:focus-within,
+.feedbackInput:focus,
+.feedbackTextarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--ring), var(--shadow-sm);
+}
+
+.viewButton,
+.feedbackButton,
+.semesterTab {
+  min-height: 44px;
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding-inline: 16px;
+  }
+
+  .examCountdown {
+    border-radius: 20px;
+  }
+
+  .searchSection,
+  .feedbackSection {
+    border-radius: 20px;
+  }
+}
+
+@media (hover: none) {
+  .examCountdownItem::after,
+  .card::after {
+    display: none;
   }
 }

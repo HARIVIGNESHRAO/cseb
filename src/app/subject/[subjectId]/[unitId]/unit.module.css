@@ -530,6 +530,66 @@
   .seleniumAlert { padding: 14px; }
 }
 
+/* Final unit-page polish */
+.breadcrumb {
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  box-shadow: var(--shadow-sm);
+}
+
+.unitHeader,
+.resourceSection,
+.resourceCard {
+  box-shadow: var(--shadow-lg);
+}
+
+.unitHeader,
+.resourceCard,
+.navBtn {
+  border: 1px solid color-mix(in srgb, var(--border) 84%, transparent);
+}
+
+.resourceCard {
+  position: relative;
+  overflow: clip;
+}
+
+.resourceCard::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--color, var(--accent));
+  opacity: .45;
+  transform: scaleY(.3);
+  transition: opacity 220ms ease, transform 320ms var(--ease-out);
+}
+
+.resourceCard:hover::before,
+.resourceCard:focus-within::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.btnDownload,
+.btnOpen,
+.navBtn {
+  min-height: 44px;
+}
+
+.navBtn:hover {
+  border-color: color-mix(in srgb, var(--color, var(--accent)) 42%, var(--border));
+  box-shadow: var(--shadow-sm);
+}
+
+@media (hover: none) {
+  .resourceCard:hover,
+  .btnDownload:hover,
+  .btnOpen:hover,
+  .navBtn:hover {
+    transform: none;
+  }
+}
+
 @media (min-width: 768px) and (max-width: 1024px) {
   .main {
     margin-left: 0 !important;

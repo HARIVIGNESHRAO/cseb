@@ -707,3 +707,41 @@
 @media (max-width: 1024px) {
   .drawer { border-radius: 0 24px 24px 0; }
 }
+
+/* Refined navigation finish */
+.sidebar,
+.drawer {
+  box-shadow: 12px 0 48px color-mix(in srgb, var(--shadow) 78%, transparent);
+}
+
+.navLink,
+.iconBtn,
+.submenuLink {
+  min-height: 44px;
+}
+
+.navLinkActive::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+.brandText,
+.navLabel {
+  text-wrap: balance;
+}
+
+@media (max-width: 1024px) {
+  .fab {
+    box-shadow: 0 16px 36px var(--shadow);
+  }
+
+  .drawer {
+    width: min(320px, calc(100vw - 28px));
+  }
+}

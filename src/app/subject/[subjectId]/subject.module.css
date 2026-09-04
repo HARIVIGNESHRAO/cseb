@@ -588,6 +588,64 @@
   }
 }
 
+/* Final subject-page polish */
+.breadcrumb {
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  box-shadow: var(--shadow-sm);
+}
+
+.subjectHeader,
+.unitCard {
+  box-shadow: var(--shadow-lg);
+}
+
+.unitCard {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  border: 1px solid color-mix(in srgb, var(--border) 84%, transparent);
+}
+
+.unitCard::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  z-index: 2;
+  background: var(--color);
+  opacity: .4;
+  transform: scaleY(.28);
+  transition: opacity 220ms ease, transform 320ms var(--ease-out);
+}
+
+.unitCard:hover::after,
+.unitCard:focus-within::after {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.unitNumber {
+  transition: transform 300ms var(--ease-out), background-color 220ms ease;
+}
+
+.unitCard:hover .unitNumber {
+  transform: rotate(-4deg) scale(1.06);
+}
+
+.viewButton,
+.downloadButton,
+.downloadAllButton {
+  min-height: 44px;
+}
+
+@media (hover: none) {
+  .subjectHeader:hover,
+  .unitCard:hover,
+  .unitCard:hover .unitNumber {
+    transform: none;
+  }
+}
+
 .viewButton:hover {
   background: var(--color);
   color: #fff;
