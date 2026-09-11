@@ -504,6 +504,8 @@ export const subjects1 = [
       { id: 'unit1', name: 'Unit 1', pdfFile: 'DVT_UNIT_1 ' },
       { id: 'unit2', name: 'Unit 2', pdfFile: 'DVT_UNIT_2 ' },
       { id: 'unit3', name: 'Unit 3', pdfFile: 'DVT_UNIT_3' },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 'DVT_UNIT_4' },
+      { id: 'unit5', name: 'Unit 5', pdfFile: 'DVT_UNIT_5' },
     ]
   },
   {
@@ -898,7 +900,7 @@ export const labSubjects = [
     bg: 'rgba(220,38,38,0.15)',
     icon: '🧪',
     units: [
-      { id: '6', name: 'SELENIUM LAB MANUAL (EXPERIMENTS 1-9)', pdfFile: '6' },
+      { id: '6', name: 'SELENIUM LAB MANUAL ', pdfFile: '6' },
       {
         id: 'video1',
         name: 'Lab Demonstration Video',
@@ -1022,6 +1024,26 @@ export const timetableSubjects1 = [
         topic: 'Mids Lab Timetable',
         topics: '',
         pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1785584776/STM_TIME_TABLES_f12am8.pdf',
+      },
+    ],
+  },
+  {
+    id: 'sem-timetable1',
+    code: 'SEM',
+    name: 'Semester Timetable',
+    desc: '',
+    category: 'timetable',
+    pdfDir: 'sem',
+    color: '#F97316',
+    bg: 'rgba(249,115,22,0.15)',
+    icon: '📅',
+    units: [
+      {
+        id: 'theory',
+        name: 'Theory',
+        topic: 'Semester Theory Timetable',
+        topics: '',
+        pdfFile: '',
       },
     ],
   },
