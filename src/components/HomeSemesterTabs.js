@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { FlaskConical, X } from 'lucide-react';
 import {
   academicCalendarSubjects,
   academicCalendarSubjects1,
@@ -23,6 +24,7 @@ import {
 import styles from '@/app/page.module.css';
 
 const SEMESTER_STORAGE_KEY = 'cseb-selected-semester';
+const LAB_REVISION_NOTICE_KEY = 'cseb-sdc-stm-lab-revision-notice-v1';
 
 const semesterTabs = [
   { id: '2-1', label: '2-1' },
@@ -101,18 +103,18 @@ const semesterFourOneSections = [
     count: `${subjects1.length} files`,
     items: subjects1,
   },
-  {
-    id: 'labs',
-    label: 'LAB SUBJECTS',
-    count: `${labSubjects.length} files`,
-    items: labSubjects,
-  },
-  {
-    id: 'lab-manuals',
-    label: 'LAB RECORDS',
-    count: `${record.length} files`,
-    items: record,
-  },
+  // {
+  //   id: 'labs',
+  //   label: 'LAB SUBJECTS',
+  //   count: `${labSubjects.length} files`,
+  //   items: labSubjects,
+  // },
+  // {
+  //   id: 'lab-manuals',
+  //   label: 'LAB RECORDS',
+  //   count: `${record.length} files`,
+  //   items: record,
+  // },
   {
     id: 'papers',
     label: 'QUESTION PAPERS',
@@ -193,6 +195,32 @@ const semesterSections = {
 
 export default function HomeSemesterTabs() {
   const [activeSemester, setActiveSemester] = useState('4-1');
+  const [showLabNotice, setShowLabNotice] = useState(false);
+  const labNoticeRef = useRef(null);
+
+  useEffect(() => {
+    try {
+      if (localStorage.getItem(LAB_REVISION_NOTICE_KEY)) return;
+      localStorage.setItem(LAB_REVISION_NOTICE_KEY, 'shown');
+    } catch {
+      // Skip the popup if its one-time status cannot be saved.
+      return;
+    }
+
+    setShowLabNotice(true);
+  }, []);
+
+  useEffect(() => {
+    if (!showLabNotice) return;
+    const dialog = labNoticeRef.current;
+    const previousOverflow = document.body.style.overflow;
+    dialog.showModal();
+    document.body.style.overflow = 'hidden';
+    return () => {
+      dialog.close();
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [showLabNotice]);
 
   useEffect(() => {
     const syncSemesterFromHash = () => {
@@ -266,6 +294,43 @@ export default function HomeSemesterTabs() {
 
   return (
     <section className={styles.section}>
+      <dialog
+        ref={labNoticeRef}
+        className={styles.labNotice}
+        aria-labelledby="lab-notice-title"
+        aria-describedby="lab-notice-description"
+        onCancel={() => setShowLabNotice(false)}
+      >
+        <button
+          type="button"
+          className={styles.labNoticeClose}
+          aria-label="Close lab update"
+          onClick={() => setShowLabNotice(false)}
+        >
+          <X size={20} aria-hidden="true" />
+        </button>
+        <div className={styles.labNoticeIcon}>
+          <FlaskConical size={28} strokeWidth={1.7} aria-hidden="true" />
+        </div>
+        <p className={styles.labNoticeEyebrow}>LAB RESOURCE UPDATE</p>
+        <h2 id="lab-notice-title" className={styles.labNoticeTitle}>A little revision in progress.</h2>
+        <div className={styles.labNoticeTags} aria-label="Affected labs">
+          <span>SDC LAB</span>
+          <span>STM LAB</span>
+        </div>
+        <p id="lab-notice-description" className={styles.labNoticeDescription}>
+          SDC and STM lab programs are being revised. They will be updated here
+          once the updated lab manual is shared.
+        </p>
+        <button
+          type="button"
+          className={styles.labNoticeButton}
+          onClick={() => setShowLabNotice(false)}
+          autoFocus
+        >
+          Got it
+        </button>
+      </dialog>
       <span id="semester-2-1" className={styles.semesterAnchor} />
       <span id="semester-2-2" className={styles.semesterAnchor} />
       <span id="semester-3-1" className={styles.semesterAnchor} />
