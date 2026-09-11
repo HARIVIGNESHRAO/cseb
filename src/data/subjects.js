@@ -1012,41 +1012,15 @@ export const timetableSubjects1 = [
     icon: '📅',
     units: [
       {
-        id: 'theory',
-        name: 'Theory',
-        topic: 'Mids Theory Timetable',
-        topics: '',
-        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1786616931/WhatsApp_Image_2026-08-13_at_15.57.16_yx7kro.pdf',
-      },
-      {
         id: 'lab',
         name: 'Lab',
         topic: 'Mids Lab Timetable',
         topics: '',
-        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1785584776/STM_TIME_TABLES_f12am8.pdf',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1789128170/STM_LAB_MID-II_TIME_TABLES_kyed8p.pdf',
       },
     ],
   },
-  {
-    id: 'sem-timetable1',
-    code: 'SEM',
-    name: 'Semester Timetable',
-    desc: '',
-    category: 'timetable',
-    pdfDir: 'sem',
-    color: '#F97316',
-    bg: 'rgba(249,115,22,0.15)',
-    icon: '📅',
-    units: [
-      {
-        id: 'theory',
-        name: 'Theory',
-        topic: 'Semester Theory Timetable',
-        topics: '',
-        pdfFile: '',
-      },
-    ],
-  },
+
 ];
 export const questionPaperSubjects1 = [
   {
