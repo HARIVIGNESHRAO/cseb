@@ -24,7 +24,7 @@ import {
 import styles from '@/app/page.module.css';
 
 const SEMESTER_STORAGE_KEY = 'cseb-selected-semester';
-const LAB_REVISION_NOTICE_KEY = 'cseb-sdc-stm-lab-manuals-uploaded-v2';
+const LAB_REVISION_NOTICE_KEY = 'cseb-stm-videos-uploaded-v3';
 
 const semesterTabs = [
   { id: '2-1', label: '2-1' },
@@ -320,13 +320,13 @@ export default function HomeSemesterTabs() {
           <FlaskConical size={28} strokeWidth={1.7} aria-hidden="true" />
         </div>
         <p className={styles.labNoticeEyebrow}>LAB RESOURCE UPDATE</p>
-        <h2 id="lab-notice-title" className={styles.labNoticeTitle}>Lab manuals are now available!</h2>
+        <h2 id="lab-notice-title" className={styles.labNoticeTitle}>STM videos are now available!</h2>
         <div className={styles.labNoticeTags} aria-label="Affected labs">
           <span>SDC LAB</span>
           <span>STM LAB</span>
         </div>
         <p id="lab-notice-description" className={styles.labNoticeDescription}>
-          SDC and STM lab manuals have been uploaded. Videos will be uploaded shortly.
+          STM lab videos have been added. SDC lab videos will be added shortly.
         </p>
         <button
           type="button"

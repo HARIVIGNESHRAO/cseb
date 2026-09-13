@@ -956,20 +956,27 @@ export const record = [
     units: [
       { id: '6', name: 'STM LAB RECORD', pdfFile: 'r' },
            { id: '7', name: 'JAR FILES', pdfFile: 'JAR' },
-      // {
-      //   id: 'video1',
-      //   name: 'Lab Demonstration Video',
-      //   topic: 'Experiment-1',
-      //   videoUrl: 'https://www.youtube.com/embed/DxfGtH-Gdyc',
-      //   type: 'youtube'
-      // },
-      // {
-      //   id: 'video2',
-      //   name: 'Lab Demonstration Video',
-      //   topic: 'Experiment-2 to 5',
-      //   videoUrl: 'https://www.youtube.com/embed/PoNCoicBNTw',
-      //   type: 'youtube'
-      // },
+      {
+        id: 'video1',
+        name: 'Lab Demonstration Video',
+        topic: 'Experiment-1',
+        videoUrl: 'https://www.youtube.com/embed/DxfGtH-Gdyc',
+        type: 'youtube'
+      },
+      {
+        id: 'video2',
+        name: 'Lab Demonstration Video',
+        topic: 'Experiment-2 to 5',
+        videoUrl: 'https://youtube.com/embed/v5Frfvn0PvM',
+        type: 'youtube'
+      },
+            {
+        id: 'video3',
+        name: 'Lab Demonstration Video',
+        topic: 'Experiment-6 to 10',
+        videoUrl: 'https://youtube.com/embed/N5C9HerEeQY',
+        type: 'youtube'
+      },
     ]
   },
 ]
