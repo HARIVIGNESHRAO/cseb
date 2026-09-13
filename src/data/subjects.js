@@ -448,7 +448,7 @@ export const subjects1 = [
       { id: 'unit1', name: 'Unit 1', pdfFile: 'STM_UNIT_1' },
       { id: 'unit2', name: 'Unit 2', pdfFile: 'STM_UNIT_2' },
       { id: 'unit3', name: 'Unit 3', pdfFile: 'STM_UNIT_3' },
-      { id: 'unitn', name: 'Important Topics', pdfFile: 'i' }
+      // { id: 'unitn', name: 'Important Topics', pdfFile: 'i' }
     ]
   },
 
@@ -468,7 +468,7 @@ export const subjects1 = [
       { id: 'unit3', name: 'Unit 3', pdfFile: 'DM_UNIT_3' },
       { id: 'unit4', name: 'Unit 4', pdfFile: 'DM_UNIT_4' },
       { id: 'unit5', name: 'Unit 5', pdfFile: 'DM_UNIT_5' },
-      { id: 'unitn', name: 'Important Topics', pdfFile: 'i' },
+      // { id: 'unitn', name: 'Important Topics', pdfFile: 'i' },
       { id: 'unity', name: 'Youtube Links', type: 'external-links', openUrl: 'https://docs.google.com/spreadsheets/d/1j-CPk1Cewu4zVhnw8Ce8eFcPZq4vQ-xVL7wcq4wy6Ag/edit?gid=0#gid=0' }
     ]
   },
@@ -524,7 +524,7 @@ export const subjects1 = [
       { id: 'unit3', name: 'Unit 3', pdfFile: 'ES_UNIT_3' },
       { id: 'unit4', name: 'Unit 4', pdfFile: 'https://ik.imagekit.io/0hytmpcavl/ES/ES_UNIT_4.pdf' },
       { id: 'unit5', name: 'Unit 5', pdfFile: 'ES_UNIT_5' },
-      { id: 'unitn', name: 'Important Questions', pdfFile: 'i' }
+      // { id: 'unitn', name: 'Important Questions', pdfFile: 'i' }
     ]
   }
 ];
@@ -900,7 +900,8 @@ export const labSubjects = [
     bg: 'rgba(220,38,38,0.15)',
     icon: '🧪',
     units: [
-      { id: '6', name: 'SELENIUM LAB MANUAL ', pdfFile: '6' },
+      { id: '6', name: 'STM LAB MANUAL ', pdfFile: 'STM' },
+
       {
         id: 'video1',
         name: 'Lab Demonstration Video',
@@ -911,24 +912,11 @@ export const labSubjects = [
       {
         id: 'video2',
         name: 'Lab Demonstration Video',
-        topic: 'Experiment-2 to 5',
+        topic: 'Experiment-2 to 10',
         videoUrl: 'https://www.youtube.com/embed/PoNCoicBNTw',
         type: 'youtube'
       },
-      {
-        id: 'video3',
-        name: 'Lab Demonstration Video',
-        topic: 'Experiment-6',
-        videoUrl: 'https://www.youtube.com/embed/UUfQxv3Ojco',
-        type: 'youtube'
-      },
-      {
-        id: 'video4',
-        name: 'Lab Demonstration Video',
-        topic: 'Experiment-7(a)',
-        videoUrl: 'https://www.youtube.com/embed/otbkqnpEYgU',
-        type: 'youtube'
-      }
+      
     ]
   },
 
@@ -945,14 +933,14 @@ export const record = [
     bg: 'rgba(139,92,246,0.15)',     // light purple background
     icon: '⚛',
     units: [
-      { id: 'unit1', name: 'SDC LAB MANUAL', pdfFile: 'r' },
-      {
-        id: 'video',
-        name: 'Lab Demonstration Video',
-        topic: 'Full Lab Recording (All Experiments)',
-        videoUrl: 'https://www.youtube.com/embed/TDxGFXmQy3Y',
-        type: 'youtube'
-      }
+      { id: 'unit1', name: 'SDC LAB RECORD', pdfFile: 'r' },
+      // {
+      //   id: 'video',
+      //   name: 'Lab Demonstration Video',
+      //   topic: 'Full Lab Recording (Experiments 1-3)',
+      //   videoUrl: 'https://www.youtube.com/embed/TDxGFXmQy3Y',
+      //   type: 'youtube'
+      // }
     ]
   },
   {
@@ -966,35 +954,22 @@ export const record = [
     bg: 'rgba(249,115,22,0.15)',     // light orange background
     icon: '🧪',
     units: [
-      { id: '6', name: 'STM LAB MANUAL', pdfFile: 'r' },
-      {
-        id: 'video1',
-        name: 'Lab Demonstration Video',
-        topic: 'Experiment-1',
-        videoUrl: 'https://www.youtube.com/embed/DxfGtH-Gdyc',
-        type: 'youtube'
-      },
-      {
-        id: 'video2',
-        name: 'Lab Demonstration Video',
-        topic: 'Experiment-2 to 5',
-        videoUrl: 'https://www.youtube.com/embed/PoNCoicBNTw',
-        type: 'youtube'
-      },
-      {
-        id: 'video3',
-        name: 'Lab Demonstration Video',
-        topic: 'Experiment-6',
-        videoUrl: 'https://www.youtube.com/embed/UUfQxv3Ojco',
-        type: 'youtube'
-      },
-      {
-        id: 'video4',
-        name: 'Lab Demonstration Video',
-        topic: 'Experiment-7(a)',
-        videoUrl: 'https://www.youtube.com/embed/otbkqnpEYgU',
-        type: 'youtube'
-      }
+      { id: '6', name: 'STM LAB RECORD', pdfFile: 'r' },
+           { id: '7', name: 'JAR FILES', pdfFile: 'JAR' },
+      // {
+      //   id: 'video1',
+      //   name: 'Lab Demonstration Video',
+      //   topic: 'Experiment-1',
+      //   videoUrl: 'https://www.youtube.com/embed/DxfGtH-Gdyc',
+      //   type: 'youtube'
+      // },
+      // {
+      //   id: 'video2',
+      //   name: 'Lab Demonstration Video',
+      //   topic: 'Experiment-2 to 5',
+      //   videoUrl: 'https://www.youtube.com/embed/PoNCoicBNTw',
+      //   type: 'youtube'
+      // },
     ]
   },
 ]

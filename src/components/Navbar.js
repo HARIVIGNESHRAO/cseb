@@ -33,13 +33,14 @@ const NAV_LINKS = [
       { label: '4-2',    href: '#semester-4-2' },
     ]
   },
+  { label: 'Records',    href: '#lab-manuals', icon: '▤' },
   { label: 'Feedback',   href: '#feedback',   icon: '✉' },
 ];
 
 function getActiveHref() {
   const hash = window.location.hash;
 
-  if (hash === '#search' || hash === '#feedback' || SEMESTER_HREFS.includes(hash)) {
+  if (hash === '#search' || hash === '#lab-manuals' || hash === '#feedback' || SEMESTER_HREFS.includes(hash)) {
     return hash;
   }
 

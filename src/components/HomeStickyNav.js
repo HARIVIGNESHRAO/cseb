@@ -7,6 +7,7 @@ import styles from '@/app/page.module.css';
 
 const navItems = [
   { href: '#subjects', label: 'Subjects' },
+  { href: '#lab-manuals', label: 'Records' },
   { href: '#papers', label: 'Papers' },
 ];
 

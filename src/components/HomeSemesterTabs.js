@@ -24,7 +24,7 @@ import {
 import styles from '@/app/page.module.css';
 
 const SEMESTER_STORAGE_KEY = 'cseb-selected-semester';
-const LAB_REVISION_NOTICE_KEY = 'cseb-sdc-stm-lab-revision-notice-v1';
+const LAB_REVISION_NOTICE_KEY = 'cseb-sdc-stm-lab-manuals-uploaded-v2';
 
 const semesterTabs = [
   { id: '2-1', label: '2-1' },
@@ -103,18 +103,13 @@ const semesterFourOneSections = [
     count: `${subjects1.length} files`,
     items: subjects1,
   },
-  // {
-  //   id: 'labs',
-  //   label: 'LAB SUBJECTS',
-  //   count: `${labSubjects.length} files`,
-  //   items: labSubjects,
-  // },
-  // {
-  //   id: 'lab-manuals',
-  //   label: 'LAB RECORDS',
-  //   count: `${record.length} files`,
-  //   items: record,
-  // },
+
+  {
+    id: 'lab-manuals',
+    label: 'LAB SUBJECTS/RECORDS',
+    count: `${record.length} files`,
+    items: record,
+  },
   {
     id: 'papers',
     label: 'QUESTION PAPERS',
@@ -224,6 +219,12 @@ export default function HomeSemesterTabs() {
 
   useEffect(() => {
     const syncSemesterFromHash = () => {
+      if (window.location.hash === '#lab-manuals') {
+        setActiveSemester('4-1');
+        localStorage.setItem(SEMESTER_STORAGE_KEY, '4-1');
+        return;
+      }
+
       const hash = window.location.hash.replace('#semester-', '');
 
       if (semesterTabs.some((tab) => tab.id === hash)) {
@@ -243,6 +244,12 @@ export default function HomeSemesterTabs() {
 
     return () => window.removeEventListener('hashchange', syncSemesterFromHash);
   }, []);
+
+  useEffect(() => {
+    if (activeSemester === '4-1' && window.location.hash === '#lab-manuals') {
+      document.getElementById('lab-manuals')?.scrollIntoView({ block: 'start' });
+    }
+  }, [activeSemester]);
 
   const selectSemester = (semesterId) => {
     setActiveSemester(semesterId);
@@ -313,14 +320,13 @@ export default function HomeSemesterTabs() {
           <FlaskConical size={28} strokeWidth={1.7} aria-hidden="true" />
         </div>
         <p className={styles.labNoticeEyebrow}>LAB RESOURCE UPDATE</p>
-        <h2 id="lab-notice-title" className={styles.labNoticeTitle}>A little revision in progress.</h2>
+        <h2 id="lab-notice-title" className={styles.labNoticeTitle}>Lab manuals are now available!</h2>
         <div className={styles.labNoticeTags} aria-label="Affected labs">
           <span>SDC LAB</span>
           <span>STM LAB</span>
         </div>
         <p id="lab-notice-description" className={styles.labNoticeDescription}>
-          SDC and STM lab programs are being revised. They will be updated here
-          once the updated lab manual is shared.
+          SDC and STM lab manuals have been uploaded. Videos will be uploaded shortly.
         </p>
         <button
           type="button"
