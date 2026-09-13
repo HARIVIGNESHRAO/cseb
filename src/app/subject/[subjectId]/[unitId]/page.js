@@ -66,7 +66,7 @@ export default function UnitPage({ params }) {
           </div>
         )}
 
-        {(subject.id === 'sdc' || subject.id === 'sdc1') && unit.id === 'video' && (
+        {(subject.id === 'sdc' || subject.id === 'sdc1') && ['video', 'video21'].includes(unit.id) && (
           <div className={styles.seleniumAlert} role="alert">
             <span className={styles.seleniumAlertIcon} aria-hidden="true">⚠️</span>
             <div className={styles.seleniumAlertBody}>

@@ -970,6 +970,13 @@ export const record = [
         id: 'unit6',
         name: 'Experiment 6: React SPA with Routing and API Fetching',
         pdfFile: '6'
+      },
+      {
+        id: 'video21',
+        name: 'Lab Demonstration Video',
+        topic: 'Experiments 4-6',
+        videoUrl: 'https://www.youtube.com/embed/ms_ODU6Bp2s',
+        type: 'youtube'
       }
     ]
   },

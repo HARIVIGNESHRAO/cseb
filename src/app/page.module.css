@@ -3717,6 +3717,33 @@
   line-height: 1.75;
 }
 
+.labNoticeLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.labNoticeLinks a {
+  flex: 1 1 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px 14px;
+  border: 1px solid var(--border-hover);
+  border-radius: 12px;
+  background: var(--soft-bg);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.labNoticeLinks a:hover {
+  background: var(--soft-bg-strong);
+  border-color: var(--accent);
+}
+
 .labNoticeButton {
   width: 100%;
   min-height: 48px;
