@@ -935,11 +935,41 @@ export const record = [
     units: [
       { id: 'unit1', name: 'SDC LAB RECORD', pdfFile: 'r' },
       {
+        id: 'unit1',
+        name: 'Experiment 1: JSX and Virtual DOM',
+        pdfFile: '1'
+      },
+      {
+        id: 'unit2',
+        name: 'Experiment 2: Product Listing Page',
+        pdfFile: '2'
+      },
+      {
+        id: 'unit3',
+        name: 'Experiment 3: Inventory Management Using Hooks',
+        pdfFile: '3'
+      },
+      {
         id: 'video',
         name: 'Lab Demonstration Video',
         topic: 'Experiments 1-3',
         videoUrl: 'https://www.youtube.com/embed/TDxGFXmQy3Y',
         type: 'youtube'
+      },
+      {
+        id: 'unit4',
+        name: 'Experiment 4: Simple E-Commerce Application Using React Router',
+        pdfFile: '4'
+      },
+      {
+        id: 'unit5',
+        name: 'Experiment 5: Dynamic React Form Using Configuration Object',
+        pdfFile: '5'
+      },
+      {
+        id: 'unit6',
+        name: 'Experiment 6: React SPA with Routing and API Fetching',
+        pdfFile: '6'
       }
     ]
   },
@@ -950,12 +980,13 @@ export const record = [
     desc: '',
     category: 'record',
     pdfDir: 'stm',
-    color: '#F97316',                // orange
-    bg: 'rgba(249,115,22,0.15)',     // light orange background
+    color: '#F97316',                
+    bg: 'rgba(249,115,22,0.15)',     
     icon: '🧪',
     units: [
       { id: '6', name: 'STM LAB RECORD', pdfFile: 'r' },
-           { id: '7', name: 'JAR FILES', pdfFile: 'JAR' },
+      {id:'7',name:'STM LAB MANUAL',pdfFile:'STM'},
+      { id: '8', name: 'JAR FILES', pdfFile: 'JAR' },
       {
         id: 'video1',
         name: 'Lab Demonstration Video',
