@@ -748,7 +748,7 @@ export const syllabusSubjects1 = [
   {
     id: 'mid-syllabus',
     code: 'MIDS',
-    name: 'Mid Exams Syllabus(Theory and Lab)',
+    name: 'Mid-2 Syllabus',
     desc: '',
     category: 'syllabus1',
     pdfDir: 'sy',
