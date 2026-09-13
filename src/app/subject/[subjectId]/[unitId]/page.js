@@ -66,6 +66,32 @@ export default function UnitPage({ params }) {
           </div>
         )}
 
+        {(subject.id === 'sdc' || subject.id === 'sdc1') && unit.id === 'video' && (
+          <div className={styles.seleniumAlert} role="alert">
+            <span className={styles.seleniumAlertIcon} aria-hidden="true">⚠️</span>
+            <div className={styles.seleniumAlertBody}>
+              <div className={styles.seleniumAlertTitle}>IMPORTANT ALERT</div>
+              <div className={styles.seleniumAlertText}>
+                <p>Please read this carefully before proceeding with SDC.</p>
+                <p>
+                  Here, you can use the command <code>npm create vite@latest react-hero -- --template react</code> for practice purposes.
+                </p>
+                <p>
+                  However, in the exam you will be provided with a ZIP folder that already
+                  contains all the <code>node_modules</code>. <strong>Internet access will not be provided during the exam.</strong>
+                </p>
+                <p>You are supposed to:</p>
+                <ol className={styles.labAlertSteps}>
+                  <li>Unzip the folder.</li>
+                  <li>Write your code in the appropriate files.</li>
+                  <li>Create any additional necessary files.</li>
+                  <li>Run the required commands by referring to the <code>package.json</code> file.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Unit Header */}
         <div
           className={styles.unitHeader}

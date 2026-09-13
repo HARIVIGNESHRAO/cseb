@@ -856,7 +856,7 @@ export const labSubjects = [
 
   {
     id: 'sdc',
-    code: 'SDC LAB',
+    code: 'SDC LAB1',
     name: 'Skill Development Course-3 Lab',
     desc: '',
     category: 'lab',
@@ -891,7 +891,7 @@ export const labSubjects = [
   },
   {
     id: 'stm-lab',
-    code: 'STM LAB',
+    code: 'STM LAB1',
     name: 'Software Testing Methodologies Lab',
     desc: '',
     category: 'lab',
@@ -924,8 +924,8 @@ export const labSubjects = [
 export const record = [
   {
     id: 'sdc1',
-    code: 'SDC RECORD',
-    name: 'Skill Development Course-3 ',
+    code: 'SDC LAB',
+    name: 'Skill Development Course-3 Lab ',
     desc: '',
     category: 'record',
     pdfDir: 'sdc',
@@ -934,19 +934,19 @@ export const record = [
     icon: '⚛',
     units: [
       { id: 'unit1', name: 'SDC LAB RECORD', pdfFile: 'r' },
-      // {
-      //   id: 'video',
-      //   name: 'Lab Demonstration Video',
-      //   topic: 'Full Lab Recording (Experiments 1-3)',
-      //   videoUrl: 'https://www.youtube.com/embed/TDxGFXmQy3Y',
-      //   type: 'youtube'
-      // }
+      {
+        id: 'video',
+        name: 'Lab Demonstration Video',
+        topic: 'Experiments 1-3',
+        videoUrl: 'https://www.youtube.com/embed/TDxGFXmQy3Y',
+        type: 'youtube'
+      }
     ]
   },
   {
     id: 'stm1',
-    code: 'STM RECORD',
-    name: 'Software Testing Methodologies',
+    code: 'STM LAB',
+    name: 'Software Testing Methodologies Lab',
     desc: '',
     category: 'record',
     pdfDir: 'stm',

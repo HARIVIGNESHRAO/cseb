@@ -106,7 +106,7 @@ const semesterFourOneSections = [
 
   {
     id: 'lab-manuals',
-    label: 'LAB SUBJECTS/RECORDS',
+    label: 'LAB SUBJECTS',
     count: `${record.length} files`,
     items: record,
   },

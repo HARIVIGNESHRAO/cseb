@@ -33,7 +33,7 @@ const NAV_LINKS = [
       { label: '4-2',    href: '#semester-4-2' },
     ]
   },
-  { label: 'Records',    href: '#lab-manuals', icon: '▤' },
+  { label: 'Labs',       href: '#lab-manuals', icon: '▤' },
   { label: 'Feedback',   href: '#feedback',   icon: '✉' },
 ];
 

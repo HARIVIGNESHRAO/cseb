@@ -187,6 +187,20 @@
   color: #fff;
 }
 
+.seleniumAlertText p + p {
+  margin-top: 12px;
+}
+
+.labAlertSteps {
+  margin: 8px 0 0;
+  padding-left: 22px;
+  list-style: decimal;
+}
+
+.labAlertSteps li + li {
+  margin-top: 6px;
+}
+
 .unitHeader {
   position: relative;
   overflow: hidden;
