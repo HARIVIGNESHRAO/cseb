@@ -761,7 +761,7 @@ export const syllabusSubjects1 = [
         name: 'Mid Exams Syllabus',
         topic: 'Mid Exams Syllabus',
         topics: '',
-        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1785992885/Mid_Exam_Syllabus_Updated_with_ES_Unit3_ndjhct.pdf',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1789301140/MID_2_Exam_Syllabus_Attractive_Updated_znbxmb.pdf',
       },
     ],
   },
