@@ -402,3 +402,148 @@
   .aiPanel { position: static; width: 100%; margin-top: 10px; }
   .viewerArea { min-height: 56vh; padding: 10px; }
 }
+
+.aiPrompt {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 110px;
+  margin: 12px 0;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+/* Expanded AI study panel stays in document flow to avoid clipped links. */
+.viewerActionsExpanded {
+  width: min(100%, 660px);
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.viewerActionsExpanded .aiMenuWrap { width: 100%; }
+
+.askAiButton[aria-expanded='true'] {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--soft-bg-strong);
+}
+
+.aiPanel {
+  position: static;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 16px;
+  padding: clamp(18px, 4vw, 28px);
+  border: 1px solid var(--border-hover);
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: 0 20px 50px var(--shadow);
+}
+
+.aiPanelHeader {
+  gap: 10px;
+  padding: 0 0 20px;
+  margin-bottom: 18px;
+}
+
+.aiEyebrow {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .12em;
+}
+
+.aiPanelTitle {
+  font-size: clamp(21px, 5vw, 27px);
+  line-height: 1.2;
+  letter-spacing: -.035em;
+}
+
+.aiPanelHint { line-height: 1.65; }
+
+.aiMessageDetails {
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--soft-bg);
+}
+
+.aiMessageDetails summary {
+  cursor: pointer;
+  color: var(--text-dim);
+  font-size: 12px;
+  font-weight: 600;
+  min-height: 22px;
+  line-height: 22px;
+}
+
+.aiPrompt {
+  margin-bottom: 0;
+  min-height: 130px;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+.aiCopyButton {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--border-hover);
+  border-radius: 12px;
+  background: var(--soft-bg-strong);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.aiCopyButton:hover { background: var(--card-hover); border-color: var(--accent); }
+
+.aiStatus {
+  margin: 10px 0 20px;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.aiToolList {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.aiTool {
+  min-width: 0;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+  backdrop-filter: none;
+}
+
+.aiToolHeading { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.aiToolName { font-size: 14px; }
+.aiToolArrow { color: var(--accent); font-size: 18px; }
+.aiToolDesc { line-height: 1.5; }
+.aiTool:hover { background: var(--card-hover); border-color: var(--accent); transform: translateY(-2px); }
+
+@media (max-width: 400px) {
+  .aiToolList { grid-template-columns: 1fr; }
+  .aiPanel { padding: 16px; border-radius: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aiTool { transition: none; }
+  .aiTool:hover { transform: none; }
+}

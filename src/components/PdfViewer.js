@@ -12,12 +12,24 @@ const AI_TOOLS = [
   {
     name: 'ChatGPT',
     href: 'https://chatgpt.com/',
+    promptParam: 'q',
     desc: 'Explain, quiz, simplify topics',
   },
   {
     name: 'Claude',
-    href: 'https://claude.ai/',
+    href: 'https://claude.ai/new',
+    promptParam: 'q',
     desc: 'Long PDF reading and notes',
+  },
+  {
+    name: 'Gemini',
+    href: 'https://gemini.google.com/app',
+    desc: 'Paste the copied PDF message to ask questions',
+  },
+  {
+    name: 'Grok',
+    href: 'https://grok.com/',
+    desc: 'Paste the copied PDF message to ask questions',
   },
   {
     name: 'Adobe Acrobat AI',
@@ -34,6 +46,27 @@ const AI_TOOLS = [
 export default function PdfViewer({ pdfUrl, subject, unit }) {
   const [aiOpen, setAiOpen] = useState(false);
   const openUrl = unit.openUrl ?? pdfUrl;
+  const [siteOrigin, setSiteOrigin] = useState('https://csesalaar.vercel.app');
+  const [copyStatus, setCopyStatus] = useState('');
+  const absolutePdfUrl = new URL(pdfUrl, siteOrigin).href;
+  const aiPrompt = `Help me study this PDF for ${subject.name}: ${unit.name}${unit.topic ? ` — ${unit.topic}` : ''}.
+PDF: ${absolutePdfUrl}
+Please read it so I can ask questions about it. If you cannot access the PDF link, ask me to upload the file instead of guessing its contents.`;
+
+  const copyPrompt = async () => {
+    try {
+      await navigator.clipboard.writeText(aiPrompt);
+      setCopyStatus('Copied! Paste this into your selected AI service.');
+    } catch {
+      setCopyStatus('Select and copy the message below, then paste it into your AI service.');
+    }
+  };
+
+  const getAiHref = (tool) => {
+    const url = new URL(tool.href);
+    if (tool.promptParam) url.searchParams.set(tool.promptParam, aiPrompt);
+    return url.href;
+  };
 
   const isVideo = unit.type === 'video' || unit.type === 'youtube' || !!unit.videoUrl;
   const isYouTube = unit.type === 'youtube';
@@ -129,6 +162,67 @@ export default function PdfViewer({ pdfUrl, subject, unit }) {
     );
   }
 
+  const aiMenu = (
+            <div className={styles.aiMenuWrap}>
+              <button
+                  type="button"
+                  className={styles.askAiButton}
+                  onClick={() => {
+                    if (!['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname)) {
+                      setSiteOrigin(window.location.origin);
+                    }
+                    setAiOpen((value) => !value);
+                  }}
+                  aria-expanded={aiOpen}
+                  aria-controls="pdf-ai-tools"
+              >
+                ✦ Ask AI
+              </button>
+
+              {aiOpen ? (
+                  <div id="pdf-ai-tools" className={styles.aiPanel}>
+                    <div className={styles.aiPanelHeader}>
+                      <span className={styles.aiEyebrow}>YOUR STUDY COMPANION</span>
+                      <span className={styles.aiPanelTitle}>A little help with this PDF.</span>
+                      <span className={styles.aiPanelHint}>
+                    ChatGPT and Claude links include your PDF message. For other tools, paste the copied message or add the PDF link as a source.
+                  </span>
+                    </div>
+
+                    <details className={styles.aiMessageDetails}>
+                      <summary>Preview PDF message</summary>
+                    <textarea
+                      className={styles.aiPrompt}
+                      aria-label="PDF message to copy into your AI service"
+                      value={aiPrompt}
+                      readOnly
+                      onFocus={(event) => event.target.select()}
+                    />
+                    </details>
+                    <button type="button" className={styles.aiCopyButton} onClick={copyPrompt}>
+                      Copy PDF message
+                    </button>
+                    <p className={styles.aiStatus} role="status">{copyStatus || 'If the AI cannot open the link, upload the PDF there.'}</p>
+                    <div className={styles.aiToolList}>
+                      {AI_TOOLS.map((tool) => (
+                          <a
+                              key={tool.href}
+                              href={getAiHref(tool)}
+                              onClick={() => { void copyPrompt(); }}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={styles.aiTool}
+                          >
+                            <span className={styles.aiToolHeading}><span className={styles.aiToolName}>{tool.name}</span><span className={styles.aiToolArrow} aria-hidden="true">↗</span></span>
+                            <span className={styles.aiToolDesc}>{tool.desc}</span>
+                          </a>
+                      ))}
+                    </div>
+                  </div>
+              ) : null}
+            </div>
+  );
+
   // ===================== NORMAL PDF =====================
   return (
       <div
@@ -149,7 +243,7 @@ export default function PdfViewer({ pdfUrl, subject, unit }) {
         </div>
 
         <div className={styles.viewerArea}>
-          <div className={styles.viewerActions}>
+          <div className={`${styles.viewerActions} ${aiOpen ? styles.viewerActionsExpanded : ''}`}>
             <a
                 href={openUrl}
                 target="_blank"
@@ -159,43 +253,7 @@ export default function PdfViewer({ pdfUrl, subject, unit }) {
               ↗ Open PDF in new tab
             </a>
 
-            <div className={styles.aiMenuWrap}>
-              <button
-                  type="button"
-                  className={styles.askAiButton}
-                  onClick={() => setAiOpen((value) => !value)}
-                  aria-expanded={aiOpen}
-                  aria-controls="pdf-ai-tools"
-              >
-                ✦ Ask AI
-              </button>
-
-              {aiOpen ? (
-                  <div id="pdf-ai-tools" className={styles.aiPanel}>
-                    <div className={styles.aiPanelHeader}>
-                      <span className={styles.aiPanelTitle}>Ask AI about this PDF</span>
-                      <span className={styles.aiPanelHint}>
-                    Open the PDF, then upload it here.
-                  </span>
-                    </div>
-
-                    <div className={styles.aiToolList}>
-                      {AI_TOOLS.map((tool) => (
-                          <a
-                              key={tool.href}
-                              href={tool.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className={styles.aiTool}
-                          >
-                            <span className={styles.aiToolName}>{tool.name}</span>
-                            <span className={styles.aiToolDesc}>{tool.desc}</span>
-                          </a>
-                      ))}
-                    </div>
-                  </div>
-              ) : null}
-            </div>
+            {aiMenu}
           </div>
         </div>
       </div>
