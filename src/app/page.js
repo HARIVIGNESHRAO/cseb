@@ -45,7 +45,7 @@ export default function Home() {
       <HomeFeedbackForm />
 
       {/* Footer */}
-    <footer className={styles.footer} id="feedback">
+    <footer className={styles.footer}>
       <span className={styles.footerText}>© {new Date().getFullYear()} KMIT CSE Department. All Rights Reserved.</span>
     </footer>
     </main>

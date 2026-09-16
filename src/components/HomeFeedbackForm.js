@@ -98,7 +98,7 @@ export default function HomeFeedbackForm() {
   }
 
   return (
-    <section className={styles.feedbackSection}>
+    <section id="feedback" className={styles.feedbackSection}>
       <div className={styles.feedbackHeader}>
         <span className={styles.feedbackLabel}>FEEDBACK</span>
         <h2 className={styles.feedbackTitle}>Share your feedback</h2>

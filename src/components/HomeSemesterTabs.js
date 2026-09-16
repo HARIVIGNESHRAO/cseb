@@ -91,12 +91,12 @@ const semesterFourOneSections = [
     count: `${syllabusSubjects1.length} files`,
     items: syllabusSubjects1,
   },
-  {
-    id: 'timetable',
-    label: 'TIMETABLE',
-    count: `${timetableSubjects1.length} files`,
-    items: timetableSubjects1,
-  },
+  // {
+  //   id: 'timetable',
+  //   label: 'TIMETABLE',
+  //   count: `${timetableSubjects1.length} files`,
+  //   items: timetableSubjects1,
+  // },
   {
     id: 'subjects',
     label: 'SUBJECTS',
@@ -347,7 +347,7 @@ export default function HomeSemesterTabs() {
       <span id="semester-3-2" className={styles.semesterAnchor} />
       <span id="semester-4-1" className={styles.semesterAnchor} />
       <span id="semester-4-2" className={styles.semesterAnchor} />
-      <div className={styles.semesterPicker}>
+      <div id="semester-picker" data-active-semester={activeSemester} className={styles.semesterPicker}>
         <div className={styles.semesterPickerIdentity}>
           <span className={styles.semesterPickerIcon} aria-hidden="true">⌘</span>
           <span className={styles.semesterPickerCopy}>

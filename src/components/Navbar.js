@@ -33,35 +33,36 @@ const NAV_LINKS = [
       { label: '4-2',    href: '#semester-4-2' },
     ]
   },
+  { label: 'Subjects',   href: '#subjects',    icon: '▦' },
   { label: 'Labs',       href: '#lab-manuals', icon: '▤' },
   { label: 'Feedback',   href: '#feedback',   icon: '✉' },
 ];
 
 function getActiveHref() {
-  const hash = window.location.hash;
+  if (window.scrollY < 80) return '#';
 
-  if (hash === '#search' || hash === '#lab-manuals' || hash === '#feedback' || SEMESTER_HREFS.includes(hash)) {
-    return hash;
+  const semesterPicker = document.getElementById('semester-picker');
+  const semesterHref = `#semester-${semesterPicker?.dataset.activeSemester}`;
+  const sections = [
+    { element: document.getElementById('search'), href: '#search' },
+    { element: semesterPicker, href: SEMESTER_HREFS.includes(semesterHref) ? semesterHref : '#' },
+    { element: document.getElementById('subjects'), href: '#subjects' },
+    { element: document.getElementById('lab-manuals'), href: '#lab-manuals' },
+    { element: document.getElementById('feedback'), href: '#feedback' },
+  ].filter(({ element }) => element && element.getClientRects().length > 0)
+    .map(({ element, href }) => ({ href, top: element.getBoundingClientRect().top }))
+    .sort((a, b) => a.top - b.top);
+
+  // Select the last section that has reached the upper third of the viewport.
+  const activationLine = Math.min(window.innerHeight * 0.3, 240);
+  let active = '#';
+  for (const section of sections) {
+    if (section.top <= activationLine) active = section.href;
   }
-
-  if (window.scrollY < 180) {
-    return '#';
+  if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+    return sections.at(-1)?.href ?? active;
   }
-
-  const feedback = document.getElementById('feedback');
-  if (feedback && feedback.getBoundingClientRect().top <= window.innerHeight * 0.7) {
-    return '#feedback';
-  }
-
-  const search = document.getElementById('search');
-  if (search) {
-    const rect = search.getBoundingClientRect();
-    if (rect.top <= window.innerHeight * 0.45 && rect.bottom >= 96) {
-      return '#search';
-    }
-  }
-
-  return '#';
+  return active;
 }
 
 export default function Sidebar() {
@@ -169,15 +170,32 @@ export default function Sidebar() {
   }, []);
 
   useEffect(() => {
-    const updateActiveHref = () => setActiveHref(getActiveHref());
+    let frame = null;
+    const updateActiveHref = () => {
+      if (frame !== null) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = null;
+        setActiveHref(getActiveHref());
+      });
+    };
 
+    const picker = document.getElementById('semester-picker');
+    const observer = new MutationObserver(updateActiveHref);
+    if (picker) observer.observe(picker, { attributes: true, attributeFilter: ['data-active-semester'] });
+    const resizeObserver = new ResizeObserver(updateActiveHref);
+    resizeObserver.observe(document.body);
     updateActiveHref();
     window.addEventListener('scroll', updateActiveHref, { passive: true });
     window.addEventListener('hashchange', updateActiveHref);
+    window.addEventListener('resize', updateActiveHref);
 
     return () => {
+      if (frame !== null) window.cancelAnimationFrame(frame);
+      observer.disconnect();
+      resizeObserver.disconnect();
       window.removeEventListener('scroll', updateActiveHref);
       window.removeEventListener('hashchange', updateActiveHref);
+      window.removeEventListener('resize', updateActiveHref);
     };
   }, []);
 
