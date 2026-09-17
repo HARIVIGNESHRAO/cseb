@@ -1,4 +1,4 @@
-import { allSubjects } from '@/data/subjects';
+import { semesterSections } from '@/data/semesterSections';
 
 const categoryLabels = {
   calendar: 'Academic Calendar',
@@ -15,7 +15,9 @@ export function normalizeSearchValue(value) {
 }
 
 export function buildSearchItems() {
-  return allSubjects.flatMap((subject) => {
+  return Object.entries(semesterSections).flatMap(([semester, sections]) => {
+    const subjects = [...new Map(sections.flatMap((section) => section.items).map((subject) => [subject.id, subject])).values()];
+    return subjects.flatMap((subject) => {
     const subjectLabel = categoryLabels[subject.category] || 'Subject';
     const subjectText = [
       subject.code,
@@ -28,9 +30,10 @@ export function buildSearchItems() {
       .join(' ');
 
     const subjectItem = {
-      id: subject.id,
+      id: `${semester}-${subject.id}`,
+      semester,
       title: subject.name,
-      meta: `${subject.code} · ${subjectLabel}`,
+      meta: `${semester} · ${subject.code} · ${subjectLabel}`,
       href: `/subject/${subject.id}`,
       color: subject.color,
       icon: subject.icon,
@@ -60,9 +63,10 @@ export function buildSearchItems() {
         .join(' ');
 
       return {
-        id: `${subject.id}-${unit.id}`,
+        id: `${semester}-${subject.id}-${unit.id}`,
+        semester,
         title: unit.topic || unit.name,
-        meta: `${subject.code} · ${unit.name}`,
+        meta: `${semester} · ${subject.code} · ${unit.name}`,
         href: `/subject/${subject.id}/${unit.id}`,
         color: subject.color,
         icon: subject.icon,
@@ -71,5 +75,14 @@ export function buildSearchItems() {
     });
 
     return [subjectItem, ...unitItems];
+    });
   });
+}
+
+export function filterSearchItems(items, query, semester, scope = 'current') {
+  const normalizedQuery = normalizeSearchValue(query);
+  if (!normalizedQuery) return [];
+  return items.filter((item) =>
+    (scope === 'all' || item.semester === semester) && item.searchText.includes(normalizedQuery)
+  );
 }

@@ -3,24 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { FlaskConical, X } from 'lucide-react';
-import {
-  academicCalendarSubjects,
-  academicCalendarSubjects1,
-  academicCalendarSubjectsTwoOne,
-  academicCalendarSubjectsTwoTwo,
-  syllabusSubjects1,
-  syllabusSubjectsTwoOne,
-  syllabusSubjectsTwoTwo,
-  questionPaperSubjects,
-  subjects,
-  subjectsTwoOne,
-  subjectsTwoTwo,
-  syllabusSubjects,
-  subjectsThreeOne,
-  subjects1,
-  subjectsFourTwo,
-  labSubjects, timetableSubjects1, record, questionPaperSubjects1
-} from '@/data/subjects';
+import { semesterTabs, semesterSections } from '@/data/semesterSections';
 import styles from '@/app/page.module.css';
 
 const formatCount = (count, label) => `${count} ${label}${count === 1 ? '' : 's'}`;
@@ -48,168 +31,6 @@ function getCardCount(subject) {
 
 const SEMESTER_STORAGE_KEY = 'cseb-selected-semester';
 const LAB_REVISION_NOTICE_KEY = 'cseb-sdc-stm-videos-uploaded-v4';
-
-const semesterTabs = [
-  { id: '2-1', label: '2-1' },
-  { id: '2-2', label: '2-2' },
-  { id: '3-1', label: '3-1' },
-  { id: '3-2', label: '3-2' },
-  { id: '4-1', label: '4-1' },
-  { id: '4-2', label: '4-2' },
-];
-
-const semesterThreeOneSections = [
-  {
-    id: 'academic-calendar',
-    label: 'ACADEMIC CALENDAR',
-
-    items: academicCalendarSubjects,
-  },
-  {
-    id: 'subjects',
-    label: 'SUBJECTS',
-
-    items: subjectsThreeOne,
-  },
-];
-
-const semesterThreeTwoSections = [
-  {
-    id: 'academic-calendar',
-    label: 'ACADEMIC CALENDAR',
-
-    items: academicCalendarSubjects,
-  },
-  {
-    id: 'syllabus',
-    label: 'SYLLABUS',
-
-    items: syllabusSubjects,
-  },
-  {
-    id: 'subjects',
-    label: 'SUBJECTS',
-
-    items: subjects,
-  },
-
-  {
-    id: 'papers',
-    label: 'QUESTION PAPERS',
-
-    items: questionPaperSubjects,
-  },
-];
-
-const semesterFourOneSections = [
-  {
-    id: 'academic-calendar',
-    label: 'ACADEMIC CALENDAR',
-
-    items: academicCalendarSubjects1,
-  },
-  {
-    id: 'syllabus',
-    label: 'SYLLABUS',
-
-    items: syllabusSubjects1,
-  },
-  // {
-  //   id: 'timetable',
-  //   label: 'TIMETABLE',
-  //   count: `${timetableSubjects1.length} files`,
-  //   items: timetableSubjects1,
-  // },
-  {
-    id: 'subjects',
-    label: 'SUBJECTS',
-
-    items: subjects1,
-  },
-
-  {
-    id: 'lab-manuals',
-    label: 'LAB SUBJECTS',
-
-    items: record,
-  },
-  {
-    id: 'papers',
-    label: 'QUESTION PAPERS',
-
-    items: questionPaperSubjects1
-  },
-];
-
-const semesterFourTwoSyllabus = [syllabusSubjects1[0]];
-
-const semesterFourTwoSections = [
-  {
-    id: 'academic-calendar',
-    label: 'ACADEMIC CALENDAR',
-
-    items: academicCalendarSubjects1,
-  },
-  {
-    id: 'syllabus',
-    label: 'SYLLABUS',
-
-    items: semesterFourTwoSyllabus,
-  },
-  {
-    id: 'subjects',
-    label: 'SUBJECTS',
-
-    items: subjectsFourTwo,
-  },
-];
-
-const semesterSections = {
-  '2-1': [
-    {
-      id: 'academic-calendar',
-      label: 'ACADEMIC CALENDAR',
-
-      items: academicCalendarSubjectsTwoOne,
-    },
-    {
-      id: 'syllabus',
-      label: 'SYLLABUS',
-
-      items: syllabusSubjectsTwoOne,
-    },
-    {
-      id: 'subjects',
-      label: 'SUBJECTS',
-
-      items: subjectsTwoOne,
-    },
-  ],
-  '2-2': [
-    {
-      id: 'academic-calendar',
-      label: 'ACADEMIC CALENDAR',
-
-      items: academicCalendarSubjectsTwoTwo,
-    },
-    {
-      id: 'syllabus',
-      label: 'SYLLABUS',
-
-      items: syllabusSubjectsTwoTwo,
-    },
-    {
-      id: 'subjects',
-      label: 'SUBJECTS',
-
-      items: subjectsTwoTwo,
-    },
-  ],
-  '3-1': semesterThreeOneSections,
-  '3-2': semesterThreeTwoSections,
-  '4-1': semesterFourOneSections,
-  '4-2': semesterFourTwoSections,
-};
 
 export default function HomeSemesterTabs() {
   const [activeSemester, setActiveSemester] = useState('4-1');
@@ -242,12 +63,6 @@ export default function HomeSemesterTabs() {
 
   useEffect(() => {
     const syncSemesterFromHash = () => {
-      if (window.location.hash === '#lab-manuals') {
-        setActiveSemester('4-1');
-        localStorage.setItem(SEMESTER_STORAGE_KEY, '4-1');
-        return;
-      }
-
       const hash = window.location.hash.replace('#semester-', '');
 
       if (semesterTabs.some((tab) => tab.id === hash)) {
@@ -269,8 +84,9 @@ export default function HomeSemesterTabs() {
   }, []);
 
   useEffect(() => {
-    if (activeSemester === '4-1' && window.location.hash === '#lab-manuals') {
-      document.getElementById('lab-manuals')?.scrollIntoView({ block: 'start' });
+    const sectionId = window.location.hash.slice(1);
+    if (['subjects', 'lab-manuals', 'papers'].includes(sectionId)) {
+      document.getElementById(sectionId)?.scrollIntoView({ block: 'start' });
     }
   }, [activeSemester]);
 
@@ -370,7 +186,7 @@ export default function HomeSemesterTabs() {
       <span id="semester-3-2" className={styles.semesterAnchor} />
       <span id="semester-4-1" className={styles.semesterAnchor} />
       <span id="semester-4-2" className={styles.semesterAnchor} />
-      <div id="semester-picker" data-active-semester={activeSemester} className={styles.semesterPicker}>
+      <div id="semester-picker" data-active-semester={activeSemester} data-has-papers={semesterSections[activeSemester].some((section) => section.id === 'papers')} data-has-labs={semesterSections[activeSemester].some((section) => section.id === 'lab-manuals')} className={styles.semesterPicker}>
         <div className={styles.semesterPickerIdentity}>
           <span className={styles.semesterPickerIcon} aria-hidden="true">⌘</span>
           <span className={styles.semesterPickerCopy}>

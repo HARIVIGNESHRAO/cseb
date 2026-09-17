@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState, useRef } from 'react';
-import { buildSearchItems, normalizeSearchValue } from '@/lib/searchItems';
+import { useState, useRef } from 'react';
+import useSemesterSearch from '@/hooks/useSemesterSearch';
+import SearchScope from '@/components/SearchScope';
 import styles from '@/app/page.module.css';
 
 export default function HomeSearch() {
@@ -10,14 +11,7 @@ export default function HomeSearch() {
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef(null);
 
-  const searchItems = useMemo(() => buildSearchItems(), []);
-  const normalizedQuery = normalizeSearchValue(query);
-  
-  const results = normalizedQuery
-    ? searchItems
-        .filter((item) => item.searchText.includes(normalizedQuery))
-        .slice(0, 8)
-    : [];
+  const { semester, scope, setScope, results, normalizedQuery } = useSemesterSearch(query);
 
   // Voice Search
   const startListening = () => {
@@ -104,6 +98,7 @@ export default function HomeSearch() {
 
       {normalizedQuery ? (
         <div className={styles.searchResults}>
+          <SearchScope semester={semester} scope={scope} setScope={setScope} />
           {results.length ? (
             results.map((item) => (
               <Link
@@ -115,13 +110,16 @@ export default function HomeSearch() {
                 <span className={styles.searchResultIcon}>{item.icon}</span>
                 <span className={styles.searchResultText}>
                   <span className={styles.searchResultTitle}>{item.title}</span>
-                  <span className={styles.searchResultMeta}>{item.meta}</span>
+                  <span className={styles.searchResultMeta}><span className={styles.searchSemesterBadge}>{item.semester}</span> {item.meta.slice(item.semester.length + 3)}</span>
                 </span>
                 <span className={styles.searchResultArrow}>→</span>
               </Link>
             ))
           ) : (
-            <p className={styles.searchEmpty}>No matching study material found.</p>
+            <div className={styles.searchEmpty} role="status">
+              <p>{scope === 'current' ? `No results in semester ${semester}.` : 'No matching study material found.'}</p>
+              {scope === 'current' && <button type="button" className={styles.searchExpandScope} onClick={() => setScope('all')}>Search all semesters</button>}
+            </div>
           )}
         </div>
       ) : null}

@@ -1,8 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useMemo, useState, useRef } from 'react';
-import { buildSearchItems, normalizeSearchValue } from '@/lib/searchItems';
+import useActiveHomeSection from '@/hooks/useActiveHomeSection';
+import useHasSemesterSection from '@/hooks/useHasSemesterSection';
+import { useEffect, useState, useRef } from 'react';
+import useSemesterSearch from '@/hooks/useSemesterSearch';
+import SearchScope from '@/components/SearchScope';
 import styles from '@/app/page.module.css';
 
 const navItems = [
@@ -13,19 +16,15 @@ const navItems = [
 ];
 
 export default function HomeStickyNav() {
+  const [activeHref, setActiveHref] = useActiveHomeSection();
+  const hasLabs = useHasSemesterSection('labs');
+  const hasPapers = useHasSemesterSection('papers');
   const [visible, setVisible] = useState(false);
   const [query, setQuery] = useState('');
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef(null);   // ← This was missing
 
-  const searchItems = useMemo(() => buildSearchItems(), []);
-  const normalizedQuery = normalizeSearchValue(query);
-  
-  const results = normalizedQuery
-    ? searchItems
-        .filter((item) => item.searchText.includes(normalizedQuery))
-        .slice(0, 5)
-    : [];
+  const { semester, scope, setScope, results, normalizedQuery } = useSemesterSearch(query);
 
   // Voice Search Functions
   const startListening = () => {
@@ -123,6 +122,7 @@ export default function HomeStickyNav() {
 
         {normalizedQuery ? (
           <div className={styles.stickySearchResults}>
+            <SearchScope semester={semester} scope={scope} setScope={setScope} />
             {results.length ? (
               results.map((item) => (
                 <Link
@@ -132,19 +132,28 @@ export default function HomeStickyNav() {
                   onClick={() => setQuery('')}
                 >
                   <span className={styles.stickySearchResultTitle}>{item.title}</span>
-                  <span className={styles.stickySearchResultMeta}>{item.meta}</span>
+                  <span className={styles.stickySearchResultMeta}><span className={styles.searchSemesterBadge}>{item.semester}</span> {item.meta.slice(item.semester.length + 3)}</span>
                 </Link>
               ))
             ) : (
-              <p className={styles.stickySearchEmpty}>No results</p>
+              <div className={styles.stickySearchEmpty} role="status">
+                <p>{scope === 'current' ? `No results in semester ${semester}.` : 'No matching study material found.'}</p>
+                {scope === 'current' && <button type="button" className={styles.searchExpandScope} onClick={() => setScope('all')}>Search all semesters</button>}
+              </div>
             )}
           </div>
         ) : null}
       </div>
 
       <div className={styles.stickyLinks}>
-        {navItems.map((item) => (
-          <a key={item.href} href={item.href} className={styles.stickyLink}>
+        {navItems.filter((item) => (item.href !== '#lab-manuals' || hasLabs) && (item.href !== '#papers' || hasPapers)).map((item) => (
+          <a
+            key={item.href}
+            href={item.href}
+            className={`${styles.stickyLink} ${activeHref === item.href ? styles.stickyLinkActive : ''}`}
+            aria-current={activeHref === item.href ? 'location' : undefined}
+            onClick={() => setActiveHref(item.href)}
+          >
             {item.label}
           </a>
         ))}
