@@ -7,7 +7,7 @@ export default function InterviewResources() {
   return (
     <section id="interview-questions" className={`${styles.section} ${layout.section}`} aria-labelledby="placement-title">
       <div className={styles.sectionHeader}>
-        <h2 id="placement-title" className={styles.sectionLabel}>PLACEMENT PREPARATION · ALL SEMESTERS</h2>
+        <h2 id="placement-title" className={styles.sectionLabel}>PLACEMENT PREPARATION</h2>
         <span className={styles.sectionCount}>1 collection</span>
       </div>
       <div className={styles.grid}>
