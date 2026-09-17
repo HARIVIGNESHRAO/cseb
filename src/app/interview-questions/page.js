@@ -21,7 +21,7 @@ export default function InterviewQuestionsPage() {
         </nav>
         <header className={styles.subjectHeader} style={theme}>
           <div className={styles.subjectLeft}>
-            <span className={styles.subjectBadge}>PLACEMENT PREPARATION · ALL SEMESTERS</span>
+            <span className={styles.subjectBadge}>PLACEMENT PREPARATION</span>
             <h1 className={styles.subjectTitle}>Interview Questions &amp; Answers</h1>
             <p className={styles.subjectDesc}>Choose a topic to start preparing.</p>
           </div>
