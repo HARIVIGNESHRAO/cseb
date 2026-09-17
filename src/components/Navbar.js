@@ -38,7 +38,7 @@ const NAV_LINKS = [
   { label: 'Subjects',   href: '#subjects',    icon: '▦' },
   { label: 'Labs',       href: '#lab-manuals', icon: '▤' },
   { label: 'Papers',     href: '#papers',     icon: '▣' },
-  { label: 'Interview Q&A', href: '#interview-questions', icon: '▧' },
+  { label: 'Interview', href: '#interview-questions', icon: '▧' },
   { label: 'Feedback',   href: '#feedback',   icon: '✉' },
 ];
 

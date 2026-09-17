@@ -63,8 +63,8 @@ const EXAMS = [
 function getExamState(now) {
   if (!now) {
     return {
-      phase: 'countdown',
-      exam: EXAMS[0],
+      phase: 'loading',
+      exam: null,
       remainingMs: 0,
     };
   }
@@ -203,7 +203,7 @@ export default function ExamCountdown() {
 
   const examState = useMemo(() => getExamState(now), [now]);
 
-  if (examState.phase === 'done') {
+  if (examState.phase === 'loading' || examState.phase === 'done') {
     return (
       <section className={styles.examCountdown} aria-live="polite">
         <QuickDashboardLinks />
