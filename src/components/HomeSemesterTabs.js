@@ -23,6 +23,29 @@ import {
 } from '@/data/subjects';
 import styles from '@/app/page.module.css';
 
+const formatCount = (count, label) => `${count} ${label}${count === 1 ? '' : 's'}`;
+
+function getSectionCount(section) {
+  if (section.id === 'subjects') return formatCount(section.items.length, 'course');
+  if (section.id === 'lab-manuals' || section.id === 'labs') return formatCount(section.items.length, 'lab');
+  if (section.id === 'papers') return formatCount(section.items.length, 'collection');
+  return formatCount(section.items.reduce((total, item) => total + item.units.length, 0), 'file');
+}
+
+function getCardCount(subject) {
+  const units = subject.units;
+  if (subject.category === 'theory') {
+    const courseUnits = units.filter((unit) => /^Unit\s+\d+/i.test(unit.name));
+    const extraResources = units.length - courseUnits.length;
+    return [
+      courseUnits.length > 0 ? formatCount(courseUnits.length, 'unit') : null,
+      extraResources > 0 ? formatCount(extraResources, 'resource') : null,
+    ].filter(Boolean).join(' · ') || '0 units';
+  }
+  const mixedResources = units.some((unit) => unit.videoUrl || ['video', 'youtube', 'external-links'].includes(unit.type) || unit.resources?.length);
+  return formatCount(units.length, mixedResources ? 'resource' : 'file');
+}
+
 const SEMESTER_STORAGE_KEY = 'cseb-selected-semester';
 const LAB_REVISION_NOTICE_KEY = 'cseb-sdc-stm-videos-uploaded-v4';
 
@@ -39,13 +62,13 @@ const semesterThreeOneSections = [
   {
     id: 'academic-calendar',
     label: 'ACADEMIC CALENDAR',
-    count: `${academicCalendarSubjects.length} files`,
+
     items: academicCalendarSubjects,
   },
   {
     id: 'subjects',
     label: 'SUBJECTS',
-    count: `${subjectsThreeOne.length} courses`,
+
     items: subjectsThreeOne,
   },
 ];
@@ -54,26 +77,26 @@ const semesterThreeTwoSections = [
   {
     id: 'academic-calendar',
     label: 'ACADEMIC CALENDAR',
-    count: `${academicCalendarSubjects.length} files`,
+
     items: academicCalendarSubjects,
   },
   {
     id: 'syllabus',
     label: 'SYLLABUS',
-    count: `${syllabusSubjects.length} files`,
+
     items: syllabusSubjects,
   },
   {
     id: 'subjects',
     label: 'SUBJECTS',
-    count: `${subjects.length} courses`,
+
     items: subjects,
   },
 
   {
     id: 'papers',
     label: 'QUESTION PAPERS',
-    count: `${questionPaperSubjects.length} files`,
+
     items: questionPaperSubjects,
   },
 ];
@@ -82,13 +105,13 @@ const semesterFourOneSections = [
   {
     id: 'academic-calendar',
     label: 'ACADEMIC CALENDAR',
-    count: `${academicCalendarSubjects1.length} files`,
+
     items: academicCalendarSubjects1,
   },
   {
     id: 'syllabus',
     label: 'SYLLABUS',
-    count: `${syllabusSubjects1.length} files`,
+
     items: syllabusSubjects1,
   },
   // {
@@ -100,20 +123,20 @@ const semesterFourOneSections = [
   {
     id: 'subjects',
     label: 'SUBJECTS',
-    count: `${subjects1.length} files`,
+
     items: subjects1,
   },
 
   {
     id: 'lab-manuals',
     label: 'LAB SUBJECTS',
-    count: `${record.length} files`,
+
     items: record,
   },
   {
     id: 'papers',
     label: 'QUESTION PAPERS',
-    count: `${questionPaperSubjects1.length} files`,
+
     items: questionPaperSubjects1
   },
 ];
@@ -124,19 +147,19 @@ const semesterFourTwoSections = [
   {
     id: 'academic-calendar',
     label: 'ACADEMIC CALENDAR',
-    count: `${academicCalendarSubjects1.length} file`,
+
     items: academicCalendarSubjects1,
   },
   {
     id: 'syllabus',
     label: 'SYLLABUS',
-    count: `${semesterFourTwoSyllabus.length} file`,
+
     items: semesterFourTwoSyllabus,
   },
   {
     id: 'subjects',
     label: 'SUBJECTS',
-    count: `${subjectsFourTwo.length} courses`,
+
     items: subjectsFourTwo,
   },
 ];
@@ -146,19 +169,19 @@ const semesterSections = {
     {
       id: 'academic-calendar',
       label: 'ACADEMIC CALENDAR',
-      count: `${academicCalendarSubjectsTwoOne.length} file`,
+
       items: academicCalendarSubjectsTwoOne,
     },
     {
       id: 'syllabus',
       label: 'SYLLABUS',
-      count: `${syllabusSubjectsTwoOne.length} file`,
+
       items: syllabusSubjectsTwoOne,
     },
     {
       id: 'subjects',
       label: 'SUBJECTS',
-      count: `${subjectsTwoOne.length} courses`,
+
       items: subjectsTwoOne,
     },
   ],
@@ -166,19 +189,19 @@ const semesterSections = {
     {
       id: 'academic-calendar',
       label: 'ACADEMIC CALENDAR',
-      count: `${academicCalendarSubjectsTwoTwo.length} file`,
+
       items: academicCalendarSubjectsTwoTwo,
     },
     {
       id: 'syllabus',
       label: 'SYLLABUS',
-      count: `${syllabusSubjectsTwoTwo.length} file`,
+
       items: syllabusSubjectsTwoTwo,
     },
     {
       id: 'subjects',
       label: 'SUBJECTS',
-      count: `${subjectsTwoTwo.length} courses`,
+
       items: subjectsTwoTwo,
     },
   ],
@@ -287,7 +310,7 @@ export default function HomeSemesterTabs() {
                 <span className={styles.cardLockStatus}>Locked</span>
               ) : (
                 <span className={styles.cardUnits}>
-                  {subject.units.length} {subject.units.length <= 1 ? 'Unit' : 'Units'}
+                  {getCardCount(subject)}
                 </span>
               )}
               <span className={styles.cardArrow}>{subject.locked ? '•••' : '→'}</span>
@@ -384,7 +407,7 @@ export default function HomeSemesterTabs() {
             <section className={styles.resourceGroup} id={section.id} key={section.id}>
               <div className={styles.sectionHeader}>
                 <span className={styles.sectionLabel}>{section.label}</span>
-                <span className={styles.sectionCount}>{section.count}</span>
+                <span className={styles.sectionCount}>{getSectionCount(section)}</span>
               </div>
               {renderSubjectGrid(section.items)}
             </section>

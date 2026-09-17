@@ -1,0 +1,8 @@
+.section {
+  margin-top: 56px;
+  scroll-margin-top: 110px;
+}
+
+@media (max-width: 600px) {
+  .section { margin-top: 36px; }
+}

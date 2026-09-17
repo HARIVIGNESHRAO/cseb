@@ -1,4 +1,5 @@
 import ExamCountdown from '@/components/ExamCountdown';
+import InterviewResources from '@/components/InterviewResources';
 import HomeFeedbackForm from '@/components/HomeFeedbackForm';
 import HomeSearch from '@/components/HomeSearch';
 import HomeSemesterTabs from '@/components/HomeSemesterTabs';
@@ -41,6 +42,8 @@ export default function Home() {
       </div>
 
       <HomeSemesterTabs />
+
+      <InterviewResources />
 
       <HomeFeedbackForm />
 

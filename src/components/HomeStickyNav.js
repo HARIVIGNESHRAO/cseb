@@ -9,6 +9,7 @@ const navItems = [
   { href: '#subjects', label: 'Subjects' },
   { href: '#lab-manuals', label: 'Labs' },
   { href: '#papers', label: 'Papers' },
+  { href: '#interview-questions', label: 'Interview Q&A' },
 ];
 
 export default function HomeStickyNav() {

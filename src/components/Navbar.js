@@ -35,6 +35,7 @@ const NAV_LINKS = [
   },
   { label: 'Subjects',   href: '#subjects',    icon: '▦' },
   { label: 'Labs',       href: '#lab-manuals', icon: '▤' },
+  { label: 'Interview Q&A', href: '#interview-questions', icon: '▧' },
   { label: 'Feedback',   href: '#feedback',   icon: '✉' },
 ];
 
@@ -48,6 +49,7 @@ function getActiveHref() {
     { element: semesterPicker, href: SEMESTER_HREFS.includes(semesterHref) ? semesterHref : '#' },
     { element: document.getElementById('subjects'), href: '#subjects' },
     { element: document.getElementById('lab-manuals'), href: '#lab-manuals' },
+    { element: document.getElementById('interview-questions'), href: '#interview-questions' },
     { element: document.getElementById('feedback'), href: '#feedback' },
   ].filter(({ element }) => element && element.getClientRects().length > 0)
     .map(({ element, href }) => ({ href, top: element.getBoundingClientRect().top }))
