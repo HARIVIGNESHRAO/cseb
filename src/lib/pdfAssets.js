@@ -1,19 +1,25 @@
-import { statSync } from 'node:fs';
+import { readFileSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
 
 const PUBLIC_DIR = path.join(process.cwd(), 'public');
 
+const assetVersions = new Map();
+
 function getPublicAssetVersion(assetUrl) {
-  if (!assetUrl?.startsWith('/')) return null;
-
-  const [pathname] = assetUrl.split('?');
-  const normalizedPath = path.normalize(decodeURIComponent(pathname)).replace(/^(\.\.[/\\])+/, '');
-  const assetPath = path.join(PUBLIC_DIR, normalizedPath);
-
-  if (!assetPath.startsWith(PUBLIC_DIR)) return null;
-
+  if (typeof assetUrl !== 'string' || !assetUrl.startsWith('/') || assetUrl.startsWith('//')) return null;
   try {
-    return String(Math.trunc(statSync(assetPath).mtimeMs));
+    const url = new URL(assetUrl, 'https://portal.local');
+    const assetPath = path.resolve(PUBLIC_DIR, `.${decodeURIComponent(url.pathname)}`);
+    if (!assetPath.startsWith(`${PUBLIC_DIR}${path.sep}`)) return null;
+    const stat = statSync(assetPath);
+    if (!stat.isFile()) return null;
+    const signature = `${stat.size}:${stat.mtimeMs}:${stat.ctimeMs}`;
+    const cached = assetVersions.get(assetPath);
+    if (cached?.signature === signature) return cached.version;
+    const version = createHash('sha256').update(readFileSync(assetPath)).digest('hex').slice(0, 20);
+    assetVersions.set(assetPath, { signature, version });
+    return version;
   } catch {
     return null;
   }
@@ -22,9 +28,9 @@ function getPublicAssetVersion(assetUrl) {
 export function withPdfAssetVersion(assetUrl) {
   const version = getPublicAssetVersion(assetUrl);
   if (!version) return assetUrl;
-
-  const separator = assetUrl.includes('?') ? '&' : '?';
-  return `${assetUrl}${separator}v=${version}`;
+  const url = new URL(assetUrl, 'https://portal.local');
+  url.searchParams.set('v', version);
+  return `${url.pathname}${url.search}${url.hash}`;
 }
 
 export function getAssetDownloadUrl(assetUrl) {
@@ -72,7 +78,7 @@ export function getUnitDownloadFileName(subject, unit) {
 }
 
 export function getUnitPdfUrl(subject, unit) {
-  if (unit.pdfUrl) return unit.pdfUrl;
+  if (unit.pdfUrl) return withPdfAssetVersion(unit.pdfUrl);
 
   const pdfFile = unit.pdfFile ?? unit.id;
 

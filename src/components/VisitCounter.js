@@ -13,71 +13,73 @@ export default function VisitCounter() {
 
   useEffect(() => {
     let isMounted = true;
+    let trackingUpdated = false;
+    let receivedCount = false;
+    let pending = 2;
+    const controller = new AbortController();
 
-    // Show the last successful count while requesting the current total.
     try {
       const cached = localStorage.getItem(VISIT_COUNT_CACHE_KEY);
-      if (cached !== null) {
-        const cachedCount = JSON.parse(cached);
-        if (isValidCount(cachedCount)) {
-          setCount(cachedCount);
-          setStatus('ready');
-        }
+      const cachedCount = cached === null ? null : JSON.parse(cached);
+      if (isValidCount(cachedCount)) {
+        receivedCount = true;
+        setCount(cachedCount);
+        setStatus('ready');
       }
     } catch {
-      // Storage may be unavailable or contain an invalid cached value.
+      // Continue with the live request if browser storage is unavailable or invalid.
     }
 
-    async function handleVisitTracking() {
+    async function loadCount(trackVisit) {
       try {
-        // 1. Initialize the free client-side fingerprinter agent
-        const fp = await FingerprintJS.load();
-        const result = await fp.get();
-        
-        // This is your stable, unique 32-character browser/hardware hash
-        const visitorId = result.visitorId;
+        let options = {};
+        if (trackVisit) {
+          const fp = await FingerprintJS.load();
+          const { visitorId } = await fp.get();
+          if (!isMounted) return;
+          options = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ visitorId }),
+          };
+        }
 
-        // 2. Send the visitor ID to your API route
-        // Your backend route should read this ID, check if it's unique, and return the total count
         const response = await fetch('/api/visits', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ visitorId }),
+          ...options,
           cache: 'no-store',
+          signal: controller.signal,
         });
-
-        if (!response.ok) {
-          throw new Error('Unable to handle visit tracking.');
-        }
-
+        if (!response.ok) throw new Error('Unable to load visitor count.');
         const data = await response.json();
-        if (!isValidCount(data.count)) {
-          throw new Error('Visit counter returned an invalid count.');
-        }
+        if (!isValidCount(data.count)) throw new Error('Invalid visitor count.');
 
-        if (isMounted) {
+        // The tracking response includes this visit; an older GET must not replace it.
+        if (isMounted && (trackVisit || !trackingUpdated)) {
+          if (trackVisit) trackingUpdated = true;
+          receivedCount = true;
           setCount(data.count);
           setStatus('ready');
           try {
             localStorage.setItem(VISIT_COUNT_CACHE_KEY, JSON.stringify(data.count));
           } catch {
-            // A storage failure must not discard a successful response.
+            // Keep the live count even if saving it fails.
           }
         }
       } catch (error) {
-        console.error('Tracking Error:', error);
-        if (isMounted) {
-          setStatus('error');
-        }
+        if (isMounted) console.error('Visit counter error:', error);
+      } finally {
+        pending -= 1;
+        if (isMounted && pending === 0 && !receivedCount) setStatus('error');
       }
     }
 
-    handleVisitTracking();
+    // Fetch the current total immediately; identify and register this visit independently.
+    void loadCount(false);
+    void loadCount(true);
 
     return () => {
       isMounted = false;
+      controller.abort();
     };
   }, []);
 

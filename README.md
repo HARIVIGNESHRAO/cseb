@@ -65,7 +65,7 @@ For example, a subject with `pdfDir: 'stm'` and a unit with `pdfFile: 'unit1'` u
 }
 ```
 
-Local asset URLs receive a file modification version through `src/lib/pdfAssets.js` to help updated PDFs load despite long cache lifetimes.
+Local asset URLs receive a content-hash version through `src/lib/pdfAssets.js`. Updated PDF contents produce a new URL; unchanged contents keep the same version across builds. Browsers must revalidate local PDFs, and custom CDN caching is disabled to avoid retaining stale responses. Individual links and ZIP downloads use the same versioned URLs. Keep existing filenames when replacing PDFs so older open pages still have valid paths.
 
 ### External PDFs
 

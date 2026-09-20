@@ -20,9 +20,9 @@ function safeFileName(name) {
 }
 
 function getUnitUrl(subject, unit) {
-    const source = unit.downloadUrl ?? unit.openUrl ?? unit.pdfFile;
+    const source = unit.downloadUrl ?? unit.openUrl ?? unit.pdfUrl ?? unit.pdfFile;
     if (!source) return null;
-    if (/^https?:\/\//i.test(source)) return source;
+    if (/^https?:\/\//i.test(source) || source.startsWith('/')) return source;
 
     const pdfDir = subject.pdfDir ?? subject.id;
     return `/pdfs/${pdfDir}/${source}.pdf`;
@@ -44,7 +44,7 @@ export default function DownloadAllButton({ subject }) {
     const downloadableUnits = subject.units.filter((unit) => {
         const isVideo = unit.type === 'video' || unit.type === 'youtube' || Boolean(unit.videoUrl);
         const isExternalLinks = unit.type === 'external-links';
-        return !isVideo && !isExternalLinks && (unit.pdfFile || unit.downloadUrl || unit.resources?.length);
+        return !isVideo && !isExternalLinks && (unit.pdfUrl || unit.pdfFile || unit.downloadUrl || unit.resources?.length);
     });
 
     if (!downloadableUnits.length) return null;
@@ -82,7 +82,7 @@ export default function DownloadAllButton({ subject }) {
             setProgress({ current: 0, total: files.length });
 
             for (const [index, file] of files.entries()) {
-                const response = await fetch(file.url);
+                const response = await fetch(file.url, { cache: 'no-cache' });
                 if (!response.ok) {
                     throw new Error(`Failed to fetch ${file.name}`);
                 }

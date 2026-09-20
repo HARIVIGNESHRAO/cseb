@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { allSubjects } from '@/data/subjects';
 import PdfPrefetchLink from '@/components/PdfPrefetchLink';
 import DownloadAllButton from '@/components/DownloadAllButton';
-import { getAssetDownloadUrl, getUnitDownloadFileName, getUnitPdfUrl } from '@/lib/pdfAssets';
+import { getAssetDownloadUrl, getUnitDownloadFileName, getUnitPdfUrl, withPdfAssetVersion } from '@/lib/pdfAssets';
 import styles from './subject.module.css';
 
 export async function generateStaticParams() {
@@ -63,7 +63,19 @@ export default function SubjectPage({ params }) {
             </span>
           </div>
           {subject.category === 'theory' && (
-            <DownloadAllButton subject={subject} />
+            <DownloadAllButton subject={{
+              ...subject,
+              units: subject.units.map((unit) => ({
+                ...unit,
+                pdfUrl: getUnitPdfUrl(subject, unit),
+                openUrl: withPdfAssetVersion(unit.openUrl),
+                downloadUrl: withPdfAssetVersion(unit.downloadUrl),
+                resources: unit.resources?.map((resource) => ({
+                  ...resource,
+                  fileUrl: withPdfAssetVersion(resource.fileUrl),
+                })),
+              })),
+            }} />
           )}
         </div>
 
@@ -76,7 +88,7 @@ export default function SubjectPage({ params }) {
               ? unit.openUrl
               : `/subject/${subject.id}/${unit.id}`;
             const pdfUrl = getUnitPdfUrl(subject, unit);
-            const downloadUrl = getAssetDownloadUrl(unit.downloadUrl ?? unit.openUrl ?? pdfUrl);
+            const downloadUrl = getAssetDownloadUrl(withPdfAssetVersion(unit.downloadUrl ?? unit.openUrl ?? pdfUrl));
             const hasResources = Array.isArray(unit.resources) && unit.resources.length > 0;
 
             return (
@@ -121,7 +133,7 @@ export default function SubjectPage({ params }) {
                         </PdfPrefetchLink>
                     ) : (
                         <a
-                            href={unit.openUrl ?? pdfUrl}
+                            href={withPdfAssetVersion(unit.openUrl ?? pdfUrl)}
                             target="_blank"
                             rel="noreferrer"
                             className={styles.viewButton}

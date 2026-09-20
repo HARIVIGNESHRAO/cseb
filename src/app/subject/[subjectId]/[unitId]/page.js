@@ -25,8 +25,8 @@ export default function UnitPage({ params }) {
   const isVideo = unit.type === 'video' || unit.type === 'youtube' || !!unit.videoUrl;
   const hasResources = Array.isArray(unit.resources) && unit.resources.length > 0;
   const pdfUrl = getUnitPdfUrl(subject, unit);
-  const openUrl = unit.openUrl ?? pdfUrl;
-  const downloadUrl = getAssetDownloadUrl(unit.downloadUrl ?? openUrl);
+  const openUrl = withPdfAssetVersion(unit.openUrl ?? pdfUrl);
+  const downloadUrl = getAssetDownloadUrl(withPdfAssetVersion(unit.downloadUrl ?? openUrl));
   const unitIndex = subject.units.findIndex((u) => u.id === unit.id);
   const prevUnit =
     unit.id === 'codes'
@@ -172,7 +172,7 @@ export default function UnitPage({ params }) {
             </div>
           </section>
         ) : (
-          <PdfViewer pdfUrl={pdfUrl} subject={subject} unit={unit} />
+          <PdfViewer pdfUrl={pdfUrl} subject={subject} unit={{ ...unit, openUrl }} />
         )}
 
         {/* Unit Navigation */}
