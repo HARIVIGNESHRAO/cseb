@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
-import styles from '@/app/page.module.css';
+import { Users } from 'lucide-react';
+import styles from './VisitCounter.module.css';
 
 const VISIT_COUNT_CACHE_KEY = 'cseb-visit-count';
 const isValidCount = (value) => Number.isSafeInteger(value) && value >= 0;
@@ -84,19 +85,24 @@ export default function VisitCounter() {
   }, []);
 
   return (
-    <div className={styles.visitCounter} aria-live="polite">
-      {count !== null ? (
-        <>
-          <span className={styles.visitCounterValue}>
-            {new Intl.NumberFormat('en-IN').format(count)}
+    <div className={`${styles.visitCounter}${count > 2000 ? ` ${styles.visitCounterMilestone}` : ''}`} role="status" aria-live="polite" aria-atomic="true">
+      <span className={styles.visitCounterIcon} aria-hidden="true">
+        <Users size={16} strokeWidth={1.8} />
+      </span>
+      <div className={styles.visitCounterContent}>
+        {count !== null ? (
+          <>
+            <span className={styles.visitCounterValue}>
+              {new Intl.NumberFormat('en-IN').format(count)}
+            </span>
+            <span className={styles.visitCounterLabel}>visitors so far</span>
+          </>
+        ) : (
+          <span className={styles.visitCounterLabel}>
+            {status === 'loading' ? 'Visitors loading...' : 'Visitors unavailable'}
           </span>
-          <span className={styles.visitCounterLabel}>visitors so far</span>
-        </>
-      ) : (
-        <span className={styles.visitCounterLabel}>
-          {status === 'loading' ? 'Visitors loading...' : 'Visitors unavailable'}
-        </span>
-      )}
+        )}
+      </div>
     </div>
   );
 }
