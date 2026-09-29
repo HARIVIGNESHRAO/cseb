@@ -489,6 +489,8 @@ export const subjects1 = [
       { id: 'unit1', name: 'Unit 1', pdfFile: 'IRS_UNIT_1' },
       { id: 'unit2', name: 'Unit 2', pdfFile: 'IRS_UNIT_2' },
       { id: 'unit3', name: 'Unit 3', pdfFile: 'IRS_UNIT_3' },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 'https://ik.imagekit.io/0hytmpcavl/IRS/UNIT-4%20Notes.pdf' },
+      { id: 'unit5', name: 'Unit 5', pdfFile: 'IRS_UNIT_5' },
     ]
   },
 
