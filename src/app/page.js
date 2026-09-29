@@ -6,10 +6,15 @@ import HomeSemesterTabs from '@/components/HomeSemesterTabs';
 import HomeStickyNav from '@/components/HomeStickyNav';
 import Navbar from '@/components/Navbar';
 import VisitCounter from '@/components/VisitCounter';
+import ScrollProgress from '@/components/ScrollProgress';
+import BackToTop from '@/components/BackToTop';
 import styles from './page.module.css';
 
 export default function Home() {
   return (
+    <>
+    <ScrollProgress />
+    <BackToTop />
     <main id="sidebar-main-content" className={styles.main}>
       {/* Background grid */}
       <div className={styles.bgGrid} />
@@ -52,5 +57,6 @@ export default function Home() {
       <span className={styles.footerText}>© {new Date().getFullYear()} KMIT CSE Department. All Rights Reserved.</span>
     </footer>
     </main>
+    </>
   );
 }
