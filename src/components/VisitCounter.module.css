@@ -8,7 +8,7 @@
   padding: 10px 16px;
   border: 0;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--accent) 11%, transparent);
+  background: var(--soft-bg-strong);
   text-align: left;
 }
 
@@ -22,6 +22,7 @@
 .visitCounterContent {
   display: flex;
   align-items: baseline;
+  flex-wrap: wrap;
   gap: 6px;
   min-width: 0;
 }
@@ -42,25 +43,16 @@
 }
 
 .visitCounterLabel {
-  white-space: nowrap;
+  overflow-wrap: anywhere;
   color: var(--text-dim);
   font-family: var(--font-mono);
   font-size: 12px;
   line-height: 1.5;
-  letter-spacing: 0.2px;
+  letter-spacing: 0;
 }
 
-/* Visitor milestone: retain the compact layout with a warm gold accent. */
 .visitCounterMilestone {
-  --milestone-accent: #e9bd68;
-  padding: 9px 15px;
-  border: 1px solid color-mix(in srgb, var(--milestone-accent) 38%, transparent);
-  background: color-mix(in srgb, var(--milestone-accent) 9%, var(--bg));
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--milestone-accent) 5%, transparent);
-}
-
-.visitCounterMilestone .visitCounterIcon {
-  color: var(--milestone-accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--elevated-strong));
 }
 
 .visitCounterMilestone::after {
@@ -69,11 +61,6 @@
   height: 6px;
   flex-shrink: 0;
   margin-left: 2px;
-  border-radius: 1px;
-  background: var(--milestone-accent);
-  transform: rotate(45deg);
-}
-
-:global(html[data-theme='light']) .visitCounterMilestone {
-  --milestone-accent: #996515;
+  border-radius: 50%;
+  background: var(--title-accent);
 }
