@@ -975,13 +975,13 @@ export const record = [
         name: 'Experiment 6: React SPA with User Data',
         pdfFile: '6'
       },
-      // {
-      //   id: 'video21',
-      //   name: 'Lab Demonstration Video',
-      //   topic: 'Experiments 4-6',
-      //   videoUrl: 'https://www.youtube.com/embed/ms_ODU6Bp2s',
-      //   type: 'youtube'
-      // }
+      {
+        id: 'video21',
+        name: 'Lab Demonstration Video',
+        topic: 'Experiments 4-6',
+        videoUrl: 'https://www.youtube.com/embed/sM8XBDAg28c',
+        type: 'youtube'
+      }
     ]
   },
   {
