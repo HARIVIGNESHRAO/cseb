@@ -82,12 +82,12 @@ const semesterFourOneSections = [
 
     items: syllabusSubjects1,
   },
-  // {
-  //   id: 'timetable',
-  //   label: 'TIMETABLE',
-  //   count: `${timetableSubjects1.length} files`,
-  //   items: timetableSubjects1,
-  // },
+  {
+    id: 'timetable',
+    label: 'TIMETABLE',
+    count: `${timetableSubjects1.length} files`,
+    items: timetableSubjects1,
+  },
   {
     id: 'subjects',
     label: 'SUBJECTS',

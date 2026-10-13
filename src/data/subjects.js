@@ -1036,11 +1036,18 @@ export const timetableSubjects1 = [
     icon: '📅',
     units: [
       {
-        id: 'lab',
-        name: 'Lab',
+        id: 'theory',
+        name: 'Theory(interns)',
         topic: 'Mids Lab Timetable',
         topics: '',
-        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1789128170/STM_LAB_MID-II_TIME_TABLES_kyed8p.pdf',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1791873772/KR23_-_B.Tech_4-1_MID_-2_INTERNS_EXAMINATIONS_TIMETABLE_OCT_2026_jay4mv.pdf',
+      },
+        {
+        id: 'theory1',
+        name: 'Theory(non-interns)',
+        topic: 'Mids Lab Timetable',
+        topics: '',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1791873772/KR23_-_B.Tech_4-1_MID-2_EXAMINATION_TIMETABLE_OCT_2026_trajkc.pdf',
       },
     ],
   },
