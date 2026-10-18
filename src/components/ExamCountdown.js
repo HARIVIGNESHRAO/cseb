@@ -9,50 +9,74 @@ const EXAMS = [
   {
     id: 'befa',
     subject: 'Business Economics and Financial Analysis',
-    dateLabel: '22 Aug 2026',
+    dateLabel: '30 Oct 2026 (Non-interns)',
     timeLabel: '9:30 AM - 11:30 AM',
-    start: '2026-08-22T09:30:00+05:30',
-    end: '2026-08-22T11:30:00+05:30',
+    start: '2026-10-30T09:30:00+05:30',
+    end: '2026-10-30T11:30:00+05:30',
   },
   {
     id: 'stm',
     subject: 'Software Testing Methodologies',
-    dateLabel: '22 Aug 2026',
+    dateLabel: '30 Oct 2026 (Non-interns)',
     timeLabel: '12:00 PM - 2:00 PM',
-    start: '2026-08-22T12:00:00+05:30',
-    end: '2026-08-22T14:00:00+05:30',
+    start: '2026-10-30T12:00:00+05:30',
+    end: '2026-10-30T14:00:00+05:30',
   },
   {
     id: 'dm',
     subject: 'Data Mining',
-    dateLabel: '22 Aug 2026',
+    dateLabel: '30 Oct 2026 (Non-interns)',
     timeLabel: '2:30 PM - 4:30 PM',
-    start: '2026-08-22T14:30:00+05:30',
-    end: '2026-08-22T16:30:00+05:30',
+    start: '2026-10-30T14:30:00+05:30',
+    end: '2026-10-30T16:30:00+05:30',
   },
   {
     id: 'irs',
     subject: 'Information Retrieval System',
-    dateLabel: '23 Aug 2026',
+    dateLabel: '31 Oct 2026',
     timeLabel: '9:30 AM - 11:30 AM',
-    start: '2026-08-23T09:30:00+05:30',
-    end: '2026-08-23T11:30:00+05:30',
+    start: '2026-10-31T09:30:00+05:30',
+    end: '2026-10-31T11:30:00+05:30',
   },
   {
     id: 'dvt',
     subject: 'Data Visualization Techniques',
-    dateLabel: '23 Aug 2026',
+    dateLabel: '31 Oct 2026',
     timeLabel: '12:00 PM - 2:00 PM',
-    start: '2026-08-23T12:00:00+05:30',
-    end: '2026-08-23T14:00:00+05:30',
+    start: '2026-10-31T12:00:00+05:30',
+    end: '2026-10-31T14:00:00+05:30',
   },
   {
     id: 'es',
     subject: 'Environmental Science',
-    dateLabel: '23 Aug 2026',
+    dateLabel: '31 Oct 2026',
     timeLabel: '2:30 PM - 4:30 PM',
-    start: '2026-08-23T14:30:00+05:30',
-    end: '2026-08-23T16:30:00+05:30',
+    start: '2026-10-31T14:30:00+05:30',
+    end: '2026-10-31T16:30:00+05:30',
+  },
+  {
+    id: 'befa',
+    subject: 'Business Economics and Financial Analysis',
+    dateLabel: '1 Nov 2026 (Interns)',
+    timeLabel: '9:30 AM - 11:30 AM',
+    start: '2026-11-01T09:30:00+05:30',
+    end: '2026-11-01T11:30:00+05:30',
+  },
+  {
+    id: 'stm',
+    subject: 'Software Testing Methodologies',
+    dateLabel: '1 Nov 2026 (Interns)',
+    timeLabel: '12:00 PM - 2:00 PM',
+    start: '2026-11-01T12:00:00+05:30',
+    end: '2026-11-01T14:00:00+05:30',
+  },
+  {
+    id: 'dm',
+    subject: 'Data Mining',
+    dateLabel: '1 Nov 2026 (Interns)',
+    timeLabel: '2:30 PM - 4:30 PM',
+    start: '2026-11-01T14:30:00+05:30',
+    end: '2026-11-01T16:30:00+05:30',
   },
 ].map((exam) => ({
   ...exam,
@@ -222,7 +246,7 @@ export default function ExamCountdown() {
   function selectPreviousExam(event) {
     event.stopPropagation();
     setSelectedExamIndex((currentIndex) => {
-      const index = currentIndex === null ? EXAMS.findIndex((exam) => exam.id === selectedExam.id) : currentIndex;
+      const index = currentIndex === null ? EXAMS.indexOf(selectedExam) : currentIndex;
       return Math.max(0, index - 1);
     });
   }
@@ -230,7 +254,7 @@ export default function ExamCountdown() {
   function selectNextExam(event) {
     event.stopPropagation();
     setSelectedExamIndex((currentIndex) => {
-      const index = currentIndex === null ? EXAMS.findIndex((exam) => exam.id === selectedExam.id) : currentIndex;
+      const index = currentIndex === null ? EXAMS.indexOf(selectedExam) : currentIndex;
       return Math.min(EXAMS.length - 1, index + 1);
     });
   }
