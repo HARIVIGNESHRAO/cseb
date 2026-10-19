@@ -261,7 +261,7 @@ export default function ExamCountdown() {
 
   return (
     <section
-      className={`${styles.examCountdown} ${isLive ? styles.examCountdownLive : ''} ${styles.examCountdownClickable}`}
+      className={`${styles.examCountdown} ${styles.examCountdownScheduled} ${isLive ? styles.examCountdownLive : ''} ${styles.examCountdownClickable}`}
       aria-live="polite"
       role="link"
       tabIndex={0}
@@ -273,7 +273,7 @@ export default function ExamCountdown() {
         }
       }}
     >
-      <div className={styles.examCountdownMeta}>
+      <div className={`${styles.examCountdownMeta} ${styles.examCountdownExamHeader}`}>
         <button
           type="button"
           className={styles.examCountdownArrow}
@@ -287,11 +287,13 @@ export default function ExamCountdown() {
           <span className={styles.examCountdownLabel}>
             {isLive ? 'Exam Live Now' : isEnded ? 'Exam Completed' : 'Exam Countdown'}
           </span>
-          <span className={styles.examCountdownName}>{selectedExam.subject}</span>
+          <div className={styles.examCountdownNameAndDate}>
+            <span className={`${styles.examCountdownName} ${styles.examCountdownFullName}`}>{selectedExam.subject}</span>
+            <span className={styles.examCountdownDate}>
+              {selectedExam.dateLabel} · {selectedExam.timeLabel}
+            </span>
+          </div>
         </div>
-        <span className={styles.examCountdownDate}>
-          {selectedExam.dateLabel} · {selectedExam.timeLabel}
-        </span>
         <button
           type="button"
           className={styles.examCountdownArrow}

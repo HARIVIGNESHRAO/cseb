@@ -3838,3 +3838,62 @@
   padding: 8px;
   background: var(--surface);
 }
+
+/* Let the current exam determine the card width, within the viewport. */
+.examCountdown.examCountdownScheduled {
+  width: max-content;
+  min-width: min(620px, 100%);
+  max-width: 100%;
+}
+
+.examCountdownFullName {
+  display: block;
+  white-space: nowrap;
+}
+
+.examCountdownMeta.examCountdownExamHeader {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) 38px;
+}
+
+.examCountdownExamHeader .examCountdownText {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.examCountdownNameAndDate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.examCountdownNameAndDate .examCountdownDate {
+  white-space: normal;
+}
+
+.examCountdownExamHeader .examCountdownArrow:first-child {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.examCountdownExamHeader .examCountdownArrow:last-child {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+@media (max-width: 640px) {
+  .examCountdownExamHeader .examCountdownText {
+    grid-column: 1 / -1;
+  }
+
+  .examCountdownExamHeader .examCountdownArrow:first-child,
+  .examCountdownExamHeader .examCountdownArrow:last-child {
+    grid-row: 2;
+  }
+
+  .examCountdownFullName {
+    white-space: normal;
+  }
+}
