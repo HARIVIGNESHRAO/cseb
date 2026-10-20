@@ -287,7 +287,7 @@ export default function ExamCountdown() {
           <span className={styles.examCountdownLabel}>
             {isLive ? 'Exam Live Now' : isEnded ? 'Exam Completed' : 'Exam Countdown'}
           </span>
-          <span className={styles.examCountdownName}>{selectedExam.subject}</span>
+          <span className={`${styles.examCountdownName} ${styles.examCountdownFullName}`}>{selectedExam.subject}</span>
         </div>
         <span className={styles.examCountdownDate}>
           {selectedExam.dateLabel} · {selectedExam.timeLabel}
