@@ -85,7 +85,7 @@ export default function VisitCounter() {
   }, []);
 
   return (
-    <div className={`${styles.visitCounter}${count > 2000 ? ` ${styles.visitCounterMilestone}` : ''}`} role="status" aria-live="polite" aria-atomic="true">
+    <div className={`${styles.visitCounter}${count > 2000 ? ` ${styles.visitCounterMilestone}` : ''}`} title="Total recorded visitors; this is not the number currently online. The dot marks 2,000+ visits." role="status" aria-live="polite" aria-atomic="true">
       <span className={styles.visitCounterIcon} aria-hidden="true">
         <Users size={16} strokeWidth={1.8} />
       </span>

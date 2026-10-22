@@ -3,7 +3,7 @@ import { interviewResources } from '@/data/interviewResources';
 import styles from '@/app/subject/[subjectId]/subject.module.css';
 
 export const metadata = {
-  title: 'Interview Questions & Answers — CSE Study Portal',
+  title: 'Interview Questions & Answers — DHURANDHAR',
   description: 'Interview preparation resources for all semesters.',
 };
 

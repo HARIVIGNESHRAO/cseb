@@ -1,6 +1,6 @@
-# CSE Study Portal
+# DHURANDHAR
 
-A Next.js study portal for B.Tech CSE students, with semester resources, lab materials, question papers, and interview preparation.
+A Next.js study portal for B.Tech students, with semester resources, lab materials, question papers, and interview preparation.
 
 **Website:** [csesalaar.vercel.app](https://csesalaar.vercel.app/)
 

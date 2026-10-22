@@ -64,3 +64,13 @@
   border-radius: 50%;
   background: var(--title-accent);
 }
+
+.visitCounter { --visitor-status: #70e0a6; }
+:global(html[data-theme='light']) .visitCounter { --visitor-status: #167446; }
+.visitCounterMilestone::after { background: var(--visitor-status); }
+@keyframes visitorGlow {
+  50% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--visitor-status) 16%, transparent); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .visitCounterMilestone::after { animation: visitorGlow 3s ease-in-out infinite; }
+}

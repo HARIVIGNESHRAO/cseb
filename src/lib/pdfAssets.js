@@ -67,7 +67,7 @@ export function getUnitDownloadFileName(subject, unit) {
   const rawName = String(unit.pdfFile ?? unit.id ?? 'study-material')
     .replace(/\.pdf$/i, '')
     .trim();
-  const subjectCode = String(subject.code ?? subject.id ?? 'CSE').trim();
+  const subjectCode = String(subject.code ?? subject.id ?? 'DHURANDHAR').trim();
   const comparableName = rawName.replace(/[^a-z0-9]+/gi, '').toLowerCase();
   const comparableCode = subjectCode.replace(/[^a-z0-9]+/gi, '').toLowerCase();
   const fileBase = comparableName.startsWith(comparableCode)

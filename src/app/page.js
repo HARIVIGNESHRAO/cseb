@@ -1,3 +1,5 @@
+import Image from 'next/image';
+import heroPhoto from '../../public/image.png';
 import ExamCountdown from '@/components/ExamCountdown';
 import InterviewResources from '@/components/InterviewResources';
 import HomeFeedbackForm from '@/components/HomeFeedbackForm';
@@ -9,6 +11,7 @@ import VisitCounter from '@/components/VisitCounter';
 import ScrollProgress from '@/components/ScrollProgress';
 import BackToTop from '@/components/BackToTop';
 import styles from './page.module.css';
+import titleStyles from './heroTitle.module.css';
 
 export default function Home() {
   return (
@@ -27,17 +30,30 @@ export default function Home() {
 
       {/* Header */}
       <header className={styles.header} style={{ paddingTop: 'calc(64px + 32px)' }}>
-        <div className={styles.headerBadge}>
-          <span className={styles.dot} />
-          B.Tech · Computer Science &amp; Engineering
+        <div className={`${styles.heroIdentity} ${titleStyles.card}`}>
+          <div className={styles.heroMedia}>
+            <Image
+              src={heroPhoto}
+              alt="Dhurandhar character portrait"
+              className={styles.heroPhoto}
+              sizes="(max-width: 640px) 100vw, (max-width: 900px) 580px, 486px"
+              priority
+            />
+          </div>
+          <div className={titleStyles.panel}>
+            <span className={titleStyles.rule} aria-hidden="true" />
+            <h1 className={titleStyles.heading} aria-label="DHURANDHAR">
+              <span className={titleStyles.word} aria-hidden="true">
+                {'DHURANDHAR'.split('').map((letter, index) => (
+                  <span className={titleStyles.letter} style={{ '--letter-index': index }} key={index}>
+                    {letter}
+                  </span>
+                ))}
+              </span>
+            </h1>
+            <span className={titleStyles.rule} aria-hidden="true" />
+          </div>
         </div>
-        <h1 className={styles.title}>
-          <span className={styles.titleLine}>CSE</span>
-          <span className={styles.titleAccent}>STUDY PORTAL</span>
-        </h1>
-        <p className={styles.subtitle}>
-          All subjects · All units · All PDFs — in one place
-        </p>
         <ExamCountdown />
         <VisitCounter />
       </header>
@@ -54,7 +70,7 @@ export default function Home() {
 
       {/* Footer */}
     <footer className={styles.footer}>
-      <span className={styles.footerText}>© {new Date().getFullYear()} KMIT CSE Department. All Rights Reserved.</span>
+      <span className={styles.footerText}>© {new Date().getFullYear()} DHURANDHAR. All Rights Reserved.</span>
     </footer>
     </main>
     </>

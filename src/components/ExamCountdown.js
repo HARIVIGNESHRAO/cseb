@@ -242,6 +242,8 @@ export default function ExamCountdown() {
   const countdownParts = formatRemaining(displayedState.remainingMs);
   const isLive = displayedState.phase === 'live';
   const isEnded = displayedState.phase === 'ended';
+  const urgency = isEnded ? 'normal' : isLive || displayedState.remainingMs < 48 * 60 * 60 * 1000
+    ? 'critical' : displayedState.remainingMs < 7 * 24 * 60 * 60 * 1000 ? 'soon' : 'normal';
 
   function selectPreviousExam(event) {
     event.stopPropagation();
@@ -262,7 +264,8 @@ export default function ExamCountdown() {
   return (
     <section
       className={`${styles.examCountdown} ${isLive ? styles.examCountdownLive : ''} ${styles.examCountdownClickable}`}
-      aria-live="polite"
+      data-urgency={urgency}
+      aria-label={`${selectedExam.subject}. ${isLive ? 'Exam in progress' : isEnded ? 'Exam completed' : urgency === 'critical' ? 'Starts within 48 hours' : urgency === 'soon' ? 'Starts within 7 days' : 'Upcoming exam'}`}
       role="link"
       tabIndex={0}
       onClick={() => router.push(`/subject/${selectedExam.id}`)}
@@ -309,7 +312,7 @@ export default function ExamCountdown() {
 
       <div className={styles.examCountdownTimerGrid}>
         {countdownParts.map((part) => (
-          <div className={styles.examCountdownTimerItem} key={part.unit}>
+          <div className={styles.examCountdownTimerItem} key={part.unit} data-unit={part.unit}>
             <span className={styles.examCountdownTimerValue}>
               {String(part.value).padStart(2, '0')}
             </span>

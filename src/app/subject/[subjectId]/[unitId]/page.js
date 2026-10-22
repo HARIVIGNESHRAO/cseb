@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
   const subject = allSubjects.find((s) => s.id === params.subjectId);
   const unit = subject?.units.find((u) => u.id === params.unitId);
   if (!subject || !unit) return {};
-  return { title: `${unit.name} — ${subject.name} — CSE` };
+  return { title: `${unit.name} — ${subject.name} — DHURANDHAR` };
 }
 
 export default function UnitPage({ params }) {

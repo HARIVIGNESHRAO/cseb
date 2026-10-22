@@ -5,8 +5,6 @@ import styles from './Navbar.module.css';
 import useActiveHomeSection from '@/hooks/useActiveHomeSection';
 import useHasSemesterSection from '@/hooks/useHasSemesterSection';
 
-const THEME_STORAGE_KEY = 'cseb-theme';
-const THEME_EVENT = 'cseb-theme-change';
 const SIDEBAR_STORAGE_KEY = 'cseb-sidebar-expanded';
 
 const DESKTOP_SIDEBAR_WIDTH = 220;
@@ -45,7 +43,6 @@ const NAV_LINKS = [
 export default function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [desktopExpanded, setDesktopExpanded] = useState(false);
-  const [theme, setTheme] = useState('dark');
   const [activeHref, setActiveHref] = useActiveHomeSection();
   const fabRef = useRef(null);
   const drawerRef = useRef(null);
@@ -57,35 +54,6 @@ export default function Sidebar() {
       setDesktopExpanded(saved === 'true');
     }
     // Default is false (collapsed) if nothing saved
-  }, []);
-
-  /* ── Theme init ── */
-  useEffect(() => {
-    const saved = localStorage.getItem(THEME_STORAGE_KEY);
-    const initial = saved === 'light' || saved === 'dark' ? saved : 'dark';
-    setTheme(initial);
-
-    const handleThemeChange = (event) => {
-      const nextTheme = event.detail?.theme;
-      if (nextTheme === 'light' || nextTheme === 'dark') {
-        setTheme(nextTheme);
-      }
-    };
-
-    const handleStorage = (event) => {
-      if (event.key === THEME_STORAGE_KEY && (event.newValue === 'light' || event.newValue === 'dark')) {
-        setTheme(event.newValue);
-        document.documentElement.dataset.theme = event.newValue;
-      }
-    };
-
-    window.addEventListener(THEME_EVENT, handleThemeChange);
-    window.addEventListener('storage', handleStorage);
-
-    return () => {
-      window.removeEventListener(THEME_EVENT, handleThemeChange);
-      window.removeEventListener('storage', handleStorage);
-    };
   }, []);
 
   /* ── Push main content smoothly ── */
@@ -147,14 +115,6 @@ export default function Sidebar() {
   }, []);
 
 
-  const toggleTheme = () => {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(nextTheme);
-    document.documentElement.dataset.theme = nextTheme;
-    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-    window.dispatchEvent(new CustomEvent(THEME_EVENT, { detail: { theme: nextTheme } }));
-  };
-
   const handleCollapseToggle = () => {
     const newState = !desktopExpanded;
     setDesktopExpanded(newState);
@@ -190,8 +150,6 @@ export default function Sidebar() {
         aria-label="Site navigation"
       >
         <SidebarInner
-          theme={theme}
-          toggleTheme={toggleTheme}
           activeHref={activeHref}
           onNavigate={setActiveHref}
           onLinkClick={() => {}}
@@ -214,8 +172,6 @@ export default function Sidebar() {
         aria-label="Site navigation"
       >
         <SidebarInner
-          theme={theme}
-          toggleTheme={toggleTheme}
           activeHref={activeHref}
           onNavigate={setActiveHref}
           onLinkClick={() => setMobileOpen(false)}
@@ -230,8 +186,6 @@ export default function Sidebar() {
 
 /* ── Shared inner content ── */
 function SidebarInner({
-  theme,
-  toggleTheme,
   activeHref,
   onNavigate,
   onLinkClick,
@@ -273,7 +227,7 @@ function SidebarInner({
         <div className={styles.brand}>
           <span className={styles.brandDot} aria-hidden="true" />
           <span className={styles.brandText}>
-            CSE<span className={styles.brandAccent}>·</span>PORTAL
+            DHURANDHAR
           </span>
         </div>
 
@@ -311,6 +265,8 @@ function SidebarInner({
                       }
                       setSemestersOpen(!semestersOpen);
                     }}
+                    title={link.label}
+                    aria-label={link.label}
                     aria-expanded={semestersOpen}
                     aria-current={parentActive ? 'true' : undefined}
                     type="button"
@@ -351,6 +307,8 @@ function SidebarInner({
               <li key={link.href} style={{ '--i': i }}>
                 <a
                   href={link.href}
+                  title={link.label}
+                  aria-label={link.label}
                   className={`${styles.navLink} ${activeHref === link.href ? styles.navLinkActive : ''}`}
                   onClick={() => {
                     onNavigate?.(link.href);
@@ -370,22 +328,7 @@ function SidebarInner({
       {/* Spacer */}
       <div className={styles.spacer} />
 
-      {/* Bottom controls */}
-      <div className={styles.bottom}>
-        <button
-          className={styles.iconBtn}
-          onClick={toggleTheme}
-          title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-        >
-          <span aria-hidden="true" className={styles.themeIcon}>
-            {theme === 'dark' ? '☀' : '☽'}
-          </span>
-          <span className={styles.navLabel}>
-            {theme === 'dark' ? 'Light mode' : 'Dark mode'}
-          </span>
-        </button>
-      </div>
+
     </div>
   );
 }

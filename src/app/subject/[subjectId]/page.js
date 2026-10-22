@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const subject = allSubjects.find((s) => s.id === params.subjectId);
   if (!subject) return {};
-  return { title: `${subject.name} — CSE-B Portal` };
+  return { title: `${subject.name} — DHURANDHAR` };
 }
 
 export default function SubjectPage({ params }) {

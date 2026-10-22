@@ -745,3 +745,19 @@
     width: min(320px, calc(100vw - 28px));
   }
 }
+
+/* Distinct SVG icons and a persistent active navigation marker. */
+.navLink { color: var(--text-dim); }
+.navLink:hover, .navLink:focus-visible {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 14%, var(--surface));
+}
+.navLinkActive {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 22%, var(--surface));
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.navLinkActive .navIcon { color: var(--accent); }
+@media (prefers-reduced-motion: reduce) {
+  .sidebar, .drawer, .navLink, .brandDot { animation: none !important; transition: none !important; }
+}
