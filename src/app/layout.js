@@ -1,5 +1,5 @@
 import './globals.css';
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/next';
 import ThemeScript from '@/components/ThemeScript';
 import ThemeToggle from '@/components/ThemeToggle';
 
