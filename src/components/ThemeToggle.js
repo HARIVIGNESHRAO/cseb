@@ -2,64 +2,56 @@
 
 import { useEffect, useState } from 'react';
 
+const themes = ['light', 'dark', 'revenge'];
+const labels = { light: 'Light', dark: 'Blue Night', revenge: 'Revenge' };
 const storageKey = 'cseb-theme';
 const themeEvent = 'cseb-theme-change';
-
-function applyTheme(theme) {
-  document.documentElement.dataset.theme = theme;
-}
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem(storageKey);
-    const nextTheme = savedTheme === 'light' ? 'light' : 'dark';
-
-    setTheme(nextTheme);
-    applyTheme(nextTheme);
-
-    function handleThemeChange(event) {
-      const nextEventTheme = event.detail?.theme;
-
-      if (nextEventTheme === 'light' || nextEventTheme === 'dark') {
-        setTheme(nextEventTheme);
-        applyTheme(nextEventTheme);
+    function syncTheme() {
+      const current = document.documentElement.dataset.theme;
+      setTheme(themes.includes(current) ? current : 'dark');
+    }
+    function handleChange(event) {
+      const next = event.detail?.theme;
+      if (themes.includes(next)) {
+        document.documentElement.dataset.theme = next;
+        setTheme(next);
       }
     }
-
-    window.addEventListener(themeEvent, handleThemeChange);
-
-    return () => window.removeEventListener(themeEvent, handleThemeChange);
+    function handleStorage(event) {
+      if (event.key === storageKey) {
+        const next = themes.includes(event.newValue) ? event.newValue : 'dark';
+        document.documentElement.dataset.theme = next;
+        setTheme(next);
+      }
+    }
+    syncTheme();
+    window.addEventListener(themeEvent, handleChange);
+    window.addEventListener('storage', handleStorage);
+    return () => {
+      window.removeEventListener(themeEvent, handleChange);
+      window.removeEventListener('storage', handleStorage);
+    };
   }, []);
 
-  function handleToggle() {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark';
-
-    setTheme(nextTheme);
-    applyTheme(nextTheme);
-    localStorage.setItem(storageKey, nextTheme);
-    window.dispatchEvent(new CustomEvent(themeEvent, { detail: { theme: nextTheme } }));
+  function changeTheme(event) {
+    const next = event.target.value;
+    document.documentElement.dataset.theme = next;
+    setTheme(next);
+    try { localStorage.setItem(storageKey, next); } catch { /* Keep selection usable when storage is unavailable. */ }
+    window.dispatchEvent(new CustomEvent(themeEvent, { detail: { theme: next } }));
   }
 
   return (
-    <button
-      type="button"
-      className="themeToggle"
-      onClick={handleToggle}
-      role="switch"
-      aria-checked={theme === 'light'}
-      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-      title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-      data-theme-state={theme}
-    >
-      <span className="themeToggle__icon themeToggle__icon--moon" aria-hidden="true">
-        ☾
-      </span>
-      <span className="themeToggle__icon themeToggle__icon--sun" aria-hidden="true">
-        ☀
-      </span>
-      <span className="themeToggle__thumb" aria-hidden="true" />
-    </button>
+    <label className="themePicker">
+      <span className="themePicker__label">Theme</span>
+      <select aria-label="Color theme" value={theme} onChange={changeTheme}>
+        {themes.map((value) => <option key={value} value={value}>{labels[value]}</option>)}
+      </select>
+    </label>
   );
 }

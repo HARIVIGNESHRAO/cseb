@@ -6,3 +6,13 @@
 @media (max-width: 600px) {
   .section { margin-top: 36px; }
 }
+
+/* Scoped cinematic resource surfaces. Inline subject colors stay intact in other themes. */
+:global(html[data-theme='revenge']) .card {
+  --color: var(--accent) !important;
+  --bg: var(--soft-bg-strong) !important;
+  --card-color: var(--accent) !important;
+  --card-bg: var(--soft-bg-strong) !important;
+}
+:global(html[data-theme='revenge']) .card { background: var(--card); border: 1px solid var(--border); }
+:global(html[data-theme='revenge']) .card:hover { background: var(--card-hover); border-color: var(--border-hover); }

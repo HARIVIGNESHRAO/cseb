@@ -523,3 +523,94 @@ textarea::placeholder {
     transform: none;
   }
 }
+
+/* Theme picker is shared; cinematic tokens belong exclusively to Revenge. */
+.themePicker {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(14px, env(safe-area-inset-right));
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--elevated-strong);
+  color: var(--text-dim);
+  box-shadow: var(--shadow-sm);
+  font: 11px/1.5 var(--font-mono);
+}
+.themePicker select {
+  min-height: 36px;
+  max-width: 112px;
+  border: 0;
+  background: var(--elevated-strong);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 12px;
+}
+@media (max-width: 640px) {
+  .themePicker { top: 12px; right: 10px; padding: 3px 7px; }
+  .themePicker__label { display: none; }
+}
+html[data-theme='revenge'] {
+  color-scheme: dark;
+  --bg: #090607;
+  --bg2: #160b0d;
+  --surface: #1b1012;
+  --card: #211214;
+  --card-hover: #2c181c;
+  --elevated: rgba(36,19,21,.95);
+  --elevated-strong: #241315;
+  --border: rgba(255,100,110,.20);
+  --border-hover: rgba(255,100,110,.45);
+  --accent: #ff5a61;
+  --title-accent: #ff8589;
+  --crimson: #e53945;
+  --text: #f5eeee;
+  --text-dim: #d9bdc0;
+  --text-muted: #c4a6a8;
+  --grid-line: rgba(255,100,110,.035);
+  --input-bg: rgba(255,133,137,.04);
+  --input-bg-focus: rgba(255,133,137,.08);
+  --soft-bg: rgba(255,100,110,.05);
+  --soft-bg-strong: rgba(255,100,110,.11);
+  --shadow: rgba(0,0,0,.42);
+  --viewer-bg: #160b0d;
+  --glow: rgba(229,57,69,.12);
+  --glow-strong: rgba(229,57,69,.22);
+  --glass-bg: rgba(22,11,13,.88);
+  --glass-bg-strong: rgba(36,19,21,.96);
+  --glass-stroke: rgba(255,100,110,.14);
+  --glass-stroke-strong: rgba(255,100,110,.25);
+  --glass-highlight: rgba(255,220,220,.08);
+  --glass-shadow: 0 20px 50px rgba(0,0,0,.3);
+  --glass-blur: blur(8px);
+}
+html[data-theme='revenge'] body {
+  background: radial-gradient(ellipse at 70% 0, rgba(138,20,35,.12), transparent 45%), var(--bg);
+}
+html[data-theme='revenge'] :is(button, a, input, textarea, select) {
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+html[data-theme='revenge'] :is(input, textarea, select) { accent-color: var(--crimson); }
+html[data-theme='revenge'] :is(input, textarea):focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(229,57,69,.12);
+}
+html[data-theme='revenge'] :focus-visible {
+  outline: 2px solid var(--title-accent);
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html[data-theme='revenge'] body { animation: revengeEntrance 300ms ease-out both; }
+  @keyframes revengeEntrance { from { opacity: .5; } to { opacity: 1; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme='revenge'] *, html[data-theme='revenge'] *::before, html[data-theme='revenge'] *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

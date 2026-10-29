@@ -115,3 +115,27 @@
   .heading { transition: none; }
   .letter, .rule { animation: none; }
 }
+
+:global(html[data-theme='revenge']) .panel {
+  --gold-light: #ffb5b8;
+  --gold-mid: #ff8589;
+  --gold-deep: #e53945;
+  --gold-highlight: #fff0f0;
+  --gold-glow: rgba(229,57,69,.18);
+  --gold-hover: rgba(229,57,69,.24);
+  --gold-rule: rgba(255,133,137,.5);
+  --gold-atmosphere: rgba(229,57,69,.09);
+  gap: clamp(18px, 2.4vw, 28px);
+  padding: clamp(24px, 3.5vw, 42px) clamp(20px, 3vw, 36px);
+}
+:global(html[data-theme='revenge']) .heading { letter-spacing: -.015em; line-height: 1.2; }
+:global(html[data-theme='revenge']) .letter {
+  color: var(--gold-light);
+  -webkit-text-fill-color: currentColor;
+  background: none;
+  animation: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  :global(html[data-theme='revenge']) .heading { animation: revengeTitle 350ms ease-out both; }
+  @keyframes revengeTitle { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}

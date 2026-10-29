@@ -761,3 +761,21 @@
 @media (prefers-reduced-motion: reduce) {
   .sidebar, .drawer, .navLink, .brandDot { animation: none !important; transition: none !important; }
 }
+
+:global(html[data-theme='revenge']) :is(.sidebar, .drawer) {
+  background: linear-gradient(180deg, #190d10, #0e090a);
+  border-color: var(--border);
+  box-shadow: 12px 0 35px rgba(0,0,0,.24);
+}
+:global(html[data-theme='revenge']) :is(.navLink, .iconBtn, .submenuLink) { color: var(--text-muted); }
+:global(html[data-theme='revenge']) :is(.navLink, .iconBtn, .submenuLink):hover {
+  color: var(--text);
+  background: rgba(255,100,110,.07);
+}
+:global(html[data-theme='revenge']) :is(.navLinkActive, .submenuLinkActive) {
+  color: #ffb5b8;
+  background: rgba(229,57,69,.14);
+  box-shadow: inset 3px 0 0 var(--crimson);
+}
+:global(html[data-theme='revenge']) .navIcon { width: 20px; height: 20px; flex-shrink: 0; }
+:global(html[data-theme='revenge']) .fab { background: #74202b; color: #fff; }

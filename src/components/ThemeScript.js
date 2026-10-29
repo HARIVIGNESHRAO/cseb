@@ -1,7 +1,8 @@
 const themeScript = `
 (() => {
   try {
-    const theme = localStorage.getItem('cseb-theme') === 'light' ? 'light' : 'dark';
+    const saved = localStorage.getItem('cseb-theme');
+    const theme = ['light', 'dark', 'revenge'].includes(saved) ? saved : 'dark';
     document.documentElement.dataset.theme = theme;
   } catch {
     document.documentElement.dataset.theme = 'dark';

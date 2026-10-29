@@ -4392,3 +4392,109 @@
 @media (prefers-reduced-motion: reduce) {
   .heroIdentity *, .header .examCountdownClickable * { animation: none !important; transition: none !important; }
 }
+
+/* Revenge enhancements are isolated from the original Light and Blue Night themes. */
+:global(html[data-theme='revenge']) .heroIdentity {
+  --hero-panel: #160b0d;
+  position: relative;
+  margin-bottom: 28px;
+  border-color: rgba(255,100,110,.26);
+  background: radial-gradient(ellipse at 65% 35%, rgba(156,22,40,.17), transparent 65%), var(--hero-panel);
+  box-shadow: 0 24px 64px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,150,150,.08);
+}
+:global(html[data-theme='revenge']) .heroMedia::after {
+  width: 42%;
+  background: linear-gradient(90deg, transparent, rgba(22,11,13,.35) 40%, var(--hero-panel));
+}
+:global(html[data-theme='revenge']) .heroPhoto { object-position: 50% 42%; }
+:global(html[data-theme='revenge']) .examCountdown.examCountdownScheduled {
+  --exam-accent: #ff8589;
+  --exam-ink: #f5eeee;
+  --exam-muted: #c4a6a8;
+  --exam-surface: linear-gradient(145deg, rgba(45,20,25,.96), rgba(22,11,13,.98));
+  --exam-tile: linear-gradient(155deg, #321b20, #1d1013);
+  --exam-shadow: rgba(0,0,0,.32);
+  border-color: rgba(255,100,110,.2);
+  border-radius: 24px;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+:global(html[data-theme='revenge']) .examCountdown.examCountdownScheduled .examCountdownName {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  letter-spacing: -.025em;
+}
+:global(html[data-theme='revenge']) .examCountdown.examCountdownScheduled .examCountdownArrow {
+  background: #74202b;
+  border-color: rgba(255,133,137,.35);
+  box-shadow: 0 4px 16px rgba(0,0,0,.22);
+}
+:global(html[data-theme='revenge']) .examCountdown.examCountdownScheduled .examCountdownTimerItem:last-child { animation: none; }
+:global(html[data-theme='revenge']) .examCountdown.examCountdownScheduled .examCountdownDate {
+  white-space: normal;
+  color: var(--text-dim);
+  border-radius: 16px;
+}
+:global(html[data-theme='revenge']) .examCountdown.examCountdownScheduled .examCountdownText { overflow: visible; }
+:global(html[data-theme='revenge']) .card {
+  --card-color: var(--accent) !important;
+  --card-bg: var(--soft-bg-strong) !important;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.16);
+}
+:global(html[data-theme='revenge']) :is(.searchBox, .searchResults, .stickySearchResults, .feedbackSection, .semesterPicker) {
+  background: var(--elevated-strong);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+:global(html[data-theme='revenge']) .feedbackButton { background: #a92534; color: #fff; }
+:global(html[data-theme='revenge']) .feedbackButton:hover { background: #bd2f3e; }
+@media (hover: hover) {
+  :global(html[data-theme='revenge']) .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-hover);
+    background: var(--card-hover);
+    box-shadow: 0 18px 38px rgba(0,0,0,.26);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  :global(html[data-theme='revenge']) .examCountdownLabel::before { animation: revengeAccent 3s ease-in-out infinite; }
+  @keyframes revengeAccent { 50% { opacity: .55; } }
+}
+@media (max-width: 900px) {
+  :global(html[data-theme='revenge']) .heroMedia::after {
+    width: 100%;
+    height: 28%;
+    background: linear-gradient(180deg, transparent, var(--hero-panel));
+  }
+  :global(html[data-theme='revenge']) .heroPhoto { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 480px) {
+  :global(html[data-theme='revenge']) .heroIdentity { border-radius: 18px; }
+  :global(html[data-theme='revenge']) .examCountdown.examCountdownScheduled { padding: 16px 12px; border-radius: 20px; }
+  :global(html[data-theme='revenge']) .examCountdown.examCountdownScheduled .examCountdownTimerGrid { gap: 6px; }
+  :global(html[data-theme='revenge']) .examCountdown.examCountdownScheduled .examCountdownTimerItem { padding: 16px 3px; border-radius: 12px; }
+  :global(html[data-theme='revenge']) .examCountdown.examCountdownScheduled .examCountdownTimerValue { font-size: clamp(24px, 7vw, 34px); }
+  :global(html[data-theme='revenge']) .examCountdown.examCountdownScheduled .examCountdownTimerUnit { font-size: 9px; letter-spacing: .06em; }
+  :global(html[data-theme='revenge']) .examCountdown.examCountdownScheduled .examCountdownExamHeader { gap: 12px 8px; }
+}
+
+/* CSS follows the pre-paint theme so the correct hero appears on refresh. */
+.heroMedia .heroPhotoRevenge { display: none; }
+:global(html[data-theme='revenge']) .heroMedia .heroPhotoClassic { display: none; }
+:global(html[data-theme='revenge']) .heroMedia .heroPhotoRevenge { display: block; }
+
+/* Match the semester dropdown and its interaction glow to Revenge. */
+:global(html[data-theme='revenge']) .semesterSelect {
+  background: linear-gradient(135deg, #a92534, #c72f3d 55%, #df414c);
+  border-color: rgba(255,133,137,.35);
+  box-shadow: inset 0 1px 0 rgba(255,220,220,.14), 0 10px 24px rgba(229,57,69,.16);
+}
+:global(html[data-theme='revenge']) .semesterSelectWrap:hover {
+  box-shadow: 0 14px 30px rgba(229,57,69,.22);
+}
+:global(html[data-theme='revenge']) .semesterSelectWrap:focus-within {
+  box-shadow: 0 0 0 4px rgba(255,90,97,.2), 0 16px 34px rgba(229,57,69,.22);
+}

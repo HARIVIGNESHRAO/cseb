@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import heroPhoto from '../../public/image.png';
+import revengePhoto from '../../public/image-1.jpg';
 import ExamCountdown from '@/components/ExamCountdown';
 import InterviewResources from '@/components/InterviewResources';
 import HomeFeedbackForm from '@/components/HomeFeedbackForm';
@@ -35,9 +36,15 @@ export default function Home() {
             <Image
               src={heroPhoto}
               alt="Dhurandhar character portrait"
-              className={styles.heroPhoto}
+              className={`${styles.heroPhoto} ${styles.heroPhotoClassic}`}
               sizes="(max-width: 640px) 100vw, (max-width: 900px) 580px, 486px"
               priority
+            />
+            <Image
+              src={revengePhoto}
+              alt="Dhurandhar Revenge character portrait"
+              className={`${styles.heroPhoto} ${styles.heroPhotoRevenge}`}
+              sizes="(max-width: 640px) 100vw, (max-width: 900px) 580px, 486px"
             />
           </div>
           <div className={titleStyles.panel}>

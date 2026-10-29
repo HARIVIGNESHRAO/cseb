@@ -998,3 +998,25 @@
   .subjectIcon { display: none; }
   .unitNumber { width: 42px; height: 42px; }
 }
+
+/* Scoped cinematic resource surfaces. Inline subject colors stay intact in other themes. */
+:global(html[data-theme='revenge']) .subjectHeader {
+  --color: var(--accent) !important;
+  --bg: var(--soft-bg-strong) !important;
+  --card-color: var(--accent) !important;
+  --card-bg: var(--soft-bg-strong) !important;
+}
+:global(html[data-theme='revenge']) .unitCard {
+  --color: var(--accent) !important;
+  --bg: var(--soft-bg-strong) !important;
+  --card-color: var(--accent) !important;
+  --card-bg: var(--soft-bg-strong) !important;
+}
+:global(html[data-theme='revenge']) :is(.subjectHeader, .unitCard) {
+  background: var(--card);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+:global(html[data-theme='revenge']) .unitCard:hover { background: var(--card-hover); border-color: var(--border-hover); }
+
+:global(html[data-theme='revenge']) .main::after { background: radial-gradient(circle, rgba(229,57,69,.08), transparent 72%); }
