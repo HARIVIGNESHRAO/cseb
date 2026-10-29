@@ -1053,6 +1053,26 @@ export const timetableSubjects1 = [
       },
     ],
   },
+    {
+    id: 'sem-timetable',
+    code: 'SEM',
+    name: 'Semester Timetable',
+    desc: '',
+    category: 'timetable',
+    pdfDir: 'sem',
+    color: '#F97316',
+    bg: 'rgba(249,115,22,0.15)',
+    icon: '📅',
+    units: [
+      {
+        id: 'theory',
+        name: 'Lab',
+        topic: 'Lab Timetable',
+        topics: '',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793271654/STM_Lab_External_Schedule_yuf34f.pdf',
+      },
+    ],
+  },
 
 ];
 export const questionPaperSubjects1 = [
