@@ -1101,6 +1101,13 @@ export const questionPaperSubjects1 = [
         topics: '',
         pdfFile: '1',
       },
+            {
+        id: 'mid-12',
+        name: 'Mid-2',
+        topic: 'Mid-2 Question Paper',
+        topics: '',
+        pdfFile: '2',
+      }
     ],
   },
   {
