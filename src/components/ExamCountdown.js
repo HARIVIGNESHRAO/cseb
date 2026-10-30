@@ -4,142 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from '@/app/page.module.css';
-
-const EXAMS = [
-  {
-    id: 'befa',
-    subject: 'Business Economics and Financial Analysis',
-    dateLabel: '30 Oct 2026 (Non-interns)',
-    timeLabel: '9:30 AM - 11:30 AM',
-    start: '2026-10-30T09:30:00+05:30',
-    end: '2026-10-30T11:30:00+05:30',
-  },
-  {
-    id: 'stm',
-    subject: 'Software Testing Methodologies',
-    dateLabel: '30 Oct 2026 (Non-interns)',
-    timeLabel: '12:00 PM - 2:00 PM',
-    start: '2026-10-30T12:00:00+05:30',
-    end: '2026-10-30T14:00:00+05:30',
-  },
-  {
-    id: 'dm',
-    subject: 'Data Mining',
-    dateLabel: '30 Oct 2026 (Non-interns)',
-    timeLabel: '2:30 PM - 4:30 PM',
-    start: '2026-10-30T14:30:00+05:30',
-    end: '2026-10-30T16:30:00+05:30',
-  },
-  {
-    id: 'irs',
-    subject: 'Information Retrieval System',
-    dateLabel: '31 Oct 2026',
-    timeLabel: '9:30 AM - 11:30 AM',
-    start: '2026-10-31T09:30:00+05:30',
-    end: '2026-10-31T11:30:00+05:30',
-  },
-  {
-    id: 'dvt',
-    subject: 'Data Visualization Techniques',
-    dateLabel: '31 Oct 2026',
-    timeLabel: '12:00 PM - 2:00 PM',
-    start: '2026-10-31T12:00:00+05:30',
-    end: '2026-10-31T14:00:00+05:30',
-  },
-  {
-    id: 'es',
-    subject: 'Environmental Science',
-    dateLabel: '31 Oct 2026',
-    timeLabel: '2:30 PM - 4:30 PM',
-    start: '2026-10-31T14:30:00+05:30',
-    end: '2026-10-31T16:30:00+05:30',
-  },
-  {
-    id: 'befa',
-    subject: 'Business Economics and Financial Analysis',
-    dateLabel: '1 Nov 2026 (Interns)',
-    timeLabel: '9:30 AM - 11:30 AM',
-    start: '2026-11-01T09:30:00+05:30',
-    end: '2026-11-01T11:30:00+05:30',
-  },
-  {
-    id: 'stm',
-    subject: 'Software Testing Methodologies',
-    dateLabel: '1 Nov 2026 (Interns)',
-    timeLabel: '12:00 PM - 2:00 PM',
-    start: '2026-11-01T12:00:00+05:30',
-    end: '2026-11-01T14:00:00+05:30',
-  },
-  {
-    id: 'dm',
-    subject: 'Data Mining',
-    dateLabel: '1 Nov 2026 (Interns)',
-    timeLabel: '2:30 PM - 4:30 PM',
-    start: '2026-11-01T14:30:00+05:30',
-    end: '2026-11-01T16:30:00+05:30',
-  },
-].map((exam) => ({
-  ...exam,
-  startTime: new Date(exam.start).getTime(),
-  endTime: new Date(exam.end).getTime(),
-}));
-
-function getExamState(now) {
-  if (!now) {
-    return {
-      phase: 'loading',
-      exam: null,
-      remainingMs: 0,
-    };
-  }
-
-  const currentTime = now.getTime();
-  const liveExam = EXAMS.find(
-    (exam) => currentTime >= exam.startTime && currentTime < exam.endTime
-  );
-
-  if (liveExam) {
-    return {
-      phase: 'live',
-      exam: liveExam,
-      remainingMs: liveExam.endTime - currentTime,
-    };
-  }
-
-  const nextExam = EXAMS.find((exam) => currentTime < exam.startTime);
-
-  if (nextExam) {
-    return {
-      phase: 'countdown',
-      exam: nextExam,
-      remainingMs: nextExam.startTime - currentTime,
-    };
-  }
-
-  return {
-    phase: 'done',
-    exam: null,
-    remainingMs: 0,
-  };
-}
-
-function getSelectedExamState(exam, now) {
-  if (!now) {
-    return { phase: 'countdown', exam, remainingMs: 0 };
-  }
-
-  const currentTime = now.getTime();
-
-  if (currentTime < exam.startTime) {
-    return { phase: 'countdown', exam, remainingMs: exam.startTime - currentTime };
-  }
-
-  if (currentTime < exam.endTime) {
-    return { phase: 'live', exam, remainingMs: exam.endTime - currentTime };
-  }
-
-  return { phase: 'ended', exam, remainingMs: 0 };
-}
+import { EXAMS, getExamState, getSelectedExamState, getAvailableExamIndices } from '@/lib/examSchedule';
 
 function formatRemaining(ms) {
   const totalSeconds = Math.max(0, Math.floor(ms / 1000));
@@ -235,44 +100,47 @@ export default function ExamCountdown() {
     );
   }
 
-  const selectedExam = selectedExamIndex === null ? examState.exam : EXAMS[selectedExamIndex];
-  const displayedState = selectedExamIndex === null
+  const availableIndices = getAvailableExamIndices(now);
+  const activeIndex = availableIndices.includes(selectedExamIndex) ? selectedExamIndex : EXAMS.indexOf(examState.exam);
+  const selectedExam = EXAMS[activeIndex];
+  const selectedPosition = availableIndices.indexOf(activeIndex);
+  const displayedState = activeIndex === EXAMS.indexOf(examState.exam)
     ? examState
     : getSelectedExamState(selectedExam, now);
   const countdownParts = formatRemaining(displayedState.remainingMs);
   const isLive = displayedState.phase === 'live';
   const isEnded = displayedState.phase === 'ended';
+  const isHoliday = selectedExam.kind === 'holiday';
+  const onHoliday = displayedState.phase === 'holiday';
   const urgency = isEnded ? 'normal' : isLive || displayedState.remainingMs < 48 * 60 * 60 * 1000
     ? 'critical' : displayedState.remainingMs < 7 * 24 * 60 * 60 * 1000 ? 'soon' : 'normal';
 
   function selectPreviousExam(event) {
     event.stopPropagation();
-    setSelectedExamIndex((currentIndex) => {
-      const index = currentIndex === null ? EXAMS.indexOf(selectedExam) : currentIndex;
-      return Math.max(0, index - 1);
-    });
+    setSelectedExamIndex(availableIndices[Math.max(0, selectedPosition - 1)]);
   }
 
   function selectNextExam(event) {
     event.stopPropagation();
-    setSelectedExamIndex((currentIndex) => {
-      const index = currentIndex === null ? EXAMS.indexOf(selectedExam) : currentIndex;
-      return Math.min(EXAMS.length - 1, index + 1);
-    });
+    setSelectedExamIndex(availableIndices[Math.min(availableIndices.length - 1, selectedPosition + 1)]);
+  }
+
+  function openSubject() {
+    if (!isHoliday) router.push(`/subject/${selectedExam.id}`);
   }
 
   return (
     <section
       className={`${styles.examCountdown} ${isLive ? styles.examCountdownLive : ''} ${styles.examCountdownClickable}`}
       data-urgency={urgency}
-      aria-label={`${selectedExam.subject}. ${isLive ? 'Exam in progress' : isEnded ? 'Exam completed' : urgency === 'critical' ? 'Starts within 48 hours' : urgency === 'soon' ? 'Starts within 7 days' : 'Upcoming exam'}`}
-      role="link"
-      tabIndex={0}
-      onClick={() => router.push(`/subject/${selectedExam.id}`)}
+      aria-label={`${selectedExam.subject}. ${onHoliday ? 'Holidays until college reopens on 1 December' : isLive ? 'Exam in progress' : isEnded ? 'Exam completed' : urgency === 'critical' ? 'Starts within 48 hours' : urgency === 'soon' ? 'Starts within 7 days' : 'Upcoming exam'}`}
+      role={isHoliday ? undefined : 'link'}
+      tabIndex={isHoliday ? undefined : 0}
+      onClick={openSubject}
       onKeyDown={(event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
+        if (event.target === event.currentTarget && !isHoliday && (event.key === 'Enter' || event.key === ' ')) {
           event.preventDefault();
-          router.push(`/subject/${selectedExam.id}`);
+          openSubject();
         }
       }}
     >
@@ -281,25 +149,27 @@ export default function ExamCountdown() {
           type="button"
           className={styles.examCountdownArrow}
           onClick={selectPreviousExam}
-          disabled={selectedExamIndex === 0}
+          disabled={selectedPosition <= 0}
           aria-label="Show previous exam"
         >
           <ChevronLeft size={18} aria-hidden="true" />
         </button>
         <div className={styles.examCountdownText}>
           <span className={styles.examCountdownLabel}>
-            {isLive ? 'Exam Live Now' : isEnded ? 'Exam Completed' : 'Exam Countdown'}
+            {onHoliday ? 'Holidays · 21–30 November' : isHoliday ? 'Upcoming Holidays' : isLive ? 'Exam Live Now' : isEnded ? 'Exam Completed' : 'Exam Countdown'}
           </span>
-          <span className={`${styles.examCountdownName} ${styles.examCountdownFullName}`}>{selectedExam.subject}</span>
+          <span className={`${styles.examCountdownName} ${styles.examCountdownFullName}`}>{isHoliday ? 'Holidays' : selectedExam.subject}</span>
         </div>
         <span className={styles.examCountdownDate}>
-          {selectedExam.dateLabel} · {selectedExam.timeLabel}
+          {isHoliday
+            ? 'College Reopening · 1st December · 9:30 AM'
+            : `${selectedExam.dateLabel} · ${selectedExam.timeLabel}`}
         </span>
         <button
           type="button"
           className={styles.examCountdownArrow}
           onClick={selectNextExam}
-          disabled={selectedExamIndex === EXAMS.length - 1}
+          disabled={selectedPosition === availableIndices.length - 1}
           aria-label="Show next exam"
         >
           <ChevronRight size={18} aria-hidden="true" />
@@ -307,7 +177,7 @@ export default function ExamCountdown() {
       </div>
 
       <div className={styles.examCountdownStatus}>
-        {isLive ? 'Ends in' : isEnded ? 'Ended' : 'Starts in'}
+        {onHoliday ? 'College reopens in' : isHoliday ? 'Holidays start in' : isLive ? 'Ends in' : isEnded ? 'Ended' : 'Starts in'}
       </div>
 
       <div className={styles.examCountdownTimerGrid}>
