@@ -1071,6 +1071,13 @@ export const timetableSubjects1 = [
         topics: '',
         pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793271654/STM_Lab_External_Schedule_yuf34f.pdf',
       },
+            {
+        id: 'theory',
+        name: 'Theory',
+        topic: 'Theory Timetable',
+        topics: '',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793340404/KR23_-_B.Tech_4-1_REGULAR_EXAMINATION_TIMETABLE_NOV_2026_wi1keo.pdf',
+      }
     ],
   },
 
