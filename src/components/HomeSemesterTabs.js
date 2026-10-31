@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { semesterTabs, semesterSections } from '@/data/semesterSections';
 import styles from '@/app/page.module.css';
+import { getSemesterDefaults, SEMESTER_ROLLOVER } from '@/lib/semesterDefault';
 
 const formatCount = (count, label) => `${count} ${label}${count === 1 ? '' : 's'}`;
 
@@ -28,31 +29,49 @@ function getCardCount(subject) {
   return formatCount(units.length, mixedResources ? 'resource' : 'file');
 }
 
-const SEMESTER_STORAGE_KEY = 'cseb-selected-semester';
-
 export default function HomeSemesterTabs() {
   const [activeSemester, setActiveSemester] = useState('4-1');
 
   useEffect(() => {
     const syncSemesterFromHash = () => {
+      const { semester: defaultSemester, storageKey } = getSemesterDefaults();
       const hash = window.location.hash.replace('#semester-', '');
 
       if (semesterTabs.some((tab) => tab.id === hash)) {
         setActiveSemester(hash);
-        localStorage.setItem(SEMESTER_STORAGE_KEY, hash);
+        try { localStorage.setItem(storageKey, hash); } catch { /* Selection works without storage. */ }
         return;
       }
 
-      const savedSemester = localStorage.getItem(SEMESTER_STORAGE_KEY);
+      let savedSemester;
+      try { savedSemester = localStorage.getItem(storageKey); } catch { /* Use the scheduled default. */ }
       if (semesterTabs.some((tab) => tab.id === savedSemester)) {
         setActiveSemester(savedSemester);
+      } else {
+        setActiveSemester(defaultSemester);
       }
     };
 
     syncSemesterFromHash();
     window.addEventListener('hashchange', syncSemesterFromHash);
 
-    return () => window.removeEventListener('hashchange', syncSemesterFromHash);
+    // Long timeouts must be split to avoid the browser's 32-bit delay limit.
+    let rolloverTimer;
+    function scheduleRollover() {
+      const remaining = SEMESTER_ROLLOVER - Date.now();
+      if (remaining <= 0) {
+        syncSemesterFromHash();
+        return;
+      }
+      rolloverTimer = window.setTimeout(scheduleRollover, Math.min(remaining, 2147483647));
+    }
+    scheduleRollover();
+    window.addEventListener('focus', syncSemesterFromHash);
+    return () => {
+      window.clearTimeout(rolloverTimer);
+      window.removeEventListener('hashchange', syncSemesterFromHash);
+      window.removeEventListener('focus', syncSemesterFromHash);
+    };
   }, []);
 
   useEffect(() => {
@@ -64,7 +83,7 @@ export default function HomeSemesterTabs() {
 
   const selectSemester = (semesterId) => {
     setActiveSemester(semesterId);
-    localStorage.setItem(SEMESTER_STORAGE_KEY, semesterId);
+    try { localStorage.setItem(getSemesterDefaults().storageKey, semesterId); } catch { /* Selection works without storage. */ }
     window.history.replaceState(null, '', `#semester-${semesterId}`);
   };
 

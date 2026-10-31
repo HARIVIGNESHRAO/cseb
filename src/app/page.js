@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import heroPhoto from '../../public/image.png';
 import revengePhoto from '../../public/image-1.jpg';
+import lightPhoto from '../../public/image-2.jpg';
 import ExamCountdown from '@/components/ExamCountdown';
 import InterviewResources from '@/components/InterviewResources';
 import HomeFeedbackForm from '@/components/HomeFeedbackForm';
@@ -39,6 +40,12 @@ export default function Home() {
               className={`${styles.heroPhoto} ${styles.heroPhotoClassic}`}
               sizes="(max-width: 640px) 100vw, (max-width: 900px) 580px, 486px"
               priority
+            />
+            <Image
+              src={lightPhoto}
+              alt="Dhurandhar character portrait"
+              className={`${styles.heroPhoto} ${styles.heroPhotoLight}`}
+              sizes="(max-width: 640px) 100vw, (max-width: 900px) 580px, 486px"
             />
             <Image
               src={revengePhoto}

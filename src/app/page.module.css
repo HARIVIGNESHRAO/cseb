@@ -4486,7 +4486,10 @@
 }
 
 /* CSS follows the pre-paint theme so the correct hero appears on refresh. */
-.heroMedia .heroPhotoRevenge { display: none; }
+.heroMedia .heroPhotoRevenge,
+.heroMedia .heroPhotoLight { display: none; }
+:global(html[data-theme='light']) .heroMedia .heroPhotoClassic { display: none; }
+:global(html[data-theme='light']) .heroMedia .heroPhotoLight { display: block; }
 :global(html[data-theme='revenge']) .heroMedia .heroPhotoClassic { display: none; }
 :global(html[data-theme='revenge']) .heroMedia .heroPhotoRevenge { display: block; }
 
