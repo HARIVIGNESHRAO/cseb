@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import JSZip from 'jszip';
+import { getZipUnitFileName } from '@/lib/downloadFileNames';
 import styles from '@/app/subject/[subjectId]/subject.module.css';
 
 function getFileExtension(url, fallback = 'pdf') {
@@ -28,15 +29,6 @@ function getUnitUrl(subject, unit) {
     return `/pdfs/${pdfDir}/${source}.pdf`;
 }
 
-function getUnitFileName(subject, unit) {
-    const rawName = String(unit.pdfFile ?? unit.name ?? unit.id).replace(/\.pdf$/i, '').trim();
-    const code = String(subject.code ?? subject.id).trim();
-    const comparableName = rawName.replace(/[^a-z0-9]+/gi, '').toLowerCase();
-    const comparableCode = code.replace(/[^a-z0-9]+/gi, '').toLowerCase();
-    const name = comparableName.startsWith(comparableCode) ? rawName : `${code}_${rawName}`;
-    return `${safeFileName(name)}.pdf`;
-}
-
 export default function DownloadAllButton({ subject }) {
     const [loading, setLoading] = useState(false);
     const [progress, setProgress] = useState({ current: 0, total: 0 });
@@ -61,7 +53,7 @@ export default function DownloadAllButton({ subject }) {
 
                 if (unitUrl && !unit.resources?.length) {
                     files.push({
-                        name: getUnitFileName(subject, unit),
+                        name: getZipUnitFileName(subject, unit),
                         url: unitUrl,
                     });
                 }

@@ -4505,3 +4505,14 @@
 :global(html[data-theme='revenge']) .semesterSelectWrap:focus-within {
   box-shadow: 0 0 0 4px rgba(255,90,97,.2), 0 16px 34px rgba(229,57,69,.22);
 }
+
+/* The rounded search box owns its surface; the padded wrapper stays clear. */
+.searchSection { box-shadow: none; }
+.searchSection::before { display: none; }
+.searchBox {
+  background: var(--elevated-strong);
+  box-shadow: var(--shadow-lg);
+}
+.searchBox:focus-within {
+  background: var(--elevated-strong);
+}
