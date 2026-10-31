@@ -87,7 +87,7 @@ export function getUnitPdfUrl(subject, unit) {
     return pdfFile;
   }
 
-  const pdfDir = subject.pdfDir ?? subject.id;
+  const pdfDir = unit.pdfDir ?? subject.pdfDir ?? subject.id;
 
   return withPdfAssetVersion(`/pdfs/${pdfDir}/${pdfFile}.pdf`);
 }

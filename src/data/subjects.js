@@ -432,7 +432,8 @@ export const subjects1 = [
       { id: 'unit3(b)', name: 'Unit 3 (b)', pdfFile: 'BEFA_UNIT_3(b)' },
       { id: 'unit4', name: 'Unit 4', pdfFile: 'BEFA_UNIT_4' },
       { id: 'unit5', name: 'Unit 5', pdfFile: 'BEFA_UNIT_5' },
-      { id: 'unity', name: 'Youtube Links', type: 'external-links', openUrl: 'https://docs.google.com/spreadsheets/d/1j-CPk1Cewu4zVhnw8Ce8eFcPZq4vQ-xVL7wcq4wy6Ag/edit?gid=1921851953#gid=1921851953' }
+      { id: 'unitp', name: 'Previous Year Papers', pdfFile: 'q' },
+      { id: 'unity', name: 'Youtube Links', type: 'external-links', openUrl: 'https://docs.google.com/spreadsheets/d/1j-CPk1Cewu4zVhnw8Ce8eFcPZq4vQ-xVL7wcq4wy6Ag/edit?gid=1921851953#gid=1921851953' },
     ]
   },
 
@@ -473,6 +474,7 @@ export const subjects1 = [
       { id: 'unit4', name: 'Unit 4', pdfFile: 'DM_UNIT_4' },
       { id: 'unit5', name: 'Unit 5', pdfFile: 'DM_UNIT_5' },
       // { id: 'unitn', name: 'Important Topics', pdfFile: 'i' },
+      { id: 'unitp', name: 'Previous Year Papers', pdfFile: 'q' },
       { id: 'unity', name: 'Youtube Links', type: 'external-links', openUrl: 'https://docs.google.com/spreadsheets/d/1j-CPk1Cewu4zVhnw8Ce8eFcPZq4vQ-xVL7wcq4wy6Ag/edit?gid=0#gid=0' }
     ]
   },
@@ -512,6 +514,7 @@ export const subjects1 = [
       { id: 'unit3', name: 'Unit 3', pdfFile: 'DVT_UNIT_3' },
       { id: 'unit4', name: 'Unit 4', pdfFile: 'DVT_UNIT_4' },
       { id: 'unit5', name: 'Unit 5', pdfFile: 'DVT_UNIT_5' },
+            { id: 'unitp', name: 'Previous Year Papers', pdfFile: 'q' },
     ]
   },
   {
@@ -1116,15 +1119,31 @@ export const questionPaperSubjects1 = [
     name: 'Semester Question Papers',
     desc: '',
     category: 'question-paper',
-    pdfDir: 'dvt',
     color: '#F59E0B',
     bg: 'rgba(245,158,11,0.15)',
     icon: '📝',
     units: [
       {
+        id: 'befa-question-paper',
+        name: 'BEFA Question Paper',
+        topic: 'BEFA Question Papers PDF',
+        pdfDir: 'befa',
+        topics: '',
+        pdfFile: 'q',
+      },
+      {
+        id: 'dm-question-paper',
+        name: 'DM Question Paper',
+        topic: 'DM Question Papers PDF',
+        pdfDir: 'dm',
+        topics: '',
+        pdfFile: 'q',
+      },
+      {
         id: 'dvt-question-paper',
         name: 'DVT Question Paper',
         topic: 'DVT Question Papers PDF',
+        pdfDir: 'dvt',
         topics: '',
         pdfFile: 'q',
       }

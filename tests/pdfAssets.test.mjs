@@ -30,6 +30,17 @@ test('PDF versions follow content and preserve query strings and fragments', asy
     assert.equal(withPdfAssetVersion('/pdfs/missing.pdf'), '/pdfs/missing.pdf');
     assert.equal(withPdfAssetVersion('/pdfs/%ZZ.pdf'), '/pdfs/%ZZ.pdf');
     assert.equal(withPdfAssetVersion(undefined), undefined);
+    for (const folder of ['befa', 'dm', 'dvt']) {
+      mkdirSync(path.join(root, 'public/pdfs', folder), { recursive: true });
+      writeFileSync(path.join(root, 'public/pdfs', folder, 'q.pdf'), `${folder} paper`);
+      const url = getUnitPdfUrl(
+        { id: 'sem-question-paper1', pdfDir: 'collection' },
+        { pdfDir: folder, pdfFile: 'q' }
+      );
+      assert.match(url, new RegExp(`^/pdfs/${folder}/q\\.pdf\\?v=[a-f0-9]{20}$`));
+    }
+    assert.equal(getUnitPdfUrl({ id: 'fallback', pdfDir: 'subject' }, { pdfFile: 'q' }), '/pdfs/subject/q.pdf');
+    assert.equal(getUnitPdfUrl({ id: 'fallback' }, { pdfFile: 'q' }), '/pdfs/fallback/q.pdf');
   } finally {
     process.chdir(originalCwd);
     rmSync(root, { recursive: true, force: true });
