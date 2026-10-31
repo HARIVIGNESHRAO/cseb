@@ -14,7 +14,7 @@ import {
   subjectsThreeOne,
   subjects1,
   subjectsFourTwo,
-  labSubjects, timetableSubjects1, record, questionPaperSubjects1
+   timetableSubjects1, record, questionPaperSubjects1
 } from '@/data/subjects';
 
 export const semesterTabs = [

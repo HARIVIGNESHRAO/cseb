@@ -861,75 +861,6 @@ export const questionPaperSubjects = [
     ],
   },
 ];
-export const labSubjects = [
-
-  {
-    id: 'sdc',
-    code: 'SDC LAB1',
-    name: 'Skill Development Course-3 Lab',
-    desc: '',
-    category: 'lab',
-    pdfDir: 'sdc',
-    color: '#61DAFB',
-    bg: 'rgba(97,218,251,0.15)',
-    icon: '⚛',
-    units: [
-      {
-        id: 'unit1',
-        name: 'Experiment 1: JSX and Virtual DOM',
-        pdfFile: '1'
-      },
-      {
-        id: 'unit2',
-        name: 'Experiment 2: Product Listing Page',
-        pdfFile: '2'
-      },
-      {
-        id: 'unit3',
-        name: 'Experiment 3: Inventory Management Using Hooks',
-        pdfFile: '3'
-      },
-      {
-        id: 'video',
-        name: 'Lab Demonstration Video',
-        topic: 'Full Lab Recording (All Experiments)',
-        videoUrl: 'https://www.youtube.com/embed/TDxGFXmQy3Y',
-        type: 'youtube'
-      }
-    ]
-  },
-  {
-    id: 'stm-lab',
-    code: 'STM LAB1',
-    name: 'Software Testing Methodologies Lab',
-    desc: '',
-    category: 'lab',
-    pdfDir: 'stm',
-    color: '#DC2626',
-    bg: 'rgba(220,38,38,0.15)',
-    icon: '🧪',
-    units: [
-      { id: '6', name: 'STM LAB MANUAL ', pdfFile: 'STM' },
-
-      {
-        id: 'video1',
-        name: 'Lab Demonstration Video',
-        topic: 'Experiment-1',
-        videoUrl: 'https://www.youtube.com/embed/DxfGtH-Gdyc',
-        type: 'youtube'
-      },
-      {
-        id: 'video2',
-        name: 'Lab Demonstration Video',
-        topic: 'Experiment-2 to 10',
-        videoUrl: 'https://www.youtube.com/embed/PoNCoicBNTw',
-        type: 'youtube'
-      },
-      
-    ]
-  },
-
-]
 export const record = [
   {
     id: 'sdc1',
@@ -942,21 +873,21 @@ export const record = [
     bg: 'rgba(139,92,246,0.15)',     // light purple background
     icon: '⚛',
     units: [
-      // { id: 'unit1', name: 'SDC LAB RECORD', pdfFile: 'r' },
+      // { id: 'unit1', name: 'SDC LAB RECORD', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793449979/r_k7bcai.pdf' },
       {
         id: 'unit1',
         name: 'Experiment 1: JSX and Virtual DOM',
-        pdfFile: '1'
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793449977/1_ybj9rt.pdf'
       },
       {
         id: 'unit2',
         name: 'Experiment 2: Product Listing Page',
-        pdfFile: '2'
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793449978/2_vjtpqj.pdf'
       },
       {
         id: 'unit3',
         name: 'Experiment 3: Inventory Management Using Hooks',
-        pdfFile: '3'
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793449977/3_qg04ax.pdf'
       },
       {
         id: 'video',
@@ -968,17 +899,17 @@ export const record = [
       {
         id: 'unit4',
         name: 'Experiment 4: E-Commerce App using React Router',
-        pdfFile: '4'
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793449976/4_datquo.pdf'
       },
       {
         id: 'unit5',
         name: 'Experiment 5: Dynamic React Form',
-        pdfFile: '5'
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793449915/5_bahcj8.pdf'
       },
       {
         id: 'unit6',
         name: 'Experiment 6: React SPA with User Data',
-        pdfFile: '6'
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793449897/6_trlzrq.pdf'
       },
       {
         id: 'video21',
@@ -1167,7 +1098,6 @@ export const allSubjects = [
   ...subjects1,
   ...subjectsFourTwo,
   ...questionPaperSubjects,
-  ...labSubjects,
   ...record,
     ...questionPaperSubjects1
 ];
