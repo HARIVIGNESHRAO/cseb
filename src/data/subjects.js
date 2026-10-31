@@ -1048,6 +1048,10 @@ export const questionPaperSubjects1 = [
     id: 'sem-question-paper1',
     code: 'SEM QP',
     name: 'Semester Question Papers',
+    alert: {
+      title: 'Important Notice – Semester Question Papers',
+      message: 'Previous semester question papers are currently available only for BEFA, DM, and DVT. STM and IRS are newly introduced subjects, so previous question papers are not available for them.',
+    },
     desc: '',
     category: 'question-paper',
     color: '#F59E0B',

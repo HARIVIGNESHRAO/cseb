@@ -5,6 +5,7 @@ import PdfPrefetchLink from '@/components/PdfPrefetchLink';
 import DownloadAllButton from '@/components/DownloadAllButton';
 import { getAssetDownloadUrl, getUnitDownloadFileName, getUnitPdfUrl, withPdfAssetVersion } from '@/lib/pdfAssets';
 import styles from './subject.module.css';
+import alertStyles from './[unitId]/unit.module.css';
 
 export async function generateStaticParams() {
   return allSubjects.map((s) => ({ subjectId: s.id }));
@@ -33,9 +34,12 @@ export default function SubjectPage({ params }) {
         </nav>
 
         {subject.alert && (
-          <div className={styles.alertBox}>
-            <div className={styles.alertTitle}>{subject.alert.title}</div>
-            <p className={styles.alertText}>{subject.alert.message}</p>
+          <div className={alertStyles.seleniumAlert} role="alert">
+            <span className={alertStyles.seleniumAlertIcon} aria-hidden="true">⚠️</span>
+            <div className={alertStyles.seleniumAlertBody}>
+              <div className={alertStyles.seleniumAlertTitle}>{subject.alert.title}</div>
+              <p className={alertStyles.seleniumAlertText}>{subject.alert.message}</p>
+            </div>
           </div>
         )}
 
