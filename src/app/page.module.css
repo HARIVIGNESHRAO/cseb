@@ -4516,3 +4516,32 @@
 .searchBox:focus-within {
   background: var(--elevated-strong);
 }
+
+/* Match the sticky navigation to the sidebar's quieter active treatment. */
+.stickyLink {
+  position: relative;
+  transition: color 180ms ease, background-color 220ms ease, border-color 220ms ease;
+}
+.stickyLink::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 28%;
+  right: 28%;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--accent);
+  opacity: 0;
+  transform: scaleX(.5);
+  transition: opacity 180ms ease, transform 220ms ease;
+}
+.stickyLink.stickyLinkActive {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 10%, var(--elevated-strong));
+  border-color: transparent;
+  box-shadow: none;
+}
+.stickyLinkActive::after { opacity: 1; transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) {
+  .stickyLink, .stickyLink::after { transition: none; }
+}

@@ -1003,7 +1003,7 @@ export const timetableSubjects1 = [
         name: 'Lab',
         topic: 'Lab Timetable',
         topics: '',
-        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793271654/STM_Lab_External_Schedule_yuf34f.pdf',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793522953/STM_LAB_zxwlvv.pdf',
       },
             {
         id: 'theory',
