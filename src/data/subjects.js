@@ -1010,7 +1010,7 @@ export const timetableSubjects1 = [
         name: 'Theory',
         topic: 'Theory Timetable',
         topics: '',
-        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793340404/KR23_-_B.Tech_4-1_REGULAR_EXAMINATION_TIMETABLE_NOV_2026_wi1keo.pdf',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793523595/KR23_-_B.Tech_4-1_REGULAR_EXAM_TIMETABLE_-_NOV_2026_fzxhcc.pdf',
       }
     ],
   },
