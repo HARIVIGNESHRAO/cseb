@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import ReleasedHomepageVideo from '@/components/ReleasedHomepageVideo';
 import heroPhoto from '../../public/image.png';
 import revengePhoto from '../../public/image-1.jpg';
 import lightPhoto from '../../public/image-2.jpg';
@@ -30,8 +31,10 @@ export default function Home() {
       {/* Legacy sticky nav */}
       <HomeStickyNav />
 
+      <ReleasedHomepageVideo />
+
       {/* Header */}
-      <header className={styles.header} style={{ paddingTop: 'calc(64px + 32px)' }}>
+      <header className={styles.header} style={{ paddingTop: '96px' }}>
         <div className={`${styles.heroIdentity} ${titleStyles.card}`}>
           <div className={styles.heroMedia}>
             <Image

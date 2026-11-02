@@ -196,6 +196,14 @@
   padding: 32px 24px 56px;
 }
 
+.homepageVideoSection {
+  position: relative;
+  z-index: 1;
+  width: min(1080px, calc(100% - 32px));
+  margin: 0 auto;
+  padding-top: 88px;
+}
+
 .heroVideoSection {
   position: relative;
   z-index: 1;
@@ -4544,4 +4552,8 @@
 .stickyLinkActive::after { opacity: 1; transform: scaleX(1); }
 @media (prefers-reduced-motion: reduce) {
   .stickyLink, .stickyLink::after { transition: none; }
+}
+
+@media (max-width: 1024px) {
+  .stickyNav { display: none; }
 }
