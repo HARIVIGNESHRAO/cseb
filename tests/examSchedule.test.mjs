@@ -24,15 +24,15 @@ test('October 31 content disappears at 4:30 PM and advances to November 1', () =
 test('November 1 exams remain available until each ends, then advance to November 12', () => {
   assert.equal(getExamState(at('2026-11-01T10:00:00')).phase, 'live');
   const after = at('2026-11-01T16:30:00');
-  assert.equal(getExamState(after).exam.start, '2026-11-12T10:00:00+05:30');
+  assert.equal(getExamState(after).exam.start, '2026-11-12T14:30:00+05:30');
   assert.ok(getAvailableExamIndices(after).every((i) => EXAMS[i].endTime > after.getTime()));
   assert.ok(getAvailableExamIndices(after).every((i) => !EXAMS[i].start.startsWith('2026-11-01')));
 });
 
-test('November exams start at 10 AM, end at 1 PM, and disappear at the end boundary', () => {
+test('November exams start at 2:30 PM, end at 5:30 PM, and disappear at the end boundary', () => {
   for (const [day, id] of [[12, 'befa'], [14, 'stm'], [16, 'dm'], [18, 'irs'], [20, 'dvt']]) {
-    const start = at(`2026-11-${day}T10:00:00`);
-    const end = at(`2026-11-${day}T13:00:00`);
+    const start = at(`2026-11-${day}T14:30:00`);
+    const end = at(`2026-11-${day}T17:30:00`);
     const state = getExamState(start);
     assert.equal(state.exam.id, id);
     assert.equal(state.phase, 'live');
@@ -43,17 +43,17 @@ test('November exams start at 10 AM, end at 1 PM, and disappear at the end bound
 });
 
 test('holidays stay hidden from navigation until the final exam ends', () => {
-  for (const date of ['2026-10-30T17:00:00', '2026-11-20T09:00:00', '2026-11-20T12:59:59']) {
+  for (const date of ['2026-10-30T17:00:00', '2026-11-20T09:00:00', '2026-11-20T17:29:59']) {
     const now = at(date);
     assert.ok(getAvailableExamIndices(now).every((i) => EXAMS[i].kind !== 'holiday'));
     assert.notEqual(getExamState(now).exam.kind, 'holiday');
   }
-  const now = at('2026-11-20T12:59:59');
+  const now = at('2026-11-20T17:29:59');
   assert.equal(EXAMS[getAvailableExamIndices(now).at(-1)].id, 'dvt');
 });
 
 test('final exam transitions directly to holidays and counts down to December 1 reopening', () => {
-  for (const date of ['2026-11-20T13:00:00', '2026-11-21T00:00:00', '2026-11-30T23:59:59', '2026-12-01T09:29:59']) {
+  for (const date of ['2026-11-20T17:30:00', '2026-11-21T00:00:00', '2026-11-30T23:59:59', '2026-12-01T09:29:59']) {
     const now = at(date);
     const state = getExamState(now);
     assert.equal(state.phase, 'holiday');

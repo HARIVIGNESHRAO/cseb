@@ -931,9 +931,9 @@ export const record = [
     bg: 'rgba(249,115,22,0.15)',     
     icon: '🧪',
     units: [
-      { id: '6', name: 'STM LAB RECORD', pdfFile: 'r' },
-      {id:'7',name:'STM LAB MANUAL',pdfFile:'STM'},
-      { id: '8', name: 'JAR FILES', pdfFile: 'JAR' },
+      { id: '6', name: 'STM LAB RECORD', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793461028/r_sujzvt.pdf' },
+      {id:'7',name:'STM LAB MANUAL',pdfFile:'https://res.cloudinary.com/vunycbnq/image/upload/v1793460171/STM_dafpkx.pdf'},
+      { id: '8', name: 'JAR FILES', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793459424/JAR_atl5sf.pdf' },
       {
         id: 'video1',
         name: 'Lab Demonstration Video',
@@ -1010,7 +1010,7 @@ export const timetableSubjects1 = [
         name: 'Theory',
         topic: 'Theory Timetable',
         topics: '',
-        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793523595/KR23_-_B.Tech_4-1_REGULAR_EXAM_TIMETABLE_-_NOV_2026_fzxhcc.pdf',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793862350/REVISED_KR23_-_B.Tech_4-1_REGULAR_EXTERNAL_END_EXAMINATION_TIMETABLE_NOV_2026_nny0mq.pdf',
       }
     ],
   },

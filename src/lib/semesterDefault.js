@@ -1,4 +1,4 @@
-export const SEMESTER_ROLLOVER = Date.parse('2026-11-20T14:00:00+05:30');
+export const SEMESTER_ROLLOVER = Date.parse('2026-11-20T18:30:00+05:30');
 
 export function getSemesterDefaults(now = Date.now()) {
   const nextSemester = now >= SEMESTER_ROLLOVER;
