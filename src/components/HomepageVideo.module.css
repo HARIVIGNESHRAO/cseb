@@ -29,7 +29,7 @@
   pointer-events: none;
   background: #050609 url('/image.png') center / cover no-repeat;
 }
-:global(html[data-theme='light']) .preview { background-image: url('/image-2.jpg'); }
+:global(html[data-theme='light']) .preview { background-image: url('/image-3.png'); }
 :global(html[data-theme='revenge']) .preview { background-image: url('/image-1.jpg'); }
 .overlay {
   position: absolute;
@@ -118,3 +118,6 @@
 .reactionButton:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .reactionCount { padding-left: 7px; border-left: 1px solid var(--border); font-variant-numeric: tabular-nums; }
 .reactionError { flex-basis: 100%; color: var(--text-muted); font-size: 11px; }
+:global(html[data-theme='rehman']) .preview { background-image: url('/akshay.webp'); }
+:global(html[data-theme='iqbal']) .preview { background-image: url('/iqbal.png'); }
+:global(html[data-theme='aslam']) .preview { background-image: url('/sanjay.png'); }

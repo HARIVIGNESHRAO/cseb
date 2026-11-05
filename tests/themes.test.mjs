@@ -15,8 +15,8 @@ function boot(saved, blocked = false) {
   return document.documentElement.dataset.theme;
 }
 
-test('all three saved themes survive page initialization and refresh', () => {
-  for (const theme of ['light', 'dark', 'revenge']) {
+test('all six saved themes survive page initialization and refresh', () => {
+  for (const theme of ['light', 'dark', 'revenge', 'rehman', 'iqbal', 'aslam']) {
     assert.equal(boot(theme), theme);
     assert.equal(boot(theme), theme);
   }

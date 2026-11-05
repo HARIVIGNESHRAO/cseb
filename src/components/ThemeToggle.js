@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
-const themes = ['light', 'dark', 'revenge'];
-const labels = { light: 'Light', dark: 'Blue Night', revenge: 'Revenge' };
+const themes = ['light', 'dark', 'revenge', 'rehman', 'iqbal', 'aslam'];
+const labels = { light: 'Light · Sanyal', dark: 'Hamza', revenge: 'Revenge', rehman: 'Rehman Dakait', iqbal: 'Major Iqbal', aslam: 'SP Chaudhary Aslam' };
 const storageKey = 'cseb-theme';
 const themeEvent = 'cseb-theme-change';
 
@@ -24,7 +24,8 @@ export default function ThemeToggle() {
     }
     function handleStorage(event) {
       if (event.key === storageKey) {
-        const next = themes.includes(event.newValue) ? event.newValue : 'dark';
+        const saved = event.newValue === 'emerald' ? 'rehman' : event.newValue;
+        const next = themes.includes(saved) ? saved : 'dark';
         document.documentElement.dataset.theme = next;
         setTheme(next);
       }
@@ -49,9 +50,12 @@ export default function ThemeToggle() {
   return (
     <label className="themePicker">
       <span className="themePicker__label">Theme</span>
-      <select aria-label="Color theme" value={theme} onChange={changeTheme}>
-        {themes.map((value) => <option key={value} value={value}>{labels[value]}</option>)}
-      </select>
+      <span className="themePicker__control">
+        <span className="themePicker__size" aria-hidden="true">{labels[theme]}</span>
+        <select aria-label="Color theme" value={theme} onChange={changeTheme}>
+          {themes.map((value) => <option key={value} value={value}>{labels[value]}</option>)}
+        </select>
+      </span>
     </label>
   );
 }

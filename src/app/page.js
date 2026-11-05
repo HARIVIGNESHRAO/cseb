@@ -2,7 +2,10 @@ import Image from 'next/image';
 import ReleasedHomepageVideo from '@/components/ReleasedHomepageVideo';
 import heroPhoto from '../../public/image.png';
 import revengePhoto from '../../public/image-1.jpg';
-import lightPhoto from '../../public/image-2.jpg';
+import lightPhoto from '../../public/image-3.png';
+import rehmanPhoto from '../../public/akshay.webp';
+import iqbalPhoto from '../../public/iqbal.png';
+import aslamPhoto from '../../public/sanjay.png';
 import ExamCountdown from '@/components/ExamCountdown';
 import InterviewResources from '@/components/InterviewResources';
 import HomeFeedbackForm from '@/components/HomeFeedbackForm';
@@ -46,7 +49,7 @@ export default function Home() {
             />
             <Image
               src={lightPhoto}
-              alt="Dhurandhar character portrait"
+              alt="Ajay Sanyal portrait"
               className={`${styles.heroPhoto} ${styles.heroPhotoLight}`}
               sizes="(max-width: 640px) 100vw, (max-width: 900px) 580px, 486px"
             />
@@ -56,10 +59,28 @@ export default function Home() {
               className={`${styles.heroPhoto} ${styles.heroPhotoRevenge}`}
               sizes="(max-width: 640px) 100vw, (max-width: 900px) 580px, 486px"
             />
+            <Image
+              src={rehmanPhoto}
+              alt="Rehman Dakait cinematic portrait"
+              className={`${styles.heroPhoto} ${styles.heroPhotoRehman}`}
+              sizes="(max-width: 640px) 100vw, (max-width: 900px) 580px, 486px"
+            />
+            <Image
+              src={iqbalPhoto}
+              alt="Major Iqbal portrait"
+              className={`${styles.heroPhoto} ${styles.heroPhotoIqbal}`}
+              sizes="(max-width: 640px) 100vw, (max-width: 900px) 580px, 486px"
+            />
+            <Image
+              src={aslamPhoto}
+              alt="SP Chaudhary Aslam portrait"
+              className={`${styles.heroPhoto} ${styles.heroPhotoAslam}`}
+              sizes="(max-width: 640px) 100vw, (max-width: 900px) 580px, 486px"
+            />
           </div>
           <div className={titleStyles.panel}>
             <span className={titleStyles.rule} aria-hidden="true" />
-            <h1 className={titleStyles.heading} aria-label="DHURANDHAR">
+            <h1 className={`${titleStyles.heading} ${titleStyles.defaultHeading}`} aria-label="DHURANDHAR">
               <span className={titleStyles.word} aria-hidden="true">
                 {'DHURANDHAR'.split('').map((letter, index) => (
                   <span className={titleStyles.letter} style={{ '--letter-index': index }} key={index}>
@@ -68,6 +89,19 @@ export default function Home() {
                 ))}
               </span>
             </h1>
+            <h1 className={`${titleStyles.heading} ${titleStyles.blueHeading}`} aria-label="DHURANDHAR">
+              <span className={titleStyles.word} aria-hidden="true">
+                {'DHURANDHAR'.split('').map((letter, index) => (
+                  <span className={titleStyles.letter} style={{ '--letter-index': index }} key={index}>
+                    {letter === ' ' ? '\u00a0' : letter}
+                  </span>
+                ))}
+              </span>
+            </h1>
+            <h1 className={`${titleStyles.heading} ${titleStyles.rehmanHeading}`}>REHMAN DAKAIT</h1>
+            <h1 className={`${titleStyles.heading} ${titleStyles.sanyalHeading}`}>AJAY SANYAL</h1>
+            <h1 className={`${titleStyles.heading} ${titleStyles.iqbalHeading}`}>MAJOR IQBAL</h1>
+            <h1 className={`${titleStyles.heading} ${titleStyles.aslamHeading}`}>SP CHAUDHARY ASLAM</h1>
             <span className={titleStyles.rule} aria-hidden="true" />
           </div>
         </div>

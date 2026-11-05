@@ -37,6 +37,12 @@
 }
 
 .word { display: inline-flex; }
+.rehmanHeading { display: none; }
+:global(html[data-theme='rehman']) .defaultHeading { display: none; }
+:global(html[data-theme='rehman']) .rehmanHeading {
+  display: block;
+  font-size: clamp(16px, 7cqi, 42px);
+}
 .letter {
   display: inline-block;
   color: var(--title-clear);
@@ -138,4 +144,60 @@
 @media (prefers-reduced-motion: no-preference) {
   :global(html[data-theme='revenge']) .heading { animation: revengeTitle 350ms ease-out both; }
   @keyframes revengeTitle { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+
+:global(html[data-theme='rehman']) .panel {
+  --gold-light: #e2ccb0;
+  --gold-mid: #d1b28b;
+  --gold-deep: #9e7f5c;
+  --gold-highlight: #f3e7d7;
+  --gold-glow: rgba(209,178,139,.12);
+  --gold-hover: rgba(209,178,139,.2);
+  --gold-rule: rgba(209,178,139,.45);
+  --gold-atmosphere: rgba(134,190,180,.06);
+}
+
+.sanyalHeading { display: none; }
+:global(html[data-theme='light']) .defaultHeading { display: none; }
+:global(html[data-theme='light']) .sanyalHeading {
+  display: block;
+  color: #68513a;
+  font-size: clamp(16px, 7.5cqi, 44px);
+  font-weight: 800;
+  letter-spacing: .015em;
+  filter: none;
+}
+:global(html[data-theme='light']) .panel {
+  --gold-mid: #806033;
+  --gold-rule: rgba(128,96,51,.38);
+  --gold-atmosphere: rgba(188,160,122,.07);
+  background: radial-gradient(ellipse at 0 50%, rgba(188,160,122,.12), transparent 75%);
+}
+
+.iqbalHeading, .aslamHeading { display: none; }
+:global(html:is([data-theme='iqbal'], [data-theme='aslam'])) .defaultHeading { display: none; }
+:global(html[data-theme='iqbal']) .iqbalHeading,
+:global(html[data-theme='aslam']) .aslamHeading {
+  display: block; color: var(--title-accent); filter: none;
+  font-size: clamp(15px, 6.5cqi, 42px);
+}
+:global(html[data-theme='aslam']) .aslamHeading { font-size: clamp(12px, 5cqi, 34px); }
+:global(html:is([data-theme='iqbal'], [data-theme='aslam'])) .panel {
+  --gold-mid: var(--title-accent);
+  --gold-rule: color-mix(in srgb, var(--title-accent) 45%, transparent);
+  --gold-glow: var(--glow); --gold-hover: var(--glow-strong);
+  --gold-atmosphere: color-mix(in srgb, var(--accent) 5%, transparent);
+}
+:global(html[data-theme='iqbal']) .panel {
+  background: radial-gradient(ellipse at center, rgba(173,126,49,.1), transparent 75%);
+}
+:global(html[data-theme='iqbal']) .iqbalHeading { letter-spacing: .045em; }
+
+.blueHeading { display: none; }
+:global(html[data-theme='dark']) .defaultHeading { display: none; }
+:global(html[data-theme='dark']) .blueHeading {
+  display: block;
+  color: var(--gold-light);
+  font-size: clamp(20px, 7.8cqi, 50px);
+  letter-spacing: -.025em;
 }

@@ -4557,3 +4557,87 @@
 @media (max-width: 1024px) {
   .stickyNav { display: none; }
 }
+
+/* Rehman accents are scoped so the other palettes retain their styles. */
+:global(html[data-theme='rehman']) .semesterSelect {
+  background: linear-gradient(135deg, #284c49, #39635d);
+  border-color: rgba(134,190,180,.35);
+  color: #edf3ef;
+  box-shadow: inset 0 1px 0 rgba(226,239,225,.12), 0 10px 24px rgba(0,0,0,.15);
+}
+:global(html[data-theme='rehman']) .semesterSelectWrap:hover,
+:global(html[data-theme='rehman']) .semesterSelectWrap:focus-within { box-shadow: 0 0 0 3px var(--glow), var(--shadow-sm); }
+:global(html[data-theme='rehman']) :is(.examCountdownLabel, .examCountdownDate) { color: var(--accent); }
+:global(html[data-theme='rehman']) .examCountdownDate { background: var(--soft-bg-strong); border-color: var(--border-hover); }
+:global(html[data-theme='rehman']) .examCountdownArrow { background: #345c56; color: #edf3ef; box-shadow: none; border-color: var(--border); }
+:global(html[data-theme='rehman']) :is(.searchBox, .searchResults, .stickySearchResults, .feedbackSection) { background: var(--elevated-strong); border-color: var(--border); }
+:global(html[data-theme='rehman']) .card {
+  --card-color: var(--accent) !important;
+  --card-bg: var(--soft-bg-strong) !important;
+  background: var(--card);
+  border-color: var(--border);
+}
+:global(html[data-theme='rehman']) .card:hover { background: var(--card-hover); border-color: var(--border-hover); }
+:global(html[data-theme='rehman']) .feedbackButton { background: #345c56; color: #edf3ef; }
+:global(html[data-theme='rehman']) .feedbackButton:hover:not(:disabled) { background: #426e66; }
+
+.heroMedia .heroPhotoRehman { display: none; }
+:global(html[data-theme='rehman']) .heroMedia .heroPhotoClassic { display: none; }
+:global(html[data-theme='rehman']) .heroMedia .heroPhotoRehman { display: block; object-position: 56% center; }
+
+/* Sanyal's portrait and tailored light-mode controls. */
+:global(html[data-theme='light']) .heroIdentity { --hero-panel: #fffefa; border-color: rgba(128,96,51,.2); }
+:global(html[data-theme='light']) .heroMedia .heroPhotoLight { object-position: 58% 42%; }
+:global(html[data-theme='light']) .semesterSelect {
+  background: linear-gradient(135deg, #6c553a, #806745);
+  color: #fffefa;
+  box-shadow: 0 8px 20px rgba(54,46,32,.12);
+}
+:global(html[data-theme='light']) .semesterSelectWrap:hover,
+:global(html[data-theme='light']) .semesterSelectWrap:focus-within { box-shadow: 0 0 0 3px var(--glow), var(--shadow-sm); }
+:global(html[data-theme='light']) :is(.examCountdownLabel, .examCountdownDate) { color: var(--accent); }
+:global(html[data-theme='light']) .examCountdownDate { background: var(--soft-bg); border-color: var(--border-hover); }
+:global(html[data-theme='light']) .examCountdownArrow { background: #806033; color: #fffefa; box-shadow: none; border-color: var(--border); }
+:global(html[data-theme='light']) .feedbackButton { background: #6c553a; color: #fffefa; }
+:global(html[data-theme='light']) .feedbackButton:hover:not(:disabled) { background: #58432d; }
+
+.heroMedia .heroPhotoIqbal, .heroMedia .heroPhotoAslam { display: none; }
+:global(html:is([data-theme='iqbal'], [data-theme='aslam'])) .heroMedia .heroPhotoClassic { display: none; }
+:global(html[data-theme='iqbal']) .heroMedia .heroPhotoIqbal { display: block; object-position: center; }
+:global(html[data-theme='aslam']) .heroMedia .heroPhotoAslam { display: block; object-position: 40% center; }
+:global(html:is([data-theme='iqbal'], [data-theme='aslam'])) .semesterSelect {
+  background: color-mix(in srgb, var(--accent) 24%, var(--surface));
+  border-color: var(--border-hover); color: var(--text); box-shadow: var(--shadow-sm);
+}
+:global(html:is([data-theme='iqbal'], [data-theme='aslam'])) .semesterSelectWrap:hover,
+:global(html:is([data-theme='iqbal'], [data-theme='aslam'])) .semesterSelectWrap:focus-within { box-shadow: 0 0 0 3px var(--glow), var(--shadow-sm); }
+:global(html:is([data-theme='iqbal'], [data-theme='aslam'])) :is(.examCountdownLabel, .examCountdownDate) { color: var(--accent); }
+:global(html:is([data-theme='iqbal'], [data-theme='aslam'])) .examCountdownDate { background: var(--soft-bg-strong); border-color: var(--border-hover); }
+:global(html:is([data-theme='iqbal'], [data-theme='aslam'])) .examCountdownArrow {
+  background: color-mix(in srgb, var(--accent) 24%, var(--surface)); color: var(--text); border-color: var(--border-hover); box-shadow: none;
+}
+:global(html:is([data-theme='iqbal'], [data-theme='aslam'])) .card {
+  --card-color: var(--accent) !important; --card-bg: var(--soft-bg-strong) !important;
+  background: var(--card); border-color: var(--border);
+}
+:global(html:is([data-theme='iqbal'], [data-theme='aslam'])) .card:hover { background: var(--card-hover); border-color: var(--border-hover); }
+:global(html:is([data-theme='iqbal'], [data-theme='aslam'])) .feedbackButton { background: var(--accent); color: var(--bg); }
+
+/* Iqbal's warm khaki/brass finish contrasts with Rehman's cool teal. */
+:global(html[data-theme='iqbal']) .heroIdentity {
+  --hero-panel: #211b13;
+  background: var(--hero-panel);
+  border-color: rgba(214,175,105,.3);
+}
+:global(html[data-theme='iqbal']) .semesterSelect {
+  background: linear-gradient(135deg, #6e542d, #8d6d38);
+  color: #fff5df;
+}
+:global(html[data-theme='iqbal']) .examCountdownArrow { background: #8d6d38; color: #fff5df; }
+:global(html[data-theme='iqbal']) .card { border-radius: 12px; border-color: rgba(214,175,105,.22); }
+
+/* Hide narrow white edges embedded in these portrait assets. */
+:global(html[data-theme='aslam']) .heroMedia .heroPhotoAslam {
+  transform: scale(1.02);
+  transform-origin: center;
+}
