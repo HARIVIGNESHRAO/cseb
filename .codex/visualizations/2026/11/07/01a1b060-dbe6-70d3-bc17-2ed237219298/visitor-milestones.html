@@ -1,0 +1,17 @@
+<div id="visitor-preview" class="viz-row">
+<div class="badge bronze"><i data-lucide="users" aria-hidden="true"></i><strong>3,000</strong><span>visitors so far</span><b>Bronze</b><em></em></div>
+<div class="badge silver"><i data-lucide="users" aria-hidden="true"></i><strong>4,000</strong><span>visitors so far</span><b>Silver</b><em></em></div>
+<div class="badge gold"><i data-lucide="users" aria-hidden="true"></i><strong>5,000</strong><span>visitors so far</span><b>Gold</b><em></em></div>
+</div>
+<style>
+#visitor-preview{justify-content:flex-start;gap:18px;padding:16px 0}
+#visitor-preview .badge{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:10px 16px;border-radius:999px;background:color-mix(in srgb,var(--metal) 12%,var(--background));font-family:ui-monospace,monospace}
+#visitor-preview .bronze{--metal:light-dark(#8c4c20,#dba477)}
+#visitor-preview .silver{--metal:light-dark(#536174,#cbd5e1)}
+#visitor-preview .gold{--metal:light-dark(#806000,#f4cd62)}
+#visitor-preview strong{color:var(--metal);font-size:15px}
+#visitor-preview span{color:var(--muted-foreground);font-size:12px}
+#visitor-preview b{color:var(--metal);font-size:11px}
+#visitor-preview svg{color:var(--viz-series-1);margin-right:4px;flex-shrink:0}
+#visitor-preview em{background:var(--metal);width:6px;height:6px;border-radius:50%;margin-left:2px;flex-shrink:0}
+</style>

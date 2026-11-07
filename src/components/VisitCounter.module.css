@@ -1,4 +1,6 @@
 .visitCounter {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -6,17 +8,100 @@
   min-height: 40px;
   margin-top: 22px;
   padding: 10px 16px;
+  overflow: hidden;
   border: 0;
   border-radius: 999px;
   background: var(--soft-bg-strong);
+  --visitor-value: #ffffff;
+  --visitor-label: var(--text-dim);
+  --visitor-icon: var(--title-accent);
+  --visitor-status: #70e0a6;
   text-align: left;
+}
+
+:global(html[data-theme='light']) .visitCounter {
+  --visitor-value: #000000;
+  --visitor-status: #167446;
+}
+
+.visitCounterMilestone {
+  background: color-mix(in srgb, var(--accent) 10%, var(--elevated-strong));
+}
+
+.visitCounterGold,
+:global(html[data-theme='light']) .visitCounterGold {
+  background: linear-gradient(165deg, #80652d 0%, #b88a16 38%, #dcba54 66%, #fff0a5 100%);
+  box-shadow: inset 0 0 0 1px #ffe582, 0 0 26px rgb(240 196 67 / 30%), inset 0 1px 0 rgb(255 246 186 / 55%);
+  --visitor-value: #302200;
+  --visitor-label: #302200;
+  --visitor-icon: #302200;
+  --visitor-status: #167446;
+}
+
+.visitCounterBronze,
+:global(html[data-theme='light']) .visitCounterBronze {
+  background: linear-gradient(165deg, #785038 0%, #b57742 38%, #d6a475 66%, #f5d6af 100%);
+  box-shadow: inset 0 0 0 1px #edbd8c, 0 0 26px rgb(191 132 76 / 30%), inset 0 1px 0 rgb(255 226 195 / 55%);
+  --visitor-value: #301b0d;
+  --visitor-label: #301b0d;
+  --visitor-icon: #301b0d;
+  --visitor-status: #167446;
+}
+
+.visitCounterSilver,
+:global(html[data-theme='light']) .visitCounterSilver {
+  background: linear-gradient(165deg, #737d89 0%, #a3adb9 38%, #cdd5de 66%, #f1f5fa 100%);
+  box-shadow: inset 0 0 0 1px #e1e8f0, 0 0 26px rgb(175 190 210 / 30%), inset 0 1px 0 rgb(255 255 255 / 55%);
+  --visitor-value: #202936;
+  --visitor-label: #202936;
+  --visitor-icon: #202936;
+  --visitor-status: #167446;
+}
+
+.visitCounterSilver::before,
+.visitCounterGold::before,
+.visitCounterBronze::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(110deg, transparent 51%, rgb(255 255 255 / 27%) 51%, rgb(255 255 255 / 14%) 61%, transparent 61%),
+    linear-gradient(to bottom, rgb(255 255 255 / 15%) 0 49%, transparent 50%);
+  pointer-events: none;
+}
+
+.visitCounterMilestone::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  margin-left: 2px;
+  border-radius: 50%;
+  background: var(--visitor-status);
+}
+
+@keyframes visitorGlow {
+  50% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--visitor-status) 16%, transparent); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .visitCounterMilestone::after {
+    animation: visitorGlow 3s ease-in-out infinite;
+  }
 }
 
 .visitCounterIcon {
   display: grid;
   place-items: center;
   flex: 0 0 16px;
-  color: var(--title-accent);
+  color: var(--visitor-icon);
+}
+
+.visitCounterIcon svg {
+  width: 16px;
+  height: 16px;
 }
 
 .visitCounterContent {
@@ -28,7 +113,7 @@
 }
 
 .visitCounterValue {
-  color: #ffffff;
+  color: var(--visitor-value);
   font-family: var(--font-mono);
   font-size: 15px;
   font-weight: 700;
@@ -38,39 +123,18 @@
   overflow-wrap: anywhere;
 }
 
-:global(html[data-theme='light']) .visitCounterValue {
-  color: #000000;
-}
-
 .visitCounterLabel {
   overflow-wrap: anywhere;
-  color: var(--text-dim);
+  color: var(--visitor-label);
   font-family: var(--font-mono);
   font-size: 12px;
+  font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0;
 }
 
-.visitCounterMilestone {
-  background: color-mix(in srgb, var(--accent) 10%, var(--elevated-strong));
-}
-
-.visitCounterMilestone::after {
-  content: '';
-  width: 6px;
-  height: 6px;
-  flex-shrink: 0;
-  margin-left: 2px;
-  border-radius: 50%;
-  background: var(--title-accent);
-}
-
-.visitCounter { --visitor-status: #70e0a6; }
-:global(html[data-theme='light']) .visitCounter { --visitor-status: #167446; }
-.visitCounterMilestone::after { background: var(--visitor-status); }
-@keyframes visitorGlow {
-  50% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--visitor-status) 16%, transparent); }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .visitCounterMilestone::after { animation: visitorGlow 3s ease-in-out infinite; }
+.visitCounterSilver .visitCounterLabel,
+.visitCounterGold .visitCounterLabel,
+.visitCounterBronze .visitCounterLabel {
+  font-weight: 700;
 }
