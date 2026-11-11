@@ -78,9 +78,9 @@ export const EXAMS = [
     id: 'befa',
     subject: 'Business Economics and Financial Analysis',
     dateLabel: '12 Nov 2026',
-    timeLabel: '2:30 PM - 5:30 PM',
-    start: '2026-11-12T14:30:00+05:30',
-    end: '2026-11-12T17:30:00+05:30',
+    timeLabel: '1:30 PM - 4:30 PM',
+    start: '2026-11-12T13:30:00+05:30',
+    end: '2026-11-12T16:30:00+05:30',
   },
   {
     id: 'stm',
