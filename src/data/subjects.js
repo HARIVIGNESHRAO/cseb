@@ -453,7 +453,8 @@ export const subjects1 = [
       { id: 'unit3', name: 'Unit 3', pdfFile: 'STM_UNIT_3' },
       { id: 'unit4', name: 'Unit 4', pdfFile: 'STM_UNIT_4' },
       { id: 'unit5', name: 'Unit 5', pdfFile: 'STM_UNIT_5' },
-    //{ id: 'unitn', name: 'Important Topics for MID-2', pdfFile: 'i' }  
+     { id: 'unitn3', name: 'Important Topics STM MID-1', pdfFile: 'STM_MID_1' },
+    { id: 'unitn', name: 'Important Topics STM MID-2', pdfFile: 'i' }  
     ]
   },
 
