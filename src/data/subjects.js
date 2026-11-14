@@ -474,7 +474,7 @@ export const subjects1 = [
       { id: 'unit3', name: 'Unit 3', pdfFile: 'DM_UNIT_3' },
       { id: 'unit4', name: 'Unit 4', pdfFile: 'DM_UNIT_4' },
       { id: 'unit5', name: 'Unit 5', pdfFile: 'DM_UNIT_5' },
-      // { id: 'unitn', name: 'Important Topics', pdfFile: 'i' },
+      { id: 'unitn', name: 'Important Topics Mid-1', pdfFile: 'i' },
       { id: 'unitp', name: 'Previous Year Papers', pdfFile: 'q' },
       { id: 'unity', name: 'Youtube Links', type: 'external-links', openUrl: 'https://docs.google.com/spreadsheets/d/1j-CPk1Cewu4zVhnw8Ce8eFcPZq4vQ-xVL7wcq4wy6Ag/edit?gid=0#gid=0' }
     ]
