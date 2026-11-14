@@ -448,14 +448,14 @@ export const subjects1 = [
     bg: 'rgba(220,38,38,0.15)',
     icon: '🧪',
     units: [
-      { id: 'unit1', name: 'Unit 1', pdfFile: 'STM_UNIT_1' },
-      { id: 'unit2', name: 'Unit 2', pdfFile: 'STM_UNIT_2' },
-      { id: 'unit3', name: 'Unit 3', pdfFile: 'STM_UNIT_3' },
-      { id: 'unit4', name: 'Unit 4', pdfFile: 'STM_UNIT_4' },
-      { id: 'unit5', name: 'Unit 5', pdfFile: 'STM_UNIT_5' },
-     { id: 'unitn3', name: 'Important Topics STM MID-1', pdfFile: 'STM_MID_1' },
-    { id: 'unitn', name: 'Important Topics STM MID-2', pdfFile: 'i' }  
-    ]
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793461023/STM_UNIT_1_qhfvlu.pdf' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793461021/STM_UNIT_2_u8kmjj.pdf' },
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793461022/STM_UNIT_3_ivttp1.pdf' },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793460167/STM_UNIT_4_myzjdn.pdf' },
+      { id: 'unit5', name: 'Unit 5', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793460169/STM_UNIT_5_qymgze.pdf' },
+     { id: 'unitn3', name: 'Important Topics STM MID-1', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1794659959/STM_MID_1_e9judj.pdf' },
+    { id: 'unitn', name: 'Important Topics STM MID-2', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793459423/i_h0kvi8.pdf' }  
+    ] 
   },
 
   {

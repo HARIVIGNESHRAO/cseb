@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import JSZip from 'jszip';
 import { getZipUnitFileName } from '@/lib/downloadFileNames';
 import styles from '@/app/subject/[subjectId]/subject.module.css';
@@ -29,7 +29,21 @@ function getUnitUrl(subject, unit) {
     return `/pdfs/${pdfDir}/${source}.pdf`;
 }
 
+function saveZip(blob, subject) {
+    const objectUrl = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = objectUrl;
+    link.download = `${safeFileName(subject.code || subject.name)}-all-files.zip`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    // Give the browser time to start reading the download before releasing it.
+    window.setTimeout(() => window.URL.revokeObjectURL(objectUrl), 1000);
+}
+
 export default function DownloadAllButton({ subject }) {
+    const downloadInProgress = useRef(false);
+    const preparedZip = useRef(null);
     const [loading, setLoading] = useState(false);
     const [progress, setProgress] = useState({ current: 0, total: 0 });
 
@@ -42,7 +56,14 @@ export default function DownloadAllButton({ subject }) {
     if (!downloadableUnits.length) return null;
 
     const handleDownloadAll = async () => {
+        if (downloadInProgress.current) return;
+        downloadInProgress.current = true;
         try {
+            const cacheKey = JSON.stringify(subject);
+            if (preparedZip.current?.key === cacheKey) {
+                saveZip(preparedZip.current.blob, subject);
+                return;
+            }
             setLoading(true);
 
             const zip = new JSZip();
@@ -74,7 +95,7 @@ export default function DownloadAllButton({ subject }) {
             setProgress({ current: 0, total: files.length });
 
             for (const [index, file] of files.entries()) {
-                const response = await fetch(file.url, { cache: 'no-cache' });
+                const response = await fetch(file.url);
                 if (!response.ok) {
                     throw new Error(`Failed to fetch ${file.name}`);
                 }
@@ -84,19 +105,13 @@ export default function DownloadAllButton({ subject }) {
             }
 
             const zipBlob = await zip.generateAsync({ type: 'blob' });
-            const objectUrl = window.URL.createObjectURL(zipBlob);
-
-            const link = document.createElement('a');
-            link.href = objectUrl;
-            link.download = `${safeFileName(subject.code || subject.name)}-all-files.zip`;
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-            window.URL.revokeObjectURL(objectUrl);
+            preparedZip.current = { key: cacheKey, blob: zipBlob };
+            saveZip(zipBlob, subject);
         } catch (error) {
             console.error(error);
             alert('Could not create ZIP file. Some remote files may not allow download.');
         } finally {
+            downloadInProgress.current = false;
             setLoading(false);
             setProgress({ current: 0, total: 0 });
         }
