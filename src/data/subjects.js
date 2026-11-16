@@ -469,13 +469,13 @@ export const subjects1 = [
     bg: 'rgba(5,150,105,0.15)',
     icon: '⛏️',
     units: [
-      { id: 'unit1', name: 'Unit 1', pdfFile: 'DM_UNIT_1' },
-      { id: 'unit2', name: 'Unit 2', pdfFile: 'DM_UNIT_2' },
-      { id: 'unit3', name: 'Unit 3', pdfFile: 'DM_UNIT_3' },
-      { id: 'unit4', name: 'Unit 4', pdfFile: 'DM_UNIT_4' },
-      { id: 'unit5', name: 'Unit 5', pdfFile: 'DM_UNIT_5' },
-      { id: 'unitn', name: 'Important Topics Mid-1', pdfFile: 'i' },
-      { id: 'unitp', name: 'Previous Year Papers', pdfFile: 'q' },
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845828/DM_UNIT_1_hxch3q.pdf' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793846688/DM_UNIT_2_compressed_b844si.pdf' },
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845827/DM_UNIT_3_fhqmm9.pdf' },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845827/DM_UNIT_4_xh2kqb.pdf' },
+      { id: 'unit5', name: 'Unit 5', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845828/DM_UNIT_5_qwkduj.pdf' },
+      { id: 'unitn', name: 'Important Topics Mid-1', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845826/i_sfrn4l.pdf' },
+      { id: 'unitp', name: 'Previous Year Papers', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845829/q_ozydrw.pdf' },
       { id: 'unity', name: 'Youtube Links', type: 'external-links', openUrl: 'https://docs.google.com/spreadsheets/d/1j-CPk1Cewu4zVhnw8Ce8eFcPZq4vQ-xVL7wcq4wy6Ag/edit?gid=0#gid=0' }
     ]
   },
@@ -1073,7 +1073,7 @@ export const questionPaperSubjects1 = [
         topic: 'DM Question Papers PDF',
         pdfDir: 'dm',
         topics: '',
-        pdfFile: 'q',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845829/q_ozydrw.pdf',
       },
       {
         id: 'dvt-question-paper',
