@@ -491,11 +491,11 @@ export const subjects1 = [
     bg: 'rgba(124,58,237,0.15)',
     icon: '🔍',
     units: [
-      { id: 'unit1', name: 'Unit 1', pdfFile: 'IRS_UNIT_1' },
-      { id: 'unit2', name: 'Unit 2', pdfFile: 'IRS_UNIT_2' },
-      { id: 'unit3', name: 'Unit 3', pdfFile: 'IRS_UNIT_3' },
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845832/IRS_UNIT_1_icmcza.pdf' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845832/IRS_UNIT_2_i2k7rc.pdf' },
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845832/IRS_UNIT_3_zaksaz.pdf' },
       { id: 'unit4', name: 'Unit 4', pdfFile: 'https://ik.imagekit.io/0hytmpcavl/IRS/UNIT-4%20Notes.pdf' },
-      { id: 'unit5', name: 'Unit 5', pdfFile: 'IRS_UNIT_5' },
+      { id: 'unit5', name: 'Unit 5', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845831/IRS_UNIT_5_ehwk85.pdf' },
     ]
   },
   
@@ -1061,11 +1061,35 @@ export const questionPaperSubjects1 = [
     units: [
       {
         id: 'befa-question-paper',
+        name: 'BEFA 2026',
+        topic: 'BEFA Question Papers PDF',
+        pdfDir: 'befa',
+        topics: '',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1795005081/Book_Nov_18_2026_1_thxsnr.pdf'
+      },
+      {
+        id: 'befa-question-paper',
         name: 'BEFA Question Paper',
         topic: 'BEFA Question Papers PDF',
         pdfDir: 'befa',
         topics: '',
         pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1794482862/q_ecwghr.pdf',
+      },
+      {
+        id: 'stm-question-paper',
+        name: 'STM 2026',
+        topic: 'STM Question Papers PDF',
+        pdfDir: 'stm',
+        topics: '',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1795004999/Book_Nov_18_2026_lntn9k.pdf'
+      },
+       {
+        id: 'dm1-question-paper',
+        name: 'DM 2026',
+        topic: 'DM Question Papers PDF',
+        pdfDir: 'dm',
+        topics: '',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1795004935/Adobe_Scan_Nov_18_2026_1_ohyasl.pdf',
       },
       {
         id: 'dm-question-paper',
@@ -1074,6 +1098,14 @@ export const questionPaperSubjects1 = [
         pdfDir: 'dm',
         topics: '',
         pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845829/q_ozydrw.pdf',
+      },
+        {
+        id: 'irs-question-paper',
+        name: 'IRS 2026',
+        topic: 'IRS Question Papers PDF',
+        pdfDir: 'irs',
+        topics: '',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1795004098/Adobe_Scan_Nov_18_2026_l3ospn.pdf',
       },
       {
         id: 'dvt-question-paper',
