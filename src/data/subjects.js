@@ -510,12 +510,12 @@ export const subjects1 = [
     bg: 'rgba(245,158,11,0.15)',
     icon: '📊',
     units: [
-      { id: 'unit1', name: 'Unit 1', pdfFile: 'DVT_UNIT_1 ' },
-      { id: 'unit2', name: 'Unit 2', pdfFile: 'DVT_UNIT_2 ' },
-      { id: 'unit3', name: 'Unit 3', pdfFile: 'DVT_UNIT_3' },
-      { id: 'unit4', name: 'Unit 4', pdfFile: 'DVT_UNIT_4' },
-      { id: 'unit5', name: 'Unit 5', pdfFile: 'DVT_UNIT_5' },
-            { id: 'unitp', name: 'Previous Year Papers', pdfFile: 'q' },
+      { id: 'unit1', name: 'Unit 1', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845829/DVT_UNIT_1_dqe927.pdf' },
+      { id: 'unit2', name: 'Unit 2', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845830/DVT_UNIT_2_kwwddo.pdf' },
+      { id: 'unit3', name: 'Unit 3', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845829/DVT_UNIT_3_kxaksr.pdf' },
+      { id: 'unit4', name: 'Unit 4', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845830/DVT_UNIT_4_owrel1.pdf' },
+      { id: 'unit5', name: 'Unit 5', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845830/DVT_UNIT_5_y20ixm.pdf' },
+      { id: 'unitp', name: 'Previous Year Papers', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845829/q_ksh32q.pdf' },
     ]
   },
   {
@@ -534,7 +534,6 @@ export const subjects1 = [
       { id: 'unit3', name: 'Unit 3', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793448606/ES_UNIT_3_fjg9mx.pdf' },
       { id: 'unit4', name: 'Unit 4', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793448632/ES_UNIT_4_fjvlzf.pdf' },
       { id: 'unit5', name: 'Unit 5', pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793448629/ES_UNIT_5_djxlbs.pdf' },
-      // { id: 'unitn', name: 'Important Questions', pdfFile: 'i' }
     ]
   }
 ];
@@ -1034,14 +1033,14 @@ export const questionPaperSubjects1 = [
         name: 'Mid-1',
         topic: 'Mid-1 Question Paper',
         topics: '',
-        pdfFile: '1',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793459404/1_gfkckf.pdf',
       },
             {
         id: 'mid-12',
         name: 'Mid-2',
         topic: 'Mid-2 Question Paper',
         topics: '',
-        pdfFile: '2',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793459406/2_ce63l4.pdf',
       }
     ],
   },
@@ -1062,7 +1061,7 @@ export const questionPaperSubjects1 = [
       {
         id: 'befa-question-paper',
         name: 'BEFA 2026',
-        topic: 'BEFA Question Papers PDF',
+        topic: 'BEFA Question Paper PDF',
         pdfDir: 'befa',
         topics: '',
         pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1795005081/Book_Nov_18_2026_1_thxsnr.pdf'
@@ -1078,7 +1077,7 @@ export const questionPaperSubjects1 = [
       {
         id: 'stm-question-paper',
         name: 'STM 2026',
-        topic: 'STM Question Papers PDF',
+        topic: 'STM Question Paper PDF',
         pdfDir: 'stm',
         topics: '',
         pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1795004999/Book_Nov_18_2026_lntn9k.pdf'
@@ -1086,7 +1085,7 @@ export const questionPaperSubjects1 = [
        {
         id: 'dm1-question-paper',
         name: 'DM 2026',
-        topic: 'DM Question Papers PDF',
+        topic: 'DM Question Paper PDF',
         pdfDir: 'dm',
         topics: '',
         pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1795004935/Adobe_Scan_Nov_18_2026_1_ohyasl.pdf',
@@ -1102,10 +1101,18 @@ export const questionPaperSubjects1 = [
         {
         id: 'irs-question-paper',
         name: 'IRS 2026',
-        topic: 'IRS Question Papers PDF',
+        topic: 'IRS Question Paper PDF',
         pdfDir: 'irs',
         topics: '',
         pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1795004098/Adobe_Scan_Nov_18_2026_l3ospn.pdf',
+      },
+      {
+        id: 'dvt-question-paper',
+        name: 'DVT 2026',
+        topic: 'DVT Question Paper PDF',
+        pdfDir: 'dvt',
+        topics: '',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1795179419/Adobe_Scan_Nov_20_2026_rlqhpk.pdf'
       },
       {
         id: 'dvt-question-paper',
@@ -1113,7 +1120,7 @@ export const questionPaperSubjects1 = [
         topic: 'DVT Question Papers PDF',
         pdfDir: 'dvt',
         topics: '',
-        pdfFile: 'q',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1793845829/q_ksh32q.pdf',
       }
       ]
   }
