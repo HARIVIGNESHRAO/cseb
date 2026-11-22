@@ -1,3 +1,15 @@
+export function isVideoUnit(unit) {
+  return unit.type === 'video' || unit.type === 'youtube' || Boolean(unit.videoUrl);
+}
+
+export function isStudyProgressUnit(unit) {
+  const isQuestionPaper = /\b(?:question papers?|previous year papers?)\b/i.test(unit.name);
+  return !isVideoUnit(unit) && unit.type !== 'external-links' && !isQuestionPaper;
+}
+
+export function supportsStudyProgress(category) {
+  return !['calendar', 'syllabus', 'timetable', 'question-paper'].includes(category);
+}
 
 export const subjects = [
   {

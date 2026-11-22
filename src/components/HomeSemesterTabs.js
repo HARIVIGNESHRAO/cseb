@@ -29,7 +29,7 @@ function getCardCount(subject) {
   return formatCount(units.length, mixedResources ? 'resource' : 'file');
 }
 
-export default function HomeSemesterTabs() {
+export default function HomeSemesterTabs({ children }) {
   const [activeSemester, setActiveSemester] = useState('4-1');
 
   useEffect(() => {
@@ -163,6 +163,8 @@ export default function HomeSemesterTabs() {
           <span className={styles.semesterSelectChevron} aria-hidden="true">⌄</span>
         </div>
       </div>
+
+      {children}
 
       <div className={styles.semesterResources}>
         {semesterSections[activeSemester].length === 0 ? (

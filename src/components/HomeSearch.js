@@ -1,17 +1,54 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { Check, ChevronDown, FileText, HardDrive, Mic, Search, X } from 'lucide-react';
+import { readSavedPdfFiles } from '@/lib/offlinePdfs';
+import { RECENT_MATERIALS_EVENT } from '@/lib/recentMaterials';
+import { searchPdfMaterials } from '@/lib/materialSearch';
 import useSemesterSearch from '@/hooks/useSemesterSearch';
 import SearchScope from '@/components/SearchScope';
 import styles from '@/app/page.module.css';
+import searchStyles from './HomeSearch.module.css';
 
-export default function HomeSearch() {
+export default function HomeSearch({ pdfCatalog = [] }) {
   const [query, setQuery] = useState('');
+  const [mode, setMode] = useState('portal');
+  const [savedOnly, setSavedOnly] = useState(false);
+  const [savedState, setSavedState] = useState({ files: [], offline: false, origin: '', loading: true });
+  const pdfMode = mode === 'pdf';
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef(null);
 
   const { semester, scope, setScope, results, normalizedQuery } = useSemesterSearch(query);
+
+  useEffect(() => {
+    if (!pdfMode) return;
+    let active = true;
+    let request = 0;
+    async function refresh() {
+      const current = ++request;
+      const offline = !navigator.onLine;
+      if (active) setSavedState((state) => ({ ...state, offline }));
+      const files = await readSavedPdfFiles().catch(() => []);
+      if (active && current === request) {
+        setSavedState({ files, offline, origin: window.location.origin, loading: false });
+      }
+    }
+    const events = ['focus', 'online', 'offline', RECENT_MATERIALS_EVENT];
+    for (const event of events) window.addEventListener(event, refresh);
+    refresh();
+    return () => {
+      active = false;
+      for (const event of events) window.removeEventListener(event, refresh);
+    };
+  }, [pdfMode]);
+
+  const filterSaved = savedOnly || savedState.offline;
+  const pdfResults = pdfMode ? searchPdfMaterials(pdfCatalog, query, savedState.files, {
+    savedOnly: filterSaved,
+    origin: savedState.origin,
+  }) : [];
 
   // Voice Search
   const startListening = () => {
@@ -55,48 +92,70 @@ export default function HomeSearch() {
 
   return (
     <section className={styles.searchSection} aria-label="Search study portal">
-      <div className={styles.searchBox}>
-        <span className={styles.searchIcon} aria-hidden="true">
-          🔎
-        </span>
-
-        <input
-          type="search"
-          className={styles.searchInput}
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Search subjects, units, papers..."
-          aria-label="Search subjects, units, papers"
-        />
-
-        {/* Nice SVG Microphone */}
-        <button
-          type="button"
-          className={`${styles.micButton} ${isListening ? styles.listening : ''}`}
-          onClick={isListening ? stopListening : startListening}
-          aria-label={isListening ? "Stop listening" : "Voice search"}
-          title={isListening ? "Listening... Click to stop" : "Search with voice"}
-        >
-          <svg width="22" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z" />
-            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-            <line x1="12" y1="19" x2="12" y2="22" />
-          </svg>
-        </button>
-
-        {query ? (
-          <button
+      <div className={searchStyles.searchRow}>
+        <div className={searchStyles.field}>
+          <Search size={19} className={searchStyles.searchIcon} aria-hidden="true" />
+          <input
+            type="search"
+            className={searchStyles.input}
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder={pdfMode ? 'Search PDFs by title, subject, or unit…' : 'Search subjects, units, papers…'}
+            aria-label={pdfMode ? 'Search PDFs by title, subject, or unit' : 'Search subjects, units, papers'}
+          />
+          {query && <button
             type="button"
-            className={styles.searchClear}
+            className={searchStyles.iconButton}
             onClick={() => setQuery('')}
             aria-label="Clear search"
-          >
-            ×
-          </button>
-        ) : null}
+          ><X size={17} aria-hidden="true" /></button>}
+          <button
+            type="button"
+            className={searchStyles.iconButton}
+            onClick={isListening ? stopListening : startListening}
+            aria-pressed={isListening}
+            aria-label="Voice search"
+          ><Mic size={17} aria-hidden="true" /></button>
+        </div>
+
+        <div className={searchStyles.mode}>
+          <select aria-label="Search type" value={mode} onChange={(event) => setMode(event.target.value)}>
+            <option value="portal">Subjects and units</option>
+            <option value="pdf">PDF materials</option>
+          </select>
+          <ChevronDown className={searchStyles.modeArrow} size={24} aria-hidden="true" />
+        </div>
       </div>
 
-      {normalizedQuery ? (
+      {pdfMode && <button
+        type="button"
+        className={searchStyles.savedFilter}
+        aria-pressed={filterSaved}
+        disabled={savedState.offline}
+        onClick={() => setSavedOnly((enabled) => !enabled)}
+      >
+        <HardDrive size={15} aria-hidden="true" />
+        Saved offline
+        {filterSaved && <Check size={14} aria-hidden="true" />}
+      </button>}
+
+      {pdfMode && (normalizedQuery || filterSaved) && <div className={styles.searchResults}>
+        {filterSaved && savedState.loading ? <div className={styles.searchEmpty} role="status">Checking saved PDFs…</div> :
+          pdfResults.length ? pdfResults.map((pdf) => (
+            <a key={pdf.id} href={pdf.href} className={styles.searchResult} target="_blank" rel="noopener noreferrer" data-recent-title={pdf.title}>
+              <span className={styles.searchResultIcon}><FileText size={17} aria-hidden="true" /></span>
+              <span className={styles.searchResultText}>
+                <span className={styles.searchResultTitle}>{pdf.title}</span>
+                <span className={styles.searchResultMeta}>
+                  {pdf.subjectName} · {pdf.unitName}{pdf.saved ? ' · Saved offline' : ''}
+                </span>
+              </span>
+              <span className={styles.searchResultArrow} aria-hidden="true">↗</span>
+            </a>
+          )) : <div className={styles.searchEmpty} role="status">{filterSaved ? 'No matching PDFs saved offline.' : 'No matching PDFs found.'}</div>}
+      </div>}
+
+      {!pdfMode && normalizedQuery ? (
         <div className={styles.searchResults}>
           <SearchScope semester={semester} scope={scope} setScope={setScope} />
           {results.length ? (

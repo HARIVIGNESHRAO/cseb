@@ -547,3 +547,33 @@
   .aiTool { transition: none; }
   .aiTool:hover { transform: none; }
 }
+
+/* Keep file actions visible without an empty, screen-height viewer. */
+.viewerArea {
+  min-height: 0;
+  flex-direction: column;
+  gap: 20px;
+  padding: clamp(20px, 4vw, 36px);
+}
+
+.accessIntro { text-align: center; }
+.accessIntro h2 { margin: 0 0 8px; color: var(--text); font-size: 20px; }
+.accessIntro p,
+.accessHint { margin: 0; color: var(--text-dim); font-size: 14px; line-height: 1.6; }
+.accessHint { max-width: 560px; text-align: center; }
+.accessStatus { margin: 0; color: var(--text-dim); font-size: 13px; }
+.accessStatus:empty { display: none; }
+
+@media (max-width: 640px) {
+  .viewerActions { width: 100%; }
+}
+
+.offlineActions { display: flex; flex-direction: column; align-items: center; gap: 8px; max-width: 100%; }
+.offlineActions p { max-width: 360px; text-align: center; line-height: 1.5; }
+.offlineActions button:disabled { opacity: .65; cursor: wait; }
+@media (max-width: 640px) { .offlineActions { width: 100%; } }
+
+.offlineActions.compactOffline { width: auto; max-width: 190px; }
+.compactOffline button { cursor: pointer; }
+.compactOffline button:disabled { opacity: .6; cursor: wait; }
+.compactOffline .accessStatus { font-size: 12px; line-height: 1.5; }

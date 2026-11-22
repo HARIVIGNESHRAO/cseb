@@ -1,8 +1,12 @@
 import Link from 'next/link';
+import { ChevronRight } from 'lucide-react';
 import { notFound } from 'next/navigation';
-import { allSubjects } from '@/data/subjects';
+import { allSubjects, isStudyProgressUnit, isVideoUnit, supportsStudyProgress } from '@/data/subjects';
 import PdfPrefetchLink from '@/components/PdfPrefetchLink';
+import PdfConnectionHints from '@/components/PdfConnectionHints';
 import DownloadAllButton from '@/components/DownloadAllButton';
+import { SubjectProgress, UnitStatus } from '@/components/UnitProgress';
+import SavePdfOffline from '@/components/SavePdfOffline';
 import { getAssetDownloadUrl, getUnitDownloadFileName, getUnitPdfUrl, withPdfAssetVersion } from '@/lib/pdfAssets';
 import styles from './subject.module.css';
 import alertStyles from './[unitId]/unit.module.css';
@@ -20,17 +24,24 @@ export async function generateMetadata({ params }) {
 export default function SubjectPage({ params }) {
   const subject = allSubjects.find((s) => s.id === params.subjectId);
   if (!subject) notFound();
+  const showStudyProgress = supportsStudyProgress(subject.category);
   const isPdfSubject = subject.category !== 'theory';
   return (
     <main id="sidebar-main-content" className={styles.main}>
+      <PdfConnectionHints urls={subject.units.flatMap((unit) => (
+        unit.videoUrl || ['video', 'youtube', 'external-links'].includes(unit.type)
+          ? []
+          : [unit.openUrl ?? getUnitPdfUrl(subject, unit), unit.downloadUrl,
+            ...(unit.resources ?? []).map((resource) => resource.fileUrl)]
+      ))} />
       <div className={styles.bgGrid} />
 
       <div className={styles.container}>
         {/* Breadcrumb */}
-        <nav className={styles.breadcrumb}>
+        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
           <Link href="/" className={styles.breadcrumbLink}>Home</Link>
-          <span className={styles.breadcrumbSep}>/</span>
-          <span className={styles.breadcrumbActive}>{subject.name}</span>
+          <span className={styles.breadcrumbSep} aria-hidden="true"><ChevronRight size={15} /></span>
+          <span className={styles.breadcrumbActive} aria-current="page">{subject.name}</span>
         </nav>
 
         {subject.alert && (
@@ -55,6 +66,8 @@ export default function SubjectPage({ params }) {
           </div>
           <div className={styles.subjectIcon}>{subject.icon}</div>
         </div>
+
+        {showStudyProgress && <SubjectProgress subjectId={subject.id} color={subject.color} unitIds={subject.units.filter(isStudyProgressUnit).map((unit) => unit.id)} />}
 
         {/* Units Label */}
         <div className={styles.unitsLabel}>
@@ -86,7 +99,7 @@ export default function SubjectPage({ params }) {
         {/* Units List */}
         <div className={styles.unitsList}>
           {subject.units.map((unit, i) => {
-            const isVideo = unit.type === 'video' || unit.type === 'youtube' || !!unit.videoUrl;
+            const isVideo = isVideoUnit(unit);
             const isExternalLinks = unit.type === 'external-links';
             const unitHref = isExternalLinks
               ? unit.openUrl
@@ -94,6 +107,8 @@ export default function SubjectPage({ params }) {
             const pdfUrl = getUnitPdfUrl(subject, unit);
             const downloadUrl = getAssetDownloadUrl(withPdfAssetVersion(unit.downloadUrl ?? unit.openUrl ?? pdfUrl));
             const hasResources = Array.isArray(unit.resources) && unit.resources.length > 0;
+            const hasStudyStatus = showStudyProgress && isStudyProgressUnit(unit);
+            const hasPdfActions = !isVideo && !isExternalLinks && !hasResources;
 
             return (
                 <div
@@ -116,7 +131,7 @@ export default function SubjectPage({ params }) {
                     </div>
                   </PdfPrefetchLink>
 
-                  <div className={styles.unitActions}>
+                  <div className={hasStudyStatus && hasPdfActions ? `${styles.unitActions} ${styles.pairedActions}` : styles.unitActions}>
                     {isVideo ? (
                         // ===== VIDEO BUTTON =====
                         <PdfPrefetchLink href={unitHref} className={styles.viewButton}>
@@ -138,6 +153,7 @@ export default function SubjectPage({ params }) {
                     ) : (
                         <a
                             href={withPdfAssetVersion(unit.openUrl ?? pdfUrl)}
+                            data-recent-title={`${subject.code} · ${unit.name}${unit.topic ? ` · ${unit.topic}` : ''}`}
                             target="_blank"
                             rel="noreferrer"
                             className={styles.viewButton}
@@ -147,7 +163,7 @@ export default function SubjectPage({ params }) {
                     )}
 
                     {/* Hide Download button for video */}
-                    {!isVideo && !isExternalLinks && !hasResources && (
+                    {hasPdfActions && (
                         <a
                             href={downloadUrl}
                             download={downloadUrl?.startsWith('/') ? getUnitDownloadFileName(subject, unit) : undefined}
@@ -155,6 +171,17 @@ export default function SubjectPage({ params }) {
                         >
                           Download
                         </a>
+                    )}
+                    {hasStudyStatus && <UnitStatus subjectId={subject.id} unitId={unit.id} unitName={unit.name} className={styles.studyStatus} />}
+                    {hasPdfActions && (
+                      <SavePdfOffline
+                        url={withPdfAssetVersion(unit.openUrl ?? pdfUrl)}
+                        title={`${subject.code} · ${unit.name}${unit.topic ? ` · ${unit.topic}` : ''}`}
+                        catalogId={`${subject.id}/${unit.id}`}
+                        revision={String(unit.revision ?? unit.updatedAt ?? '')}
+                        compact
+                        buttonClassName={styles.viewButton}
+                      />
                     )}
                   </div>
                 </div>

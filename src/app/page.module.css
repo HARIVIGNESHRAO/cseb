@@ -682,6 +682,7 @@
 
 .searchResultText {
   min-width: 0;
+  overflow-wrap: anywhere;
   flex: 1;
   display: grid;
   gap: 4px;
@@ -912,19 +913,17 @@
   height: 52px;
   padding: 0 46px 0 18px;
   appearance: none;
-  border: 1px solid rgba(255,255,255,0.18);
+  border: 1px solid var(--picker-border);
   border-radius: 16px;
   outline: none;
-  background: linear-gradient(135deg, #4f8ef7 0%, #4385ed 48%, #38bdf8 100%);
-  color: #fff;
+  background: var(--picker-bg);
+  color: var(--picker-text);
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.02em;
   cursor: pointer;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.2),
-    0 10px 24px rgba(79,142,247,0.2);
+  box-shadow: var(--picker-shadow);
 }
 
 .semesterSelect option {
@@ -4502,11 +4501,6 @@
 :global(html[data-theme='revenge']) .heroMedia .heroPhotoRevenge { display: block; }
 
 /* Match the semester dropdown and its interaction glow to Revenge. */
-:global(html[data-theme='revenge']) .semesterSelect {
-  background: linear-gradient(135deg, #a92534, #c72f3d 55%, #df414c);
-  border-color: rgba(255,133,137,.35);
-  box-shadow: inset 0 1px 0 rgba(255,220,220,.14), 0 10px 24px rgba(229,57,69,.16);
-}
 :global(html[data-theme='revenge']) .semesterSelectWrap:hover {
   box-shadow: 0 14px 30px rgba(229,57,69,.22);
 }
@@ -4559,12 +4553,6 @@
 }
 
 /* Rehman accents are scoped so the other palettes retain their styles. */
-:global(html[data-theme='rehman']) .semesterSelect {
-  background: linear-gradient(135deg, #284c49, #39635d);
-  border-color: rgba(134,190,180,.35);
-  color: #edf3ef;
-  box-shadow: inset 0 1px 0 rgba(226,239,225,.12), 0 10px 24px rgba(0,0,0,.15);
-}
 :global(html[data-theme='rehman']) .semesterSelectWrap:hover,
 :global(html[data-theme='rehman']) .semesterSelectWrap:focus-within { box-shadow: 0 0 0 3px var(--glow), var(--shadow-sm); }
 :global(html[data-theme='rehman']) :is(.examCountdownLabel, .examCountdownDate) { color: var(--accent); }
@@ -4588,11 +4576,6 @@
 /* Sanyal's portrait and tailored light-mode controls. */
 :global(html[data-theme='light']) .heroIdentity { --hero-panel: #fffefa; border-color: rgba(128,96,51,.2); }
 :global(html[data-theme='light']) .heroMedia .heroPhotoLight { object-position: 58% 42%; }
-:global(html[data-theme='light']) .semesterSelect {
-  background: linear-gradient(135deg, #6c553a, #806745);
-  color: #fffefa;
-  box-shadow: 0 8px 20px rgba(54,46,32,.12);
-}
 :global(html[data-theme='light']) .semesterSelectWrap:hover,
 :global(html[data-theme='light']) .semesterSelectWrap:focus-within { box-shadow: 0 0 0 3px var(--glow), var(--shadow-sm); }
 :global(html[data-theme='light']) :is(.examCountdownLabel, .examCountdownDate) { color: var(--accent); }
@@ -4605,10 +4588,6 @@
 :global(html:is([data-theme='iqbal'], [data-theme='aslam'])) .heroMedia .heroPhotoClassic { display: none; }
 :global(html[data-theme='iqbal']) .heroMedia .heroPhotoIqbal { display: block; object-position: center; }
 :global(html[data-theme='aslam']) .heroMedia .heroPhotoAslam { display: block; object-position: 40% center; }
-:global(html:is([data-theme='iqbal'], [data-theme='aslam'])) .semesterSelect {
-  background: color-mix(in srgb, var(--accent) 24%, var(--surface));
-  border-color: var(--border-hover); color: var(--text); box-shadow: var(--shadow-sm);
-}
 :global(html:is([data-theme='iqbal'], [data-theme='aslam'])) .semesterSelectWrap:hover,
 :global(html:is([data-theme='iqbal'], [data-theme='aslam'])) .semesterSelectWrap:focus-within { box-shadow: 0 0 0 3px var(--glow), var(--shadow-sm); }
 :global(html:is([data-theme='iqbal'], [data-theme='aslam'])) :is(.examCountdownLabel, .examCountdownDate) { color: var(--accent); }
@@ -4629,10 +4608,6 @@
   background: var(--hero-panel);
   border-color: rgba(214,175,105,.3);
 }
-:global(html[data-theme='iqbal']) .semesterSelect {
-  background: linear-gradient(135deg, #6e542d, #8d6d38);
-  color: #fff5df;
-}
 :global(html[data-theme='iqbal']) .examCountdownArrow { background: #8d6d38; color: #fff5df; }
 :global(html[data-theme='iqbal']) .card { border-radius: 12px; border-color: rgba(214,175,105,.22); }
 
@@ -4640,4 +4615,18 @@
 :global(html[data-theme='aslam']) .heroMedia .heroPhotoAslam {
   transform: scale(1.02);
   transform-origin: center;
+}
+
+
+@media (max-width: 480px) {
+  .searchResults .searchResult {
+    min-height: 56px;
+    gap: 10px;
+    padding-inline: 12px;
+  }
+
+  .searchResults .searchResultIcon {
+    width: 34px;
+    height: 34px;
+  }
 }

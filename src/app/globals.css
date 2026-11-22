@@ -755,3 +755,75 @@ html[data-theme='aslam'] {
   --glass-highlight: rgba(255,255,255,.07);
   --glass-shadow: 0 20px 50px rgba(0,0,0,.25); --glass-blur: blur(8px);
 }
+
+/* Give the offline library and theme picker real, separate layout space. */
+.portalUtilityBar {
+  position: sticky;
+  top: 0;
+  z-index: 18;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  min-height: 76px;
+  margin-left: var(--sidebar-offset, 0px);
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--elevated-strong);
+}
+.portalUtilityBar::before { content: ''; }
+.portalUtilityBar .themePicker {
+  position: relative;
+  inset: auto;
+  flex-shrink: 0;
+  z-index: auto;
+  margin: 0;
+  box-shadow: none;
+  justify-self: end;
+}
+@media (max-width: 1100px) {
+  .portalUtilityBar { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 12px 16px; }
+  .portalUtilityBar::before { display: none; }
+  .portalUtilityBar .themePicker { grid-row: 1; justify-self: end; max-width: calc(100vw - 92px); }
+  .portalUtilityBar .themePicker__control { max-width: calc(100vw - 130px); }
+}
+
+
+/* Semester dropdown palette. */
+:root {
+  --picker-bg: linear-gradient(135deg, #4f8ef7 0%, #4385ed 48%, #38bdf8 100%);
+  --picker-text: #fff;
+  --picker-border: rgba(255, 255, 255, 0.18);
+  --picker-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 10px 24px rgba(79, 142, 247, 0.2);
+}
+
+html[data-theme='revenge'] {
+  --picker-bg: linear-gradient(135deg, #a92534, #c72f3d 55%, #df414c);
+  --picker-border: rgba(255, 133, 137, 0.35);
+  --picker-shadow: inset 0 1px 0 rgba(255, 220, 220, 0.14), 0 10px 24px rgba(229, 57, 69, 0.16);
+}
+
+html[data-theme='rehman'] {
+  --picker-bg: linear-gradient(135deg, #284c49, #39635d);
+  --picker-border: rgba(134, 190, 180, 0.35);
+  --picker-text: #edf3ef;
+  --picker-shadow: inset 0 1px 0 rgba(226, 239, 225, 0.12), 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+html[data-theme='light'] {
+  --picker-bg: linear-gradient(135deg, #6c553a, #806745);
+  --picker-text: #fffefa;
+  --picker-shadow: 0 8px 20px rgba(54, 46, 32, 0.12);
+}
+
+html:is([data-theme='iqbal'], [data-theme='aslam']) {
+  --picker-bg: color-mix(in srgb, var(--accent) 24%, var(--surface));
+  --picker-border: var(--border-hover);
+  --picker-text: var(--text);
+  --picker-shadow: var(--shadow-sm);
+}
+
+html[data-theme='iqbal'] {
+  --picker-bg: linear-gradient(135deg, #6e542d, #8d6d38);
+  --picker-text: #fff5df;
+}

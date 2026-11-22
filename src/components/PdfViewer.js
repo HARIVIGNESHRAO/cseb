@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import styles from './PdfViewer.module.css';
+import SavePdfOffline from './SavePdfOffline';
 
 const AI_TOOLS = [
   {
@@ -43,11 +44,12 @@ const AI_TOOLS = [
   },
 ];
 
-export default function PdfViewer({ pdfUrl, subject, unit }) {
+export default function PdfViewer({ pdfUrl, downloadUrl, downloadFileName, subject, unit }) {
   const [aiOpen, setAiOpen] = useState(false);
   const openUrl = unit.openUrl ?? pdfUrl;
   const [siteOrigin, setSiteOrigin] = useState('https://csesalaar.vercel.app');
   const [copyStatus, setCopyStatus] = useState('');
+  const [linkStatus, setLinkStatus] = useState('');
   const absolutePdfUrl = new URL(pdfUrl, siteOrigin).href;
   const aiPrompt = `Help me study this PDF for ${subject.name}: ${unit.name}${unit.topic ? ` — ${unit.topic}` : ''}.
 PDF: ${absolutePdfUrl}
@@ -243,9 +245,14 @@ Please read it so I can ask questions about it. If you cannot access the PDF lin
         </div>
 
         <div className={styles.viewerArea}>
+          <div className={styles.accessIntro}>
+            <h2>Read your study material</h2>
+            <p>Open the PDF directly, or download it once to read offline.</p>
+          </div>
           <div className={`${styles.viewerActions} ${aiOpen ? styles.viewerActionsExpanded : ''}`}>
             <a
                 href={openUrl}
+                data-recent-title={`${subject.code} · ${unit.name}${unit.topic ? ` · ${unit.topic}` : ''}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.openPdfButton}
@@ -253,8 +260,35 @@ Please read it so I can ask questions about it. If you cannot access the PDF lin
               ↗ Open PDF in new tab
             </a>
 
+            {downloadUrl && (
+              <a
+                href={downloadUrl}
+                download={downloadUrl.startsWith('/') ? downloadFileName : undefined}
+                className={styles.openPdfButton}
+              >
+                ↓ Download PDF
+              </a>
+            )}
+            <button
+              type="button"
+              className={styles.askAiButton}
+              onClick={async () => {
+                try {
+                  await navigator.clipboard.writeText(new URL(openUrl, window.location.origin).href);
+                  setLinkStatus('PDF link copied.');
+                } catch {
+                  setLinkStatus('Could not copy. Use Open PDF, then copy the address from your browser.');
+                }
+              }}
+            >
+              Copy PDF link
+            </button>
+
+            <SavePdfOffline catalogId={`${subject.id}/${unit.id}`} revision={String(unit.revision ?? unit.updatedAt ?? '')} key={openUrl} url={openUrl} title={`${subject.code} · ${unit.name}${unit.topic ? ` · ${unit.topic}` : ''}`} />
             {aiMenu}
           </div>
+          <p className={styles.accessHint}>Loading slowly? Download the PDF and open it in your phone’s PDF reader. Large files may take longer on mobile data.</p>
+          <p className={styles.accessStatus} role="status">{linkStatus}</p>
         </div>
       </div>
   );

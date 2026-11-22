@@ -1,7 +1,11 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { allSubjects } from '@/data/subjects';
+import { ChevronRight } from 'lucide-react';
+import { allSubjects, isStudyProgressUnit, isVideoUnit, supportsStudyProgress } from '@/data/subjects';
+import { UnitStatus } from '@/components/UnitProgress';
 import PdfViewer from '@/components/PdfViewer';
+import SavePdfOffline from '@/components/SavePdfOffline';
+import PdfConnectionHints from '@/components/PdfConnectionHints';
 import { getAssetDownloadUrl, getUnitDownloadFileName, getUnitPdfUrl, withPdfAssetVersion } from '@/lib/pdfAssets';
 import styles from './unit.module.css';
 export async function generateStaticParams() {
@@ -22,7 +26,8 @@ export default function UnitPage({ params }) {
   if (!subject) notFound();
   const unit = subject.units.find((u) => u.id === params.unitId);
   if (!unit) notFound();
-  const isVideo = unit.type === 'video' || unit.type === 'youtube' || !!unit.videoUrl;
+  const showStudyProgress = supportsStudyProgress(subject.category);
+  const isVideo = isVideoUnit(unit);
   const hasResources = Array.isArray(unit.resources) && unit.resources.length > 0;
   const pdfUrl = getUnitPdfUrl(subject, unit);
   const openUrl = withPdfAssetVersion(unit.openUrl ?? pdfUrl);
@@ -38,16 +43,17 @@ export default function UnitPage({ params }) {
 
   return (
     <main className={styles.main}>
+      {!isVideo && <PdfConnectionHints urls={[openUrl, downloadUrl, ...(unit.resources ?? []).map((resource) => resource.fileUrl)]} />}
       <div className={styles.bgGrid} />
 
       <div className={styles.container}>
         {/* Breadcrumb */}
-        <nav className={styles.breadcrumb}>
+        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
           <Link href="/" className={styles.bcLink}>Home</Link>
-          <span className={styles.bcSep}>/</span>
+          <span className={styles.bcSep} aria-hidden="true"><ChevronRight size={15} /></span>
           <Link href={`/subject/${subject.id}`} className={styles.bcLink}>{subject.name}</Link>
-          <span className={styles.bcSep}>/</span>
-          <span className={styles.bcActive}>{unit.name}</span>
+          <span className={styles.bcSep} aria-hidden="true"><ChevronRight size={15} /></span>
+          <span className={styles.bcActive} aria-current="page">{unit.name}</span>
         </nav>
 
         {/* Selenium IDE Important Alert – only for STM Lab / STM Record, Experiment-1 */}
@@ -104,6 +110,7 @@ export default function UnitPage({ params }) {
             </div>
             <h1 className={styles.unitTitle}>{unit.topic}</h1>
             <p className={styles.unitTopics}>{unit.topics}</p>
+            {showStudyProgress && isStudyProgressUnit(unit) && <UnitStatus subjectId={subject.id} unitId={unit.id} unitName={unit.name} />}
           </div>
 
           {!hasResources && !isVideo ? (
@@ -154,6 +161,7 @@ export default function UnitPage({ params }) {
                       {resource.canPreview ? (
                         <a
                           href={resourceUrl}
+                          data-recent-title={`${subject.code} · ${resource.name}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className={styles.btnOpen}
@@ -166,13 +174,14 @@ export default function UnitPage({ params }) {
                         </span>
                       )}
                     </div>
+                    {resource.canPreview && <SavePdfOffline catalogId={`${subject.id}/${unit.id}/${resource.id}`} revision={String(resource.revision ?? resource.updatedAt ?? '')} url={resourceUrl} title={`${subject.code} · ${resource.name}`} />}
                   </div>
                 );
               })}
             </div>
           </section>
         ) : (
-          <PdfViewer pdfUrl={pdfUrl} subject={subject} unit={{ ...unit, openUrl }} />
+          <PdfViewer pdfUrl={pdfUrl} downloadUrl={downloadUrl} downloadFileName={getUnitDownloadFileName(subject, unit)} subject={subject} unit={{ ...unit, openUrl }} />
         )}
 
         {/* Unit Navigation */}

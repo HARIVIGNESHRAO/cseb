@@ -37,6 +37,7 @@ const NAV_LINKS = [
   { label: 'Labs',       href: '#lab-manuals', icon: '▤' },
   { label: 'Papers',     href: '#papers',     icon: '▣' },
   { label: 'Interview', href: '#interview-questions', icon: '▧' },
+  { label: 'Saved PDFs', href: '/offline', icon: '↓' },
   { label: 'Feedback',   href: '#feedback',   icon: '✉' },
 ];
 

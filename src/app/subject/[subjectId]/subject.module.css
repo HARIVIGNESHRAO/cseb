@@ -1020,3 +1020,110 @@
 :global(html[data-theme='revenge']) .unitCard:hover { background: var(--card-hover); border-color: var(--border-hover); }
 
 :global(html[data-theme='revenge']) .main::after { background: radial-gradient(circle, rgba(229,57,69,.08), transparent 72%); }
+
+/* A dedicated breadcrumb strip, rather than a floating pill over the title. */
+.container .breadcrumb {
+  position: sticky;
+  top: var(--portal-utility-height, 76px);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 100%;
+  min-height: 60px;
+  margin-bottom: 24px;
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--bg);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  font-family: var(--font-main);
+  font-size: 14px;
+  animation: none;
+}
+.container .breadcrumbLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  min-height: 38px;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--soft-bg);
+  color: var(--text-dim);
+  font-weight: 500;
+}
+.container .breadcrumbLink:hover { color: var(--accent); background: var(--soft-bg-strong); border-color: var(--border-hover); }
+.container .breadcrumbLink:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.container .breadcrumbActive { min-width: 0; color: var(--text); font-size: 14px; font-weight: 600; line-height: 1.5; }
+.container .breadcrumbSep { display: inline-flex; align-items: center; flex-shrink: 0; color: var(--text-muted); opacity: .7; }
+@media (max-width: 1100px) {
+  .container .breadcrumb { top: var(--portal-utility-height, 124px); }
+}
+@media (max-width: 540px) {
+  .container .breadcrumb { gap: 8px; font-size: 13px; }
+  .container .breadcrumbActive { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}
+
+
+/* File controls stay reachable when a row includes offline saving. */
+.unitActions { flex-wrap: wrap; }
+
+.studyStatus { margin-inline-end: 8px; }
+
+/* Mobile file actions share two equal columns when all four controls are present. */
+@media (max-width: 767px) {
+  .unitCard .unitActions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    width: 100%;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .unitCard .unitActions > div {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+  .unitCard .pairedActions > div {
+    grid-column: auto;
+  }
+  .studyStatus {
+    margin-inline-end: 0;
+  }
+  .pairedActions .studyStatus > span,
+  .pairedActions .studyStatus select {
+    width: 100%;
+  }
+  .pairedActions .studyStatus select {
+    min-height: 48px;
+    padding-inline: 10px 40px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+  .unitCard .unitActions .viewButton,
+  .unitCard .unitActions .downloadButton {
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    padding: 12px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .unitCard .unitActions .viewButton:hover,
+  .unitCard .unitActions .downloadButton:hover { transform: none; }
+}
+@media (max-width: 340px) {
+  .unitCard .unitActions { grid-template-columns: minmax(0, 1fr); }
+}

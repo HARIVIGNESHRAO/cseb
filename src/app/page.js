@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import ReleasedHomepageVideo from '@/components/ReleasedHomepageVideo';
 import heroPhoto from '../../public/image.png';
 import revengePhoto from '../../public/image-1.jpg';
 import lightPhoto from '../../public/image-3.png';
@@ -10,8 +9,9 @@ import ExamCountdown from '@/components/ExamCountdown';
 import InterviewResources from '@/components/InterviewResources';
 import HomeFeedbackForm from '@/components/HomeFeedbackForm';
 import HomeSearch from '@/components/HomeSearch';
+import { getPdfCatalog } from '@/lib/pdfCatalog';
+import RecentMaterials from '@/components/RecentMaterials';
 import HomeSemesterTabs from '@/components/HomeSemesterTabs';
-import HomeStickyNav from '@/components/HomeStickyNav';
 import Navbar from '@/components/Navbar';
 import VisitCounter from '@/components/VisitCounter';
 import ScrollProgress from '@/components/ScrollProgress';
@@ -30,11 +30,6 @@ export default function Home() {
 
       {/* Primary responsive navbar */}
       <Navbar />
-
-      {/* Legacy sticky nav */}
-      <HomeStickyNav />
-
-      <ReleasedHomepageVideo />
 
       {/* Header */}
       <header className={styles.header} style={{ paddingTop: '96px' }}>
@@ -110,10 +105,12 @@ export default function Home() {
       </header>
 
       <div id="search">
-        <HomeSearch />
+        <HomeSearch pdfCatalog={getPdfCatalog()} />
       </div>
 
-      <HomeSemesterTabs />
+      <HomeSemesterTabs>
+        <RecentMaterials />
+      </HomeSemesterTabs>
 
       <InterviewResources />
 
