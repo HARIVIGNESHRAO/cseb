@@ -787,6 +787,24 @@ html[data-theme='aslam'] {
   .portalUtilityBar .themePicker { grid-row: 1; justify-self: end; max-width: calc(100vw - 92px); }
   .portalUtilityBar .themePicker__control { max-width: calc(100vw - 130px); }
 }
+@media (max-width: 640px) {
+  .portalUtilityBar {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 6px 12px;
+    min-height: 0;
+    padding: 8px 16px;
+  }
+
+  .portalUtilityBar .themePicker {
+    grid-column: 2;
+    max-width: 100%;
+    min-height: 44px;
+  }
+
+  .portalUtilityBar .themePicker__control {
+    max-width: 100%;
+  }
+}
 
 
 /* Semester dropdown palette. */

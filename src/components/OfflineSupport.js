@@ -91,8 +91,8 @@ export default function OfflineSupport() {
     return () => { cancelled = true; };
   }, [pathname]);
 
-  return <div className={styles.bar} role="status">
-    <span className={styles.message}>{offline ? 'You’re offline. Open your saved PDFs.' : 'Save PDFs to read without internet.'}</span>
+  return <div className={styles.bar}>
+    <span className={styles.message} data-online={!offline} role="status">{offline ? 'You’re offline. Open your saved PDFs.' : 'Save PDFs to read without internet.'}</span>
     <a className={styles.libraryLink} href="/offline"><FolderDown size={17} aria-hidden="true" /> Saved PDFs</a>
   </div>;
 }
