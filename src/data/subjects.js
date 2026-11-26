@@ -631,7 +631,7 @@ export const academicCalendarSubjects1 = [
         name: 'Calendar',
         topic: 'Academic Calendar PDF',
         topics: '',
-        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1784713762/Academic_calender_IV_year_KR23_AY2026-27_16.6.26_wicj5f.pdf',
+        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1795700432/KR23_-_B.Tech_IV_YR_ACADEMIC_CALENDER_2026-27_kdiolx.pdf',
       },
     ],
   },
@@ -765,27 +765,7 @@ export const syllabusSubjects1 = [
         pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1783168240/4_jpfp52',
       },
     ],
-  },
-  {
-    id: 'mid-syllabus',
-    code: 'MIDS',
-    name: 'Mid-2 Syllabus',
-    desc: '',
-    category: 'syllabus1',
-    pdfDir: 'sy',
-    color: '#4F8EF7',
-    bg: 'rgba(79,142,247,0.15)',
-    icon: '📄',
-    units: [
-      {
-        id: 'mids-syllabus',
-        name: 'Mid Exams Syllabus',
-        topic: 'Mid Exams Syllabus',
-        topics: '',
-        pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1790328382/MID_2_Exam_Syllabus_DVT_Page17_q8qdfh.pdf',
-      },
-    ],
-  },
+  }
 ];
 export const timetableSubjects = [
   {
@@ -986,14 +966,14 @@ export const timetableSubjects1 = [
       {
         id: 'theory',
         name: 'Theory(interns)',
-        topic: 'Mids Lab Timetable',
+        topic: 'Mids Timetable',
         topics: '',
         pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1791873772/KR23_-_B.Tech_4-1_MID_-2_INTERNS_EXAMINATIONS_TIMETABLE_OCT_2026_jay4mv.pdf',
       },
         {
         id: 'theory1',
         name: 'Theory(non-interns)',
-        topic: 'Mids Lab Timetable',
+        topic: 'Mids Timetable',
         topics: '',
         pdfFile: 'https://res.cloudinary.com/vunycbnq/image/upload/v1791873772/KR23_-_B.Tech_4-1_MID-2_EXAMINATION_TIMETABLE_OCT_2026_trajkc.pdf',
       },
